@@ -9,24 +9,24 @@ import { ELIMINAR_PRODUCTO, ESTABLECER_UBICACION, MODIFICAR_PRODUCTO, OBTENER_BU
 const ProductoState=(props)=>{
 
     const productos=[
-        {_id:0, img:'', nombre:'Tomate', medida:'LB'},
-        {_id:1, img:'', nombre:'Cebolla', medida:'LB'},
-        {_id:2, img:'', nombre:'Pepino', medida:'LB'},
-        {_id:3, img:'', nombre:'Vino Seco', medida:'U'},
-        {_id:4, img:'', nombre:'Ajo', medida:'cabeza'},
-        {_id:5, img:'', nombre:'Aji Cachucha', medida:'Pote'},
-        {_id:6, img:'', nombre:'Calabaza', medida:'LB'},
-        {_id:7, img:'', nombre:'Yuca', medida:'LB'},
-        {_id:8, img:'', nombre:'Boniato', medida:'LB'},
-        {_id:9, img:'', nombre:'Mango', medida:'LB'},
-        {_id:10, img:'', nombre:'Lechuga', medida:'LB'},
+        {_id:0, img:'', nombre:'Tomate', medida:'LB',estado:'agotado'},
+        {_id:1, img:'', nombre:'Cebolla', medida:'LB',estado:'abastecido'},
+        {_id:2, img:'', nombre:'Pepino', medida:'LB',estado:'abastecido'},
+        {_id:3, img:'', nombre:'Vino Seco', medida:'U',estado:'abastecido'},
+        {_id:4, img:'', nombre:'Ajo', medida:'cabeza',estado:'abastecido'},
+        {_id:5, img:'', nombre:'Aji Cachucha', medida:'Pote',estado:'abastecido'},
+        {_id:6, img:'', nombre:'Calabaza', medida:'LB',estado:'agotado'},
+        {_id:7, img:'', nombre:'Yuca', medida:'LB',estado:'agotado'},
+        {_id:8, img:'', nombre:'Boniato', medida:'LB',estado:'abastecido'},
+        {_id:9, img:'', nombre:'Mango', medida:'LB',estado:'agotado'},
+        {_id:10, img:'', nombre:'Lechuga', medida:'LB',estado:'abastecido'},
     ]
 
     const initialState={
-        productos:[{_id:'', img:'', nombre:'', medida:''}],
+        productos:[{_id:'', img:'', nombre:'', medida:'', estado:'agotado'}],
         producto:null,
         busqueda:'',
-        productom:{_id:'', img:'', nombre:'', medida:''},
+        productom:{_id:'', img:'', nombre:'', medida:'', estado:'agotado'},
 
     }
 

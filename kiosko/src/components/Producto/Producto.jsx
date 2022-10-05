@@ -10,7 +10,7 @@ const Producto = ({producto}) => {
     <div className=" grid grid-flow-col grid-cols-3 p-4  place-items-center gap-x-4 w-full">
         <ProductoImg img={img}/>
         <NombreProducto nombre={nombre} medida={medida} />
-        <ButtonMenu id={_id} />
+        <ButtonMenu id={_id} estado={producto.estado} />
         
     </div>
   );
