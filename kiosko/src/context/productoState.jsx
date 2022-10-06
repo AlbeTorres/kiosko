@@ -3,30 +3,31 @@ import productoContext from './productoContext';
 import { useReducer } from "react";
 import tokenAuth from '../config/tokenAuth';
 import clienteAxios from "../config/axios";
-import { ELIMINAR_PRODUCTO, ESTABLECER_UBICACION, MODIFICAR_PRODUCTO, OBTENER_BUSQUEDA, OBTENER_PRODUCTOS, OBTENER_PRODUCTO_BY_ID, RESTABLECER_UBICACION } from "../types";
+import { ELIMINAR_PRODUCTO, ESTABLECER_ACCION, ESTABLECER_UBICACION, MODIFICAR_PRODUCTO, OBTENER_BUSQUEDA, OBTENER_PRODUCTOS, OBTENER_PRODUCTO_BY_ID, RESTABLECER_UBICACION } from "../types";
 
 
 const ProductoState=(props)=>{
 
     const productos=[
-        {_id:0, img:'', nombre:'Tomate', medida:'LB',estado:'agotado'},
-        {_id:1, img:'', nombre:'Cebolla', medida:'LB',estado:'abastecido'},
-        {_id:2, img:'', nombre:'Pepino', medida:'LB',estado:'abastecido'},
-        {_id:3, img:'', nombre:'Vino Seco', medida:'U',estado:'abastecido'},
-        {_id:4, img:'', nombre:'Ajo', medida:'cabeza',estado:'abastecido'},
-        {_id:5, img:'', nombre:'Aji Cachucha', medida:'Pote',estado:'abastecido'},
-        {_id:6, img:'', nombre:'Calabaza', medida:'LB',estado:'agotado'},
-        {_id:7, img:'', nombre:'Yuca', medida:'LB',estado:'agotado'},
-        {_id:8, img:'', nombre:'Boniato', medida:'LB',estado:'abastecido'},
-        {_id:9, img:'', nombre:'Mango', medida:'LB',estado:'agotado'},
-        {_id:10, img:'', nombre:'Lechuga', medida:'LB',estado:'abastecido'},
+        {_id:0, img:'', nombre:'Tomate', medida:'LB',estado:'agotado', precio:100},
+        {_id:1, img:'', nombre:'Cebolla', medida:'LB',estado:'abastecido', precio:100},
+        {_id:2, img:'', nombre:'Pepino', medida:'LB',estado:'abastecido', precio:100},
+        {_id:3, img:'', nombre:'Vino Seco', medida:'U',estado:'abastecido', precio:100},
+        {_id:4, img:'', nombre:'Ajo', medida:'cabeza',estado:'abastecido', precio:100},
+        {_id:5, img:'', nombre:'Aji Cachucha', medida:'Pote',estado:'abastecido', precio:100},
+        {_id:6, img:'', nombre:'Calabaza', medida:'LB',estado:'agotado', precio:100},
+        {_id:7, img:'', nombre:'Yuca', medida:'LB',estado:'agotado', precio:100},
+        {_id:8, img:'', nombre:'Boniato', medida:'LB',estado:'abastecido', precio:100},
+        {_id:9, img:'', nombre:'Mango', medida:'LB',estado:'agotado', precio:100},
+        {_id:10, img:'', nombre:'Lechuga', medida:'LB',estado:'abastecido',precio:100},
     ]
 
     const initialState={
-        productos:[{_id:'', img:'', nombre:'', medida:'', estado:'agotado'}],
+        productos:[{_id:'', img:'', nombre:'', medida:'', estado:'agotado',precio:''}],
         producto:null,
         busqueda:'',
-        productom:{_id:'', img:'', nombre:'', medida:'', estado:'agotado'},
+        productom:{_id:'', img:'', nombre:'', medida:'', estado:'agotado', precio:''},
+        acción:{id:'',accion:''},
 
     }
 
@@ -63,11 +64,13 @@ const ProductoState=(props)=>{
 
         try {
 
-            const response = await clienteAxios.get('api/productos/')
+            // const response = await clienteAxios.get('api/productos/')
             
-            const producto = response.data.productos.filter(producto=>producto._id===id)
+            // const producto = response.data.productos.filter(producto=>producto._id===id)
             
-            
+            let producto = productos.filter(producto=>producto._id===id)
+
+            console.log(producto)
 
             dispatch({
                 type: OBTENER_PRODUCTO_BY_ID,
@@ -119,12 +122,16 @@ const ProductoState=(props)=>{
 
         try {
 
-            const response = await clienteAxios.patch(`api/productos/${id}`,datos)
-            console.log(response)
+            // const response = await clienteAxios.patch(`api/productos/${id}`,datos)
+            // console.log(response)
+
+            let producto = {_id:id, nombre:datos.nombre, medida: datos.medida, precio: datos.precio, estado:datos.estado}
+
+                console.log(producto)
 
             dispatch({
                 type: MODIFICAR_PRODUCTO,
-                payload:response.data.producto
+                payload:producto
             })
             
         } catch (error) {
@@ -185,7 +192,14 @@ const ProductoState=(props)=>{
         })
     }
 
-  
+  const establecerAccion=(accion)=>{
+
+    dispatch({
+        type:ESTABLECER_ACCION,
+        payload:accion
+    })
+
+  }
 
 
 
@@ -193,10 +207,10 @@ const ProductoState=(props)=>{
         <productoContext.Provider
             value={{
                 productos:state.productos,
-                productom:state.productom,
+                producto:state.producto,
                 ubicacion:state.ubicacion,
                 busqueda:state.busqueda,
-                
+                accion:state.accion,
                 obtenerProductos,
                 obtenerProducto,
                 crearProducto,
@@ -205,6 +219,7 @@ const ProductoState=(props)=>{
                 establecerUbicacion,
                 establecerBusqueda,
                 restablecerUbicacion,
+                establecerAccion,
                 
 
             }}

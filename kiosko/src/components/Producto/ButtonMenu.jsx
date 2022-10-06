@@ -1,12 +1,14 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react';
+import productoContext from '../../context/productoContext'
 
 const ButtonMenu = ({id, estado}) => {
 
+    const {establecerAccion}=useContext(productoContext)
     let admin=true
     const [estadoaux, setEstado]=useState(estado)
 
-    const onClick=(eso)=>{
-        console.log(eso, id)
+    const onClick=(accion)=>{
+        establecerAccion({id,accion})
     }
 
     const modificarEstado =()=>{

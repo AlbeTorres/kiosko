@@ -1,4 +1,4 @@
-import { OBTENER_PRODUCTOS } from "../types";
+import { ESTABLECER_ACCION, MODIFICAR_PRODUCTO, OBTENER_PRODUCTOS, OBTENER_PRODUCTO_BY_ID } from "../types";
 
 
 export default (state,action)=>{
@@ -8,6 +8,23 @@ export default (state,action)=>{
                 ...state,
                 productos: action.payload
 
+            });
+        case OBTENER_PRODUCTO_BY_ID:
+            return({
+                ...state,
+                producto:action.payload
+            })
+        case MODIFICAR_PRODUCTO:
+            return({
+                ...state,
+                productos: state.productos.map(producto=>{
+                    return producto._id===action.payload._id ? producto=action.payload: producto
+                })
+            });
+        case ESTABLECER_ACCION:
+            return({
+                ...state,
+                accion:action.payload
             })
         default:
             return state;
