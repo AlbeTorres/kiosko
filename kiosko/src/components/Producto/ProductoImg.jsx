@@ -1,5 +1,7 @@
 import React from "react";
 import img from '../../assets/1.jpg'
+
+
 const ProductoImg = () => {
   return (
     <div className="avatar">

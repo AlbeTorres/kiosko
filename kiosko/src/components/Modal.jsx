@@ -3,7 +3,7 @@ import EliminarProducto from "./form/EliminarProducto";
 import ModificarProducto from "./form/ModificarProducto";
 import productoContext from "../context/productoContext";
 import CrearProducto from "./form/CrearProducto";
-import CarritoCompras from "./form/CarritoCompras";
+import CarritoCompras from "./carro/CarritoCompras";
 
 const Modal = () => {
   const { accion } = useContext(productoContext);
