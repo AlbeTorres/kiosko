@@ -1,8 +1,16 @@
-import React from 'react'
+import React,{useContext} from 'react';
+import productoContext from '../../context/productoContext'
 
 const NavMenuContainer = () => {
 
-  const auth=false
+  const {establecerAccion}=useContext(productoContext)
+
+  const establecerAccionAux=(accion)=>{
+    establecerAccion({accion})
+  }
+
+  const auth=true
+  const admin= false;
   return (
     <ul
     tabIndex={0}
@@ -11,9 +19,19 @@ const NavMenuContainer = () => {
   { auth===true ? 
 
     <div>
-    <li>
-      <a>Añadir Producto</a>
-    </li>
+    {
+      admin===true ? 
+      <div>
+        <li>
+        <label htmlFor="my-modal-6" onClick={()=>establecerAccionAux('crearproducto')}>Añadir Producto</label>
+        </li> 
+      </div>
+    : <li>
+      <label htmlFor="my-modal-6" onClick={()=>establecerAccionAux('carro')}>Carrito</label>
+      </li>
+    }
+    
+    
     <li>
       <a>Logout</a>
     </li>
