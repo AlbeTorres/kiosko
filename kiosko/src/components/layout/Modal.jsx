@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import EliminarProducto from "./form/EliminarProducto";
-import ModificarProducto from "./form/ModificarProducto";
-import productoContext from "../context/productoContext/productoContext";
-import CrearProducto from "./form/CrearProducto";
-import CarritoCompras from "./carro/CarritoCompras";
+import EliminarProducto from "../form/productoForm/EliminarProducto";
+import ModificarProducto from "../form/productoForm/ModificarProducto";
+import productoContext from "../../context/productoContext/productoContext";
+import CrearProducto from "../form/productoForm/CrearProducto";
+import CarritoCompras from "../carro/CarritoCompras";
 
 const Modal = () => {
   const { accion } = useContext(productoContext);

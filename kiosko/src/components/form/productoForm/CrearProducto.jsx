@@ -1,6 +1,6 @@
-import React, { useEffect, useContext, useState, useCallback } from "react";
-import productoContext from "../../context/productoContext/productoContext";
-import AddImg from "../img/AddImg";
+import React, {  useContext, useState } from "react";
+import productoContext from "../../../context/productoContext/productoContext";
+import AddImg from "../../img/AddImg";
 
 
 const CrearProducto = () => {

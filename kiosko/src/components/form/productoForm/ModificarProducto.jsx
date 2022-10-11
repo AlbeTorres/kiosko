@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState, useCallback } from "react";
-import productoContext from "../../context/productoContext/productoContext";
-import AddImg from "../img/AddImg";
+import productoContext from "../../../context/productoContext/productoContext";
+import AddImg from "../../img/AddImg";
 
 const ModificarProducto = () => {
   const { accion, producto, obtenerProducto, modificarProducto } =
