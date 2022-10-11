@@ -1,21 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import productoContext from "../../../context/productoContext/productoContext";
+import authContext from '../../../context/authContext/authContext'
 
 const NavMenuContainer = () => {
   const { establecerAccion } = useContext(productoContext);
+  const {autenticado, usuarioAutenticado, cerrarSesion} = useContext(authContext);
+
+
+  useEffect(()=>{
+    usuarioAutenticado()
+  },[autenticado])
 
   const establecerAccionAux = (accion) => {
     establecerAccion({ accion });
   };
 
-  const auth = false;
+  
   const admin = false;
   return (
     <ul
       tabIndex={0}
       className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
     >
-      {auth === true ? (
+      {autenticado === true ? (
         <div>
           {admin === true ? (
             <div>
@@ -41,7 +48,7 @@ const NavMenuContainer = () => {
           )}
 
           <li>
-            <a>Logout</a>
+            <button onClick={cerrarSesion}>Logout</button>
           </li>
         </div>
       ) : (
