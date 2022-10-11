@@ -4,6 +4,8 @@ import ModificarProducto from "../form/productoForm/ModificarProducto";
 import productoContext from "../../context/productoContext/productoContext";
 import CrearProducto from "../form/productoForm/CrearProducto";
 import CarritoCompras from "../carro/CarritoCompras";
+import Login from '../form/userForm/auth/Login'
+import Register from "../form/userForm/auth/Register";
 
 const Modal = () => {
   const { accion } = useContext(productoContext);
@@ -27,6 +29,14 @@ const Modal = () => {
         {accion?.accion === "carro" &&
           <div className="w-full flex items-center justify-center ">
           <CarritoCompras/>
+          </div>}
+        {accion?.accion === "login" &&
+          <div className="w-full flex items-center justify-center ">
+          <Login/>
+          </div>}
+        {accion?.accion === "registro" &&
+          <div className="w-full flex items-center justify-center ">
+          <Register/>
           </div>}
       </div>
     </div>
