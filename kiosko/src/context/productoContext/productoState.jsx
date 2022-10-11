@@ -1,8 +1,8 @@
 import productoReducer from "./productoReducer";
 import productoContext from "./productoContext";
 import { useReducer } from "react";
-import tokenAuth from "../config/tokenAuth";
-import clienteAxios from "../config/axios";
+import tokenAuth from "../../config/tokenAuth";
+import clienteAxios from "../../config/axios";
 import {
   ELIMINAR_PRODUCTO,
   ESTABLECER_ACCION,
@@ -13,7 +13,7 @@ import {
   OBTENER_PRODUCTO_BY_ID,
   RESTABLECER_UBICACION,
   AÑADIR_PRODUCTO,
-} from "../types";
+} from "../../types";
 
 const ProductoState = (props) => {
   const productos = [

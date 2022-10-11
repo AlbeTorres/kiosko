@@ -5,7 +5,7 @@ import Navbar from './components/Navbar'
 import Modal from './components/Modal'
 import Tablero from './components/Tablero'
 import Ubicacion from './components/Ubicacion'
-import ProductoState from './context/productoState'
+import ProductoState from './context/productoContext/productoState'
 import './index.css'
 
 function App() {

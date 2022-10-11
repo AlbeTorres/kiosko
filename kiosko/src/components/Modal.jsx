@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import EliminarProducto from "./form/EliminarProducto";
 import ModificarProducto from "./form/ModificarProducto";
-import productoContext from "../context/productoContext";
+import productoContext from "../context/productoContext/productoContext";
 import CrearProducto from "./form/CrearProducto";
 import CarritoCompras from "./carro/CarritoCompras";
 

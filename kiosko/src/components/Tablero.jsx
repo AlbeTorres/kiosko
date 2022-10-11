@@ -1,6 +1,6 @@
 import React,{useContext, useEffect} from 'react';
 import Producto from './Producto/Producto';
-import productoContext from '../context/productoContext';
+import productoContext from '../context/productoContext/productoContext';
 
 const Tablero = () => {
 
