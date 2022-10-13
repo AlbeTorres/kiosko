@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import NavMenuContainer from "./navmenu/NavMenuContainer";
-import { FaShoppingCart } from 'react-icons/fa'
+import { FaShoppingCart } from "react-icons/fa";
+import NavCarrito from "./navmenu/NavCarrito";
 
 const Navbar = () => {
+  const autenticado = true;
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-      <FaShoppingCart className="text-xl"/>
+        <FaShoppingCart className="text-xl" />
         <a className="normal-case text-xl ml-1 "> Kiosquito</a>
       </div>
       <div className="flex-none gap-2">
@@ -17,14 +19,21 @@ const Navbar = () => {
             className="input input-bordered"
           />
         </div>
-        <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" />
-            </div>
-          </label>
-          <NavMenuContainer/>
-        </div>
+
+        <NavCarrito />
+
+        {autenticado ? (
+          <NavMenuContainer />
+        ) : (
+          <ul className="menu menu-horizontal p-0">
+            <li>
+              <a>Item 1</a>
+            </li>
+            <li>
+              <a>Item 3</a>
+            </li>
+          </ul>
+        )}
       </div>
     </div>
   );
