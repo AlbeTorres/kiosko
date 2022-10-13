@@ -14,7 +14,7 @@ export default (state,action)=>{
             return({
                 ...state,
                 autenticado: true,
-                mensaje: {msg:'Usuario registrado correctamente', categoria:'ok'},
+                mensaje: null,
                 cargando: false
             });
         case CERRAR_SESION:

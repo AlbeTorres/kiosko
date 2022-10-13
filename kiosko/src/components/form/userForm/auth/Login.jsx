@@ -1,14 +1,24 @@
 import React, {useContext, useEffect, useState} from "react";
 import authContext from "../../../../context/authContext/authContext";
+import alertaContext from "../../../../context/alertaContext/alertaContext";
+import {FaCheckCircle} from 'react-icons/fa';
 
 
 const Login = () => {
 
-  const {autenticado, iniciarSesion, usuarioAutenticado}= useContext(authContext);
+  const {autenticado,mensaje, iniciarSesion, usuarioAutenticado}= useContext(authContext);
+  const {alerta, mostrarAlerta}= useContext(alertaContext);
+
+
+  
 
   useEffect(()=>{
-    usuarioAutenticado()
-  },[autenticado])
+  
+      if(mensaje){
+        mostrarAlerta(mensaje.msg, mensaje.categoria);
+      }
+      
+  },[autenticado,mensaje])
 
   const [usuario, setUsuario]= useState({
     email:'',
@@ -25,16 +35,33 @@ const Login = () => {
   }
 
   const onSubmit=()=>{
+
+     //validar campos
+     if(email.trim() ==='' || password.trim() ==='' ){
+
+      mostrarAlerta('Todos los campos son obligatorios', 'error')
+      return;
+  }
+
+  if(password.length<8){
+      mostrarAlerta('La contraseña debe contener más 8 caracteres', 'error')
+      return;
+  }
+
     iniciarSesion(usuario)
   }
 
   return (
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
 
-    { autenticado ?
-    <div>
+    {alerta && <div className={`bg-red-600 text-center p-2 text-white`}>{alerta.msg} </div>}
 
-     <h2>usuario autenticado</h2>
+    { autenticado ?
+    <div className="card-body" >
+    <div className="flex items-center text-xl text-center justify-center">
+        <FaCheckCircle className="text-green-600"/>
+        <h2 className="ml-2">Usuario autenticado</h2>
+    </div>
      <label htmlFor="my-modal-6" className="btn">
             Cancelar
           </label>

@@ -9,7 +9,7 @@ const NavMenuContainer = () => {
 
   useEffect(()=>{
     usuarioAutenticado()
-  },[autenticado])
+  },[])
 
   const establecerAccionAux = (accion) => {
     establecerAccion({ accion });

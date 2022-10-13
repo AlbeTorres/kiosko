@@ -1,12 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import productoContext from "../../../../context/productoContext/productoContext";
-import authContext from '../../../../context/authContext/authContext'
+import authContext from '../../../../context/authContext/authContext';
+import alertaContext from '../../../../context/alertaContext/alertaContext';
+import {FaCheckCircle} from 'react-icons/fa';
 
 const Register = () => {
 
   const { establecerAccion } = useContext(productoContext);
 
-  const { registrarUsuario}= useContext(authContext)
+  const { autenticado ,mensaje ,registrarUsuario }= useContext(authContext);
+
+  const { alerta, mostrarAlerta} = useContext(alertaContext);
+
+  useEffect(()=>{
+
+    if(mensaje){
+      mostrarAlerta(mensaje.msg, mensaje.categoria);
+    }
+
+  },[mensaje]);
 
   const [usuario, setUsuario]= useState({
     email:'',
@@ -36,21 +48,21 @@ const Register = () => {
      //validar campos vacios
      if(email.trim() ==='' || password.trim() ===''|| passwordconf.trim()==='' ){
         
-        //  mostrarAlerta('Todos los campos son obligatorios', 'error')
+         mostrarAlerta('Todos los campos son obligatorios', 'error')
          return;
      }
     
      //validar contraseñas iguales
      if(password!==passwordconf){
-        //  mostrarAlerta('La contraseñas no coinciden', 'error')
-         return;
+        mostrarAlerta('La contraseñas no coinciden', 'error')
+        return;
 
      }
 
      
 
     if(password.length<8){
-        // mostrarAlerta('La contraseña debe contener más 8 caracteres', 'error')
+        mostrarAlerta('La contraseña debe contener más 8 caracteres', 'error')
         return;
     }
 
@@ -60,6 +72,18 @@ const Register = () => {
 
   return (
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    {alerta && <div className={`bg-red-600 text-center p-2 text-white`}>{alerta.msg} </div>}
+
+    { autenticado ?
+    <div className="card-body" >
+    <div className="flex items-center text-xl text-center justify-center">
+        <FaCheckCircle className="text-green-600"/>
+        <h2 className="ml-2">Usuario autenticado</h2>
+    </div>
+     <label htmlFor="my-modal-6" className="btn">
+            Cancelar
+          </label>
+    </div>:
       <div className="card-body">
         <div className="form-control">
           <label className="label">
@@ -113,7 +137,7 @@ const Register = () => {
             Cancelar
           </label>
         </div>
-      </div>
+      </div>}
     </div>
   );
 };
