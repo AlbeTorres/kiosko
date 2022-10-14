@@ -14,7 +14,8 @@ const NavMenuContainer = () => {
     establecerAccion({ accion });
   };
 
-  const {isAdmin } = usuario;
+  
+  
   return (
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -28,9 +29,9 @@ const NavMenuContainer = () => {
       >
         <div>
           <li>
-            <button onClick={cerrarSesion}>Perfil</button>
+            <button >Perfil</button>
           </li>
-          {isAdmin ? (
+          {usuario?.isAdmin ? (
             <div>
               <li>
                 <label

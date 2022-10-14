@@ -1,10 +1,11 @@
 import React,{useState,useContext} from 'react';
-import productoContext from '../../context/productoContext/productoContext'
+import productoContext from '../../context/productoContext/productoContext';
+import { FaShoppingCart } from "react-icons/fa";
 
-const ButtonMenu = ({id, estado}) => {
+const ButtonMenu = ({id, estado, admin}) => {
 
-    const {establecerAccion}=useContext(productoContext)
-    let admin=true
+    const {establecerAccion, modificarProducto}=useContext(productoContext)
+    
     const [estadoaux, setEstado]=useState(estado)
 
     const onClick=(accion)=>{
@@ -13,7 +14,15 @@ const ButtonMenu = ({id, estado}) => {
 
     const modificarEstado =()=>{
 
-        estadoaux==='abastecido' ? setEstado('agotado'): setEstado('abastecido')
+        if( estadoaux==='abastecido'){
+            modificarProducto(id, {estado: 'agotado'});
+            setEstado('agotado');
+        }else{
+
+            modificarProducto(id, {estado: 'abastecido'})
+            setEstado('abastecido');
+        }
+        
         
 
     }
@@ -22,7 +31,7 @@ const ButtonMenu = ({id, estado}) => {
   return (
     <div>
         {
-            admin ?
+            admin===true ?
 
         <div className="dropdown dropdown-end">
             <button tabIndex={0} className='btn btn-ghost'>Menu</button>
@@ -37,7 +46,10 @@ const ButtonMenu = ({id, estado}) => {
 
         :
 
-        <button className="btn btn-ghost btn-xs">Modificar</button>
+        <button className="btn btn-ghost btn-xs flex items-center ">
+            <span>Comprar</span>
+            <FaShoppingCart className='ml-1'/>
+        </button>
         }
 
     </div>

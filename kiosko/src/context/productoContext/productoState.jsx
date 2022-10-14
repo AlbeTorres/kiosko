@@ -16,96 +16,6 @@ import {
 } from "../../types";
 
 const ProductoState = (props) => {
-  const productos = [
-    {
-      _id: 0,
-      img: "",
-      nombre: "Tomate",
-      medida: "LB",
-      estado: "agotado",
-      precio: 100,
-    },
-    {
-      _id: 1,
-      img: "",
-      nombre: "Cebolla",
-      medida: "LB",
-      estado: "abastecido",
-      precio: 100,
-    },
-    {
-      _id: 2,
-      img: "",
-      nombre: "Pepino",
-      medida: "LB",
-      estado: "abastecido",
-      precio: 100,
-    },
-    {
-      _id: 3,
-      img: "",
-      nombre: "Vino Seco",
-      medida: "U",
-      estado: "abastecido",
-      precio: 100,
-    },
-    {
-      _id: 4,
-      img: "",
-      nombre: "Ajo",
-      medida: "cabeza",
-      estado: "abastecido",
-      precio: 100,
-    },
-    {
-      _id: 5,
-      img: "",
-      nombre: "Aji Cachucha",
-      medida: "Pote",
-      estado: "abastecido",
-      precio: 100,
-    },
-    {
-      _id: 6,
-      img: "",
-      nombre: "Calabaza",
-      medida: "LB",
-      estado: "agotado",
-      precio: 100,
-    },
-    {
-      _id: 7,
-      img: "",
-      nombre: "Yuca",
-      medida: "LB",
-      estado: "agotado",
-      precio: 100,
-    },
-    {
-      _id: 8,
-      img: "",
-      nombre: "Boniato",
-      medida: "LB",
-      estado: "abastecido",
-      precio: 100,
-    },
-    {
-      _id: 9,
-      img: "",
-      nombre: "Mango",
-      medida: "LB",
-      estado: "agotado",
-      precio: 100,
-    },
-    {
-      _id: 10,
-      img: "",
-      nombre: "Lechuga",
-      medida: "LB",
-      estado: "abastecido",
-      precio: 100,
-    },
-  ];
 
   const initialState = {
     productos: [
@@ -136,11 +46,11 @@ const ProductoState = (props) => {
   //operaciones Crud
   const obtenerProductos = async () => {
     try {
-      // const response = await clienteAxios.get('api/productos')
+      const response = await clienteAxios.get('api/productos')
 
       dispatch({
         type: OBTENER_PRODUCTOS,
-        payload: productos,
+        payload: response.data.productos,
       });
     } catch (error) {
       console.log(error);
@@ -155,13 +65,13 @@ const ProductoState = (props) => {
     }
 
     try {
-      // const response = await clienteAxios.get('api/productos/')
+        const response = await clienteAxios.get('api/productos/')
 
-      // const producto = response.data.productos.filter(producto=>producto._id===id)
+        const producto = response.data.productos.filter(producto=>producto._id===id)
 
-      let producto = productos.filter((producto) => producto._id === id);
 
-      console.log(producto);
+
+      
 
       dispatch({
         type: OBTENER_PRODUCTO_BY_ID,
@@ -180,18 +90,13 @@ const ProductoState = (props) => {
     }
 
     try {
-      // const response = await clienteAxios.post('api/productos',datos)
+      const response = await clienteAxios.post('api/productos',datos)
 
-      const producto={_id:50,
-      img: datos.img,
-      nombre: datos.nombre,
-      medida: datos.medida,
-      estado: datos.estado,
-      precio: datos.precio,} 
+      console.log(response)
 
       dispatch({
         type: AÑADIR_PRODUCTO,
-        payload: producto,
+        payload: response.data,
       });
     } catch (error) {
       console.log(error);
@@ -206,22 +111,16 @@ const ProductoState = (props) => {
     }
 
     try {
-      // const response = await clienteAxios.patch(`api/productos/${id}`,datos)
-      // console.log(response)
+        const response = await clienteAxios.patch(`api/productos/${id}`,datos)
+        console.log(response)
 
-      let producto = {
-        _id: id,
-        nombre: datos.nombre,
-        medida: datos.medida,
-        precio: datos.precio,
-        estado: datos.estado,
-      };
+      
 
-      console.log(producto);
+      
 
       dispatch({
         type: MODIFICAR_PRODUCTO,
-        payload: producto,
+        payload: response.data.producto,
       });
     } catch (error) {
       console.log(error);

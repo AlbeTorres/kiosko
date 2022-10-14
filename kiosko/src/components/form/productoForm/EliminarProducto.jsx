@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect, useContext, useState, useCallback } from "react";
+import productoContext from "../../../context/productoContext/productoContext";
 
 const EliminarProducto = () => {
 
-    const eliminarProducto=()=>{
-        console.log('eliminado producto')
+  const { accion,obtenerProducto, producto, eliminarProducto} = useContext(productoContext);
+
+  useEffect(() => {
+    obtenerProducto(accion?.id);
+
+  }, [accion]);
+
+    const eliminarProductoAux=()=>{
+        eliminarProducto(accion.id)
     }
   return (
     <div>
@@ -11,9 +19,9 @@ const EliminarProducto = () => {
         <h3 className="font-bold text-lg">
           ¿Está seguro de que desea eliminar este producto?
         </h3>
-        <p className="py-4">Nombre del producto</p>
+        <p className="py-4">{producto?.nombre}</p>
         <div className="modal-action">
-          <label htmlFor="my-modal-6" onClick={()=>eliminarProducto()} className="btn btn-secondary ">
+          <label htmlFor="my-modal-6" onClick={()=>eliminarProductoAux()} className="btn btn-secondary ">
             Eliminar
           </label>
           <label htmlFor="my-modal-6" className="btn">

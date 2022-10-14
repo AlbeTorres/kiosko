@@ -1,8 +1,8 @@
 import React from "react";
-import img from '../../assets/1.jpg'
 
 
-const ProductoImg = () => {
+
+const ProductoImg = ({img}) => {
   return (
     <div className="avatar">
       <div className="mask mask-squircle w-12 h-12">

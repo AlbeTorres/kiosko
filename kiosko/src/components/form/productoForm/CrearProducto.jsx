@@ -1,18 +1,23 @@
 import React, {  useContext, useState } from "react";
 import productoContext from "../../../context/productoContext/productoContext";
+import authContext from '../../../context/authContext/authContext'
 import AddImg from "../../img/AddImg";
 
 
 const CrearProducto = () => {
 
-    const { accion, producto, obtenerProducto, modificarProducto, crearProducto } = useContext(productoContext);
+    const { crearProducto } = useContext(productoContext);
+    const {usuario}=useContext(authContext);
 
     const [productoLocal, setProductoLocal] = useState({
         img:'',
+        cloud_id:'',
         nombre: "",
         medida: "",
         estado:'abastecido',
         precio: "",
+        creador: usuario._id
+
     });
 
 
@@ -31,7 +36,7 @@ const CrearProducto = () => {
         setProductoLocal({
           ...productoLocal,
           img, 
-          idimg
+          cloud_id:idimg
         }) 
     
     }

@@ -1,5 +1,6 @@
 import {
   AÑADIR_PRODUCTO,
+  ELIMINAR_PRODUCTO,
   ESTABLECER_ACCION,
   MODIFICAR_PRODUCTO,
   OBTENER_PRODUCTOS,
@@ -37,6 +38,11 @@ export default (state, action) => {
         ...state,
         accion: action.payload,
       };
+    case ELIMINAR_PRODUCTO:
+      return({
+        ...state,
+        productos:state.productos.filter(producto=>producto._id!==action.payload)
+      })
     default:
       return state;
   }
