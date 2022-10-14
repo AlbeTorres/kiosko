@@ -4,7 +4,7 @@ import authContext from "../../../context/authContext/authContext";
 
 const NavMenuContainer = () => {
   const { establecerAccion } = useContext(productoContext);
-  const { autenticado, usuarioAutenticado, cerrarSesion } =
+  const { usuario, cerrarSesion } =
     useContext(authContext);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const NavMenuContainer = () => {
     establecerAccion({ accion });
   };
 
-  const admin = false;
+  const {isAdmin } = usuario;
   return (
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -30,7 +30,7 @@ const NavMenuContainer = () => {
           <li>
             <button onClick={cerrarSesion}>Perfil</button>
           </li>
-          {admin === true ? (
+          {isAdmin ? (
             <div>
               <li>
                 <label
@@ -39,9 +39,6 @@ const NavMenuContainer = () => {
                 >
                   Añadir Producto
                 </label>
-              </li>
-              <li>
-                <button onClick={cerrarSesion}>Logout</button>
               </li>
             </div>
           ) : (
@@ -57,7 +54,7 @@ const NavMenuContainer = () => {
           )}
 
           <li>
-            <button onClick={cerrarSesion}>Logout</button>
+            <button onClick={cerrarSesion}>Cerrar Sesión</button>
           </li>
         </div>
       </ul>

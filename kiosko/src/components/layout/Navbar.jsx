@@ -10,6 +10,10 @@ const Navbar = () => {
   const { autenticado, usuarioAutenticado, cerrarSesion } = useContext(authContext);
   const { establecerAccion } = useContext(productoContext);
 
+  useEffect(()=>{
+    usuarioAutenticado();
+  },[])
+
   const establecerAccionAux = (accion) => {
     establecerAccion({ accion });
   };

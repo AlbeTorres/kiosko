@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState, useRef} from "react";
 import authContext from "../../../../context/authContext/authContext";
 import alertaContext from "../../../../context/alertaContext/alertaContext";
 import {FaCheckCircle} from 'react-icons/fa';
@@ -10,7 +10,12 @@ const Login = () => {
   const {alerta, mostrarAlerta}= useContext(alertaContext);
 
 
-  
+  let visible = useRef()
+
+  const see=()=>{
+
+    visible.current.type=='password' ? visible.current.type='text': visible.current.type='password'
+  }
 
   useEffect(()=>{
   
@@ -36,6 +41,10 @@ const Login = () => {
 
   const eliminarM=()=>{
     eliminarMensaje()
+    setUsuario({
+      email:'',
+      password:''
+    })
   }
 
   const onSubmit=()=>{
@@ -54,6 +63,11 @@ const Login = () => {
 
     eliminarMensaje();
     iniciarSesion(usuario)
+
+    setUsuario({
+      email:'',
+      password:''
+    })
   }
 
   return (
@@ -91,17 +105,25 @@ const Login = () => {
           </label>
           <input
             type="text"
+            ref={visible}
             name='password'
             value={password}
             onChange={onChange}
             placeholder="password"
             className="input input-bordered"
           />
+          <div className="w-full flex items-center justify-between">
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">
               Forgot password?
             </a>
           </label>
+          <label onClick={see} className=" label label-text-alt link link-hover ">
+              Ver contraseña
+              </label>
+
+          </div>
+
         </div>
         <div className="form-control mt-6">
           <button onClick={onSubmit} className="btn btn-primary">Login</button>

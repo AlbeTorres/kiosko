@@ -1,148 +1,188 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import productoContext from "../../../../context/productoContext/productoContext";
-import authContext from '../../../../context/authContext/authContext';
-import alertaContext from '../../../../context/alertaContext/alertaContext';
-import {FaCheckCircle} from 'react-icons/fa';
+import authContext from "../../../../context/authContext/authContext";
+import alertaContext from "../../../../context/alertaContext/alertaContext";
+import { FaCheckCircle, FaEye } from "react-icons/fa";
 
 const Register = () => {
 
+  let visible = useRef()
+  let visible2 = useRef()
   const { establecerAccion } = useContext(productoContext);
 
-  const { autenticado ,mensaje ,registrarUsuario,  eliminarMensaje }= useContext(authContext);
+  const { autenticado, mensaje, registrarUsuario, eliminarMensaje } =
+    useContext(authContext);
 
-  const { alerta, mostrarAlerta} = useContext(alertaContext);
+  const { alerta, mostrarAlerta } = useContext(alertaContext);
 
-  useEffect(()=>{
-
-    if(mensaje){
+  useEffect(() => {
+    if (mensaje) {
       mostrarAlerta(mensaje.msg, mensaje.categoria);
     }
+  }, [mensaje]);
 
-  },[mensaje]);
+  const [usuario, setUsuario] = useState({
+    email: "",
+    password: "",
+    passwordconf: "",
+    isAdmin: false,
+  });
 
-  const [usuario, setUsuario]= useState({
-    email:'',
-    password:'',
-    passwordconf:'',
+  const { email, password, passwordconf, isAdmin } = usuario;
 
-  })
-
-  const {email, password, passwordconf}= usuario;
-
-  const onChange=e=>{
+  const onChange = (e) => {
     setUsuario({
       ...usuario,
-      [e.target.name]:e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const see=()=>{
+
+    visible.current.type=='password' ? visible.current.type='text': visible.current.type='password'
+    visible2.current.type=='password' ? visible2.current.type='text': visible2.current.type='password'
+
+
   }
 
   const establecerAccionAux = (accion) => {
-    eliminarMensaje()
+    eliminarMensaje();
     establecerAccion({ accion });
   };
 
-  const eliminarM=()=>{
-    eliminarMensaje()
-  }
+  const eliminarM = () => {
+    eliminarMensaje();
+    setUsuario({
+      email: "",
+      password: "",
+      passwordconf: "",
+      isAdmin: false,
+    });
+  };
 
-  const onSubmit= e=>{
+  const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log('registrar')
+    console.log("registrar");
 
-     //validar campos vacios
-     if(email.trim() ==='' || password.trim() ===''|| passwordconf.trim()==='' ){
-        
-         mostrarAlerta('Todos los campos son obligatorios', 'error')
-         return;
-     }
-    
-     //validar contraseñas iguales
-     if(password!==passwordconf){
-        mostrarAlerta('La contraseñas no coinciden', 'error')
-        return;
-
-     }
-
-     
-
-    if(password.length<8){
-        mostrarAlerta('La contraseña debe contener más 8 caracteres', 'error')
-        return;
+    //validar campos vacios
+    if (
+      email.trim() === "" ||
+      password.trim() === "" ||
+      passwordconf.trim() === ""
+    ) {
+      mostrarAlerta("Todos los campos son obligatorios", "error");
+      return;
     }
-    eliminarMensaje()
-  registrarUsuario({email,password})
-}
 
+    //validar contraseñas iguales
+    if (password !== passwordconf) {
+      mostrarAlerta("La contraseñas no coinciden", "error");
+      return;
+    }
+
+    if (password.length < 8) {
+      mostrarAlerta("La contraseña debe contener más 8 caracteres", "error");
+      return;
+    }
+    eliminarMensaje();
+    registrarUsuario({ email, password, isAdmin });
+
+    setUsuario({
+      email: "",
+      password: "",
+      passwordconf: "",
+      isAdmin: false,
+    });
+  };
 
   return (
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-    {alerta && <div className={`bg-red-600 text-center p-2 text-white`}>{alerta.msg} </div>}
+      {alerta && (
+        <div className={`bg-red-600 text-center p-2 text-white`}>
+          {alerta.msg}{" "}
+        </div>
+      )}
 
-    { autenticado ?
-    <div className="card-body" >
-    <div className="flex items-center text-xl text-center justify-center">
-        <FaCheckCircle className="text-green-600"/>
-        <h2 className="ml-2">Usuario autenticado</h2>
-    </div>
-     <label htmlFor="my-modal-6" className="btn">
-            Cancelar
-          </label>
-    </div>:
-      <div className="card-body">
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-          <input
-            type="text"
-            placeholder="email"
-            name='email'
-            value={email}
-            onChange={onChange}
-            className="input input-bordered"
-          />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Password</span>
-          </label>
-          <input
-            type="text"
-            placeholder="password"
-            name='password'
-            value={password}
-            onChange={onChange}
-            className="input input-bordered"
-          />
-          <label className="label">
-            <span className="label-text">Repeat Password</span>
-          </label>
-          <input
-            type="text"
-            placeholder="password"
-            name='passwordconf'
-            value={passwordconf}
-            onChange={onChange}
-            className="input input-bordered"
-          />
-          <label
-            className=" label label-text-alt link link-hover"
-            htmlFor="my-modal-6"
-            onClick={() => establecerAccionAux("login")}
-          >
-            Ya tienes una cuenta?
-          </label>
-        </div>
-        <div className="form-control mt-6">
-          <button onClick={onSubmit} className="btn btn-primary">Registrar</button>
-        </div>
-        <div className="form-control mt-1">
-          <label htmlFor="my-modal-6" onClick={eliminarM } className="btn">
+      {autenticado ? (
+        <div className="card-body">
+          <div className="flex items-center text-xl text-center justify-center">
+            <FaCheckCircle className="text-green-600" />
+            <h2 className="ml-2">Usuario autenticado</h2>
+          </div>
+          <label htmlFor="my-modal-6" className="btn">
             Cancelar
           </label>
         </div>
-      </div>}
+      ) : (
+        <div className="card-body">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="text"
+              placeholder="email"
+              name="email"
+              value={email}
+              onChange={onChange}
+              className="input input-bordered"
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <input
+              ref={visible}
+              type="password"
+              placeholder="password"
+              name="password"
+              value={password}
+              onChange={onChange}
+              className="input input-bordered "
+            />
+           
+
+           
+            <label className="label">
+              <span className="label-text">Repeat Password</span>
+            </label>
+            <input
+              type="password"
+              ref={visible2}
+              placeholder="password"
+              name="passwordconf"
+              value={passwordconf}
+              onChange={onChange}
+              className="input input-bordered"
+            />
+            <div className=" w-full flex items-center justify-between">
+              <label
+                className=" label label-text-alt link link-hover"
+                htmlFor="my-modal-6"
+                onClick={() => establecerAccionAux("login")}
+              >
+                Ya tienes una cuenta?
+              </label>
+              <label onClick={see} className=" label label-text-alt link link-hover ">
+              Ver contraseña
+              </label>
+
+            </div>
+          </div>
+          <div className="form-control mt-6">
+            <button onClick={onSubmit} className="btn btn-primary">
+              Registrar
+            </button>
+          </div>
+          <div className="form-control mt-1">
+            <label htmlFor="my-modal-6" onClick={eliminarM} className="btn">
+              Cancelar
+            </label>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
