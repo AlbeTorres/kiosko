@@ -6,7 +6,7 @@ import {FaCheckCircle} from 'react-icons/fa';
 
 const Login = () => {
 
-  const {autenticado,mensaje, iniciarSesion, usuarioAutenticado}= useContext(authContext);
+  const {autenticado,mensaje, iniciarSesion, usuarioAutenticado, eliminarMensaje}= useContext(authContext);
   const {alerta, mostrarAlerta}= useContext(alertaContext);
 
 
@@ -34,6 +34,10 @@ const Login = () => {
     })
   }
 
+  const eliminarM=()=>{
+    eliminarMensaje()
+  }
+
   const onSubmit=()=>{
 
      //validar campos
@@ -48,6 +52,7 @@ const Login = () => {
       return;
   }
 
+    eliminarMensaje();
     iniciarSesion(usuario)
   }
 
@@ -102,7 +107,7 @@ const Login = () => {
           <button onClick={onSubmit} className="btn btn-primary">Login</button>
         </div>
         <div className="form-control mt-1">
-        <label htmlFor="my-modal-6" className="btn">
+        <label htmlFor="my-modal-6" onClick={eliminarM} className="btn">
             Cancelar
           </label>
         </div>

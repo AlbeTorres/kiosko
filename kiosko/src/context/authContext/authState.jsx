@@ -10,6 +10,7 @@ import {
   CERRAR_SESION,
   LOGIN_ERROR,
   LOGIN_EXITOSO,
+  ELIMINAR_MENSAJE,
 } from "../../types";
 
 const AuthState = (props) => {
@@ -117,6 +118,12 @@ const AuthState = (props) => {
     });
   };
 
+  const eliminarMensaje=()=>{
+    dispatch({
+      type: ELIMINAR_MENSAJE,
+    });
+  }
+
   return (
     <authContext.Provider
       value={{
@@ -130,6 +137,7 @@ const AuthState = (props) => {
         usuarioAutenticado,
         iniciarSesion,
         cerrarSesion,
+        eliminarMensaje,
       }}
     >
       {props.children}

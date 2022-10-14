@@ -8,7 +8,6 @@ const NavMenuContainer = () => {
     useContext(authContext);
 
   useEffect(() => {
-    usuarioAutenticado();
   }, []);
 
   const establecerAccionAux = (accion) => {

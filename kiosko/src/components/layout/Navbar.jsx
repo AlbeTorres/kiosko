@@ -2,9 +2,19 @@ import React, {useContext, useEffect} from "react";
 import NavMenuContainer from "./navmenu/NavMenuContainer";
 import { FaShoppingCart } from "react-icons/fa";
 import NavCarrito from "./navmenu/NavCarrito";
+import authContext from "../../context/authContext/authContext";
+import productoContext from "../../context/productoContext/productoContext";
 
 const Navbar = () => {
-  const autenticado = true;
+
+  const { autenticado, usuarioAutenticado, cerrarSesion } = useContext(authContext);
+  const { establecerAccion } = useContext(productoContext);
+
+  const establecerAccionAux = (accion) => {
+    establecerAccion({ accion });
+  };
+
+  
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -27,10 +37,20 @@ const Navbar = () => {
         ) : (
           <ul className="menu menu-horizontal p-0">
             <li>
-              <a>Item 1</a>
+            <label
+                  htmlFor="my-modal-6"
+                  onClick={() => establecerAccionAux("login")}
+                >
+                  Login
+                </label>
             </li>
             <li>
-              <a>Item 3</a>
+            <label
+                  htmlFor="my-modal-6"
+                  onClick={() => establecerAccionAux("registro")}
+                >
+                  Registrarse
+                </label>
             </li>
           </ul>
         )}

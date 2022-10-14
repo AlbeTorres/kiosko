@@ -8,7 +8,7 @@ const Register = () => {
 
   const { establecerAccion } = useContext(productoContext);
 
-  const { autenticado ,mensaje ,registrarUsuario }= useContext(authContext);
+  const { autenticado ,mensaje ,registrarUsuario,  eliminarMensaje }= useContext(authContext);
 
   const { alerta, mostrarAlerta} = useContext(alertaContext);
 
@@ -37,8 +37,13 @@ const Register = () => {
   }
 
   const establecerAccionAux = (accion) => {
+    eliminarMensaje()
     establecerAccion({ accion });
   };
+
+  const eliminarM=()=>{
+    eliminarMensaje()
+  }
 
   const onSubmit= e=>{
     e.preventDefault();
@@ -65,7 +70,7 @@ const Register = () => {
         mostrarAlerta('La contraseña debe contener más 8 caracteres', 'error')
         return;
     }
-
+    eliminarMensaje()
   registrarUsuario({email,password})
 }
 
@@ -133,7 +138,7 @@ const Register = () => {
           <button onClick={onSubmit} className="btn btn-primary">Registrar</button>
         </div>
         <div className="form-control mt-1">
-          <label htmlFor="my-modal-6" className="btn">
+          <label htmlFor="my-modal-6" onClick={eliminarM } className="btn">
             Cancelar
           </label>
         </div>

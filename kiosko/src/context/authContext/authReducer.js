@@ -1,5 +1,5 @@
 import { REGISTRO_ERROR, REGISTRO_EXITOSO,
-    OBTENER_USUARIO, LOGIN_EXITOSO, LOGIN_ERROR, CERRAR_SESION } from "../../types";
+    OBTENER_USUARIO, LOGIN_EXITOSO, LOGIN_ERROR, CERRAR_SESION, ELIMINAR_MENSAJE } from "../../types";
 
 export default (state,action)=>{
     switch(action.type){
@@ -41,6 +41,11 @@ export default (state,action)=>{
                 autenticado:true,
                 usuario:action.payload,
                 cargando: false
+            })
+        case ELIMINAR_MENSAJE:
+            return({
+                ...state,
+                mensaje:null
             })
         default:
             return state;
