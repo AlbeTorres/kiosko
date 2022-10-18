@@ -15,6 +15,8 @@ import {
   AÑADIR_PRODUCTO,
   AÑADIR_CARRO,
   OBTENER_CARRO,
+  MODIFICAR_PRODUCTO_CARRO,
+  ELIMINAR_CARRO,
 } from "../../types";
 
 const ProductoState = (props) => {
@@ -199,22 +201,22 @@ const ProductoState = (props) => {
         payload:{_id, cantidad}
       })
   }
-  const eliminarCarrito=(_id)=>{
+  const eliminarCarrito=(id)=>{
 
       let carrito= localStorage.getItem('carrito');
 
       if(carrito){
-        carrito = JSON.parse(array);
-        carrito.filter(producto=>producto._id!==_id)
-      
+        carrito = JSON.parse(carrito);
+        carrito=carrito.filter(producto=>producto._id!==id  )
+        
       }
       
 
       localStorage.setItem('carrito', JSON.stringify(carrito))
 
       dispatch({
-        type:AÑADIR_CARRO,
-        payload:_id
+        type:ELIMINAR_CARRO,
+        payload:id
       })
   }
 
@@ -223,13 +225,29 @@ const ProductoState = (props) => {
       let carrito= localStorage.getItem('carrito');
 
       if(carrito){
-        carrito = JSON.parse(array);
+        carrito = JSON.parse(carrito);
       }
 
       dispatch({
         type:OBTENER_CARRO,
         payload:carrito
       })
+  }
+
+  const modificarProductoCarro=(_id,cantidad)=>{
+    let carrito= localStorage.getItem('carrito');
+
+    carrito = JSON.parse(carrito);
+    
+    carrito.map(producto=>producto._id===_id ? producto.cantidad=cantidad: producto)
+
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+    console.log(carrito)
+
+    dispatch({
+      type:MODIFICAR_PRODUCTO_CARRO,
+      payload:carrito
+    })
   }
 
   return (
@@ -253,6 +271,7 @@ const ProductoState = (props) => {
         agregarCarrito,
         obtenerCarrito,
         eliminarCarrito,
+        modificarProductoCarro,
       }}
     >
       {props.children}

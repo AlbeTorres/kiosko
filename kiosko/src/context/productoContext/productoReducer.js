@@ -5,6 +5,7 @@ import {
   ELIMINAR_PRODUCTO,
   ESTABLECER_ACCION,
   MODIFICAR_PRODUCTO,
+  MODIFICAR_PRODUCTO_CARRO,
   OBTENER_CARRO,
   OBTENER_PRODUCTOS,
   OBTENER_PRODUCTO_BY_ID,
@@ -51,6 +52,7 @@ export default (state, action) => {
         ...state,
         carrito: [...state.carrito, action.payload]
       });
+    case MODIFICAR_PRODUCTO_CARRO:
     case OBTENER_CARRO:
       return({
         ...state,

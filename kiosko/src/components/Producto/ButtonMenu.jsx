@@ -57,20 +57,22 @@ const ButtonMenu = ({id, estado, admin}) => {
         </div> 
 
         :
-        <div className='flex justify-center items-center'>
-
-            <button className="btn btn-ghost btn-sm mr-1 " onClick={()=>setCantidad(cantidad+1)}>
-                +
-            </button>
-            <input className='w-4 text-center' type='text' readOnly  value={cantidad}/>
-            <button className="btn btn-ghost btn-sm mx-1  " onClick={restarCantidad}>
-                -
-                
-            </button>
+        <div className='flex flex-col justify-center items-center'>
             <button className="btn btn-ghost btn-xs flex items-center " onClick={()=>añadirCarro(id,cantidad)}>
                 <span>Comprar</span>
                 <FaShoppingCart className='ml-1'/>
             </button>
+            <div>
+                <button className="btn btn-ghost btn-sm mr-1 " onClick={()=>setCantidad(cantidad+1)}>
+                    +
+                </button>
+                <input className='w-4 text-center' type='text' readOnly  value={cantidad}/>
+                <button className="btn btn-ghost btn-sm mx-1  " onClick={restarCantidad}>
+                    -
+                    
+                </button>
+
+            </div>
         </div>
         }
 

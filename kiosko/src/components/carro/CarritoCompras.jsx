@@ -1,19 +1,45 @@
-import React from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import CarroItem from './CarroItem'
+import productoContext from '../../context/productoContext/productoContext'
 
 
 const CarritoCompras = () => {
 
+  const {productos, carrito, obtenerProductos, obtenerCarrito, establecerAccion, eliminarCarrito, modificarProductoCarro}= useContext(productoContext);
+
+  useEffect(()=>{
+    obtenerCarrito();
+  },[])
+  
+
+  const establecerAccionAux=(accion)=>{
+
+  }
+
+  const modi=(_id, cantidad)=>{
+    modificarProductoCarro(_id, cantidad)
+  }
+
+  const eliminar=(id)=>{
+    console.log('delete')
+    eliminarCarrito(id)
+  }
+
   const descuento=false
 
-  let compras=[{id:1}, {id:1}, {id:1}, {id:1}, {id:1}, {id:1}, {id:1}, {id:1},{id:1}, {id:1}, {id:1}, {id:1}]
+  let compras=[]
+  
+  productos.map(producto=>{
+    carrito.map(carro=>carro._id===producto._id && compras.push({...producto,cantidad:carro.cantidad}))
+    
+  })
 
   return (
     <div className="modal-box">
       <h2 className='my-2 text-xl'>Órdenes</h2>
       <div className=' overflow-y-scroll h-72 p-2'>
         {compras.length !=0 ?
-          compras.map(producto=><CarroItem/>):
+          compras.map(producto=><CarroItem key={producto._id} producto={producto}  modi={modi} eliminar={eliminar} />):
           <h1>Carro vacío</h1>
         }
       </div>
