@@ -62,7 +62,7 @@ const ButtonMenu = ({id, estado, admin}) => {
             <button className="btn btn-ghost btn-sm mr-1 " onClick={()=>setCantidad(cantidad+1)}>
                 +
             </button>
-            <input className='w-4 text-center' type='text'  value={cantidad}/>
+            <input className='w-4 text-center' type='text' readOnly  value={cantidad}/>
             <button className="btn btn-ghost btn-sm mx-1  " onClick={restarCantidad}>
                 -
                 
