@@ -4,9 +4,12 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const ButtonMenu = ({id, estado, admin}) => {
 
-    const {establecerAccion, modificarProducto}=useContext(productoContext)
+    const {establecerAccion, modificarProducto, agregarCarrito}=useContext(productoContext)
     
     const [estadoaux, setEstado]=useState(estado)
+    const [cantidad, setCantidad]= useState(1)
+
+   
 
     const onClick=(accion)=>{
         establecerAccion({id,accion})
@@ -27,6 +30,15 @@ const ButtonMenu = ({id, estado, admin}) => {
 
     }
 
+    const restarCantidad=()=>{
+        if(cantidad>1){
+            setCantidad(cantidad-1)
+        }
+    }
+
+    const añadirCarro=(id, cantidad)=>{
+        agregarCarrito({_id:id,cantidad})
+    }
 
   return (
     <div>
@@ -45,11 +57,21 @@ const ButtonMenu = ({id, estado, admin}) => {
         </div> 
 
         :
+        <div className='flex justify-center items-center'>
 
-        <button className="btn btn-ghost btn-xs flex items-center ">
-            <span>Comprar</span>
-            <FaShoppingCart className='ml-1'/>
-        </button>
+            <button className="btn btn-ghost btn-sm mr-1 " onClick={()=>setCantidad(cantidad+1)}>
+                +
+            </button>
+            <input className='w-4 text-center' type='text'  value={cantidad}/>
+            <button className="btn btn-ghost btn-sm mx-1  " onClick={restarCantidad}>
+                -
+                
+            </button>
+            <button className="btn btn-ghost btn-xs flex items-center " onClick={()=>añadirCarro(id,cantidad)}>
+                <span>Comprar</span>
+                <FaShoppingCart className='ml-1'/>
+            </button>
+        </div>
         }
 
     </div>

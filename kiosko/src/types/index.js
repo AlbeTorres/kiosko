@@ -42,3 +42,8 @@ export const OCULTAR_ALERTA= 'OCULTAR_ALERTA';
 //busqueda
 export const OBTENER_BUSQUEDA= 'OBTENER_BUSQUEDA';
 
+//Carro
+export const AÑADIR_CARRO= 'AÑADIR_CARRO';
+export const ELIMINAR_CARRO= 'ELIMINAR_CARRO';
+export const OBTENER_CARRO= 'OBTENER_CARRO';
+

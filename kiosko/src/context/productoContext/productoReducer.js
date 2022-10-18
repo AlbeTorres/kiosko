@@ -1,8 +1,11 @@
 import {
+  AÑADIR_CARRO,
   AÑADIR_PRODUCTO,
+  ELIMINAR_CARRO,
   ELIMINAR_PRODUCTO,
   ESTABLECER_ACCION,
   MODIFICAR_PRODUCTO,
+  OBTENER_CARRO,
   OBTENER_PRODUCTOS,
   OBTENER_PRODUCTO_BY_ID,
 } from "../../types";
@@ -42,6 +45,21 @@ export default (state, action) => {
       return({
         ...state,
         productos:state.productos.filter(producto=>producto._id!==action.payload)
+      });
+    case AÑADIR_CARRO:
+      return({
+        ...state,
+        carrito: [...state.carrito, action.payload]
+      });
+    case OBTENER_CARRO:
+      return({
+        ...state,
+        carrito: action.payload
+      });
+    case ELIMINAR_CARRO:
+      return({
+        ...state,
+        carrito: state.carrito.filter(producto=>producto._id!==action.payload)
       })
     default:
       return state;

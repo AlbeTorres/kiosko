@@ -13,6 +13,8 @@ import {
   OBTENER_PRODUCTO_BY_ID,
   RESTABLECER_UBICACION,
   AÑADIR_PRODUCTO,
+  AÑADIR_CARRO,
+  OBTENER_CARRO,
 } from "../../types";
 
 const ProductoState = (props) => {
@@ -39,6 +41,7 @@ const ProductoState = (props) => {
       precio: "",
     },
     acción: { id: "", accion: "" },
+    carrito:[{ _id: "", cantidad:'', }]
   };
 
   const [state, dispatch] = useReducer(productoReducer, initialState);
@@ -174,6 +177,61 @@ const ProductoState = (props) => {
     });
   };
 
+  const agregarCarrito=({_id, cantidad })=>{
+
+      let carrito= localStorage.getItem('carrito');
+
+      
+
+      if(carrito){
+        carrito = JSON.parse(carrito);
+      }else(
+        carrito=[]
+      )
+      
+      carrito.push({_id, cantidad})
+
+      localStorage.setItem('carrito', JSON.stringify(carrito))
+      console.log(carrito)
+
+      dispatch({
+        type:AÑADIR_CARRO,
+        payload:{_id, cantidad}
+      })
+  }
+  const eliminarCarrito=(_id)=>{
+
+      let carrito= localStorage.getItem('carrito');
+
+      if(carrito){
+        carrito = JSON.parse(array);
+        carrito.filter(producto=>producto._id!==_id)
+      
+      }
+      
+
+      localStorage.setItem('carrito', JSON.stringify(carrito))
+
+      dispatch({
+        type:AÑADIR_CARRO,
+        payload:_id
+      })
+  }
+
+  const obtenerCarrito=()=>{
+
+      let carrito= localStorage.getItem('carrito');
+
+      if(carrito){
+        carrito = JSON.parse(array);
+      }
+
+      dispatch({
+        type:OBTENER_CARRO,
+        payload:carrito
+      })
+  }
+
   return (
     <productoContext.Provider
       value={{
@@ -182,6 +240,7 @@ const ProductoState = (props) => {
         ubicacion: state.ubicacion,
         busqueda: state.busqueda,
         accion: state.accion,
+        carrito:state.carrito,
         obtenerProductos,
         obtenerProducto,
         crearProducto,
@@ -191,6 +250,9 @@ const ProductoState = (props) => {
         establecerBusqueda,
         restablecerUbicacion,
         establecerAccion,
+        agregarCarrito,
+        obtenerCarrito,
+        eliminarCarrito,
       }}
     >
       {props.children}
