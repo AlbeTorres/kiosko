@@ -4,6 +4,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import NavCarrito from "./navmenu/NavCarrito";
 import authContext from "../../context/authContext/authContext";
 import productoContext from "../../context/productoContext/productoContext";
+import NavMenuContainerOut from "./navmenu/NavMenuContainerOut";
 
 const Navbar = () => {
 
@@ -20,7 +21,7 @@ const Navbar = () => {
 
   
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 px-4">
       <div className="flex-1">
         <FaShoppingCart className="text-xl" />
         <a className="normal-case text-xl ml-1 "> Kiosquito</a>
@@ -39,24 +40,7 @@ const Navbar = () => {
         {autenticado ? (
           <NavMenuContainer />
         ) : (
-          <ul className="menu menu-horizontal p-0">
-            <li>
-            <label
-                  htmlFor="my-modal-6"
-                  onClick={() => establecerAccionAux("login")}
-                >
-                  Login
-                </label>
-            </li>
-            <li>
-            <label
-                  htmlFor="my-modal-6"
-                  onClick={() => establecerAccionAux("registro")}
-                >
-                  Registrarse
-                </label>
-            </li>
-          </ul>
+         <NavMenuContainerOut/>
         )}
       </div>
     </div>

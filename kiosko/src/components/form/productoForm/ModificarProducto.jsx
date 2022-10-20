@@ -71,7 +71,17 @@ const ModificarProducto = () => {
       estado: producto.estado,
     });
 
-    console.log(productoLocal)
+    setProductoLocal({
+      img:'',
+      cloud_id:'',
+      nombre: "",
+      medida: "",
+      estado:'abastecido',
+      precio: "",
+      creador: usuario._id
+     })
+     
+    
   };
 
   return (

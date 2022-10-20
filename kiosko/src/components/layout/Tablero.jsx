@@ -23,14 +23,18 @@ const Tablero = () => {
       ));
 
   return (
-    <div className="px-4 pt-4 mt-10 md:mt-0 md:w-1/2">
-      <h2 className="m-4  text-2xl font-semibold">Productos que Ofertamos</h2>
-      <div className="w-full overflow-y-scroll h-screen md:h-96 grid grid-flow-row gap-y-4 mt-5 place-items-start auto-rows-min  ">
-        {productosaux.map((producto) => (
-          <Producto key={producto._id} producto={producto} admin={admin} />
-        ))}
+    <div className="bg-white pt-2 mt-3">
+      <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h2 className="text-2xl py-4 ">Productos</h2>
+
+        <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          {productosaux.map((producto) => (
+            <Producto key={producto._id} producto={producto} admin={admin} />
+          ))}
+        </div>
       </div>
     </div>
+    
   );
 };
 

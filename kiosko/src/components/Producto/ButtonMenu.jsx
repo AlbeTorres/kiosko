@@ -1,6 +1,6 @@
 import React,{useState,useContext} from 'react';
 import productoContext from '../../context/productoContext/productoContext';
-import { FaShoppingCart } from "react-icons/fa";
+import { FaCartPlus, FaMinus, FaPlus,FaEllipsisV} from "react-icons/fa";
 
 const ButtonMenu = ({id, estado, admin}) => {
 
@@ -41,12 +41,12 @@ const ButtonMenu = ({id, estado, admin}) => {
     }
 
   return (
-    <div>
+    <div className='w-full'>
         {
             admin===true ?
-
+            <div className='absolute right-2 top-2'>
         <div className="dropdown dropdown-end">
-            <button tabIndex={0} className='btn btn-ghost'>Menu</button>
+            <button tabIndex={0} className='rounded-md p-2 bg-gray-800 text-white '>Menú</button>
             <ul
                 tabIndex={0}
                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-fit grid grid-flow-row gap-2">
@@ -56,23 +56,27 @@ const ButtonMenu = ({id, estado, admin}) => {
             </ul>
         </div> 
 
+            </div>
+
         :
-        <div className='flex flex-col justify-center items-center'>
-            <button className="btn btn-ghost btn-xs flex items-center " onClick={()=>añadirCarro(id,cantidad)}>
-                <span>Comprar</span>
-                <FaShoppingCart className='ml-1'/>
-            </button>
-            <div>
-                <button className="btn btn-ghost btn-sm mr-1 " onClick={()=>setCantidad(cantidad+1)}>
-                    +
+        <div className='flex flex-col justify-center items-center w-full'>
+            <div className='my-3'>
+                <button className="btn btn-ghost btn-md mr-1 " onClick={()=>setCantidad(cantidad+1)}>
+                    <FaPlus/>
                 </button>
                 <input className='w-4 text-center' type='text' readOnly  value={cantidad}/>
-                <button className="btn btn-ghost btn-sm mx-1  " onClick={restarCantidad}>
-                    -
+                <button className="btn btn-ghost mx-1  " onClick={restarCantidad}>
+                    <FaMinus/>
                     
                 </button>
 
             </div>
+
+            <button className="btn  w-full text-sm  flex items-center justify-center h-10 " onClick={()=>añadirCarro(id,cantidad)}>
+                <span >Añadir al carro</span>
+                <FaCartPlus className='ml-1'/>
+            </button>
+            
         </div>
         }
 

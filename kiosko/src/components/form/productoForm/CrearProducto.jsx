@@ -16,7 +16,7 @@ const CrearProducto = () => {
         medida: "",
         estado:'abastecido',
         precio: "",
-        creador: usuario._id
+        creador: usuario?._id
 
     });
 
@@ -43,6 +43,16 @@ const CrearProducto = () => {
     
       const onSubmit = () => {
        crearProducto(productoLocal)
+       setProductoLocal({
+        img:'',
+        cloud_id:'',
+        nombre: "",
+        medida: "",
+        estado:'abastecido',
+        precio: "",
+        creador: usuario?._id
+       })
+       
       };
 
   return (

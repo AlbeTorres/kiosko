@@ -7,8 +7,6 @@ const NavMenuContainer = () => {
   const { usuario, cerrarSesion } =
     useContext(authContext);
 
-  useEffect(() => {
-  }, []);
 
   const establecerAccionAux = (accion) => {
     establecerAccion({ accion });
