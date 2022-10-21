@@ -26,16 +26,15 @@ const CarroItem = ({producto, modi, eliminar}) => {
     
   return (
     <div className='flex items-center justify-between p-2 my-2 border-2 rounded-lg  '>
-        <div className='flex items-center justify-center'>
-            <figure className="w-12 h-12 ">
-                <img src={img}  alt="producto carrito"/>
+        <div className='flex items-center justify-center rounded-md '>
+            <figure className="w-12 h-12 rounded-md ">
+                <img src={img} className='w-full h-full object-cover rounded-md '  alt="producto carrito"/>
             </figure>
             <div className='mx-2'>
                 <h2 className='text-xl'>{nombre}</h2>
                 <div className='flex items-center justify-center'>
                     <p className='mr-2'>{cantidades}<span>{medida}</span></p>
-                    <p><span>$</span>{precio}</p>
-
+                    <p><span>$</span>{precio*cantidad}</p>
                 </div>
             </div>
         </div>

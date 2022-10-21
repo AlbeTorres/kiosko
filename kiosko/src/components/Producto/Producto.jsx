@@ -5,7 +5,7 @@ import ProductoImg from "./ProductoImg";
 import { FaDollarSign } from "react-icons/fa";
 
 const Producto = ({ producto, admin }) => {
-  const { _id, nombre, img, medida, estado } = producto;
+  const { _id, nombre, img, medida, estado, precio } = producto;
 
   return (
     <div className="relative">
@@ -23,7 +23,7 @@ const Producto = ({ producto, admin }) => {
           <h3 className=" text-sm text-gray-700">{nombre}</h3>
           <div className=" flex items-center">
             <FaDollarSign/>
-            <p className=" text-lg font-medium text-gray-900">{100}</p>
+            <p className=" text-lg font-medium text-gray-900">{precio}</p>
             <p className=" text-lg font-medium text-gray-900">{'/'}</p>
             <p className=" text-lg font-medium text-gray-900">{medida}</p>
           </div>

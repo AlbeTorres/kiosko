@@ -5,6 +5,7 @@ import NavCarrito from "./navmenu/NavCarrito";
 import authContext from "../../context/authContext/authContext";
 import productoContext from "../../context/productoContext/productoContext";
 import NavMenuContainerOut from "./navmenu/NavMenuContainerOut";
+import Busqueda from "../busqueda/Busqueda";
 
 const Navbar = () => {
 
@@ -27,13 +28,7 @@ const Navbar = () => {
         <a className="normal-case text-xl ml-1 "> Kiosquito</a>
       </div>
       <div className="flex-none gap-2">
-        <div className="form-control absolute top-20 right-20 md:relative md:top-0 md:right-0  ">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered"
-          />
-        </div>
+       <Busqueda/>
 
         <NavCarrito />
 

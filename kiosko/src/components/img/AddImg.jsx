@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { fileUpload } from '../../util/cloudinaryManage';
+import  './addImg.css'
 
 const AddImg = ({img,addImg}) => {
 
@@ -42,7 +43,7 @@ const AddImg = ({img,addImg}) => {
               />
             </div>
           ) : (
-            <div className="w-full h-56 flex items-center justify-center bg-green-600 ">
+            <div className="w-full h-56 flex items-center justify-center bg-gray-200 ">
               <div className="lds-dual-ring"></div>
             </div>
           )}

@@ -6,6 +6,7 @@ import {
   ESTABLECER_ACCION,
   MODIFICAR_PRODUCTO,
   MODIFICAR_PRODUCTO_CARRO,
+  OBTENER_BUSQUEDA,
   OBTENER_CARRO,
   OBTENER_PRODUCTOS,
   OBTENER_PRODUCTO_BY_ID,
@@ -62,6 +63,11 @@ export default (state, action) => {
       return({
         ...state,
         carrito: state.carrito.filter(producto=>producto._id!==action.payload)
+      })
+    case OBTENER_BUSQUEDA:
+      return({
+        ...state,
+        busqueda:action.payload
       })
     default:
       return state;
