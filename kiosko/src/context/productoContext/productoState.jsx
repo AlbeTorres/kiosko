@@ -43,7 +43,7 @@ const ProductoState = (props) => {
       precio: "",
     },
     acción: { id: "", accion: "" },
-    carrito:[{ _id: "", cantidad:'', }]
+    carrito:[]
   };
 
   const [state, dispatch] = useReducer(productoReducer, initialState);
@@ -226,12 +226,11 @@ const ProductoState = (props) => {
 
       if(carrito){
         carrito = JSON.parse(carrito);
-      }
-
+     
       dispatch({
         type:OBTENER_CARRO,
         payload:carrito
-      })
+      }) }
   }
 
   const modificarProductoCarro=(_id,cantidad)=>{
