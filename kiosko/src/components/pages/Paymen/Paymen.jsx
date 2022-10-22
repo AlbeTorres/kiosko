@@ -5,7 +5,7 @@ import cup from "../../../assets/cup.jpg";
 const Paymen = () => {
   return (
     <div >
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 md:px-4 px-2">
         <div className="flex-1">
           <a className="btn btn-ghost normal-case text-xl">Entrega</a>
         </div>
