@@ -41,15 +41,7 @@ const NavMenuContainer = () => {
               </li>
             </div>
           ) : (
-            <li>
-              <label
-                htmlFor="my-modal-6"
-                onClick={() => establecerAccionAux("carro")}
-              >
-                Carrito
-                <div className="badge">+99</div>
-              </label>
-            </li>
+            null
           )}
 
           <li>

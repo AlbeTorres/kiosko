@@ -73,7 +73,7 @@ const ButtonMenu = ({id, estado, admin}) => {
             </div>
 
             <button className="btn  w-full text-sm  flex items-center justify-center h-10 " onClick={()=>añadirCarro(id,cantidad)}>
-                <span >Añadir al carro</span>
+                <span >Añadir</span>
                 <FaCartPlus className='ml-1'/>
             </button>
             
