@@ -1,8 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
+import productoContext from "../../../context/productoContext/productoContext";
 import tarjeta from "../../../assets/tarjeta.jpg";
 import cup from "../../../assets/cup.jpg";
+import Modal from "../../layout/Modal";
 
 const Paymen = () => {
+
+  const { establecerAccion } = useContext(productoContext);
+
+  const establecerAccionAux = (accion) => {
+    establecerAccion({ accion });
+    
+  };
+
   return (
     <div >
       <div className="navbar bg-base-100 md:px-4 px-2">
@@ -66,7 +76,8 @@ const Paymen = () => {
               <h2 className="card-title">Transferencia</h2>
               <p>Pague desde la comodidad de su móvil y priorice su pedido</p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Pagar</button>
+                <label className="btn btn-primary" htmlFor="my-modal-6"
+                  onClick={() => establecerAccionAux("pagotransfer")}>Pagar</label>
               </div>
             </div>
           </div>
@@ -89,6 +100,7 @@ const Paymen = () => {
         <button className="btn btn-primary w-full my-2 md:mr-2">Crear pedido</button>
         <button className="btn w-full mb-2 md:m-0">Cancelar</button>
       </div>
+      <Modal/>
     </div>
   );
 };

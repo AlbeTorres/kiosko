@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import {Link} from 'react-router-dom';
 import productoContext from "../../../context/productoContext/productoContext";
 import authContext from "../../../context/authContext/authContext";
 
@@ -27,7 +28,7 @@ const NavMenuContainer = () => {
       >
         <div>
           <li>
-            <button >Perfil</button>
+            <Link to={'/perfil'} >Perfil</Link>
           </li>
           {usuario?.isAdmin ? (
             <div>
