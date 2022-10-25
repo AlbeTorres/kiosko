@@ -8,7 +8,7 @@ const PayForm = () => {
       </h2>
 
       <form className="grid place-items-center ">
-        <div className="form-control mt-5 ">
+        <div className="form-control  ">
           <label className="label">
             <span className="label-text">Dirección de entrega</span>
           </label>
