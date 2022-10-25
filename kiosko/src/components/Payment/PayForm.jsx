@@ -2,12 +2,12 @@ import React from "react";
 
 const PayForm = () => {
   return (
-    <div className="md:relative  ">
+    <div className="">
       <h2 className="text-center text-xl font-semibold my-5 ">
         Formulario de entrega
       </h2>
 
-      <form className="grid place-items-center ">
+      <form className="grid place-items-center mt-10 ">
         <div className="form-control  ">
           <label className="label">
             <span className="label-text">Dirección de entrega</span>
