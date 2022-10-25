@@ -1,8 +1,8 @@
 import React from "react";
 import {Routes, Route, Navigate}from 'react-router-dom'
-import Home from "../components/pages/home/Home";
-import Paymen from "../components/pages/Paymen/Paymen";
-import Perfil from "../components/pages/perfil/Perfil";
+import Home from "../pages/home/Home";
+import Paymen from "../pages/paymen/Paymen";
+import Perfil from "../pages/perfil/Perfil";
 
 const Rutas = () => {
   return (
