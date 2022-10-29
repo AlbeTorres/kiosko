@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
+import {useNavigate} from 'react-router-dom '
 import CarroItem from './CarroItem'
 import productoContext from '../../context/productoContext/productoContext'
 import authContext from '../../context/authContext/authContext'
@@ -7,10 +8,11 @@ import alertaContext from '../../context/alertaContext/alertaContext'
 
 
 const CarritoCompras = () => {
+  const history = useNavigate();
   
   const {productos, carrito, obtenerCarrito, establecerAccion, eliminarCarrito,eliminarTodoElcarro, modificarProductoCarro}= useContext(productoContext);
 
-  const {crearPedido}= useContext(pedidoContext);
+  const {iniciarPedido}= useContext(pedidoContext);
   const {autenticado, usuario}=useContext(authContext);
   const {alerta, mostrarAlerta}= useContext(alertaContext)
 
@@ -47,9 +49,11 @@ const CarritoCompras = () => {
           //crea pedido
           const pedido ={productos:compras, valor: a_pagar,estado:'pendiente',usuario:usuario._id}
           //almacena pedido en context
-          crearPedido(pedido)
+          iniciarPedido(pedido)
           //navega hasta pagina pedidoForm  
           eliminarTodoElcarro()
+          history("/paymen");
+
       }
     }else{
 

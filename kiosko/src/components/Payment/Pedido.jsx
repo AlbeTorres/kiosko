@@ -1,34 +1,12 @@
 import React, {useState} from "react";
 
-const Pedido = () => {
+const Pedido = ({productos,direccion, pago, receptor, movil, valor }) => {
 
   const [visible, setVisible]=useState(false)
 
-  let pedido = {
-    productos: [
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-      { nombre: "platano", cantida: 10, paga: 300 },
-    ],
-  };
-  let dir = "Calle 50 D entre 11 y 15 #1118";
-  let recive = " Albe";
-  let contact = +53645555;
-  let pago = "Efectivo/CUP";
-  let factura = 3000;
-  let estado= 'sin pagar'
+
+  // let pago = "Efectivo/CUP";
+ 
   return (
     <div className=" hidden md:block  px-11  " >
     
@@ -37,15 +15,15 @@ const Pedido = () => {
 
       <div className="border-b  ">
         <p className="text-xs ">Dirección:</p>
-        <span className="font-semibold ml-10 mt-4 ">{dir}</span>
+        <span className="font-semibold ml-10 mt-4 ">{direccion}</span>
       </div>
       <div className="border-b  ">
         <p className="text-xs ">Nombre:</p>
-        <span className="font-semibold ml-10 mt-4 ">{recive}</span>
+        <span className="font-semibold ml-10 mt-4 ">{receptor}</span>
       </div>
       <div className="border-b  ">
         <p className="text-xs ">Contácto:</p>
-        <span className="font-semibold ml-10 mt-2 ">{contact}</span>
+        <span className="font-semibold ml-10 mt-2 ">{movil}</span>
       </div>
       <div className="border-b  ">
         <p className="text-xs ">Pago:</p>
@@ -53,7 +31,7 @@ const Pedido = () => {
       </div>
       <div className="border-b  ">
         <p className="text-xs ">A pagar</p>
-        <span className="font-semibold ml-10 mt-2 ">{factura}</span>
+        <span className="font-semibold ml-10 mt-2 ">{valor}</span>
       </div>
     </div>
     <button onClick={()=>setVisible(!visible)} className="text-gray-400   mt-5">{visible ? 'ocultar':'mostrar más'}</button>
@@ -61,14 +39,14 @@ const Pedido = () => {
 
       <div className=" mt-5 w-full md:w-3/4 ">
        <p className="text-xs">Carro</p>
-        {pedido.productos.map((producto) => (
+        {productos.map((producto) => (
           <div className=" flex my-4 border-b  ">
           <label className="mr-2">prod:</label>
             <p className="mr-4">{producto.nombre}</p>
           <label className="mr-2">cant:</label>
-            <p className="mr-4">{producto.cantida}</p>
+            <p className="mr-4">{producto.cantidad}</p>
           <label className="mr-2">$</label>
-            <p className="mr-4">{producto.paga}</p>
+            <p className="mr-4">{producto.precio}</p>
           </div>
         ))}
       </div>

@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { AÑADIR_PEDIDO, ELIMINAR_PEDIDO, MODIFICAR_PEDIDO, OBTENER_PEDIDOS, OBTENER_PEDIDO_BY_ID } from "../../types";
+import { AÑADIR_PEDIDO, ELIMINAR_PEDIDO, MODIFICAR_PEDIDO, OBTENER_PEDIDOS, OBTENER_PEDIDO_BY_ID,INICIAR_PEDIDO } from "../../types";
 import pedidoContext from "./pedidoContext";
 import pedidoReducer from "./pedidoReducer";
 import tokenAuth from "../../config/tokenAuth";
@@ -9,14 +9,7 @@ const PedidoState = (props) => {
   const initialState = {
     pedidos: [
     ],
-    pedido: {
-      _id: "",
-      productos: [],
-      valor: "",
-      estado: "",
-      fechaini: "",
-      fechafin: "",
-    },
+    pedido: null,
   };
 
   const [state, dispatch] = useReducer(pedidoReducer, initialState);
@@ -79,6 +72,19 @@ const PedidoState = (props) => {
     }
   };
 
+  const iniciarPedido = async (datos) => {
+   
+    try {
+  
+      dispatch({
+        type: INICIAR_PEDIDO,
+        payload: datos,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const modificarPedido = async (id, datos) => {
     const token = localStorage.getItem("token");
 
@@ -126,6 +132,7 @@ const PedidoState = (props) => {
         obtenerPedido,
         obtenerPedidos,
         crearPedido,
+        iniciarPedido,
         modificarPedido,
         eliminarPedido,
     }}>{props.children}</pedidoContext.Provider>
