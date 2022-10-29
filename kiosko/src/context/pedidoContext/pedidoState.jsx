@@ -2,42 +2,12 @@ import React, { useReducer } from "react";
 import { AÑADIR_PEDIDO, ELIMINAR_PEDIDO, MODIFICAR_PEDIDO, OBTENER_PEDIDOS, OBTENER_PEDIDO_BY_ID } from "../../types";
 import pedidoContext from "./pedidoContext";
 import pedidoReducer from "./pedidoReducer";
+import tokenAuth from "../../config/tokenAuth";
+import clienteAxios from "../../config/axios";
 
 const PedidoState = (props) => {
   const initialState = {
     pedidos: [
-      {
-        _id: "",
-        productos: [],
-        valor: "",
-        estado: "",
-        fechaini: "",
-        fechafin: "",
-      },
-      {
-        _id: "",
-        productos: [],
-        valor: "",
-        estado: "",
-        fechaini: "",
-        fechafin: "",
-      },
-      {
-        _id: "",
-        productos: [],
-        valor: "",
-        estado: "",
-        fechaini: "",
-        fechafin: "",
-      },
-      {
-        _id: "",
-        productos: [],
-        valor: "",
-        estado: "",
-        fechaini: "",
-        fechafin: "",
-      },
     ],
     pedido: {
       _id: "",

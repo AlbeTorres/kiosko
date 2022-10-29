@@ -2,13 +2,17 @@ import React, {useContext, useEffect, useState} from 'react'
 import CarroItem from './CarroItem'
 import productoContext from '../../context/productoContext/productoContext'
 import authContext from '../../context/authContext/authContext'
+import pedidoContext from '../../context/pedidoContext/pedidoContext'
+import alertaContext from '../../context/alertaContext/alertaContext'
 
 
 const CarritoCompras = () => {
   
-  const {productos, carrito, obtenerProductos, obtenerCarrito, establecerAccion, eliminarCarrito, modificarProductoCarro}= useContext(productoContext);
+  const {productos, carrito, obtenerCarrito, establecerAccion, eliminarCarrito,eliminarTodoElcarro, modificarProductoCarro}= useContext(productoContext);
 
-  const {autenticado}=useContext(authContext);
+  const {crearPedido}= useContext(pedidoContext);
+  const {autenticado, usuario}=useContext(authContext);
+  const {alerta, mostrarAlerta}= useContext(alertaContext)
 
 
   let a_pagar=0
@@ -38,10 +42,15 @@ const CarritoCompras = () => {
 
   const onComprar=()=>{
     if(autenticado){
-      //crea pedido
-      //almacena pedido en context
-      //navega hasta pagina pedidoForm
-      alert('you dont have enougth money')
+
+      if(compras.length!==0){
+          //crea pedido
+          const pedido ={productos:compras, valor: a_pagar,estado:'pendiente',usuario:usuario._id}
+          //almacena pedido en context
+          crearPedido(pedido)
+          //navega hasta pagina pedidoForm  
+          eliminarTodoElcarro()
+      }
     }else{
 
       establecerAccion({accion:'login'})
@@ -62,6 +71,7 @@ const CarritoCompras = () => {
 
   return (
     <div className="modal-box">
+     {alerta && <div className={`bg-red-600 text-center p-2 text-white`}>{alerta.msg} </div>}
       <h2 className='my-2 text-xl'>Órdenes</h2>
       <div className=' overflow-y-scroll h-72 p-2'>
         {compras.length !=0 ?

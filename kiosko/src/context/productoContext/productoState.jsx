@@ -17,6 +17,7 @@ import {
   OBTENER_CARRO,
   MODIFICAR_PRODUCTO_CARRO,
   ELIMINAR_CARRO,
+  ELIMINAR_CARRO_ALL,
 } from "../../types";
 
 const ProductoState = (props) => {
@@ -220,6 +221,16 @@ const ProductoState = (props) => {
       })
   }
 
+  const eliminarTodoElcarro=()=>{
+    let carrito= [];
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+
+    dispatch({
+      type:ELIMINAR_CARRO_ALL,
+      
+    })
+  }
+
   const obtenerCarrito=()=>{
 
       let carrito= localStorage.getItem('carrito');
@@ -270,6 +281,7 @@ const ProductoState = (props) => {
         agregarCarrito,
         obtenerCarrito,
         eliminarCarrito,
+        eliminarTodoElcarro,
         modificarProductoCarro,
       }}
     >

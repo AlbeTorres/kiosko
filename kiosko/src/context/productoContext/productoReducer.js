@@ -2,6 +2,7 @@ import {
   AÑADIR_CARRO,
   AÑADIR_PRODUCTO,
   ELIMINAR_CARRO,
+  ELIMINAR_CARRO_ALL,
   ELIMINAR_PRODUCTO,
   ESTABLECER_ACCION,
   MODIFICAR_PRODUCTO,
@@ -63,6 +64,11 @@ export default (state, action) => {
       return({
         ...state,
         carrito: state.carrito.filter(producto=>producto._id!==action.payload)
+      })
+    case ELIMINAR_CARRO_ALL:
+      return({
+        ...state,
+        carrito: []
       })
     case OBTENER_BUSQUEDA:
       return({
