@@ -6,21 +6,21 @@ const CarroItem = ({producto, modi, eliminar}) => {
 
     
     const {_id, cantidad, precio, medida, img, nombre}= producto;
-    const [cantidades, setCantidad]= useState(cantidad)
+    
+    let cant = cantidad
 
     const restarCantidad=()=>{
-        let cant= cantidades
-        if(cantidades>1){
-            
-            modi(_id, cant-1)
-            setCantidad(cantidades-1)
+        if(cant>1){
+            cant = cant-1
+            modi(_id, cant)
         }
     }
     
     const sumarCantidad=()=>{
-        let cant= cantidades
-        modi(_id, cant+1)
-        setCantidad(cantidades+1)
+        
+        cant = cant+1
+        modi(_id, cant)
+        
     }
     
     
@@ -33,7 +33,7 @@ const CarroItem = ({producto, modi, eliminar}) => {
             <div className='mx-2'>
                 <h2 className='text-xl'>{nombre}</h2>
                 <div className='flex items-center justify-center'>
-                    <p className='mr-2'>{cantidades}<span>{medida}</span></p>
+                    <p className='mr-2'>{cant}<span>{medida}</span></p>
                     <p><span>$</span>{precio*cantidad}</p>
                 </div>
             </div>

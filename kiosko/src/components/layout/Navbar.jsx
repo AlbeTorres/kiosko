@@ -22,7 +22,7 @@ const Navbar = () => {
 
   
   return (
-    <div className="navbar bg-base-100 px-4">
+    <div className="navbar bg-base-100 mx-auto max-w-2xl px-4  sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="flex-1">
         <FaShoppingCart className="text-xl" />
         <a className="normal-case text-xl ml-1 "> Kiosquito</a>

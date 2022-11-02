@@ -3,7 +3,7 @@ import img from '../../assets/1.jpg'
 
 const Ubicacion = () => {
   return (
-    <div className='px-4 pb-4 md:pt-4 md:w-1/2'>
+    <div className='px-4 pb-4 md:pt-4 md:w-1/2  max-w-2xl sm:px-6 lg:max-w-7xl lg:px-8'>
         <h1 className='m-4 text-2xl font-semibold'>Aquí puedes encontrarnos</h1>
         <div className="carousel w-full">
         <div id="item1" className="carousel-item w-full">

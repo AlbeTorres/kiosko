@@ -52,7 +52,7 @@ export default (state, action) => {
     case AÑADIR_CARRO:
       return({
         ...state,
-        carrito: [...state.carrito, action.payload]
+        carrito: action.payload
       });
     case MODIFICAR_PRODUCTO_CARRO:
     case OBTENER_CARRO:

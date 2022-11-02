@@ -183,25 +183,41 @@ const ProductoState = (props) => {
   const agregarCarrito=({_id, cantidad })=>{
 
       let carrito= localStorage.getItem('carrito');
+      let index=null;
+      console.log(carrito)
 
       
 
       if(carrito){
         carrito = JSON.parse(carrito);
+        index= carrito.findIndex((carrito)=>carrito._id===_id)
+        console.log(index)
       }else(
         carrito=[]
       )
       
-      carrito.push({_id, cantidad})
+      if(index!==-1){
+        carrito[index].cantidad=carrito[index].cantidad+cantidad
+        
+      }else{
 
+        carrito.push({_id, cantidad})
+        
+      }
+      
       localStorage.setItem('carrito', JSON.stringify(carrito))
-      console.log(carrito)
-
+      
       dispatch({
         type:AÑADIR_CARRO,
-        payload:{_id, cantidad}
+        payload:carrito
       })
+     
+      console.log(carrito)
+
+     
   }
+
+
   const eliminarCarrito=(id)=>{
 
       let carrito= localStorage.getItem('carrito');
