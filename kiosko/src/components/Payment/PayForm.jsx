@@ -1,6 +1,6 @@
 import React from "react";
 
-const PayForm = ({productos,direccion, pago, receptor, movil, valor,onChange} ) => {
+const PayForm = ({direccion, pago, receptor, movil,onChange,onChecked, onSubmit} ) => {
   return (
     <div className="">
       <h2 className="text-center text-xl font-semibold my-5 ">
@@ -62,11 +62,13 @@ const PayForm = ({productos,direccion, pago, receptor, movil, valor,onChange} ) 
         <div className="form-control my-5">
           <label className=" flex items-center cursor-pointer   w-24 ">
             <input
-            onChange={''}
+              onChange={onChange}
+              checked={pago ==='Efectivo' ? true: false}
               type="radio"
-              name="radio-6"
+              name="pago"
+              value={'Efectivo'}
               className="radio checked:bg-red-500 mr-2"
-              checked
+              
             />
             <span className="label-text">Efectivo</span>
           </label>
@@ -74,18 +76,20 @@ const PayForm = ({productos,direccion, pago, receptor, movil, valor,onChange} ) 
         <div className="form-control mb-5 ">
           <label className="flex items-center cursor-pointer   w-24 ">
             <input
-            onChange={''}
+            onChange={onChange}
               type="radio"
-              name="radio-6"
+              name="pago"
+              checked={pago ==='Transferencia' ? true: false}
+              value={'Transferencia'}
               className="radio checked:bg-blue-500 mr-2"
-              checked
+              
             />
             <span className="label-text ">Transfermóvil</span>
           </label>
         </div>
         <div className=" mt-5 grid grid-cols-2 place-items-center gap-2   ">
           <button className="btn w-full ">Cancelar</button>
-          <button className="btn btn-primary w-full ">Crear pedido</button>
+          <button onClick={onSubmit} className="btn btn-primary w-full ">Crear pedido</button>
         </div>
       </form>
     </div>

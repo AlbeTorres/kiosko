@@ -9,7 +9,11 @@ const PedidoState = (props) => {
   const initialState = {
     pedidos: [
     ],
-    pedido: null,
+    pedido: {pago:'', productos:[],
+    direccion: '',  
+    receptor:'',
+    movil:'',
+    valor:''},
   };
 
   const [state, dispatch] = useReducer(pedidoReducer, initialState);

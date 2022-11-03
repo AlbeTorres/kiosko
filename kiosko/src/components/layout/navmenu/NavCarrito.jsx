@@ -61,7 +61,7 @@ const NavCarrito = () => {
           <div className="card-actions">
             <label  htmlFor="my-modal-6" 
             onClick={() => establecerAccionAux("carro")}
-            className="btn btn-primary btn-block">View cart</label>
+            className="btn btn-primary btn-block">Ver carro</label>
           </div>
         </div>
       </div>

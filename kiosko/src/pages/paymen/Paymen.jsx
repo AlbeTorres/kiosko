@@ -49,13 +49,27 @@ const Paymen = () => {
     })
   }
 
+  const onChecked=e=>{
+
+    console.log('check')
+      setFactura({
+        ...factura,
+        [e.target.name]:e.currentTarget.checked
+      })
+  }
+
+  const onSubmit=e=>{
+    e.preventDefault()
+    console.log('pedido')
+  }
+
   
 
   return (
     <div >
      <PayNav/>
      <PayContainer>
-      <PayForm onChange={onChange} direccion={direccion} pago={ pago} receptor={ receptor } movil={ movil} valor={valor}/>
+      <PayForm onChange={onChange} onChecked={onChecked} direccion={direccion} pago={ pago} receptor={ receptor } movil={ movil} valor={valor} onSubmit={onSubmit} />
       <Pedido productos={productos} direccion={direccion} pago={ pago} receptor={ receptor } movil={ movil} valor={valor} />
      </PayContainer>
 
