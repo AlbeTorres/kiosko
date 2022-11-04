@@ -52,7 +52,7 @@ const {nombre, perfilimg, email, movil}=usuariostate
   const addImgPerfil=(img, idimg)=>{
     setUsuario({
       ...usuariostate,
-      perfil:img, 
+      perfilimg:img, 
       perfil_cloud_id:idimg
     }) 
 
