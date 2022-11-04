@@ -6,6 +6,7 @@ import AlertaState from "./context/alertaContext/alertaState";
 import PedidoState from "./context/pedidoContext/PedidoState";
 import tokenAuth from "./config/tokenAuth";
 import "./index.css";
+import UsuarioState from "./context/usuarioContext/usuarioState";
 
 const token = localStorage.getItem("token");
 if (token) {
@@ -14,6 +15,8 @@ if (token) {
 
 function App() {
   return (
+    <UsuarioState>
+
     <PedidoState>
       <ProductoState>
         <AuthState>
@@ -26,6 +29,7 @@ function App() {
       </ProductoState>
 
     </PedidoState>
+    </UsuarioState>
   );
 }
 

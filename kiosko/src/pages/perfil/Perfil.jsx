@@ -6,6 +6,9 @@ import PerfilNav from "../../components/perfil/PerfilNav";
 
 
 const Perfil = () => {
+
+
+  
   return (
     <div>
     <PerfilNav/>

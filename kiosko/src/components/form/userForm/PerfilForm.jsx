@@ -1,19 +1,20 @@
 import React,{useState, useEffect, useContext, useCallback} from 'react'
 import AddImg from '../../img/AddImg'
 import authContext from '../../../context/authContext/authContext';
+import usuarioContext from '../../../context/usuarioContext/usuarioContext';
 import noimg from '../../../assets/noimg1.jpg'
 
 const PerfilForm = () => {
 
   const {usuario, usuarioAutenticado}=useContext(authContext)
+  const {modificarUsuario}= useContext(usuarioContext)
+ 
 
   const [usuariostate, setUsuario] = useState({
-    kycimg:'',
-    kyc_cloud_id:'',
     perfilimg:'',
     perfil_cloud_id:'',
     nombre: "",
-    correo: "",
+    email: "",
     movil: "",
   });
 
@@ -29,10 +30,10 @@ const PerfilForm = () => {
     if (auxnombre != 0) {
       setUsuario({
         ...usuariostate,
-        kycimg:usuario.kycimg,
         perfilimg: usuario.perfilimg,
+        perfil_cloud_id:usuario.perfil_cloud_id,
         nombre: usuario.nombre,
-        correo: usuario.correo,
+        email: usuario.email,
         movil: usuario.movil,
       });
     }
@@ -45,22 +46,37 @@ const PerfilForm = () => {
     usuarioAutenticado();
   }, [eso]);
 
-const {nombre, kycimg, perfilimg, correo, movil}=usuariostate
+const {nombre, perfilimg, email, movil}=usuariostate
 
-  const addImgKyc=(img, idimg)=>{
-    setUsuario({
-      ...usuariostate,
-      kycimg:img, 
-      kyc_cloud_id:idimg
-    }) 
 
-}
   const addImgPerfil=(img, idimg)=>{
     setUsuario({
       ...usuariostate,
       perfil:img, 
       perfil_cloud_id:idimg
     }) 
+
+}
+
+const onChange=e=>{
+  setUsuario({
+    ...usuariostate,
+    [e.target.name]:e.target.value
+  })
+}
+
+const onSubmit=()=>{
+  
+  modificarUsuario(usuario._id, usuariostate)
+  console.log(usuariostate)
+
+  setUsuario({
+    perfilimg:'',
+    perfil_cloud_id:'',
+    nombre: "",
+    email: "",
+    movil: "",
+  })
 
 }
 
@@ -72,10 +88,7 @@ const {nombre, kycimg, perfilimg, correo, movil}=usuariostate
     <div className="h-60 w-60 mx-auto md:w-full md:h-48 md:p-3 md:mr-5  rounded-md  ">
         <AddImg img={perfilimg ? perfilimg: noimg} addImg={addImgPerfil} />
       </div>
-    <div className="h-60 w-60 mx-auto md:w-full md:h-48 md:p-3 md:mr-5  rounded-md  ">
-        <AddImg img={kycimg ? kycimg: noimg} addImg={addImgKyc} />
-      </div>
-      <div className="form-control w-full max-w-xs">
+      <form className="form-control w-full max-w-xs">
 
       <div>
           <label className="label">
@@ -85,7 +98,7 @@ const {nombre, kycimg, perfilimg, correo, movil}=usuariostate
             type="text"
             name="nombre"
             value={nombre}
-            onChange={''}
+            onChange={onChange}
             placeholder="Escribe aquí"
             className="input input-bordered w-full max-w-xs"
           />
@@ -97,9 +110,9 @@ const {nombre, kycimg, perfilimg, correo, movil}=usuariostate
           </label>
           <input
             type="text"
-            name="nombre"
-            value={correo}
-            onChange={''}
+            name="email"
+            value={email}
+            onChange={onChange}
             placeholder="Escribe aquí"
             className="input input-bordered w-full max-w-xs"
           />
@@ -107,24 +120,32 @@ const {nombre, kycimg, perfilimg, correo, movil}=usuariostate
       </div>
       <div>
           <label className="label">
-            <span className="label-text">movil</span>
+            <span className="label-text">Movil</span>
           </label>
           <input
             type="text"
-            name="nombre"
+            name="movil"
             value={movil}
-            onChange={''}
+            onChange={onChange}
             placeholder="Escribe aquí"
             className="input input-bordered w-full max-w-xs"
           />
       </div>
-      <div>
-        <button>Aceptar</button>
-        <button>Cancelar</button>
-      </div>
+      <div className="modal-action">
+          <label
+            htmlFor="my-modal-6"
+            onClick={() => onSubmit()}
+            className="btn btn-primary "
+          >
+            Aceptar
+          </label>
+          <label htmlFor="my-modal-6" className="btn">
+            Cancelar
+          </label>
+        </div>
       
           
-          </div>
+          </form>
     </div>
   )
 }
