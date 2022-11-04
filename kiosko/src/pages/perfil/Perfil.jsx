@@ -1,17 +1,16 @@
 import React from "react";
-import {
-  FaEnvelope,
-  FaIdCard,
-  FaMapMarkedAlt,
-  FaMapSigns,
-  FaPhoneAlt,
-  FaUserLock,
-} from "react-icons/fa";
+import Modal from "../../components/layout/Modal";
+
+import PerfilDatos from "../../components/perfil/PerfilDatos";
+import PerfilNav from "../../components/perfil/PerfilNav";
 
 
 const Perfil = () => {
   return (
     <div>
+    <PerfilNav/>
+    <PerfilDatos/>
+    <Modal/>
       
 
      

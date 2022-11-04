@@ -6,7 +6,7 @@ const HomeContainer = ({ children }) => {
   return (
 
     
-     <div className="  ">
+     <div className="mx-auto w-11/12">
       {children}
     </div>
   );

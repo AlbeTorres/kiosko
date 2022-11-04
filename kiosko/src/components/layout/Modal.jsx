@@ -7,6 +7,7 @@ import CarritoCompras from "../carro/CarritoCompras";
 import Login from '../form/userForm/auth/Login'
 import Register from "../form/userForm/auth/Register";
 import PaymentFormTrans from "../form/paymentForm/PaymentFormTrans";
+import PerfilForm from "../form/userForm/PerfilForm";
 
 const Modal = () => {
   const { accion } = useContext(productoContext);
@@ -42,6 +43,10 @@ const Modal = () => {
         {accion?.accion === "pagotransfer" &&
           <div className="w-full flex items-center justify-center ">
           <PaymentFormTrans/>
+          </div>}
+        {accion?.accion === "editarperfil" &&
+          <div className="w-full flex items-center justify-center ">
+          <PerfilForm/>
           </div>}
       </div>
     </div>

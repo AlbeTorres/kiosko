@@ -58,7 +58,7 @@ const ModificarProducto = () => {
     setProductoLocal({
       ...productoLocal,
       img, 
-      idimg
+      cloud_id:idimg
     }) 
 
 }

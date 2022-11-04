@@ -36,8 +36,8 @@ const Tablero = () => {
       }
 
   return (
-    <div className="bg-white pt-2 mt-3">
-      <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div className="my-10 mt-20 w-full">
+      <div className="w-full">
         <h2 className="text-2xl py-4 ">Productos</h2>
 
         <div className="grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">

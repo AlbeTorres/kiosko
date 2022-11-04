@@ -10,17 +10,17 @@ import productoContext from "../../context/productoContext/productoContext";
 
 const Home = () => {
 
-  const { busqueda} =
+  const {busqueda} =
     useContext(productoContext);
 
   return (
     <div>
-        <Navbar />
         <HomeContainer>
+            <Navbar />
             <Tablero/>
             <Ubicacion/>
         </HomeContainer>
-        <Footer />
+            <Footer />
         <Modal />
     </div>
   );
