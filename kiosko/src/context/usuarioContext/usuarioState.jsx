@@ -1,7 +1,7 @@
 import React,{useReducer} from "react";
 import usuarioReducer from './usuarioReducer';
 import usuarioContext from './usuarioContext';
-import { MODIFICAR_USUARIO, OBTENER_USUARIOS, OBTENER_BUSQUEDA,OBTENER_USUARIO_BY_ID, SET_USER_FILTER } from "../../types";
+import { MODIFICAR_USUARIO, OBTENER_USUARIOS, OBTENER_BUSQUEDA,OBTENER_USUARIO_BY_ID, SET_USER_FILTER, CAMBIO } from "../../types";
 import clienteAxios from "../../config/axios";
 import tokenAuth from "../../config/tokenAuth";
 
@@ -12,6 +12,7 @@ const UsuarioState=props=>{
         usuariom:{_id:'', nombre:'', movil:''},
         busqueda:'',
         userfilter:'',
+        cambio:false
        
 
     }
@@ -140,6 +141,13 @@ const UsuarioState=props=>{
             payload:id
         })
     }
+
+    const actualizarCambio=()=>{
+        dispatch({
+            type:CAMBIO,
+
+        })
+    }
    
 
     return(
@@ -150,12 +158,14 @@ const UsuarioState=props=>{
                 busqueda: state.busqueda,
                 usuariom:state.usuariom,
                 userfilter:state.userfilter,
+                cambio:state.cambio,
                 modificarUsuario,
                 eliminarUsuario,
                 obtenerUsuarios,
                 obtenerUsuario,
                 establecerBusqueda,
                 setUserFilter,
+                actualizarCambio,
 
                 
 

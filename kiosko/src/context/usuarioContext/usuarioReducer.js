@@ -1,4 +1,4 @@
-import { MODIFICAR_USUARIO, OBTENER_BUSQUEDA, OBTENER_USUARIOS, OBTENER_USUARIO_BY_ID, SET_USER_FILTER } from "../../types";
+import { CAMBIO, MODIFICAR_USUARIO, OBTENER_BUSQUEDA, OBTENER_USUARIOS, OBTENER_USUARIO_BY_ID, SET_USER_FILTER } from "../../types";
 
 export default (state, action)=>{
 
@@ -30,6 +30,11 @@ export default (state, action)=>{
             return({
                 ...state,
                 userfilter:action.payload
+            })
+        case CAMBIO:
+            return({
+                ...state,
+                cambio:!state.cambio
             })
         default:
             return state;

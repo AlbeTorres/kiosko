@@ -1,15 +1,25 @@
-import React from 'react'
+import Reac,{useContext} from 'react'
 import img2 from '../../assets/1.jpg'
 import {
   FaEnvelope,
-  FaIdCard,
   FaMapMarkedAlt,
   FaMapSigns,
   FaPhoneAlt,
   FaUserLock,
 } from "react-icons/fa";
+import productoContext from '../../context/productoContext/productoContext';
 
-const PerfilDatos = () => {
+const PerfilDatos = ({usuario}) => {
+
+  const {establecerAccion}=useContext(productoContext)
+
+  const establecerAccionAux=(accion)=>{
+    establecerAccion({accion})
+
+  }
+
+  const {email, movil , kyc}=usuario
+
   return (
     <div className="grid w-11/12 md:grid-cols-2 md:gap-x-8 md:mt-8  md:h-full  place-items-start mx-auto max-w-2xl px-4  sm:px-6 lg:max-w-7xl lg:px-8 ">
     <div className="md:w-full w-full">
@@ -19,14 +29,14 @@ const PerfilDatos = () => {
         <FaEnvelope />
         <p className="ml-1">Correo</p>
       </div>
-      <p className="ml-5">correo@eso.com</p>
+      <p className="ml-5">{email}</p>
     </div>
     <div className="border-b w-full my-4     ">
       <div className="flex items-center ">
         <FaPhoneAlt  />
         <p className="ml-1">Móvil</p>
       </div>
-      <p className="ml-5">+53xxxxxxxx</p>
+      <p className="ml-5">{movil}</p>
     </div>
     <div className="border-b w-full my-4     ">
       <div className="flex items-center ">
@@ -43,7 +53,7 @@ const PerfilDatos = () => {
       <p className="ml-5">Artemisa</p>
     </div>
     </div>
-    
+    {kyc ? 
     <div className=' w-full my-4'>
       <div className="flex items-center ">
         <FaUserLock />
@@ -53,7 +63,13 @@ const PerfilDatos = () => {
       <img className="w-full object-cover rounded-md" src={img2} alt="" />
 
       </figure>
+    </div>:
+    <div className='w-full my-4'>
+    <label htmlFor="my-modal-6" className='btn btn-primary' 
+            onClick={() => establecerAccionAux("crearkyc")}>Hacer Kyc</label>
+        
     </div>
+    }
   </div>
   )
 }

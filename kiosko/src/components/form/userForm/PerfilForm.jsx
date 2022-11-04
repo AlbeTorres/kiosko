@@ -7,8 +7,8 @@ import noimg from '../../../assets/noimg1.jpg'
 const PerfilForm = () => {
 
   const {usuario, usuarioAutenticado}=useContext(authContext)
-  const {modificarUsuario}= useContext(usuarioContext)
- 
+  const {modificarUsuario, actualizarCambio}= useContext(usuarioContext)
+  
 
   const [usuariostate, setUsuario] = useState({
     perfilimg:'',
@@ -70,6 +70,8 @@ const onSubmit=()=>{
   modificarUsuario(usuario._id, usuariostate)
   console.log(usuariostate)
 
+  actualizarCambio()
+
   setUsuario({
     perfilimg:'',
     perfil_cloud_id:'',
@@ -84,7 +86,7 @@ const onSubmit=()=>{
 
 
   return (
-    <div className='modal-box '>
+    <div className='modal-box md:flex'>
     <div className="h-60 w-60 mx-auto md:w-full md:h-48 md:p-3 md:mr-5  rounded-md  ">
         <AddImg img={perfilimg ? perfilimg: noimg} addImg={addImgPerfil} />
       </div>
