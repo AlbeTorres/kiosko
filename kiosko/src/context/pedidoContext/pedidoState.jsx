@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { AÑADIR_PEDIDO, ELIMINAR_PEDIDO, MODIFICAR_PEDIDO, OBTENER_PEDIDOS, OBTENER_PEDIDO_BY_ID,INICIAR_PEDIDO } from "../../types";
+import { AÑADIR_PEDIDO, ELIMINAR_PEDIDO, MODIFICAR_PEDIDO, OBTENER_PEDIDOS, OBTENER_PEDIDO_BY_ID,INICIAR_PEDIDO, SET_VISIBLE } from "../../types";
 import pedidoContext from "./pedidoContext";
 import pedidoReducer from "./pedidoReducer";
 import tokenAuth from "../../config/tokenAuth";
@@ -14,6 +14,7 @@ const PedidoState = (props) => {
     receptor:'',
     movil:'',
     valor:''},
+    visible:false,
   };
 
   const [state, dispatch] = useReducer(pedidoReducer, initialState);
@@ -129,16 +130,25 @@ const PedidoState = (props) => {
     }
   };
 
+  const setVisible=(state)=>{
+        dispatch({
+          type: SET_VISIBLE,
+          payload: state
+        })
+  }
+
   return (
     <pedidoContext.Provider value={{
         pedidos:state.pedidos,
         pedido:state.pedido,
+        visible:state.visible,
         obtenerPedido,
         obtenerPedidos,
         crearPedido,
         iniciarPedido,
         modificarPedido,
         eliminarPedido,
+        setVisible,
     }}>{props.children}</pedidoContext.Provider>
   );
 };

@@ -2,3 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.modale {
+        
+        pointer-events: auto;
+        visibility: visible;
+        opacity: 1;
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        display: flex;
+        justify-content: center;
+        
+        z-index: 999;
+        background-color: hsl(var(--nf, var(--n)) / var(--tw-bg-opacity));
+        --tw-bg-opacity: 0.4;
+        transition-duration: 200ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-property: transform, opacity;
+        overflow-y: hidden;
+        overscroll-behavior: contain;
+    }
+    :where(.modale) {
+        align-items: center;
+    }
+    
+    .modal-box, 
+    .modal:target .modal-box {
+        --tw-translate-y: 0px;
+        --tw-scale-x: 1;
+        --tw-scale-y: 1;
+        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    }
+    .modal-open .modal-box, 
+    .modal:target .modal-box {
+        --tw-translate-y: 0px;
+        --tw-scale-x: 1;
+        --tw-scale-y: 1;
+        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    }

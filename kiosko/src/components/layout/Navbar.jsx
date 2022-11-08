@@ -9,7 +9,7 @@ import Busqueda from "../busqueda/Busqueda";
 
 const Navbar = () => {
 
-  const { autenticado, usuarioAutenticado, cerrarSesion } = useContext(authContext);
+  const { usuario,autenticado, usuarioAutenticado, cerrarSesion } = useContext(authContext);
   const { establecerAccion } = useContext(productoContext);
 
   useEffect(()=>{
@@ -29,8 +29,8 @@ const Navbar = () => {
       </div>
       <div className="flex items-center gap-2">
        <Busqueda/>
-
-        <NavCarrito />
+       {usuario?.isAdmin===false && 
+        <NavCarrito />}
 
         {autenticado ? (
           <NavMenuContainer />

@@ -7,23 +7,27 @@ import PayForm from '../../components/Payment/PayForm'
 import Pedido from "../../components/Payment/Pedido";
 import pedidoContext from '../../context/pedidoContext/pedidoContext'
 import authContext from '../../context/authContext/authContext'
+import alertaContext from '../../context/alertaContext/alertaContext'
+
+import ModalPayment from "../../components/Payment/ModalPayment";
 
 const Paymen = () => {
 
   const history= useNavigate();
 
   const { establecerAccion } = useContext(productoContext);
-  const {pedido,obtenerPedido, crearPedido}= useContext(pedidoContext)
+  const {visible,pedido, setVisible,obtenerPedido, crearPedido}= useContext(pedidoContext)
   const {usuario}= useContext(authContext)
+   const {alerta, mostrarAlerta}= useContext(alertaContext);
 
   
-
+  
   const [factura, setFactura]=useState({
     productos:pedido?.productos,
-    direccion: pedido?.direccion, 
-    pago:pedido?.pago, 
-    receptor:pedido?.receptor,
-    movil:pedido?.movil,
+    direccion: '', 
+    pago:'', 
+    receptor:'',
+    movil:'',
     valor:pedido?.valor
   })
 
@@ -32,7 +36,8 @@ const Paymen = () => {
 
   useEffect(()=>{
     
-    !pedido && history('/')
+    pedido.productos.length===0 && history('/')
+    
     
    },[]);
 
@@ -60,7 +65,19 @@ const Paymen = () => {
 
   const onSubmit=e=>{
     e.preventDefault()
-    console.log('pedido')
+
+    if(direccion==='' || pago==='' || receptor==='' || movil===''){
+      mostrarAlerta('Debes completar todos los campos', 'error')
+      return
+    }
+
+    if(!usuario.kyc){ establecerAccionAux('nokyc') 
+    setVisible(true)
+    console.log('pedido')}
+    else{
+      crearPedido(factura)
+      establecerAccionAux('yeskyc') } 
+    
   }
 
   
@@ -68,10 +85,12 @@ const Paymen = () => {
   return (
     <div >
      <PayNav/>
+     {alerta && <div className={`bg-red-600 text-center p-2 text-white`}>{alerta.msg} </div>}
      <PayContainer>
       <PayForm onChange={onChange} onChecked={onChecked} direccion={direccion} pago={ pago} receptor={ receptor } movil={ movil} valor={valor} onSubmit={onSubmit} />
-      <Pedido productos={productos} direccion={direccion} pago={ pago} receptor={ receptor } movil={ movil} valor={valor} />
+      <Pedido productos={productos} direccion={direccion} pago={pago} receptor={ receptor } movil={ movil} valor={valor} />
      </PayContainer>
+     { visible && <ModalPayment/>}
 
     </div>
   );

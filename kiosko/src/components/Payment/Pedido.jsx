@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import PedidoCard from "./PedidoCard";
 
 const Pedido = ({productos,direccion, pago, receptor, movil, valor }) => {
 
@@ -40,14 +41,7 @@ const Pedido = ({productos,direccion, pago, receptor, movil, valor }) => {
       <div className=" mt-5 w-full md:w-3/4 ">
        <p className="text-xs">Carro</p>
         {productos.map((producto) => (
-          <div className=" flex my-4 border-b  ">
-          <label className="mr-2">prod:</label>
-            <p className="mr-4">{producto.nombre}</p>
-          <label className="mr-2">cant:</label>
-            <p className="mr-4">{producto.cantidad}</p>
-          <label className="mr-2">$</label>
-            <p className="mr-4">{producto.precio}</p>
-          </div>
+          <PedidoCard key={producto._id} nombre={producto.nombre} cantidad={producto.cantidad} precio={producto.precio} />
         ))}
       </div>
     }
