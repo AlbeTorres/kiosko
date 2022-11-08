@@ -1,4 +1,5 @@
 import React,{useContext} from 'react'
+import { Link } from 'react-router-dom'
 import pedidoContext from '../../context/pedidoContext/pedidoContext'
 
 const NokycView = () => {
@@ -16,7 +17,7 @@ const NokycView = () => {
     <p className='mb-5'>Debes realizar el KYC antes de poder solicitar pedidos</p>
     <div className=''>
 
-    <button className='btn mr-2'>Crear kyc</button>
+    <Link to={'/perfil'} className='btn mr-2'>Crear kyc</Link>
     <button onClick={noView} className='btn btn-secondary '>Cancelar</button>
     </div>
     </div>
