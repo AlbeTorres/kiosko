@@ -31,6 +31,8 @@ const Navbar = () => {
        <Busqueda/>
        {usuario?.isAdmin===false && 
         <NavCarrito />}
+       {!usuario && 
+        <NavCarrito />}
 
         {autenticado ? (
           <NavMenuContainer />

@@ -2,11 +2,13 @@ import React, { useContext, useEffect } from "react";
 import {Link} from 'react-router-dom';
 import productoContext from "../../../context/productoContext/productoContext";
 import authContext from "../../../context/authContext/authContext";
+import noimg from '../../../assets/noimg1.jpg'
 
 const NavMenuContainer = () => {
   const { establecerAccion } = useContext(productoContext);
   const { usuario, cerrarSesion } =
     useContext(authContext);
+
 
 
   const establecerAccionAux = (accion) => {
@@ -19,7 +21,7 @@ const NavMenuContainer = () => {
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img src="https://placeimg.com/80/80/people" />
+          <img src={usuario?.perfilimg ? usuario.perfilimg: noimg} />
         </div>
       </label>
       <ul

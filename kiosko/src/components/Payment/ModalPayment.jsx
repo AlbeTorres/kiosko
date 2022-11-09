@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import productoContext from "../../context/productoContext/productoContext";
 import KycForm from "../form/userForm/KycForm";
+import YesKycView from './YesKycView'
 import '../../index.css'
 import NokycView from "./NokycView";
 
@@ -15,7 +16,7 @@ const ModalPayment = () => {
           </div>}
         {accion?.accion === "yeskyc" &&
           <div className="w-full flex items-center justify-center ">
-          <KycForm/>
+          <YesKycView/>
           </div>}
       
       </div>

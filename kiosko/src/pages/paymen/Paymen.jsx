@@ -79,6 +79,7 @@ const Paymen = () => {
     else{
       crearPedido(factura)
       establecerAccionAux('yeskyc') } 
+      setVisible(true)
     
   }
 
