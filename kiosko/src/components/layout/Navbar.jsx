@@ -6,6 +6,7 @@ import authContext from "../../context/authContext/authContext";
 import productoContext from "../../context/productoContext/productoContext";
 import NavMenuContainerOut from "./navmenu/NavMenuContainerOut";
 import Busqueda from "../busqueda/Busqueda";
+import NavPedido from "./navmenu/NavPedido";
 
 const Navbar = () => {
 
@@ -29,6 +30,7 @@ const Navbar = () => {
       </div>
       <div className="flex items-center gap-2">
        <Busqueda/>
+       <NavPedido/>
        {usuario?.isAdmin===false && 
         <NavCarrito />}
        {!usuario && 
