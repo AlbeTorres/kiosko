@@ -18,7 +18,7 @@ const PerfilDatos = ({usuario}) => {
 
   }
 
-  const {email, movil , kyc}=usuario
+  const {email, movil , kycimg, kyc}=usuario
 
   return (
     <div className="grid w-11/12 md:grid-cols-2 md:gap-x-8 md:mt-8  md:h-full  place-items-start mx-auto max-w-2xl px-4  sm:px-6 lg:max-w-7xl lg:px-8 ">
@@ -59,8 +59,8 @@ const PerfilDatos = ({usuario}) => {
         <FaUserLock />
         <p className="ml-1">Kyc</p>
       </div>
-      <figure className="w-3/4 mx-auto rounded-md shadow-md">
-      <img className="w-full object-cover rounded-md" src={img2} alt="" />
+      <figure className="w-3/4 h-80  mx-auto rounded-md shadow-md">
+      <img className="w-full h-full object-cover rounded-md" src={kycimg} alt="" />
 
       </figure>
     </div>:

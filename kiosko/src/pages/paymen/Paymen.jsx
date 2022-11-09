@@ -28,7 +28,9 @@ const Paymen = () => {
     pago:'', 
     receptor:'',
     movil:'',
-    valor:pedido?.valor
+    valor:pedido?.valor,
+    usuario:usuario?._id,
+    estado:'verificar'
   })
 
 
