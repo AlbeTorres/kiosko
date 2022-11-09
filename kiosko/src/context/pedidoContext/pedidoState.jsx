@@ -23,6 +23,7 @@ const PedidoState = (props) => {
   const obtenerPedidos = async () => {
     try {
       const response = await clienteAxios.get("api/pedidos");
+      console.log(response.data.pedidos)
 
       dispatch({
         type: OBTENER_PEDIDOS,

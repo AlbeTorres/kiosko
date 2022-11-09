@@ -1,4 +1,4 @@
-import { AÑADIR_PEDIDO,INICIAR_PEDIDO, SET_VISIBLE } from "../../types";
+import { AÑADIR_PEDIDO,INICIAR_PEDIDO, OBTENER_PEDIDOS, SET_VISIBLE } from "../../types";
 
 export default (state,action)=>{
     switch(action.type){
@@ -11,6 +11,11 @@ export default (state,action)=>{
             return({
                 ...state,
                 pedido: action.payload
+            })
+        case OBTENER_PEDIDOS:
+            return({
+                ...state,
+                pedidos: action.payload
             })
         case SET_VISIBLE:
             return({

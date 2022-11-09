@@ -1,19 +1,24 @@
 import React, {useContext, useEffect} from "react";
 import pedidoContext from "../../../context/pedidoContext/pedidoContext";
 import productoContext from "../../../context/productoContext/productoContext";
+import authContext from '../../../context/authContext/authContext'
+
 const NavPedido = () => {
 
-    const {pedidos}= useContext(pedidoContext)
+    const {pedidos, obtenerPedidos}= useContext(pedidoContext)
     const { establecerAccion}= useContext(productoContext);
+    const {usuario}= useContext(authContext)
 
-    let cantida= 1
     let monto = 0
-    let pedidosaux=[]
-
+    
+    
     useEffect(()=>{
-        
-      },[])
-      
+        obtenerPedidos()
+    },[])
+    
+    let pedidosaux= pedidos?.filter(pedido=>pedido.usuario===usuario._id)
+    let cantida = pedidosaux.length
+    pedidosaux?.map( pedido=> monto = monto + pedido?.valor  )
 
 
   const establecerAccionAux=(accion)=>{
