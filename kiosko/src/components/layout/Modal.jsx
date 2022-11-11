@@ -9,6 +9,7 @@ import Register from "../form/userForm/auth/Register";
 import PaymentFormTrans from "../form/paymentForm/PaymentFormTrans";
 import PerfilForm from "../form/userForm/PerfilForm";
 import KycForm from "../form/userForm/KycForm";
+import PedidoView from "../pedidos/PedidoView";
 
 const Modal = () => {
   const { accion } = useContext(productoContext);
@@ -52,6 +53,10 @@ const Modal = () => {
         {accion?.accion === "crearkyc" &&
           <div className="w-full flex items-center justify-center ">
           <KycForm/>
+          </div>}
+        {accion?.accion === "pedido" &&
+          <div className="w-full flex items-center justify-center ">
+          <PedidoView/>
           </div>}
       </div>
     </div>
