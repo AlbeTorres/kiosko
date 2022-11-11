@@ -8,9 +8,10 @@ const PedidoItem = ({productos,valor, pago, estado}) => {
     <div className='flex items-center justify-center rounded-md '>
         <div className='mx-2'>
             <PedidoItemProductos productos={productos}/>
-            <div className='flex items-center justify-center'>
-                <p className='mr-2'>{valor}<span>{pago}</span></p>
-                <p><span>$</span>{estado}</p>
+            <div className='flex items-center justify-start'>
+                <p className='mr-2'>{'$'}<span>{valor}</span></p>
+                <p className='mr-2'>{pago}</p>
+                <p>{estado}</p>
             </div>
         </div>
     </div>

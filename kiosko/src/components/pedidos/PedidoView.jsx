@@ -1,10 +1,12 @@
 import React,{useContext} from 'react'
 import pedidoContext from '../../context/pedidoContext/pedidoContext'
+import authContext from '../../context/authContext/authContext'
 import PedidoItem from './PedidoItem'
 
 const PedidoView = () => {
 
   const {pedidos}= useContext(pedidoContext)
+  const {usuario}= useContext(authContext)
 
   console.log(pedidos)
   
@@ -13,7 +15,12 @@ const PedidoView = () => {
       <h2 className='my-2 text-xl'>Pedidos:</h2>
       <div className=' overflow-y-scroll h-72 p-2'>
         {
-          pedidos.map(pedido=><PedidoItem key={pedido._id} productos={pedido.productos}  pago={pedido.pago} valor={pedido.valor} estado={pedido.estado} />)
+          pedidos.map(pedido=>{
+            if(pedido.usuario===usuario?._id && pedido.estado!=='completado'){
+            return(<PedidoItem key={pedido._id} productos={pedido.productos}  pago={pedido.pago} valor={pedido.valor} estado={pedido.estado} />)}
+
+            }
+            )
           
         }
       </div>

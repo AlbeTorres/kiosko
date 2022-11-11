@@ -7,16 +7,19 @@ import productoContext from "../../context/productoContext/productoContext";
 import NavMenuContainerOut from "./navmenu/NavMenuContainerOut";
 import Busqueda from "../busqueda/Busqueda";
 import NavPedido from "./navmenu/NavPedido";
+import pedidoContext from "../../context/pedidoContext/pedidoContext";
 
 const Navbar = () => {
 
-  const { usuario,autenticado, usuarioAutenticado, cerrarSesion } = useContext(authContext);
+  const { usuario,autenticado, usuarioAutenticado } = useContext(authContext);
   const { establecerAccion } = useContext(productoContext);
+  const {pedidos}= useContext(pedidoContext)
 
   useEffect(()=>{
     usuarioAutenticado();
   },[])
 
+  console.log(usuario)
   const establecerAccionAux = (accion) => {
     establecerAccion({ accion });
   };
@@ -30,10 +33,11 @@ const Navbar = () => {
       </div>
       <div className="flex items-center gap-2">
        <Busqueda/>
-       <NavPedido/>
-       {usuario?.isAdmin===false && 
-        <NavCarrito />}
-       {!usuario && 
+
+       {usuario && pedidos.length!==0 && 
+       <NavPedido/>}
+        
+       {usuario && usuario?.isAdmin===false && 
         <NavCarrito />}
 
         {autenticado ? (
