@@ -13,10 +13,11 @@ const Navbar = () => {
 
   const { usuario,autenticado, usuarioAutenticado } = useContext(authContext);
   const { establecerAccion } = useContext(productoContext);
-  const {pedidos}= useContext(pedidoContext)
+  const {pedidos, obtenerPedidos}= useContext(pedidoContext)
 
   useEffect(()=>{
     usuarioAutenticado();
+    obtenerPedidos()
   },[])
 
   console.log(usuario)
@@ -37,7 +38,7 @@ const Navbar = () => {
        {usuario && pedidos.length!==0 && 
        <NavPedido/>}
         
-       {usuario && usuario?.isAdmin===false && 
+       {usuario && !usuario?.isAdmin && 
         <NavCarrito />}
 
         {autenticado ? (
