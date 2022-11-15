@@ -8,6 +8,7 @@ import tokenAuth from "./config/tokenAuth";
 import "./index.css";
 import UsuarioState from "./context/usuarioContext/usuarioState";
 
+
 const token = localStorage.getItem("token");
 if (token) {
   tokenAuth(token);
