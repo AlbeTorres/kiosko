@@ -5,11 +5,13 @@ import Ubicacion from '../../components/layout/Ubicacion'
 import Navbar from '../../components/layout/Navbar'
 import Footer from '../../components/layout/Footer'
 import Modal from '../../components/layout/Modal'
-import productoContext from "../../context/productoContext/productoContext";
+
 
 
 
 const Home = () => {
+
+  
 
   return (
     <div>

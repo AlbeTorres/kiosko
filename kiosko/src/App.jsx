@@ -7,6 +7,9 @@ import PedidoState from "./context/pedidoContext/PedidoState";
 import tokenAuth from "./config/tokenAuth";
 import "./index.css";
 import UsuarioState from "./context/usuarioContext/usuarioState";
+import {io} from 'socket.io-client'
+
+
 
 
 const token = localStorage.getItem("token");
@@ -14,8 +17,14 @@ if (token) {
   tokenAuth(token);
 }
 
+const socket= io('ws://localhost:8900')
+
+
 function App() {
+
+  
   return (
+    
     <UsuarioState>
     <PedidoState>
       <ProductoState>
@@ -27,9 +36,10 @@ function App() {
           </AlertaState>
         </AuthState>
       </ProductoState>
-
     </PedidoState>
     </UsuarioState>
+
+    
   );
 }
 

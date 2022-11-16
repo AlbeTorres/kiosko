@@ -5,6 +5,7 @@ import authContext from '../../context/authContext/authContext';
 
 
 
+
 const Tablero = () => {
   let admin;
   let productosaux = [{_id:''}];
@@ -12,9 +13,11 @@ const Tablero = () => {
 
   const { busqueda, productos, obtenerProductos } = useContext(productoContext);
   const {usuario}= useContext(authContext);
+ 
 
   useEffect(() => {
     obtenerProductos();
+   
   }, []);
 
   usuario!==null ? admin = usuario.isAdmin: admin=false

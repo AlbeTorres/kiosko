@@ -5,6 +5,7 @@ import { FaCartPlus, FaMinus, FaPlus} from "react-icons/fa";
 const ButtonMenu = ({id, estado, admin,}) => {
 
     const {establecerAccion, modificarProducto, agregarCarrito}=useContext(productoContext)
+   
     
     const [estadoaux, setEstado]=useState(estado)
     const [cantidad, setCantidad]= useState(1)
@@ -27,8 +28,6 @@ const ButtonMenu = ({id, estado, admin,}) => {
             setEstado('abastecido');
         }
         
-       
-       
     }
 
     const restarCantidad=()=>{
