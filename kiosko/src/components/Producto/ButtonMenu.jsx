@@ -1,8 +1,8 @@
 import React,{useState,useContext} from 'react';
 import productoContext from '../../context/productoContext/productoContext';
-import { FaCartPlus, FaMinus, FaPlus,FaEllipsisV} from "react-icons/fa";
+import { FaCartPlus, FaMinus, FaPlus} from "react-icons/fa";
 
-const ButtonMenu = ({id, estado, admin}) => {
+const ButtonMenu = ({id, estado, admin,}) => {
 
     const {establecerAccion, modificarProducto, agregarCarrito}=useContext(productoContext)
     
@@ -20,14 +20,15 @@ const ButtonMenu = ({id, estado, admin}) => {
         if( estadoaux==='abastecido'){
             modificarProducto(id, {estado: 'agotado'});
             setEstado('agotado');
+            
         }else{
 
             modificarProducto(id, {estado: 'abastecido'})
             setEstado('abastecido');
         }
         
-        
-
+       
+       
     }
 
     const restarCantidad=()=>{

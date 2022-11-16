@@ -10,20 +10,17 @@ import NavPedido from "./navmenu/NavPedido";
 import pedidoContext from "../../context/pedidoContext/pedidoContext";
 
 const Navbar = () => {
-
+  const token = localStorage.getItem("token");
   const { usuario,autenticado, usuarioAutenticado } = useContext(authContext);
-  const { establecerAccion } = useContext(productoContext);
+  
   const {pedidos, obtenerPedidos}= useContext(pedidoContext)
 
   useEffect(()=>{
     usuarioAutenticado();
     obtenerPedidos()
-  },[])
+  },[token])
 
-  console.log(usuario)
-  const establecerAccionAux = (accion) => {
-    establecerAccion({ accion });
-  };
+  
 
   
   return (

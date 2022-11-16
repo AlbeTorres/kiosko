@@ -3,6 +3,8 @@ import Producto from '../Producto/Producto';
 import productoContext from "../../context/productoContext/productoContext";
 import authContext from '../../context/authContext/authContext';
 
+
+
 const Tablero = () => {
   let admin;
   let productosaux = [{_id:''}];
@@ -42,7 +44,7 @@ const Tablero = () => {
 
         <div className="grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {auxProductolist.map((producto) => (
-            <Producto key={producto._id} producto={producto} admin={admin} />
+            <Producto key={producto._id} producto={producto} admin={admin}  />
           ))}
         </div>
       </div>

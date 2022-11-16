@@ -21,9 +21,15 @@ const PedidoState = (props) => {
 
   //operaciones Crud
   const obtenerPedidos = async () => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      tokenAuth(token);
+    
+
     try {
       const response = await clienteAxios.get("api/pedidos");
-      console.log(response.data.pedidos)
+      
 
       dispatch({
         type: OBTENER_PEDIDOS,
@@ -32,6 +38,7 @@ const PedidoState = (props) => {
     } catch (error) {
       console.log(error);
     }
+  }
   };
 
   const obtenerPedido = async (id) => {

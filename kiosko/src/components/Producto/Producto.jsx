@@ -1,10 +1,8 @@
 import React from "react";
 import ButtonMenu from "./ButtonMenu";
-import NombreProducto from "./NombreProducto";
-import ProductoImg from "./ProductoImg";
 import { FaDollarSign } from "react-icons/fa";
 
-const Producto = ({ producto, admin }) => {
+const Producto = ({ producto, admin,  }) => {
   const { _id, nombre, img, medida, estado, precio } = producto;
 
   return (
@@ -28,7 +26,7 @@ const Producto = ({ producto, admin }) => {
             <p className=" text-lg font-medium text-gray-900">{medida}</p>
           </div>
         </div>
-        <ButtonMenu id={_id} estado={estado} admin={admin} />
+        <ButtonMenu id={_id} estado={estado} admin={admin}  />
       </div>
     </div>
   );
