@@ -76,7 +76,7 @@ const Paymen = () => {
 
     if(!usuario.kyc){ establecerAccionAux('nokyc') 
     setVisible(true)
-    console.log('pedido')}
+    }
     else{
       socket.emit('pedido','eso')
       crearPedido(factura)
