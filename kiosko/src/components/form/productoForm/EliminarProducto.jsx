@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState, useCallback } from "react";
 import productoContext from "../../../context/productoContext/productoContext";
+import { socket } from '../../../config/socket'
 
 const EliminarProducto = () => {
 
@@ -11,6 +12,9 @@ const EliminarProducto = () => {
   }, [accion]);
 
     const eliminarProductoAux=()=>{
+      socket.emit('estate',accion.id,()=>{
+           
+      })
         eliminarProducto(accion.id)
     }
   return (

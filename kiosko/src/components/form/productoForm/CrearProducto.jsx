@@ -2,6 +2,7 @@ import React, {  useContext, useState } from "react";
 import productoContext from "../../../context/productoContext/productoContext";
 import authContext from '../../../context/authContext/authContext'
 import AddImg from "../../img/AddImg";
+import { socket } from '../../../config/socket'
 
 
 const CrearProducto = () => {
@@ -42,6 +43,9 @@ const CrearProducto = () => {
     }
     
       const onSubmit = () => {
+        socket.emit('estate','id',()=>{
+           
+        })
        crearProducto(productoLocal)
        setProductoLocal({
         img:'',

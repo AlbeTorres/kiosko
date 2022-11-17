@@ -7,7 +7,9 @@ import PedidoState from "./context/pedidoContext/PedidoState";
 import tokenAuth from "./config/tokenAuth";
 import "./index.css";
 import UsuarioState from "./context/usuarioContext/usuarioState";
-import {io} from 'socket.io-client'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 
 
@@ -17,7 +19,7 @@ if (token) {
   tokenAuth(token);
 }
 
-const socket= io('ws://localhost:8900')
+
 
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
         <AuthState>
           <AlertaState>
             <Router>
+            <ToastContainer />
               <Rutas />
             </Router>
           </AlertaState>

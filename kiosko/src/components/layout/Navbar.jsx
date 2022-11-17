@@ -9,16 +9,8 @@ import Busqueda from "../busqueda/Busqueda";
 import NavPedido from "./navmenu/NavPedido";
 import pedidoContext from "../../context/pedidoContext/pedidoContext";
 
-const Navbar = () => {
-  const token = localStorage.getItem("token");
-  const { usuario,autenticado, usuarioAutenticado } = useContext(authContext);
-  
-  const {pedidos, obtenerPedidos}= useContext(pedidoContext)
-
-  useEffect(()=>{
-    usuarioAutenticado();
-    obtenerPedidos()
-  },[token])
+const Navbar = ({pedidos, autenticado, usuario}) => {
+ 
 
   
 

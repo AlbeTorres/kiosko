@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState, useCallback } from "react";
 import productoContext from "../../../context/productoContext/productoContext";
 import AddImg from "../../img/AddImg";
+import { socket } from '../../../config/socket'
 
 const ModificarProducto = () => {
   const { accion, producto, obtenerProducto, modificarProducto } =
@@ -64,6 +65,9 @@ const ModificarProducto = () => {
 }
 
   const onSubmit = () => {
+    socket.emit('estate',accion.id,()=>{
+           
+    })
     modificarProducto(accion.id, {
       nombre,
       medida,
@@ -78,7 +82,7 @@ const ModificarProducto = () => {
       medida: "",
       estado:'abastecido',
       precio: "",
-      creador: usuario._id
+      creador: null
      })
      
     

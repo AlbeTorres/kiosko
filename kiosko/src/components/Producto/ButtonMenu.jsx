@@ -1,6 +1,8 @@
 import React,{useState,useContext} from 'react';
 import productoContext from '../../context/productoContext/productoContext';
 import { FaCartPlus, FaMinus, FaPlus} from "react-icons/fa";
+import {socket} from '../../config/socket'
+import { toast } from 'react-toastify'
 
 const ButtonMenu = ({id, estado, admin,}) => {
 
@@ -18,6 +20,10 @@ const ButtonMenu = ({id, estado, admin,}) => {
 
     const modificarEstado =()=>{
 
+        socket.emit('estate',id,()=>{
+           
+        })
+
         if( estadoaux==='abastecido'){
             modificarProducto(id, {estado: 'agotado'});
             setEstado('agotado');
@@ -27,6 +33,9 @@ const ButtonMenu = ({id, estado, admin,}) => {
             modificarProducto(id, {estado: 'abastecido'})
             setEstado('abastecido');
         }
+
+       
+       
         
     }
 

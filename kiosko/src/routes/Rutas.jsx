@@ -4,6 +4,7 @@ import Home from "../pages/home/Home";
 import Paymen from "../pages/paymen/Paymen";
 import Perfil from "../pages/perfil/Perfil";
 
+
 const Rutas = () => {
   return (
     <Routes>
