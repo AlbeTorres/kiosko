@@ -10,6 +10,7 @@ import authContext from '../../context/authContext/authContext'
 import alertaContext from '../../context/alertaContext/alertaContext'
 
 import ModalPayment from "../../components/Payment/ModalPayment";
+import {socket} from '../../config/socket'
 
 const Paymen = () => {
 
@@ -77,6 +78,7 @@ const Paymen = () => {
     setVisible(true)
     console.log('pedido')}
     else{
+      socket.emit('pedido','eso')
       crearPedido(factura)
       establecerAccionAux('yeskyc') } 
       setVisible(true)

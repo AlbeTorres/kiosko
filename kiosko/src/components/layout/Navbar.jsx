@@ -8,9 +8,14 @@ import NavMenuContainerOut from "./navmenu/NavMenuContainerOut";
 import Busqueda from "../busqueda/Busqueda";
 import NavPedido from "./navmenu/NavPedido";
 import pedidoContext from "../../context/pedidoContext/pedidoContext";
+import{socket} from '../../config/socket'
 
 const Navbar = ({pedidos, autenticado, usuario}) => {
  
+
+  useEffect(()=>{
+    socket.emit('addUser',{id:usuario?._id,admin:usuario?.isAdmin})
+  },[usuario])
 
   
 

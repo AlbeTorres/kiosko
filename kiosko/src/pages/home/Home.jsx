@@ -29,6 +29,11 @@ const Home = () => {
       toast.success(msg)
     })
 
+    socket.on('newpedido',(msg)=>{
+      obtenerPedidos();
+      toast.success(msg)
+    })
+    
     socket.on('cambioestado',()=>{
       obtenerProductos()
       console.log('cambio')
@@ -41,7 +46,6 @@ const Home = () => {
   },[token])
 
  
-
 
   return (
     <div>
