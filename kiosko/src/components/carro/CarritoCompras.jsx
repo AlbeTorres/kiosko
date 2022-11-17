@@ -37,7 +37,7 @@ const CarritoCompras = () => {
   }
 
   const eliminar=(id)=>{
-    console.log('delete')
+    
     eliminarCarrito(id)
   }
 

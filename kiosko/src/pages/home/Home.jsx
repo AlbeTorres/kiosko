@@ -26,7 +26,7 @@ const Home = () => {
   useEffect(()=>{
     
     socket.on('hello', (msg) => {
-      toast.success(msg)
+     
     })
 
     socket.on('newpedido',(msg)=>{

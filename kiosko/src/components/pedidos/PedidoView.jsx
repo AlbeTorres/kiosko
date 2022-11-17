@@ -8,7 +8,6 @@ const PedidoView = () => {
   const {pedidos}= useContext(pedidoContext)
   const {usuario}= useContext(authContext)
 
-  console.log(pedidos)
   
   return (
     <div className="modal-box">

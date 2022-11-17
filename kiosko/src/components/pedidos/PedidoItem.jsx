@@ -3,7 +3,7 @@ import PedidoItemProductos from './PedidoItemProductos'
 import { FaTrashAlt } from 'react-icons/fa'
 
 const PedidoItem = ({productos,valor, pago, estado}) => {
-    console.log(productos)
+    
   return (
     <div className='flex items-center justify-between p-2 my-2 border-2 rounded-lg  '>
     <div className='flex items-center justify-center rounded-md '>

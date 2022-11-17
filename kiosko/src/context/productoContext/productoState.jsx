@@ -212,7 +212,7 @@ const ProductoState = (props) => {
         payload:carrito
       })
      
-      console.log(carrito)
+      
 
      
   }
