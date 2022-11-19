@@ -9,6 +9,7 @@ import Busqueda from "../busqueda/Busqueda";
 import NavPedido from "./navmenu/NavPedido";
 import pedidoContext from "../../context/pedidoContext/pedidoContext";
 import{socket} from '../../config/socket'
+import NavNotificacion from "./navmenu/NavNotificacion";
 
 const Navbar = ({pedidos, autenticado, usuario}) => {
  
@@ -29,7 +30,9 @@ const Navbar = ({pedidos, autenticado, usuario}) => {
       <div className="flex items-center gap-2">
        <Busqueda/>
 
-       {usuario && pedidos.length!==0 && 
+       {usuario.isAdmin && <NavNotificacion/>}
+
+       {usuario && pedidos.length!==0 && !usuario?.isAdmin &&
        <NavPedido/>}
         
        {usuario && !usuario?.isAdmin && 
