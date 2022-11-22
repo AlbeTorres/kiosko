@@ -1,3 +1,3 @@
 import { io } from 'socket.io-client'
     
-    export const socket = io('ws://localhost:8900')
+    export const socket = io(import.meta.env.VITE_SOCKET_URL)
