@@ -30,7 +30,7 @@ const Navbar = ({pedidos, autenticado, usuario}) => {
       <div className="flex items-center gap-2">
        <Busqueda/>
 
-       {usuario.isAdmin && <NavNotificacion/>}
+       {usuario?.isAdmin && <NavNotificacion/>}
 
        {usuario && pedidos.length!==0 && !usuario?.isAdmin &&
        <NavPedido/>}

@@ -196,7 +196,7 @@ const ProductoState = (props) => {
         carrito=[]
       )
       
-      if(index!==-1){
+      if(index!==-1 && index!==null){
         carrito[index].cantidad=carrito[index].cantidad+cantidad
         
       }else{
