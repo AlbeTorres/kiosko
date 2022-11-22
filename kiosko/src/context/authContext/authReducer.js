@@ -23,7 +23,7 @@ export default (state,action)=>{
                 return({
                         ...state,
                         token: null,
-                        usuario:null,
+                        usuario:{_id:''},
                         autenticado:null,
                         mensaje: action.payload,
                         cargando: false
