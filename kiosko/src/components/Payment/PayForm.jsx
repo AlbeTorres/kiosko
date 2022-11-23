@@ -13,7 +13,7 @@ const PayForm = ({direccion, pago, receptor, movil,onChange,onChecked, onSubmit}
             <span className="label-text">Dirección de entrega</span>
           </label>
           <label className="input-group">
-            <span>Dirección</span>
+            <span className="flex items-center px-2 opacity-100 rounded-l-lg bg-gray-200  ">Dirección</span>
             <input
               type="text"
               name='direccion'
@@ -29,7 +29,7 @@ const PayForm = ({direccion, pago, receptor, movil,onChange,onChecked, onSubmit}
             <span className="label-text">Nombre del receptor</span>
           </label>
           <label className="input-group">
-            <span>Nombre</span>
+            <span className="flex items-center px-2 opacity-100 rounded-l-lg bg-gray-200  ">Nombre</span>
             <input
               type="text"
               name='receptor'
@@ -45,7 +45,7 @@ const PayForm = ({direccion, pago, receptor, movil,onChange,onChecked, onSubmit}
             <span className="label-text">Contacto del receptor</span>
           </label>
           <label className="input-group">
-            <span>Contácto</span>
+            <span className="flex items-center px-2 opacity-100 rounded-l-lg bg-gray-200  ">Contácto</span>
             <input
               name="movil"
               value={movil}

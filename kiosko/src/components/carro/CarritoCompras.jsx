@@ -74,7 +74,7 @@ const CarritoCompras = () => {
 
 
   return (
-    <div className="modal-box">
+    <div className="modal-box ">
      {alerta && <div className={`bg-red-600 text-center p-2 text-white`}>{alerta.msg} </div>}
       <h2 className='my-2 text-xl'>Órdenes</h2>
       <div className=' overflow-y-scroll h-72 p-2'>
