@@ -28,13 +28,13 @@ const NavMenuContainer = () => {
         tabIndex={0}
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
       >
-        <div>
-          <li>
+        <div >
+          <li className="my-1">
             <Link to={'/perfil'} >Perfil</Link>
           </li>
           {usuario?.isAdmin ? (
             <div>
-              <li>
+              <li className="my-1">
                 <label
                   htmlFor="my-modal-6"
                   onClick={() => establecerAccionAux("crearproducto")}
@@ -47,7 +47,7 @@ const NavMenuContainer = () => {
             null
           )}
 
-          <li>
+          <li className="my-1">
             <button onClick={cerrarSesion}>Cerrar Sesión</button>
           </li>
         </div>
