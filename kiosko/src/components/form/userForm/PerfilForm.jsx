@@ -90,7 +90,7 @@ const onSubmit=()=>{
     <div className="h-60 w-60 mx-auto md:w-full md:h-48 md:p-3 md:mr-5  rounded-md  ">
         <AddImg img={perfilimg ? perfilimg: noimg} addImg={addImgPerfil} />
       </div>
-      <form className="form-control w-full max-w-xs">
+      <form className="form-control mx-auto w-full max-w-xs">
 
       <div>
           <label className="label">

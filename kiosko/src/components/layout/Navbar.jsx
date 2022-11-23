@@ -2,12 +2,9 @@ import React, {useContext, useEffect} from "react";
 import NavMenuContainer from "./navmenu/NavMenuContainer";
 import { FaShoppingCart } from "react-icons/fa";
 import NavCarrito from "./navmenu/NavCarrito";
-import authContext from "../../context/authContext/authContext";
-import productoContext from "../../context/productoContext/productoContext";
 import NavMenuContainerOut from "./navmenu/NavMenuContainerOut";
 import Busqueda from "../busqueda/Busqueda";
 import NavPedido from "./navmenu/NavPedido";
-import pedidoContext from "../../context/pedidoContext/pedidoContext";
 import{socket} from '../../config/socket'
 import NavNotificacion from "./navmenu/NavNotificacion";
 
@@ -27,7 +24,7 @@ const Navbar = ({pedidos, autenticado, usuario}) => {
         <FaShoppingCart className="text-xl" />
         <a className="normal-case text-xl ml-1 "> Kiosquito</a>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1">
        <Busqueda/>
 
        {usuario?.isAdmin && <NavNotificacion/>}
