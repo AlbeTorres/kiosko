@@ -85,6 +85,21 @@ const Paymen = () => {
     
   }
 
+  const cancelarPedido=()=>{
+    setFactura({
+      productos:'',
+      direccion: '', 
+      pago:'', 
+      receptor:'',
+      movil:'',
+      valor:'',
+      usuario:'',
+      estado:'verificar'
+  })
+    history('/')
+
+  }
+
   
 
   return (
@@ -92,7 +107,7 @@ const Paymen = () => {
      <PayNav/>
      {alerta && <div className={`bg-red-600 text-center p-2 text-white`}>{alerta.msg} </div>}
      <PayContainer>
-      <PayForm onChange={onChange} onChecked={onChecked} direccion={direccion} pago={ pago} receptor={ receptor } movil={ movil} valor={valor} onSubmit={onSubmit} />
+      <PayForm cancelar={cancelarPedido} onChange={onChange} onChecked={onChecked} direccion={direccion} pago={ pago} receptor={ receptor } movil={ movil} valor={valor} onSubmit={onSubmit} />
       <Pedido productos={productos} direccion={direccion} pago={pago} receptor={ receptor } movil={ movil} valor={valor} />
      </PayContainer>
      { visible && <ModalPayment/>}

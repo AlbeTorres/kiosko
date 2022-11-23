@@ -1,6 +1,6 @@
 import React from "react";
 
-const PayForm = ({direccion, pago, receptor, movil,onChange,onChecked, onSubmit} ) => {
+const PayForm = ({direccion, pago, receptor, movil,onChange,onChecked, onSubmit, cancelar} ) => {
   return (
     <div className="">
       <h2 className="text-center text-xl font-semibold my-5 ">
@@ -88,7 +88,7 @@ const PayForm = ({direccion, pago, receptor, movil,onChange,onChecked, onSubmit}
           </label>
         </div>
         <div className=" mt-5 grid grid-cols-2 place-items-center gap-2   ">
-          <button className="btn w-full ">Cancelar</button>
+          <button onClick={cancelar} className="btn w-full ">Cancelar</button>
           <button onClick={onSubmit} className="btn btn-primary w-full ">Crear pedido</button>
         </div>
       </form>
