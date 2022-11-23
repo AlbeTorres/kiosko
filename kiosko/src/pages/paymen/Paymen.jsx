@@ -86,16 +86,7 @@ const Paymen = () => {
   }
 
   const cancelarPedido=()=>{
-    setFactura({
-      productos:'',
-      direccion: '', 
-      pago:'', 
-      receptor:'',
-      movil:'',
-      valor:'',
-      usuario:'',
-      estado:'verificar'
-  })
+    
     history('/')
 
   }
