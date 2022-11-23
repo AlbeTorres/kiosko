@@ -3,6 +3,7 @@ import productoContext from "../../../../context/productoContext/productoContext
 import authContext from "../../../../context/authContext/authContext";
 import alertaContext from "../../../../context/alertaContext/alertaContext";
 import { FaCheckCircle, FaEye } from "react-icons/fa";
+import './auth.css'
 
 const Register = () => {
 
@@ -15,11 +16,17 @@ const Register = () => {
 
   const { alerta, mostrarAlerta } = useContext(alertaContext);
 
+  const [load, setLoad]=useState(false)
+
   useEffect(() => {
     if (mensaje) {
       mostrarAlerta(mensaje.msg, mensaje.categoria);
     }
-  }, [mensaje]);
+
+    if(autenticado){
+      setLoad(false)
+    }
+  }, [autenticado,mensaje]);
 
   const [usuario, setUsuario] = useState({
     email: "",
@@ -87,6 +94,7 @@ const Register = () => {
     }
     eliminarMensaje();
     registrarUsuario({ email, password, isAdmin });
+    setLoad(true)
 
     setUsuario({
       email: "",
@@ -104,7 +112,12 @@ const Register = () => {
         </div>
       )}
 
-      {autenticado ? (
+      {load ? <div className="w-full h-full flex items-center justify-center bg-gray-200 ">
+              <div className="lds-dual-ring"></div>
+            </div>
+    
+    
+    : autenticado ? (
         <div className="card-body">
           <div className="flex items-center text-xl text-center justify-center">
             <FaCheckCircle className="text-green-600" />

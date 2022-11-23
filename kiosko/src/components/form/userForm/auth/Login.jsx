@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState, useRef} from "react";
 import authContext from "../../../../context/authContext/authContext";
 import alertaContext from "../../../../context/alertaContext/alertaContext";
 import {FaCheckCircle} from 'react-icons/fa';
+import './auth.css'
 
 
 const Login = () => {
@@ -16,11 +17,16 @@ const Login = () => {
 
     visible.current.type=='password' ? visible.current.type='text': visible.current.type='password'
   }
+  const [load, setLoad]=useState(false)
 
   useEffect(()=>{
   
       if(mensaje){
         mostrarAlerta(mensaje.msg, mensaje.categoria);
+      }
+
+      if(autenticado){
+        setLoad(false)
       }
       
   },[autenticado,mensaje])
@@ -63,6 +69,7 @@ const Login = () => {
 
     eliminarMensaje();
     iniciarSesion(usuario)
+    setLoad(true)
 
     setUsuario({
       email:'',
@@ -75,7 +82,12 @@ const Login = () => {
 
     {alerta && <div className={`bg-red-600 text-center p-2 text-white`}>{alerta.msg} </div>}
 
-    { autenticado ?
+    {load ? <div className="w-full h-full flex items-center justify-center bg-gray-200 ">
+              <div className="lds-dual-ring"></div>
+            </div>
+    
+    
+    : autenticado ?
     <div className="card-body" >
     <div className="flex items-center text-xl text-center justify-center">
         <FaCheckCircle className="text-green-600"/>
