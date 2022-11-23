@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
 import productoContext from '../../context/productoContext/productoContext'
+import img1 from '../../assets/noimg1.jpg'
 
 const PerfilNav = ({usuario}) => {
 
@@ -23,7 +24,7 @@ const PerfilNav = ({usuario}) => {
         <div className="grid place-items-center md:flex md:justify-center md:items-center md:flex-row-reverse">
         <div className="avatar">
           <div className="w-24 md:w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={perfilimg} />
+            <img src={perfilimg ? perfilimg: img1} />
           </div>
         </div>
         <div className="my-2 md:w-44   ">
