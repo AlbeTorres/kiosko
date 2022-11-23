@@ -70,12 +70,12 @@ const ButtonMenu = ({id, estado, admin,}) => {
         :
         <div className='flex flex-col justify-center items-center w-full'>
             <div className='my-3'>
-                <button className="btn btn-ghost btn-md mr-1 " onClick={()=>setCantidad(cantidad+1)}>
-                    <FaPlus/>
+                <button className="btn btn-ghost btn-md sm:mr-1 " onClick={()=>setCantidad(cantidad+1)}>
+                    <FaPlus className='text-xs  sm:text-sm ' />
                 </button>
-                <input className='w-4 text-center' type='text' readOnly  value={cantidad}/>
-                <button className="btn btn-ghost mx-1  " onClick={restarCantidad}>
-                    <FaMinus/>
+                <input className='w-6  text-center' type='text' readOnly  value={cantidad}/>
+                <button className="btn btn-ghost btn-md  sm:ml-1 " onClick={restarCantidad}>
+                    <FaMinus className='text-xs  sm:text-sm '/>
                     
                 </button>
 

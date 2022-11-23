@@ -16,7 +16,7 @@ const Producto = ({ producto, admin,  }) => {
           />
         </label>
       </div>
-      <div className="flex flex-col items-center justify-between px-4 w-full">
+      <div className="flex flex-col items-center justify-between px-2 w-full">
         <div className="w-full flex items-center justify-between mt-4">
           <h3 className=" text-sm text-gray-700">{nombre}</h3>
           <div className=" flex items-center">
