@@ -1,8 +1,18 @@
-import React from 'react'
+import React,{useContext, useEffect} from 'react'
 import {FaUserPlus,FaArrowLeft} from 'react-icons/fa'
 import Adminusercard from './Adminusercard'
+import usuarioContext from '../../../context/usuarioContext/usuarioContext'
 
 const AdminUser = () => {
+
+  const{usuarios, obtenerUsuarios}=useContext(usuarioContext)
+
+  useEffect(()=>{
+    obtenerUsuarios()
+  },[])
+
+
+
   return (
     <div >
         <div className='navbar bg-primary text-primary-content'>
@@ -26,16 +36,7 @@ const AdminUser = () => {
            <h2 className='w-full text-center rounded-t-md text-lg font-bold bg-primary text-white mt-5 p-2'>
             Usuarios
            </h2>
-
-           <Adminusercard/>
-           <Adminusercard/>
-           <Adminusercard/>
-           <Adminusercard/>
-           <Adminusercard/>
-           <Adminusercard/>
-           <Adminusercard/>
-           <Adminusercard/>
-           <Adminusercard/>
+            {usuarios?.map(usuario=><Adminusercard key={usuario?._id} email={usuario.email } kyc={usuario?.kyc} img={usuario?.perfilimg} kycimg={usuario?.kycimg}  carnet={usuario?.carnet} isAdmin={usuario?.isAdmin} nombre={usuario?.nombre }  />)}
 
         </div>
         </div>

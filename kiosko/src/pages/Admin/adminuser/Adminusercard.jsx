@@ -3,11 +3,20 @@ import img from "../../../assets/noimg1.jpg";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaBars, FaExclamationCircle } from "react-icons/fa";
 
-const Adminusercard = () => {
+const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg}) => {
 
     const [visible, setVisible]=useState(false)
     let baneado= true
-    let kyc=true
+    let kycnoti=false
+    let rol
+    isAdmin ? rol='Administrador': rol='Cliente'
+
+    console.log(kycimg)
+    console.log(kyc)
+    if(kyc===false && kycimg!==null){
+        kycnoti=true
+    }
+
   return (
     <div className="flex items-center justify-between gap-2 border-b-2 border-gray-200  rounded-b-md ">
       <figure className="md:w-16  md:h-16 w-14 h-14 rounded-full m-1 shadow-md relative  ">
@@ -16,16 +25,16 @@ const Adminusercard = () => {
       </figure>
       <div className="flex-auto ml-5 md:flex md:items-center ">
       <div>
-        <p className={baneado ? 'text-red-700': 'text-black'}>Alberto Torres Reyes</p>
-        <p >Administrador</p>
+        <p className={baneado ? 'text-red-700': 'text-black'}>{nombre}</p>
+        <p >{rol}</p>
       </div>
       <div className="md:items-center  md:ml-6  hidden md:flex  ">
         <p className="mr-2">CI:</p>
-        <p className={baneado ? 'text-red-700': 'text-black'}>96032204741</p>
+        <p className={baneado ? 'text-red-700': 'text-black'}>{carnet}</p>
       </div>
       </div>
 
-      {kyc && <FaExclamationCircle className="text-red-700 "/> }
+      {kycnoti && <FaExclamationCircle className="text-red-700 "/> }
 
 
       <div className="mr-2 md:hidden">
