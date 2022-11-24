@@ -31,16 +31,14 @@ const Adminusercard = () => {
             <ul className="mt-3 p-2 right-2 absolute shadow bg-base-100 rounded-md grid grid-flow-row gap-2">
                     <button className="btn btn-ghost btn-xs">targeta roja</button>
                     <button className="btn btn-ghost btn-xs">activar kyc</button>
-                    <button className="btn btn-ghost btn-xs">modificar</button>
-                    <button className="btn btn-ghost btn-xs">eliminar</button>
+                    <button className="btn btn-ghost btn-xs">Ver</button>
             </ul>}
         </div> 
 
         <div className=" hidden md:grid md:grid-cols-4 ">
-        <button className="btn btn-ghost btn-xs">targeta roja</button>
-                    <button className="btn btn-ghost btn-xs">activar kyc</button>
-                    <button className="btn btn-ghost btn-xs">modificar</button>
-                    <button className="btn btn-ghost btn-xs">eliminar</button>
+            <button className="btn btn-ghost btn-xs">targeta roja</button>
+            <button className="btn btn-ghost btn-xs">activar kyc</button>
+            <button className="btn btn-ghost btn-xs">Ver</button>        
         </div>
     </div>
   );
