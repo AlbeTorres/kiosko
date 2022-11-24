@@ -20,7 +20,7 @@ const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg}) => {
   return (
     <div className="flex items-center justify-between gap-2 border-b-2 border-gray-200  rounded-b-md ">
       <figure className="md:w-16  md:h-16 w-14 h-14 rounded-full m-1 shadow-md relative  ">
-        <FaCheckCircle className="text-blue-700 rounded-full bg-white text-lg  absolute bottom-1 right-2 "/>
+        {kyc===true && <FaCheckCircle className="text-blue-700 rounded-full bg-white text-lg  absolute bottom-1 right-2 "/>}
         <img className="w-full h-full object-cover rounded-full" src={img} />
       </figure>
       <div className="flex-auto ml-5 md:flex md:items-center ">
@@ -41,15 +41,27 @@ const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg}) => {
             <FaBars onClick={()=>setVisible(!visible)} className='text-lg'/>
             {visible && 
             <ul className="mt-3 p-2 right-2 absolute shadow bg-base-100 rounded-md grid grid-flow-row gap-2">
+            {
+                !isAdmin &&
                     <button className="btn btn-ghost btn-xs">Activar kyc</button>
+            }
+            {
+                !isAdmin &&
                     <button className="btn btn-ghost btn-xs">Advertencia</button>
+            }
                     <button className="btn btn-ghost btn-xs">Ver usuario</button>
             </ul>}
         </div> 
 
         <div className=" hidden md:grid md:grid-cols-4 ">
+        {
+                !isAdmin &&
                     <button className="btn btn-ghost btn-xs">Activar kyc</button>
+            }
+            {
+                !isAdmin &&
                     <button className="btn btn-ghost btn-xs">Advertencia</button>
+            }
                     <button className="btn btn-ghost btn-xs">Ver usuario</button>   
         </div>
     </div>
