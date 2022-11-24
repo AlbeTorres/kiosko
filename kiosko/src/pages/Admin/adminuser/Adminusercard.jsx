@@ -3,7 +3,7 @@ import img from "../../../assets/noimg1.jpg";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaBars, FaExclamationCircle } from "react-icons/fa";
 
-const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg}) => {
+const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg, modal}) => {
 
     const [visible, setVisible]=useState(false)
     let baneado= true
@@ -62,7 +62,7 @@ const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg}) => {
                 !isAdmin &&
                     <button className="btn btn-ghost btn-xs">Advertencia</button>
             }
-                    <button className="btn btn-ghost btn-xs">Ver usuario</button>   
+                    <label htmlFor="my-modal-6" onClick={()=>(modal('adminuser'))} className="btn btn-ghost btn-xs">Ver usuario</label>   
         </div>
     </div>
   );

@@ -2,10 +2,18 @@ import React,{useContext, useEffect} from 'react'
 import {FaUserPlus,FaArrowLeft} from 'react-icons/fa'
 import Adminusercard from './Adminusercard'
 import usuarioContext from '../../../context/usuarioContext/usuarioContext'
+import productoContext from '../../../context/productoContext/productoContext'
+import Modal from '../../../components/layout/Modal'
 
 const AdminUser = () => {
 
   const{usuarios, obtenerUsuarios}=useContext(usuarioContext)
+  const {establecerAccion}=useContext(productoContext)
+
+  const establecerAccionAux = (accion) => {
+    establecerAccion({ accion });
+    
+  };
 
   useEffect(()=>{
     obtenerUsuarios()
@@ -36,11 +44,13 @@ const AdminUser = () => {
            <h2 className='w-full text-center rounded-t-md text-lg font-bold bg-primary text-white mt-5 p-2'>
             Usuarios
            </h2>
-            {usuarios?.map(usuario=><Adminusercard key={usuario?._id} email={usuario.email } kyc={usuario?.kyc} img={usuario?.perfilimg} kycimg={usuario?.kycimg}  carnet={usuario?.carnet} isAdmin={usuario?.isAdmin} nombre={usuario?.nombre }  />)}
+            {usuarios?.map(usuario=><Adminusercard key={usuario?._id} email={usuario.email } kyc={usuario?.kyc} img={usuario?.perfilimg} kycimg={usuario?.kycimg}  carnet={usuario?.carnet} isAdmin={usuario?.isAdmin} nombre={usuario?.nombre } modal={establecerAccionAux} />)}
 
         </div>
         </div>
+        <Modal/>
     </div>
+
   )
 }
 

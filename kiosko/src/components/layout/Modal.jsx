@@ -10,6 +10,7 @@ import PaymentFormTrans from "../form/paymentForm/PaymentFormTrans";
 import PerfilForm from "../form/userForm/PerfilForm";
 import KycForm from "../form/userForm/KycForm";
 import PedidoView from "../pedidos/PedidoView";
+import AdminUserForm from "../form/adminform/AdminUserForm";
 
 const Modal = () => {
   const { accion } = useContext(productoContext);
@@ -57,6 +58,10 @@ const Modal = () => {
         {accion?.accion === "pedido" &&
           <div className="w-full flex items-center justify-center ">
           <PedidoView/>
+          </div>}
+        {accion?.accion === "adminuser" &&
+          <div className="w-full flex items-center justify-center ">
+          <AdminUserForm/>
           </div>}
       </div>
     </div>
