@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import img from "../../../assets/noimg1.jpg";
 import { FaCheckCircle } from "react-icons/fa";
-import { FaHamburger } from "react-icons/fa";
+import { FaBars, FaExclamationCircle } from "react-icons/fa";
 
 const Adminusercard = () => {
 
     const [visible, setVisible]=useState(false)
     let baneado= true
+    let kyc=true
   return (
     <div className="flex items-center justify-between gap-2 border-b-2 border-gray-200  rounded-b-md ">
       <figure className="md:w-16  md:h-16 w-14 h-14 rounded-full m-1 shadow-md relative  ">
@@ -24,21 +25,23 @@ const Adminusercard = () => {
       </div>
       </div>
 
+      {kyc && <FaExclamationCircle className="text-red-700 "/> }
+
 
       <div className="mr-2 md:hidden">
-            <FaHamburger onClick={()=>setVisible(!visible)} className='text-lg'/>
+            <FaBars onClick={()=>setVisible(!visible)} className='text-lg'/>
             {visible && 
             <ul className="mt-3 p-2 right-2 absolute shadow bg-base-100 rounded-md grid grid-flow-row gap-2">
-                    <button className="btn btn-ghost btn-xs">targeta roja</button>
-                    <button className="btn btn-ghost btn-xs">activar kyc</button>
-                    <button className="btn btn-ghost btn-xs">Ver</button>
+                    <button className="btn btn-ghost btn-xs">Activar kyc</button>
+                    <button className="btn btn-ghost btn-xs">Advertencia</button>
+                    <button className="btn btn-ghost btn-xs">Ver usuario</button>
             </ul>}
         </div> 
 
         <div className=" hidden md:grid md:grid-cols-4 ">
-            <button className="btn btn-ghost btn-xs">targeta roja</button>
-            <button className="btn btn-ghost btn-xs">activar kyc</button>
-            <button className="btn btn-ghost btn-xs">Ver</button>        
+                    <button className="btn btn-ghost btn-xs">Activar kyc</button>
+                    <button className="btn btn-ghost btn-xs">Advertencia</button>
+                    <button className="btn btn-ghost btn-xs">Ver usuario</button>   
         </div>
     </div>
   );
