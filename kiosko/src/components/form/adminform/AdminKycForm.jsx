@@ -12,10 +12,10 @@ const AdminKycForm = () => {
     
     useEffect(()=>{
       obtenerUsuario(accion.id)
-    },[])
+    },[accion.id])
 
     const validar=()=>{
-        modificarUsuario({kyc:true})
+        modificarUsuario(accion.id,{kyc:true})
     }
     
 
@@ -30,7 +30,7 @@ const AdminKycForm = () => {
 
         </div>
         <div className='flex items-center justify-center '>
-            <button className='btn mr-4'>Validar</button>
+            <button onClick={validar} className='btn mr-4'>Validar</button>
             <label htmlFor="my-modal-6" className='btn btn-secondary'>Declinar</label>
         </div>
     </div>
