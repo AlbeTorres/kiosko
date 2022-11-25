@@ -93,7 +93,7 @@ const Register = () => {
       return;
     }
     eliminarMensaje();
-    registrarUsuario({ email, password, isAdmin });
+    registrarUsuario({ email, password, isAdmin, advertencia:1 });
     setLoad(true)
 
     setUsuario({

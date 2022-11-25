@@ -9,7 +9,7 @@ const UsuarioState=props=>{
 
     const initialState={
         usuarios:[{_id:'', nombre:'', movil:''}],
-        usuariom:{_id:'', nombre:'', movil:''},
+        usuariom:null,
         busqueda:'',
         userfilter:'',
         cambio:false
@@ -34,7 +34,6 @@ const UsuarioState=props=>{
         try {
             if (token) {
                 const respuesta = await clienteAxios.patch(`api/usuarios/${id}`, datos);
-                console.log(respuesta)
                 
                 
 
@@ -81,7 +80,7 @@ const UsuarioState=props=>{
         try {
 
             const response = await clienteAxios.get(`api/usuarios`);
-            console.log(response.data.usuarios)
+           
 
             dispatch({
                 type: OBTENER_USUARIOS,

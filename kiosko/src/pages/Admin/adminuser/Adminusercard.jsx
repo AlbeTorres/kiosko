@@ -1,24 +1,45 @@
-import React, {useState} from "react";
-import img from "../../../assets/noimg1.jpg";
+import React, {useState, useEffect, useContext} from "react";
+import usuarioContext from "../../../context/usuarioContext/usuarioContext";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaBars, FaExclamationCircle } from "react-icons/fa";
 
-const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg, modal}) => {
+const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg, modal,id, advertencia}) => {
 
+
+    const{usuariom, obtenerUsuario, modificarUsuario}=useContext(usuarioContext)
     const [visible, setVisible]=useState(false)
+    
     let baneado= true
     let kycnoti=false
     let rol
+    let bg='bg-white'
     isAdmin ? rol='Administrador': rol='Cliente'
+    
+    
+    const[advertencias, setAdvertencias]=useState(advertencia)
+    const ponerAdvertencia=()=>{
+      let aux = advertencias
+      if(aux<3){
+        aux=aux+1
+        setAdvertencias(aux)
+      }else{
+        aux=1
+        setAdvertencias(1)
+      }
 
-    console.log(kycimg)
-    console.log(kyc)
+      modificarUsuario(id,{advertencia:aux})
+
+  }
+    
+    advertencia===3 ? bg='bg-red-500': advertencia===2 ? bg='bg-yellow-500': bg='bg-white'
+
+    
     if(kyc===false && kycimg!==null){
         kycnoti=true
     }
 
   return (
-    <div className="flex items-center justify-between gap-2 border-b-2 border-gray-200  rounded-b-md ">
+    <div className={ `flex items-center justify-between gap-2 border-b-2 border-gray-200  rounded-b-md ${bg}`}>
       <figure className="md:w-16  md:h-16 w-14 h-14 rounded-full m-1 shadow-md relative  ">
         {kyc===true && <FaCheckCircle className="text-blue-700 rounded-full bg-white text-lg  absolute bottom-1 right-2 "/>}
         <img className="w-full h-full object-cover rounded-full" src={img} />
@@ -47,7 +68,7 @@ const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg, modal}) =
             }
             {
                 !isAdmin &&
-                    <button className="btn btn-ghost btn-xs">Advertencia</button>
+                    <button onClick={ponerAdvertencia} className="btn btn-ghost btn-xs">Advertencia</button>
             }
                     <button className="btn btn-ghost btn-xs">Ver usuario</button>
             </ul>}
@@ -60,7 +81,7 @@ const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg, modal}) =
             }
             {
                 !isAdmin &&
-                    <button className="btn btn-ghost btn-xs">Advertencia</button>
+                    <button onClick={ponerAdvertencia} className="btn btn-ghost btn-xs">Advertencia</button>
             }
                     <label htmlFor="my-modal-6" onClick={()=>(modal('adminuser'))} className="btn btn-ghost btn-xs">Ver usuario</label>   
         </div>
