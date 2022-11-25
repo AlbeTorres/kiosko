@@ -11,6 +11,7 @@ import PerfilForm from "../form/userForm/PerfilForm";
 import KycForm from "../form/userForm/KycForm";
 import PedidoView from "../pedidos/PedidoView";
 import AdminUserForm from "../form/adminform/AdminUserForm";
+import AdminKycForm from "../form/adminform/AdminKycForm";
 
 const Modal = () => {
   const { accion } = useContext(productoContext);
@@ -62,6 +63,10 @@ const Modal = () => {
         {accion?.accion === "adminuser" &&
           <div className="w-full flex items-center justify-center ">
           <AdminUserForm/>
+          </div>}
+        {accion?.accion === "validarkyc" &&
+          <div className="w-full flex items-center justify-center ">
+          <AdminKycForm/>
           </div>}
       </div>
     </div>

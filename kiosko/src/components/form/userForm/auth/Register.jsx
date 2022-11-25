@@ -33,6 +33,10 @@ const Register = () => {
     password: "",
     passwordconf: "",
     isAdmin: false,
+    kycimg:'',
+    kyc:false,
+    advertencia:1,
+    carnet:''
   });
 
   const { email, password, passwordconf, isAdmin } = usuario;
@@ -64,6 +68,9 @@ const Register = () => {
       password: "",
       passwordconf: "",
       isAdmin: false,
+      kycimg:'',
+      kyc:false,
+      advertencia:1,
     });
   };
 
@@ -93,7 +100,8 @@ const Register = () => {
       return;
     }
     eliminarMensaje();
-    registrarUsuario({ email, password, isAdmin, advertencia:1 });
+    registrarUsuario({ email, password, isAdmin, advertencia:1, kycimg:'',
+    kyc:false, carnet:''});
     setLoad(true)
 
     setUsuario({

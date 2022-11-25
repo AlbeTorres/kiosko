@@ -10,8 +10,8 @@ const AdminUser = () => {
   const{usuarios, usuariom, obtenerUsuarios, obtenerUsuario, modificarUsuario}=useContext(usuarioContext)
   const {establecerAccion}=useContext(productoContext)
 
-  const establecerAccionAux = (accion) => {
-    establecerAccion({ accion });
+  const establecerAccionAux = (id,accion) => {
+    establecerAccion({ id,accion });
     
   };
 

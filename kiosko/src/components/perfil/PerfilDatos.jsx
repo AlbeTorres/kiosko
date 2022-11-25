@@ -18,7 +18,7 @@ const PerfilDatos = ({usuario}) => {
 
   }
 
-  const {email, movil , kycimg, kyc}=usuario
+  const {email, movil , kycimg, kyc, carnet}=usuario
 
   return (
     <div className="grid w-11/12 md:grid-cols-2 md:gap-x-8 md:mt-8  md:h-full  place-items-start mx-auto max-w-2xl px-4  sm:px-6 lg:max-w-7xl lg:px-8 ">
@@ -37,6 +37,13 @@ const PerfilDatos = ({usuario}) => {
         <p className="ml-1">Móvil</p>
       </div>
       <p className="ml-5">{movil}</p>
+    </div>
+    <div className="border-b w-full my-4     ">
+      <div className="flex items-center ">
+        <FaPhoneAlt  />
+        <p className="ml-1">Carnet</p>
+      </div>
+      <p className="ml-5">{carnet}</p>
     </div>
     <div className="border-b w-full my-4     ">
       <div className="flex items-center ">

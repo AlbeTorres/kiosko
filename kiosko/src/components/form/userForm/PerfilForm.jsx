@@ -16,6 +16,7 @@ const PerfilForm = () => {
     nombre: "",
     email: "",
     movil: "",
+    carnet:''
   });
 
   let auxnombre = 0;
@@ -35,6 +36,7 @@ const PerfilForm = () => {
         nombre: usuario.nombre,
         email: usuario.email,
         movil: usuario.movil,
+        carnet:usuario?.carnet
       });
     }
   }
@@ -46,7 +48,7 @@ const PerfilForm = () => {
     usuarioAutenticado();
   }, [eso]);
 
-const {nombre, perfilimg, email, movil}=usuariostate
+const {nombre, perfilimg, email, movil, carnet}=usuariostate
 
 
   const addImgPerfil=(img, idimg)=>{
@@ -78,6 +80,7 @@ const onSubmit=()=>{
     nombre: "",
     email: "",
     movil: "",
+    carnet:''
   })
 
 }
@@ -128,6 +131,19 @@ const onSubmit=()=>{
             type="text"
             name="movil"
             value={movil}
+            onChange={onChange}
+            placeholder="Escribe aquí"
+            className="input input-bordered w-full max-w-xs"
+          />
+      </div>
+      <div>
+          <label className="label">
+            <span className="label-text">Carnet</span>
+          </label>
+          <input
+            type="number"
+            name="carnet"
+            value={carnet}
             onChange={onChange}
             placeholder="Escribe aquí"
             className="input input-bordered w-full max-w-xs"

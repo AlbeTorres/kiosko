@@ -34,7 +34,7 @@ const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg, modal,id,
     advertencia===3 ? bg='bg-red-500': advertencia===2 ? bg='bg-yellow-500': bg='bg-white'
 
     
-    if(kyc===false && kycimg!==null){
+    if(kyc===false && kycimg!==''){
         kycnoti=true
     }
 
@@ -77,7 +77,7 @@ const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg, modal,id,
         <div className=" hidden md:grid md:grid-cols-4 ">
         {
                 !isAdmin &&
-                    <button className="btn btn-ghost btn-xs">Activar kyc</button>
+                    <label htmlFor="my-modal-6" onClick={()=>(modal(id,'validarkyc'))} className="btn btn-ghost btn-xs">Activar kyc</label>
             }
             {
                 !isAdmin &&
