@@ -45,7 +45,7 @@ const NavMenuContainerOut = () => {
         <div className="flex flex-col justify-center  ">
           <li className="my-3 ml-2 w-full block">
             <label
-            className="w-full"
+            className="w-full block"
               htmlFor="my-modal-6"
               onClick={() => establecerAccionAux("login")}
             >
@@ -54,7 +54,7 @@ const NavMenuContainerOut = () => {
           </li>
           <li className="my-3 ml-2 w-full block">
             <label
-            className="w-full"
+            className="w-full block"
               htmlFor="my-modal-6"
               onClick={() => establecerAccionAux("registro")}
             >

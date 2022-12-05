@@ -18,8 +18,8 @@ const Modal = () => {
 
   return (
     <div>
-      <input type="checkbox" id="my-modal-6" className="modal-toggle overflow-y-auto" />
-      <div className="modal modal-bottom sm:modal-middle">
+      <input type="checkbox" id="my-modal-6" className="modal-toggle " />
+      <div className="modal ">
         {accion?.accion === "crearproducto" &&
           <div className="w-full flex items-center justify-center ">
           <CrearProducto/>

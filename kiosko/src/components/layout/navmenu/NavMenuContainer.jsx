@@ -30,12 +30,13 @@ const NavMenuContainer = () => {
       >
         <div className="flex flex-col justify-center " >
           <li className="my-3 ml-2">
-            <Link to={'/perfil'} >Perfil</Link>
+            <Link className="w-full block" to={'/perfil'} >Perfil</Link>
           </li>
           {usuario?.isAdmin ? (
             <div>
               <li className="my-3 ml-2">
                 <label
+                className="w-full block"
                   htmlFor="my-modal-6"
                   onClick={() => establecerAccionAux("crearproducto")}
                 >
@@ -48,7 +49,7 @@ const NavMenuContainer = () => {
           )}
 
           <li className="my-3 ml-2">
-            <button onClick={cerrarSesion}>Cerrar Sesión</button>
+            <button className="w-full " onClick={cerrarSesion}>Cerrar Sesión</button>
           </li>
         </div>
       </ul>
