@@ -23,9 +23,9 @@ const PerfilNav = ({usuario}) => {
         </div>
         <div className="grid place-items-center md:flex md:justify-center md:items-center md:flex-row-reverse">
         <div className="avatar">
-          <div className="w-24 md:w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={perfilimg ? perfilimg: img1} />
-          </div>
+          <figure className="w-24 h-24 md:h-12 md:w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <img src={perfilimg ? perfilimg: img1} className='h-full w-full object-cover rounded-full' />
+          </figure>
         </div>
         <div className="my-2 md:w-44   ">
           <p>{nombre}</p>

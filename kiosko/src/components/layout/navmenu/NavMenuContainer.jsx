@@ -20,15 +20,15 @@ const NavMenuContainer = () => {
   return (
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img src={usuario?.perfilimg ? usuario.perfilimg: noimg} />
-        </div>
+        <figure className="w-10 h-10 rounded-full">
+          <img src={usuario?.perfilimg ? usuario.perfilimg: noimg} className='h-full w-full object-cover rounded-full' />
+        </figure>
       </label>
       <ul
         tabIndex={0}
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
       >
-        <div >
+        <div className="h-fit" >
           <li className="my-1">
             <Link to={'/perfil'} >Perfil</Link>
           </li>
