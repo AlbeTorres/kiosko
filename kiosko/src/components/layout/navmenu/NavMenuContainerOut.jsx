@@ -42,7 +42,7 @@ const NavMenuContainerOut = () => {
         tabIndex={0}
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 h-fit"
       >
-        <div className="h-full ">
+        <div className="flex flex-col justify-center  ">
           <li className="my-3 ml-2 w-full">
             <label
             className="w-full"
