@@ -30,13 +30,13 @@ const NavMenuContainer = () => {
       >
         <div className="flex flex-col justify-center " >
           <li className="my-3 ml-2">
-            <Link className="w-full block text-center" to={'/perfil'} >Perfil</Link>
+            <Link className=" block" to={'/perfil'} >Perfil</Link>
           </li>
           {usuario?.isAdmin ? (
             <div>
               <li className="my-3 ml-2">
                 <label
-                className="w-full block text-center"
+                className=" block "
                   htmlFor="my-modal-6"
                   onClick={() => establecerAccionAux("crearproducto")}
                 >
