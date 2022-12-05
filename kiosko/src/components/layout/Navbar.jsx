@@ -19,12 +19,12 @@ const Navbar = ({pedidos, autenticado, usuario}) => {
 
   
   return (
-    <div className=" bg-base-100 w-full flex items-center min-h-6 my-3">
+    <div className=" bg-base-100 w-full flex items-center min-h-6 my-3 relative">
       <div className="flex-1 flex items-center">
         <FaShoppingCart className="text-xl" />
         <a className="normal-case text-xl ml-1 "> Kiosquito</a>
       </div>
-      <div className="flex items-center gap-1">
+      <div className="flex items-center justify-between gap-1">
        <Busqueda/>
 
        {usuario?.isAdmin && <NavNotificacion/>}
