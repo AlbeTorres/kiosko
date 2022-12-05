@@ -40,10 +40,10 @@ const NavMenuContainerOut = () => {
       </label>
       <ul
         tabIndex={0}
-        className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+        className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 h-fit"
       >
-        <div className="grid grid-rows-2 gap-x-2 ">
-          <li className="my-1">
+        <div className="h-full ">
+          <li className="mb-5">
             <label
               htmlFor="my-modal-6"
               onClick={() => establecerAccionAux("login")}
@@ -51,7 +51,7 @@ const NavMenuContainerOut = () => {
               Login
             </label>
           </li>
-          <li className="my-1">
+          <li className="">
             <label
               htmlFor="my-modal-6"
               onClick={() => establecerAccionAux("registro")}
