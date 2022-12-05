@@ -29,12 +29,12 @@ const NavMenuContainer = () => {
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
       >
         <div className="h-fit" >
-          <li className="my-1">
+          <li className="my-3 ml-2">
             <Link to={'/perfil'} >Perfil</Link>
           </li>
           {usuario?.isAdmin ? (
             <div>
-              <li className="my-1">
+              <li className="my-3 ml-2">
                 <label
                   htmlFor="my-modal-6"
                   onClick={() => establecerAccionAux("crearproducto")}
@@ -47,7 +47,7 @@ const NavMenuContainer = () => {
             null
           )}
 
-          <li className="my-1">
+          <li className="my-3 ml-2">
             <button onClick={cerrarSesion}>Cerrar Sesión</button>
           </li>
         </div>
