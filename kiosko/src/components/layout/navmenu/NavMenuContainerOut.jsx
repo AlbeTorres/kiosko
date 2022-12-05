@@ -43,7 +43,7 @@ const NavMenuContainerOut = () => {
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 h-fit"
       >
         <div className="flex flex-col justify-center  ">
-          <li className="my-3 ml-2 w-full">
+          <li className="my-3 ml-2 w-full block">
             <label
             className="w-full"
               htmlFor="my-modal-6"
@@ -52,7 +52,7 @@ const NavMenuContainerOut = () => {
               Login
             </label>
           </li>
-          <li className="my-3 ml-2 w-full">
+          <li className="my-3 ml-2 w-full block">
             <label
             className="w-full"
               htmlFor="my-modal-6"
