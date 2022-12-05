@@ -32,7 +32,7 @@ const Navbar = ({pedidos, autenticado, usuario}) => {
        {usuario?._id!=='' && pedidos.length!==0 && !usuario?.isAdmin &&
        <NavPedido/>}
         
-       {usuario?._id!=='' && !usuario?.isAdmin && 
+       { !usuario?.isAdmin && 
         <NavCarrito />}
 
         {autenticado ? (

@@ -25,7 +25,7 @@ const Login = () => {
         mostrarAlerta(mensaje.msg, mensaje.categoria);
       }
 
-      if(autenticado){
+      if(autenticado || mensaje?.msg==='No existe un usuario registrado con ese email' || mensaje?.msg==='La contraseña no es correcta'){
         setLoad(false)
       }
       
