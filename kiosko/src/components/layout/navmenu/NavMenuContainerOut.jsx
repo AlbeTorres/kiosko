@@ -43,7 +43,7 @@ const NavMenuContainerOut = () => {
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 h-fit"
       >
         <div className="h-full ">
-          <li className="mb-5">
+          <li className="m-2">
             <label
               htmlFor="my-modal-6"
               onClick={() => establecerAccionAux("login")}
@@ -51,7 +51,7 @@ const NavMenuContainerOut = () => {
               Login
             </label>
           </li>
-          <li className="">
+          <li className="m-2">
             <label
               htmlFor="my-modal-6"
               onClick={() => establecerAccionAux("registro")}
