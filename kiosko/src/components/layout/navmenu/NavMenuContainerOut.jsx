@@ -14,7 +14,7 @@ const NavMenuContainerOut = () => {
     <div>
 
     <ul className="md:menu md:menu-horizontal p-0 hidden  ">
-                <li >
+                <li className="">
                 <label
                     htmlFor="my-modal-6"
                     onClick={() => establecerAccionAux("login")}
@@ -22,7 +22,7 @@ const NavMenuContainerOut = () => {
                     Login
                     </label>
                 </li>
-                <li>
+                <li className="ml-1">
                 <label
                     htmlFor="my-modal-6"
                     onClick={() => establecerAccionAux("registro")}
@@ -42,7 +42,7 @@ const NavMenuContainerOut = () => {
         tabIndex={0}
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
       >
-        <div className="h-fit">
+        <div className="h-20">
           <li className="my-1">
             <label
               htmlFor="my-modal-6"
