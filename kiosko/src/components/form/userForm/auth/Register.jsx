@@ -23,7 +23,7 @@ const Register = () => {
       mostrarAlerta(mensaje.msg, mensaje.categoria);
     }
 
-    if(autenticado){
+    if(autenticado || mensaje?.msg==='El usuario ya existe'){
       setLoad(false)
     }
   }, [autenticado,mensaje]);
