@@ -42,7 +42,7 @@ const NavMenuContainerOut = () => {
         tabIndex={0}
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
       >
-        <div className="h-20">
+        <div className="grid grid-rows-2 gap-x-2 ">
           <li className="my-1">
             <label
               htmlFor="my-modal-6"
