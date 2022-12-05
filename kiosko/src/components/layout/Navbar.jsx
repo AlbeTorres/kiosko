@@ -29,10 +29,10 @@ const Navbar = ({pedidos, autenticado, usuario}) => {
 
        {usuario?.isAdmin && <NavNotificacion/>}
 
-       {usuario && pedidos.length!==0 && !usuario?.isAdmin &&
+       {usuario?._id!=='' && pedidos.length!==0 && !usuario?.isAdmin &&
        <NavPedido/>}
         
-       {usuario && !usuario?.isAdmin && 
+       {usuario?._id!=='' && !usuario?.isAdmin && 
         <NavCarrito />}
 
         {autenticado ? (
