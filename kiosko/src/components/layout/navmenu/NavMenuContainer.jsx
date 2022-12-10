@@ -29,7 +29,7 @@ const NavMenuContainer = () => {
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
       >
         <div className="flex flex-col justify-center " >
-          <li className="my-3 ml-2">
+          <li className="my-3 ml-2  text-center">
             <Link className=" block" to={'/perfil'} >Perfil</Link>
           </li>
           {usuario?.isAdmin ? (
