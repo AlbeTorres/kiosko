@@ -19,7 +19,7 @@ const Navbar = ({pedidos, autenticado, usuario}) => {
 
   
   return (
-    <div className=" bg-base-100 w-full flex items-center min-h-6 my-3 relative">
+    <div className=" bg-base-100 fixed top-0  w-full flex items-center min-h-6 my-3 ">
       <div className="flex-1 flex items-center">
         <FaShoppingCart className="text-xl" />
         <a className="normal-case text-xl ml-1 "> Kiosquito</a>
