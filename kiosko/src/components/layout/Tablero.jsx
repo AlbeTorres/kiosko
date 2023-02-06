@@ -32,7 +32,7 @@ const Tablero = ({productos, usuario, busqueda}) => {
       }
 
   return (
-    <div className="my-10 mt-20 w-full">
+    <div className="mt-36   my-10 md:mt-20 w-full">
       <div className="w-full">
         <h2 className="text-2xl py-4 ">Productos</h2>
 

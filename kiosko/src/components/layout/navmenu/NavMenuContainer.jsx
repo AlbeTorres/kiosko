@@ -29,12 +29,12 @@ const NavMenuContainer = () => {
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
       >
         <div className="flex flex-col justify-center " >
-          <li className="my-3 ml-2  text-center">
-            <Link className=" block" to={'/perfil'} >Perfil</Link>
+          <li className="my-3 md:my-1 ml-2 ">
+            <Link className=" " to={'/perfil'} >Perfil</Link>
           </li>
           {usuario?.isAdmin ? (
             <div>
-              <li className="my-3 ml-2">
+              <li className="my-3 md:my-1 ml-2">
                 <label
                 className=" block "
                   htmlFor="my-modal-6"

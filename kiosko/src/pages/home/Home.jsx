@@ -48,15 +48,15 @@ const Home = () => {
  
 
   return (
-    <div>
-        <HomeContainer>
+    <>
             <Navbar pedidos={pedidos} usuario={usuario} autenticado={autenticado} />
+        <HomeContainer>
             <Tablero productos={productos} usuario={usuario} busqueda={busqueda} />
             <Ubicacion/>
         </HomeContainer>
-            <Footer />
+            {/* <Footer /> */}
         <Modal />
-    </div>
+    </>
   );
 };
 
