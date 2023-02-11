@@ -64,13 +64,13 @@ const Adminusercard = ({img, email,nombre, isAdmin, carnet,kyc,kycimg, modal,id,
             <ul className="mt-3 p-2 right-2 absolute shadow bg-base-100 rounded-md grid grid-flow-row gap-2">
             {
                 !isAdmin &&
-                    <button className="btn btn-ghost btn-xs">Activar kyc</button>
+                    <label htmlFor="my-modal-6" className="btn btn-ghost btn-xs" onClick={()=>(modal(id,'validarkyc'))}>Activar kyc</label>
             }
             {
                 !isAdmin &&
                     <button onClick={ponerAdvertencia} className="btn btn-ghost btn-xs">Advertencia</button>
             }
-                    <button className="btn btn-ghost btn-xs">Ver usuario</button>
+            <label htmlFor="my-modal-6" className="btn btn-ghost btn-xs" onClick={()=>(modal(id,'adminuser'))}>Ver usuario</label>
             </ul>}
         </div> 
 

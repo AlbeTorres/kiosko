@@ -31,7 +31,7 @@ const CarroItem = ({producto, modi, eliminar}) => {
                 <img src={img} className='w-full h-full object-cover rounded-md '  alt="producto carrito"/>
             </figure>
             <div className='mx-2'>
-                <h2 className='text-xl'>{nombre}</h2>
+                <h2 className='text-md sm:text-xl truncate w-7 xs:w-14 '>{nombre}</h2>
                 <div className='flex items-center justify-center'>
                     <p className='mr-2'>{cant}<span>{medida}</span></p>
                     <p><span>$</span>{precio*cantidad}</p>

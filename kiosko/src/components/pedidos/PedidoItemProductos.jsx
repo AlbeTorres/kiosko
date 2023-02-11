@@ -4,11 +4,12 @@ const PedidoItemProductos = ({ productos }) => {
 
   let count = 0;
   let more=false
+  let cant=0
   return (
     <div className="avatar-group -space-x-6">
       {productos.map((producto, index) => {
 
-          if(count < 5){
+          if(count < 3){
             count= count +1
             return(
 
@@ -21,7 +22,7 @@ const PedidoItemProductos = ({ productos }) => {
 
           }else{
             more=true
-            count= productos.length -5
+            cant= productos.length-3
           }
       }
       )}
@@ -29,7 +30,7 @@ const PedidoItemProductos = ({ productos }) => {
       {more && 
       <div className="avatar placeholder">
         <div className="w-12 bg-neutral-focus text-neutral-content">
-          <span>{`+${count}`}</span>
+          <span>{`+${cant}`}</span>
         </div>
       </div>}
     </div>

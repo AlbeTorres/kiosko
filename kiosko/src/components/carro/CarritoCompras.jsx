@@ -77,7 +77,7 @@ const CarritoCompras = () => {
     <div className="modal-box ">
      {alerta && <div className={`bg-red-600 text-center p-2 text-white`}>{alerta.msg} </div>}
       <h2 className='my-2 text-xl'>Órdenes</h2>
-      <div className=' overflow-y-scroll h-72 p-2'>
+      <div className=' overflow-y-scroll h-72 xs:p-2'>
         {compras.length !=0 ?
           compras.map(producto=><CarroItem key={producto._id} producto={producto}  modi={modi} eliminar={eliminar} />):
           <h1>Carro vacío</h1>

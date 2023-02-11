@@ -12,11 +12,11 @@ const PedidoView = () => {
   return (
     <div className="modal-box">
       <h2 className='my-2 text-xl'>Pedidos:</h2>
-      <div className=' overflow-y-scroll h-72 p-2'>
+      <div className=' overflow-y-scroll h-72 xs:p-2'>
         {
           pedidos.map(pedido=>{
-            if(pedido.usuario===usuario?._id && pedido.estado!=='completado'){
-            return(<PedidoItem key={pedido._id} productos={pedido.productos}  pago={pedido.pago} valor={pedido.valor} estado={pedido.estado} />)}
+            if(pedido.usuario===usuario?._id && pedido.estado!=='terminado' && pedido.estado!=='cancelado'){
+            return(<PedidoItem key={pedido._id} id={pedido._id} productos={pedido.productos}  pago={pedido.pago} valor={pedido.valor} estado={pedido.estado} />)}
 
             }
             )
