@@ -1,6 +1,6 @@
 import React from "react";
 import {Routes, Route, Navigate}from 'react-router-dom'
-import AdminPedidos from "../pages/Admin/AdminPedidos";
+import AdminPedidos from "../pages/Admin/adminpedidos/AdminPedidos";
 import AdminUser from "../pages/Admin/adminuser/AdminUser";
 import Home from "../pages/home/Home";
 import Paymen from "../pages/paymen/Paymen";

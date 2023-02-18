@@ -1,8 +1,10 @@
 import React from 'react'
 import {FaBell} from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 const NavNotificacion = () => {
    
+  const history= useNavigate();
     let monto = 0
   
    
@@ -26,7 +28,7 @@ const NavNotificacion = () => {
           className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
         >
           <div className="card-body">
-          <div className=' flex items-center  justify-start my-1 cursor-pointer hover:bg-slate-100 p-2 rounded-md '>
+          <div onClick={()=>history('/adminpedido')} className=' flex items-center  justify-start my-1 cursor-pointer hover:bg-slate-100 p-2 rounded-md '>
             <span className="font-bold text-lg">{ pedidos > 1 ? 'nuevos pedidos' : 'nuevo pedido' } </span>
             <span className="text-info">{pedidos} </span>
           </div>

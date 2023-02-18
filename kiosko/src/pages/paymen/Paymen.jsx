@@ -59,7 +59,6 @@ const Paymen = () => {
 
   const onChecked=e=>{
 
-    console.log('check')
       setFactura({
         ...factura,
         [e.target.name]:e.currentTarget.checked
