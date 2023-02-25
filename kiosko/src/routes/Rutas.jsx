@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import PedidoDetails from "../components/pedidos/PedidoDetails";
 import AdminPedidos from "../pages/Admin/adminpedidos/AdminPedidos";
 import AdminUser from "../pages/Admin/adminuser/AdminUser";
 import Home from "../pages/home/Home";
@@ -19,6 +20,7 @@ const Rutas = () => {
         <Route exact path="/perfil" element={<Perfil />} />
         <Route exact path="/adminuser" element={<AdminUser />} />
         <Route exact path="/adminpedido" element={<AdminPedidos />} />
+        <Route exact path='/pedido:id' element={<PedidoDetails/>}/>
       </Route>
     </Routes>
   );

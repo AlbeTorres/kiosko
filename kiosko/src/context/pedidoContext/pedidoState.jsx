@@ -50,11 +50,11 @@ const PedidoState = (props) => {
 
     try {
       const response = await clienteAxios.get("api/pedidos/");
-
-      const pedido = response.data.pedido.filter(
+      const pedido = response.data.pedidos.filter(
         (pedido) => pedido._id === id
-      );
-
+        );
+        
+        console.log(pedido)
       dispatch({
         type: OBTENER_PEDIDO_BY_ID,
         payload: pedido[0],

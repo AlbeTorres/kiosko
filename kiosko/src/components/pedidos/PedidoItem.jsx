@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import PedidoItemProductos from "./PedidoItemProductos";
 import authContext from "../../context/authContext/authContext";
 import pedidoContext from "../../context/pedidoContext/pedidoContext";
+import {Link} from 'react-router-dom'
 
 import { FaTrashAlt, FaCheck, FaCheckDouble } from "react-icons/fa";
 
@@ -52,6 +53,7 @@ const PedidoItem = ({id, productos, valor, pago, estado, pedido, cancelar,enviar
            
         {usuario?.isAdmin ? null: <p>{pedidostate}</p>}
           </div>
+          {usuario?.isAdmin && <Link to={`/pedido${id}`}> <p>{id}</p> </Link>}
         </div>
       </div>
       
