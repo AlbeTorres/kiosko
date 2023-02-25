@@ -5,7 +5,7 @@ import pedidoContext from "../../context/pedidoContext/pedidoContext";
 
 import { FaTrashAlt, FaCheck, FaCheckDouble } from "react-icons/fa";
 
-const PedidoItem = ({id, productos, valor, pago, estado }) => {
+const PedidoItem = ({id, productos, valor, pago, estado, pedido, cancelar,enviar, terminar, type }) => {
   const { usuario, usuarioAutenticado } = useContext(authContext);
   const { modificarPedido } = useContext(pedidoContext);
 
@@ -16,9 +16,26 @@ const PedidoItem = ({id, productos, valor, pago, estado }) => {
   },[])
 
 
-  const handleEditPedido=(estado)=>{
+  const handleCancelarPedido=(estado)=>{
     modificarPedido(id,{estado})
     setPedidoState(estado)
+
+    if(usuario?.isAdmin){
+
+      cancelar(id, pedido)
+    }
+  }
+  const handleTerminarPedido=(estado)=>{
+    modificarPedido(id,{estado})
+    setPedidoState(estado)
+    if(usuario?.isAdmin){
+    terminar(id, pedido)}
+  }
+  const handleEnviarPedido=(estado)=>{
+    modificarPedido(id,{estado})
+    setPedidoState(estado)
+    if(usuario?.isAdmin){
+    enviar(id, pedido)}
   }
 
   return (
@@ -32,26 +49,36 @@ const PedidoItem = ({id, productos, valor, pago, estado }) => {
               <span>{valor}</span>
             </p>
             <p className="mr-2">{pago}</p>
-            <p>{pedidostate}</p>
+           
+        {usuario?.isAdmin ? null: <p>{pedidostate}</p>}
           </div>
         </div>
       </div>
       
         {usuario?.isAdmin ? (
           <div className="flex items-center justify-end text-2xl w-1/2 mr-5 space-x-4 lg:space-x-7 ">
-          <button onClick={()=>handleEditPedido('cancelado')} className="text-red-600 w-5 h-5 ">
+          {
+            type!=='cancelado' && <button onClick={()=>handleCancelarPedido('cancelado')} className="text-red-600 w-5 h-5 ">
             <FaTrashAlt className="w-full h-full" />
           </button>
-          <button onClick={()=>handleEditPedido('terminado')} className="text-blue-600 w-5 h-5">
+          }
+          
+          {
+            type!=='terminado' &&
+          <button onClick={()=>handleTerminarPedido('terminado')} className="text-blue-600 w-5 h-5">
             <FaCheckDouble className="w-full h-full" />
           </button>
-          <button onClick={()=>handleEditPedido('enviado')} className="text-green-600 w-5 h-5">
+          }
+          {
+            type !=='enviado' &&
+          <button onClick={()=>handleEnviarPedido('enviado')} className="text-green-600 w-5 h-5">
             <FaCheck className="w-full h-full" />
           </button>
+          }
           </div>
         ) : (
           <div className="flex items-center justify-end text-2xl w-1/2 mr-5 ">
-          <button onClick={()=>handleEditPedido('cancelado')} className="text-red-600 w-5 h-5">
+          <button onClick={()=>handleCancelarPedido('cancelado')} className="text-red-600 w-5 h-5">
             <FaTrashAlt className="w-full h-full" />
           </button>
           </div>
