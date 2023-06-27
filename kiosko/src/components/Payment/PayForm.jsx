@@ -73,7 +73,7 @@ const PayForm = ({direccion, pago, receptor, movil,onChange,onChecked, onSubmit,
             <span className="label-text">Efectivo</span>
           </label>
         </div>
-        <div className="form-control mb-5 ">
+        {/* <div className="form-control mb-5 ">
           <label className="flex items-center cursor-pointer   w-24 ">
             <input
             onChange={onChange}
@@ -86,7 +86,7 @@ const PayForm = ({direccion, pago, receptor, movil,onChange,onChecked, onSubmit,
             />
             <span className="label-text ">Transfermóvil</span>
           </label>
-        </div>
+        </div> */}
         <div className=" mt-5 grid grid-cols-2 place-items-center gap-2   ">
           <button onClick={cancelar} className="btn w-full ">Cancelar</button>
           <button onClick={onSubmit} className="btn btn-primary w-full ">Crear pedido</button>

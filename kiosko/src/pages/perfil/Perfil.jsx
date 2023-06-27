@@ -17,7 +17,6 @@ useEffect(()=>{
   
   return (
     <div>
-    <PerfilNav usuario={usuario}/>
     <PerfilDatos usuario={usuario}/>
     <Modal/>
       
