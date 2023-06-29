@@ -6,31 +6,41 @@ import { socket } from "../../config/socket";
 import authContext from "../../context/authContext/authContext";
 
 import productoContext from "../../context/productoContext/productoContext";
+import { useAllProducts } from "../../hooks/product.hook";
+
 
 const Home = () => {
-  const { busqueda, productos, obtenerProductos } = useContext(productoContext);
+  const { busqueda } = useContext(productoContext);
   const { usuario } = useContext(authContext);
 
   const token = localStorage.getItem("token");
+
+  const { data: products, isSuccess, refetch } = useAllProducts();
+
+  console.log(products);
 
   useEffect(() => {
     socket.on("hello", (msg) => {});
 
     socket.on("newpedido", (msg) => {
-      obtenerPedidos();
+      refetch();
     });
 
     socket.on("cambioestado", () => {
-      obtenerProductos();
+      refetch();
     });
-
-    obtenerProductos();
   }, [token]);
 
   return (
     <>
       <HomeContainer>
-        <Tablero productos={productos} usuario={usuario} busqueda={busqueda} />
+        {isSuccess && (
+          <Tablero
+            productos={products.productos}
+            usuario={usuario}
+            busqueda={busqueda}
+          />
+        )}
         {/* <Ubicacion /> */}
       </HomeContainer>
       {/* <Footer /> */}

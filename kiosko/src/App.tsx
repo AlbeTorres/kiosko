@@ -7,10 +7,8 @@ import PedidoState from "./context/pedidoContext/pedidoState.jsx";
 import tokenAuth from "./config/tokenAuth";
 import "./index.css";
 import UsuarioState from "./context/usuarioContext/usuarioState";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/layout/Navbar";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 const token = localStorage.getItem("token");
 if (token) {
@@ -18,21 +16,17 @@ if (token) {
 }
 
 function App() {
-  const queryClient = new QueryClient();
   return (
     <UsuarioState>
       <PedidoState>
         <ProductoState>
           <AuthState>
             <AlertaState>
-              <QueryClientProvider client={queryClient}>
-                <Router>
-                  <ToastContainer />
-                  <Navbar>
-                    <Rutas />
-                  </Navbar>
-                </Router>
-              </QueryClientProvider>
+              <Router>
+                <Navbar>
+                  <Rutas />
+                </Navbar>
+              </Router>
             </AlertaState>
           </AuthState>
         </ProductoState>

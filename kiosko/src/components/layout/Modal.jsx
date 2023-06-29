@@ -17,7 +17,7 @@ const Modal = () => {
   const { accion } = useContext(productoContext);
 
   return (
-    <div>
+    <>
       <input type="checkbox" id="my-modal-6" className="modal-toggle " />
       <div className="modal ">
         {accion?.accion === "crearproducto" &&
@@ -69,7 +69,7 @@ const Modal = () => {
           <AdminKycForm/>
           </div>}
       </div>
-    </div>
+    </>
   );
 };
 

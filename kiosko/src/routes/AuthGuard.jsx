@@ -1,18 +1,21 @@
-import React,{ useContext, useEffect } from 'react';
-import { Outlet, Navigate } from 'react-router-dom';
-import authContext from '../context/authContext/authContext';
+import React, { useContext, useEffect } from "react";
+import { Outlet, Navigate } from "react-router-dom";
+import authContext from "../context/authContext/authContext";
+import { useProfile } from "../hooks/profile.hook";
 
 const AuthGuard = () => {
-    const AuxAuthContext= useContext(authContext);
-    const {autenticado, usuarioAutenticado}= AuxAuthContext;
+  const AuxAuthContext = useContext(authContext);
+  const { autenticado, usuarioAutenticado } = AuxAuthContext;
 
-    useEffect(()=>{
-        usuarioAutenticado()
-        
-        
-       },[ ]);
+  const { data: profile, isSuccess } = useProfile();
 
-  return  autenticado ? <Outlet/> : <Navigate replace to={'/'}/>
-}
+  console.log(profile)
 
-export default AuthGuard
+  useEffect(() => {
+    usuarioAutenticado();
+  }, []);
+
+  return autenticado ? <Outlet /> : <Navigate replace to={"/"} />;
+};
+
+export default AuthGuard;
