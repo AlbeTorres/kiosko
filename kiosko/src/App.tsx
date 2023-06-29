@@ -9,6 +9,7 @@ import "./index.css";
 import UsuarioState from "./context/usuarioContext/usuarioState";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/layout/Navbar";
+import { Toaster } from "react-hot-toast";
 
 const token = localStorage.getItem("token");
 if (token) {
@@ -25,6 +26,7 @@ function App() {
               <Router>
                 <Navbar>
                   <Rutas />
+                  <Toaster position="top-right" />
                 </Navbar>
               </Router>
             </AlertaState>

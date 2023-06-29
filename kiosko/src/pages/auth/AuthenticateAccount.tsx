@@ -11,7 +11,7 @@ const AuthenticateAccount = () => {
 
   useEffect(() => {
     if (profile?.usuario?.isVerified) {
-      navigate(`/`);
+      navigate(`/${true}`);
     }
   }, [profile]);
 

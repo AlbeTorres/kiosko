@@ -7,19 +7,22 @@ import authContext from "../../context/authContext/authContext";
 
 import productoContext from "../../context/productoContext/productoContext";
 import { useAllProducts } from "../../hooks/product.hook";
-
+import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Home = () => {
   const { busqueda } = useContext(productoContext);
   const { usuario } = useContext(authContext);
+  const { verificado } = useParams();
 
   const token = localStorage.getItem("token");
 
   const { data: products, isSuccess, refetch } = useAllProducts();
 
-  console.log(products);
-
   useEffect(() => {
+    if (verificado) {
+      toast.success("Usuario verificado");
+    }
     socket.on("hello", (msg) => {});
 
     socket.on("newpedido", (msg) => {
