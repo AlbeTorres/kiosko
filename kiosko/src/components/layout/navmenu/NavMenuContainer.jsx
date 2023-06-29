@@ -28,7 +28,7 @@ const NavMenuContainer = () => {
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
       >
         <div className="flex flex-col justify-center ">
-          {location.pathname === "/" && (
+          {location.pathname !== "/perfil" && (
             <li className="my-3 md:my-1 ml-2 ">
               <Link className=" " to={"/perfil"}>
                 Perfil

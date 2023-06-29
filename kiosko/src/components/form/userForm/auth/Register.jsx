@@ -3,12 +3,11 @@ import productoContext from "../../../../context/productoContext/productoContext
 import authContext from "../../../../context/authContext/authContext";
 import alertaContext from "../../../../context/alertaContext/alertaContext";
 import { FaCheckCircle, FaEye } from "react-icons/fa";
-import './auth.css'
+import "./auth.css";
 
 const Register = () => {
-
-  let visible = useRef()
-  let visible2 = useRef()
+  let visible = useRef();
+  let visible2 = useRef();
   const { establecerAccion } = useContext(productoContext);
 
   const { autenticado, mensaje, registrarUsuario, eliminarMensaje } =
@@ -16,30 +15,31 @@ const Register = () => {
 
   const { alerta, mostrarAlerta } = useContext(alertaContext);
 
-  const [load, setLoad]=useState(false)
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
     if (mensaje) {
       mostrarAlerta(mensaje.msg, mensaje.categoria);
     }
 
-    if(autenticado || mensaje?.msg==='El usuario ya existe'){
-      setLoad(false)
+    if (autenticado || mensaje?.msg === "El usuario ya existe") {
+      setLoad(false);
     }
-  }, [autenticado,mensaje]);
+  }, [autenticado, mensaje]);
 
   const [usuario, setUsuario] = useState({
+    name: "",
     email: "",
     password: "",
     passwordconf: "",
     isAdmin: false,
-    kycimg:'',
-    kyc:false,
-    advertencia:1,
-    carnet:''
+    kycimg: "",
+    kyc: false,
+    advertencia: 1,
+    carnet: "",
   });
 
-  const { email, password, passwordconf, isAdmin } = usuario;
+  const { name, email, password, passwordconf, isAdmin } = usuario;
 
   const onChange = (e) => {
     setUsuario({
@@ -48,13 +48,14 @@ const Register = () => {
     });
   };
 
-  const see=()=>{
-
-    visible.current.type=='password' ? visible.current.type='text': visible.current.type='password'
-    visible2.current.type=='password' ? visible2.current.type='text': visible2.current.type='password'
-
-
-  }
+  const see = () => {
+    visible.current.type == "password"
+      ? (visible.current.type = "text")
+      : (visible.current.type = "password");
+    visible2.current.type == "password"
+      ? (visible2.current.type = "text")
+      : (visible2.current.type = "password");
+  };
 
   const establecerAccionAux = (accion) => {
     eliminarMensaje();
@@ -64,23 +65,23 @@ const Register = () => {
   const eliminarM = () => {
     eliminarMensaje();
     setUsuario({
+      name: "",
       email: "",
       password: "",
       passwordconf: "",
       isAdmin: false,
-      kycimg:'',
-      kyc:false,
-      advertencia:1,
+      kycimg: "",
+      kyc: false,
+      advertencia: 1,
     });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log("registrar");
-
     //validar campos vacios
     if (
+      name.trim === "" ||
       email.trim() === "" ||
       password.trim() === "" ||
       passwordconf.trim() === ""
@@ -100,11 +101,20 @@ const Register = () => {
       return;
     }
     eliminarMensaje();
-    registrarUsuario({ email, password, isAdmin, advertencia:1, kycimg:'',
-    kyc:false, carnet:''});
-    setLoad(true)
+    registrarUsuario({
+      name,
+      email,
+      password,
+      isAdmin: email === "albertocorreoficial@gmail.com",
+      advertencia: 1,
+      kycimg: "",
+      kyc: false,
+      carnet: "",
+    });
+    setLoad(true);
 
     setUsuario({
+      name: "",
       email: "",
       password: "",
       passwordconf: "",
@@ -120,12 +130,11 @@ const Register = () => {
         </div>
       )}
 
-      {load ? <div className="w-full h-full flex items-center justify-center bg-gray-200 ">
-              <div className="lds-dual-ring"></div>
-            </div>
-    
-    
-    : autenticado ? (
+      {load ? (
+        <div className="w-full h-full flex items-center justify-center bg-gray-200 ">
+          <div className="lds-dual-ring"></div>
+        </div>
+      ) : autenticado ? (
         <div className="card-body">
           <div className="flex items-center text-xl text-center justify-center">
             <FaCheckCircle className="text-green-600" />
@@ -137,6 +146,19 @@ const Register = () => {
         </div>
       ) : (
         <div className="card-body">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Nombre</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Nombre"
+              name="name"
+              value={name}
+              onChange={onChange}
+              className="input input-bordered"
+            />
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -163,9 +185,7 @@ const Register = () => {
               onChange={onChange}
               className="input input-bordered "
             />
-           
 
-           
             <label className="label">
               <span className="label-text">Repeat Password</span>
             </label>
@@ -186,10 +206,12 @@ const Register = () => {
               >
                 Ya tienes una cuenta?
               </label>
-              <label onClick={see} className=" label label-text-alt link link-hover ">
-              Ver contraseña
+              <label
+                onClick={see}
+                className=" label label-text-alt link link-hover "
+              >
+                Ver contraseña
               </label>
-
             </div>
           </div>
           <div className="form-control mt-6">
