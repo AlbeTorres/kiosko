@@ -28,7 +28,7 @@ const Register = () => {
   }, [autenticado, mensaje]);
 
   const [usuario, setUsuario] = useState({
-    name: "",
+    nombre: "",
     email: "",
     password: "",
     passwordconf: "",
@@ -39,7 +39,7 @@ const Register = () => {
     carnet: "",
   });
 
-  const { name, email, password, passwordconf, isAdmin } = usuario;
+  const { nombre, email, password, passwordconf, isAdmin } = usuario;
 
   const onChange = (e) => {
     setUsuario({
@@ -65,7 +65,7 @@ const Register = () => {
   const eliminarM = () => {
     eliminarMensaje();
     setUsuario({
-      name: "",
+      nombre: "",
       email: "",
       password: "",
       passwordconf: "",
@@ -81,7 +81,7 @@ const Register = () => {
 
     //validar campos vacios
     if (
-      name.trim === "" ||
+      nombre.trim === "" ||
       email.trim() === "" ||
       password.trim() === "" ||
       passwordconf.trim() === ""
@@ -102,7 +102,7 @@ const Register = () => {
     }
     eliminarMensaje();
     registrarUsuario({
-      name,
+      nombre,
       email,
       password,
       isAdmin: email === "albertocorreoficial@gmail.com",
@@ -114,7 +114,7 @@ const Register = () => {
     setLoad(true);
 
     setUsuario({
-      name: "",
+      nombre: "",
       email: "",
       password: "",
       passwordconf: "",
@@ -154,7 +154,7 @@ const Register = () => {
               type="text"
               placeholder="Nombre"
               name="name"
-              value={name}
+              value={nombre}
               onChange={onChange}
               className="input input-bordered"
             />
