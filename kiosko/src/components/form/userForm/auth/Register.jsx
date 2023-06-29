@@ -153,7 +153,7 @@ const Register = () => {
             <input
               type="text"
               placeholder="Nombre"
-              name="name"
+              name="nombre"
               value={nombre}
               onChange={onChange}
               className="input input-bordered"
