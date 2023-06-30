@@ -68,6 +68,14 @@ const Modal = () => {
           <div className="w-full flex items-center justify-center ">
           <AdminKycForm/>
           </div>}
+        {accion?.accion === "recoverypasswordemail" &&
+          <div className="w-full flex items-center justify-center ">
+          <AdminKycForm/>
+          </div>}
+        {accion?.accion === "recoverypasswordcode" &&
+          <div className="w-full flex items-center justify-center ">
+          <AdminKycForm/>
+          </div>}
       </div>
     </>
   );
