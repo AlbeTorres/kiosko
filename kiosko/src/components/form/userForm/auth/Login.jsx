@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import authContext from "../../../../context/authContext/authContext";
 import alertaContext from "../../../../context/alertaContext/alertaContext";
-import productoContext from "../../../../context/productoContext/productoContext"
+import productoContext from "../../../../context/productoContext/productoContext";
 import { FaCheckCircle } from "react-icons/fa";
 import "./auth.css";
 
@@ -14,9 +14,7 @@ const Login = () => {
     eliminarMensaje,
   } = useContext(authContext);
   const { alerta, mostrarAlerta } = useContext(alertaContext);
-  const {
-    establecerAccion,
-  } = useContext(productoContext);
+  const { establecerAccion } = useContext(productoContext);
 
   let visible = useRef();
 
@@ -85,9 +83,9 @@ const Login = () => {
     });
   };
 
-  const hanldeForgotPass=()=>{
+  const hanldeForgotPass = () => {
     establecerAccion({ accion: "recoverypasswordemail" });
-  }
+  };
   return (
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       {alerta && (
@@ -140,7 +138,10 @@ const Login = () => {
             />
             <div className="w-full flex items-center justify-between">
               <label className="label">
-                <button onClick={hanldeForgotPass} className="label-text-alt link link-hover">
+                <button
+                  onClick={hanldeForgotPass}
+                  className="label-text-alt link link-hover"
+                >
                   Forgot password?
                 </button>
               </label>

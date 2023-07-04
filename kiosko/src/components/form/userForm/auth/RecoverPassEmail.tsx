@@ -1,5 +1,3 @@
-import React from "react";
-import BaseTextField from "../../../../components-libs/BaseTextField";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { regexps } from "../../../../util/validations";
 import TextField from "../../../../components-libs/TextField";
@@ -12,9 +10,6 @@ const RecoverPassEmail = () => {
   const {
     register,
     handleSubmit,
-    reset,
-    getValues,
-    setValue,
     formState: { errors, isDirty },
   } = useForm<RecoverPassEmailForm>();
 
