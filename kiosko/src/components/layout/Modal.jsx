@@ -13,6 +13,7 @@ import PedidoView from "../pedidos/PedidoView";
 import AdminUserForm from "../form/adminform/AdminUserForm";
 import AdminKycForm from "../form/adminform/AdminKycForm";
 import RecoverPassEmail from "../form/userForm/auth/RecoverPassEmail";
+import RecoveryPass from "../form/userForm/auth/RecoveryPass";
 
 const Modal = () => {
   const { accion } = useContext(productoContext);
@@ -86,9 +87,9 @@ const Modal = () => {
             <RecoverPassEmail />
           </div>
         )}
-        {accion?.accion === "recoverypasswordcode" && (
+        {accion?.accion === "recoverypassword" && (
           <div className="w-full flex items-center justify-center ">
-            <AdminKycForm />
+            <RecoveryPass />
           </div>
         )}
       </div>

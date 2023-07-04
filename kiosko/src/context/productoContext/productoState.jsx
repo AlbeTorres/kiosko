@@ -21,7 +21,6 @@ import {
 } from "../../types";
 
 const ProductoState = (props) => {
-
   const initialState = {
     productos: [
       {
@@ -44,7 +43,7 @@ const ProductoState = (props) => {
       precio: "",
     },
     acción: { id: "", accion: "" },
-    carrito:[]
+    carrito: [],
   };
 
   const [state, dispatch] = useReducer(productoReducer, initialState);
@@ -52,7 +51,7 @@ const ProductoState = (props) => {
   //operaciones Crud
   const obtenerProductos = async () => {
     try {
-      const response = await clienteAxios.get('api/productos')
+      const response = await clienteAxios.get("api/productos");
 
       dispatch({
         type: OBTENER_PRODUCTOS,
@@ -71,13 +70,11 @@ const ProductoState = (props) => {
     }
 
     try {
-        const response = await clienteAxios.get('api/productos/')
+      const response = await clienteAxios.get("api/productos/");
 
-        const producto = response.data.productos.filter(producto=>producto._id===id)
-
-
-
-      
+      const producto = response.data.productos.filter(
+        (producto) => producto._id === id
+      );
 
       dispatch({
         type: OBTENER_PRODUCTO_BY_ID,
@@ -96,9 +93,9 @@ const ProductoState = (props) => {
     }
 
     try {
-      const response = await clienteAxios.post('api/productos',datos)
+      const response = await clienteAxios.post("api/productos", datos);
 
-      console.log(response)
+      console.log(response);
 
       dispatch({
         type: AÑADIR_PRODUCTO,
@@ -117,12 +114,8 @@ const ProductoState = (props) => {
     }
 
     try {
-        const response = await clienteAxios.patch(`api/productos/${id}`,datos)
-        console.log(response)
-
-      
-
-      
+      const response = await clienteAxios.patch(`api/productos/${id}`, datos);
+      console.log(response);
 
       dispatch({
         type: MODIFICAR_PRODUCTO,
@@ -180,101 +173,84 @@ const ProductoState = (props) => {
     });
   };
 
-  const agregarCarrito=({_id, cantidad })=>{
+  const agregarCarrito = ({ _id, cantidad }) => {
+    let carrito = localStorage.getItem("carrito");
+    let index = null;
 
-      let carrito= localStorage.getItem('carrito');
-      let index=null;
-      console.log(carrito)
+    if (carrito) {
+      carrito = JSON.parse(carrito);
+      index = carrito.findIndex((carrito) => carrito._id === _id);
+    } else carrito = [];
 
-      
+    if (index !== -1 && index !== null) {
+      carrito[index].cantidad = carrito[index].cantidad + cantidad;
+    } else {
+      carrito.push({ _id, cantidad });
+    }
 
-      if(carrito){
-        carrito = JSON.parse(carrito);
-        index= carrito.findIndex((carrito)=>carrito._id===_id)
-        console.log(index)
-      }else(
-        carrito=[]
-      )
-      
-      if(index!==-1 && index!==null){
-        carrito[index].cantidad=carrito[index].cantidad+cantidad
-        
-      }else{
-
-        carrito.push({_id, cantidad})
-        
-      }
-      
-      localStorage.setItem('carrito', JSON.stringify(carrito))
-      
-      dispatch({
-        type:AÑADIR_CARRO,
-        payload:carrito
-      })
-     
-      
-
-     
-  }
-
-
-  const eliminarCarrito=(id)=>{
-
-      let carrito= localStorage.getItem('carrito');
-
-      if(carrito){
-        carrito = JSON.parse(carrito);
-        carrito=carrito.filter(producto=>producto._id!==id  )
-        
-      }
-      
-
-      localStorage.setItem('carrito', JSON.stringify(carrito))
-
-      dispatch({
-        type:ELIMINAR_CARRO,
-        payload:id
-      })
-  }
-
-  const eliminarTodoElcarro=()=>{
-    let carrito= [];
-    localStorage.setItem('carrito', JSON.stringify(carrito))
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 
     dispatch({
-      type:ELIMINAR_CARRO_ALL,
-      
-    })
-  }
+      type: AÑADIR_CARRO,
+      payload: carrito,
+    });
+  };
 
-  const obtenerCarrito=()=>{
+  const eliminarCarrito = (id) => {
+    let carrito = localStorage.getItem("carrito");
 
-      let carrito= localStorage.getItem('carrito');
+    if (carrito) {
+      carrito = JSON.parse(carrito);
+      carrito = carrito.filter((producto) => producto._id !== id);
+    }
 
-      if(carrito){
-        carrito = JSON.parse(carrito);
-     
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    dispatch({
+      type: ELIMINAR_CARRO,
+      payload: id,
+    });
+  };
+
+  const eliminarTodoElcarro = () => {
+    let carrito = [];
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    dispatch({
+      type: ELIMINAR_CARRO_ALL,
+    });
+  };
+
+  const obtenerCarrito = () => {
+    let carrito = localStorage.getItem("carrito");
+
+    if (carrito) {
+      carrito = JSON.parse(carrito);
+
       dispatch({
-        type:OBTENER_CARRO,
-        payload:carrito
-      }) }
-  }
+        type: OBTENER_CARRO,
+        payload: carrito,
+      });
+    }
+  };
 
-  const modificarProductoCarro=(_id,cantidad)=>{
-    let carrito= localStorage.getItem('carrito');
+  const modificarProductoCarro = (_id, cantidad) => {
+    let carrito = localStorage.getItem("carrito");
 
     carrito = JSON.parse(carrito);
-    
-    carrito.map(producto=>producto._id===_id ? producto.cantidad=cantidad: producto)
 
-    localStorage.setItem('carrito', JSON.stringify(carrito))
-    console.log(carrito)
+    carrito.map((producto) =>
+      producto._id === _id ? (producto.cantidad = cantidad) : producto
+    );
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    console.log(carrito);
 
     dispatch({
-      type:MODIFICAR_PRODUCTO_CARRO,
-      payload:carrito
-    })
-  }
+      type: MODIFICAR_PRODUCTO_CARRO,
+      payload: carrito,
+    });
+  };
 
   return (
     <productoContext.Provider
@@ -284,7 +260,7 @@ const ProductoState = (props) => {
         ubicacion: state.ubicacion,
         busqueda: state.busqueda,
         accion: state.accion,
-        carrito:state.carrito,
+        carrito: state.carrito,
         obtenerProductos,
         obtenerProducto,
         crearProducto,

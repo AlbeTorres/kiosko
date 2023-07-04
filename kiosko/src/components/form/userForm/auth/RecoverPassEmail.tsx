@@ -1,20 +1,27 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { regexps } from "../../../../util/validations";
 import TextField from "../../../../components-libs/TextField";
+import { useContext } from "react";
+import productoContext from "../../../../context/productoContext/productoContext.js";
 
 type RecoverPassEmailForm = {
   email: string;
 };
 
 const RecoverPassEmail = () => {
+
+  const { establecerAccion } = useContext(productoContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors, isDirty },
   } = useForm<RecoverPassEmailForm>();
 
-  const handleSendRecoveryEmail: SubmitHandler<RecoverPassEmailForm> = (data) =>
+  const handleSendRecoveryEmail: SubmitHandler<RecoverPassEmailForm> = (data) =>{
+    establecerAccion({ accion: "recoverypassword" });
     console.log(data);
+  }
 
   return (
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
