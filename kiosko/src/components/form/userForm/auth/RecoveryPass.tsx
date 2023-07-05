@@ -2,6 +2,7 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import PasswordTextField from "../../../../components-libs/PasswordTextField";
 import PinField from "react-pin-field";
 import { regexps } from "../../../../util/validations";
+import { useSendPasswordRecovery } from "../../../../hooks/profile.hook";
 
 type RecoverPassForm = {
   code: string;
@@ -10,6 +11,10 @@ type RecoverPassForm = {
 };
 
 const RecoveryPass = () => {
+
+
+  
+
   const {
     getValues,
     control,
@@ -18,9 +23,7 @@ const RecoveryPass = () => {
     formState: { errors },
   } = useForm<RecoverPassForm>();
 
-  const handleRecoveryPass: SubmitHandler<RecoverPassForm> = (data) =>
-    console.log(data);
-
+  const handleRecoveryPass: SubmitHandler<RecoverPassForm> = (data) =>console.log('eso')
   return (
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <div className="card-body">

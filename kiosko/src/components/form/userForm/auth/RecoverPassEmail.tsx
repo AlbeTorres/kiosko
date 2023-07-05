@@ -3,25 +3,42 @@ import { regexps } from "../../../../util/validations";
 import TextField from "../../../../components-libs/TextField";
 import { useContext } from "react";
 import productoContext from "../../../../context/productoContext/productoContext.js";
+import { useSendPasswordRecovery } from "../../../../hooks/profile.hook";
+import toast from "react-hot-toast";
 
 type RecoverPassEmailForm = {
   email: string;
 };
 
 const RecoverPassEmail = () => {
+  const sendRecoveryPassCode = useSendPasswordRecovery();
 
   const { establecerAccion } = useContext(productoContext);
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm<RecoverPassEmailForm>();
 
-  const handleSendRecoveryEmail: SubmitHandler<RecoverPassEmailForm> = (data) =>{
-    establecerAccion({ accion: "recoverypassword" });
-    console.log(data);
-  }
+  const handleSendRecoveryEmail: SubmitHandler<RecoverPassEmailForm> = (
+    data
+  ) => {
+    sendRecoveryPassCode.mutate(
+      { data },
+      {
+        onSuccess: () => {
+          toast.success(
+            "Se le ha enviado un código de verificación a su correo"
+          );
+          establecerAccion({ accion: "recoverypassword" });
+        },
+        onError: () => {
+          toast.error("Algo salío mal");
+        },
+      }
+    );
+  };
 
   return (
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

@@ -16,8 +16,6 @@ export const fetchAuthenticateUser: FetchAuthenticateUser = () => {
   }
 };
 export const fetchValidateUser: FetchValidateUser = (emailToken) => {
-
-  console.log(emailToken)
   const token = localStorage.getItem("token");
 
   if (token) {
@@ -26,7 +24,7 @@ export const fetchValidateUser: FetchValidateUser = (emailToken) => {
 
   if (token) {
     return clienteAxios
-      .post("api/usuarios//verify-email", { emailToken })
+      .post("api/usuarios/verify-email", { emailToken })
       .then((r) => r.data);
   } else {
     localStorage.removeItem("token");
