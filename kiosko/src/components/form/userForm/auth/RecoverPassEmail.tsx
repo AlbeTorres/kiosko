@@ -5,12 +5,14 @@ import { useContext } from "react";
 import productoContext from "../../../../context/productoContext/productoContext.js";
 import { useSendPasswordRecovery } from "../../../../hooks/profile.hook";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 type RecoverPassEmailForm = {
   email: string;
 };
 
 const RecoverPassEmail = () => {
+  const navigate = useNavigate();
   const sendRecoveryPassCode = useSendPasswordRecovery();
 
   const { establecerAccion } = useContext(productoContext);
@@ -32,6 +34,7 @@ const RecoverPassEmail = () => {
             "Se le ha enviado un código de verificación a su correo"
           );
           establecerAccion({ accion: "recoverypassword" });
+          navigate(`/${data.email}`);
         },
         onError: () => {
           toast.error("Algo salío mal");

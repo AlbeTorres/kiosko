@@ -2,7 +2,12 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import PasswordTextField from "../../../../components-libs/PasswordTextField";
 import PinField from "react-pin-field";
 import { regexps } from "../../../../util/validations";
-import { useSendPasswordRecovery } from "../../../../hooks/profile.hook";
+import {
+  useChangePassword,
+  useSendPasswordRecovery,
+} from "../../../../hooks/profile.hook";
+import { toast } from "react-hot-toast";
+import { useParams } from "react-router-dom";
 
 type RecoverPassForm = {
   code: string;
@@ -11,9 +16,11 @@ type RecoverPassForm = {
 };
 
 const RecoveryPass = () => {
+  const changePassword = useChangePassword();
 
+  const email = useParams();
 
-  
+  console.log(email);
 
   const {
     getValues,
@@ -23,7 +30,21 @@ const RecoveryPass = () => {
     formState: { errors },
   } = useForm<RecoverPassForm>();
 
-  const handleRecoveryPass: SubmitHandler<RecoverPassForm> = (data) =>console.log('eso')
+  const handleChangePass: SubmitHandler<RecoverPassForm> = (data) =>
+    changePassword.mutate(
+      {
+        data: {
+          code: Number(data.code),
+          password: data.password,
+          email: email.verificado,
+        },
+      },
+      {
+        onSuccess: () => {
+          toast.success("Contraseña cambiada con éxito");
+        },
+      }
+    );
   return (
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <div className="card-body">
@@ -34,7 +55,7 @@ const RecoveryPass = () => {
         </h3>
         <form
           className="flex flex-col w-full mt-5 items-center gap-y-5"
-          onSubmit={handleSubmit(handleRecoveryPass)}
+          onSubmit={handleSubmit(handleChangePass)}
         >
           <div className="flex flex-row gap-x-2">
             <Controller
