@@ -6,4 +6,5 @@ export const regexps = {
   web: /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/,
   precio: /^([0-9]+\.?[0-9]{0,2})$/,
   cantidad: /^[0-9]*$/,
-}
+  password: /^.{9,}/,
+};

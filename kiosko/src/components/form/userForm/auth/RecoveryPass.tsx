@@ -1,6 +1,7 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import PasswordTextField from "../../../../components-libs/PasswordTextField";
 import PinField from "react-pin-field";
+import { regexps } from "../../../../util/validations";
 
 type RecoverPassForm = {
   code: string;
@@ -10,6 +11,7 @@ type RecoverPassForm = {
 
 const RecoveryPass = () => {
   const {
+    getValues,
     control,
     register,
     handleSubmit,
@@ -47,8 +49,38 @@ const RecoveryPass = () => {
             />
           </div>
           <div className="w-full">
-            <PasswordTextField autoComplete="new-password" />
-            <PasswordTextField autoComplete="new-password" />
+            <PasswordTextField
+              autoComplete="new-password"
+              className="w-full"
+              label={"Nueva contraseña"}
+              placeholder="Password"
+              error={errors.password?.message}
+              {...register("password", {
+                required: "Contraseña requerida",
+                pattern: {
+                  value: regexps.password,
+                  message: "Debe contener más de 8 caracteres",
+                },
+                setValueAs: (v: string) => v.trim(),
+              })}
+            />
+            <PasswordTextField
+              autoComplete="new-password"
+              className="w-full"
+              label={"Confirma la contraseña"}
+              placeholder="Confirma la contraseña"
+              error={errors.passwordConfirmation?.message}
+              {...register("passwordConfirmation", {
+                required: "Confirmación de la contraseña requerida",
+                setValueAs: (v: string) => v.trim(),
+                pattern: {
+                  value: regexps.password,
+                  message: "Debe contener más de 8 caracteres",
+                },
+                validate: (v) =>
+                  v === getValues("password") || "Las contraseñas no coinciden",
+              })}
+            />
           </div>
 
           <div className="flex flex-col w-full gap-y-3">
