@@ -10,7 +10,7 @@ const PedidoDetails = () => {
     obtenerPedido(order.id);
   }, []);
   return (
-    <div className="w-full">
+    <div className="w-full mt-40">
       <div className="flex lg:flex-row justify-center   flex-col mt-10 gap-10 mx-auto w-11/12">
         <div className="flex flex-col gap-5 w-full">
           <div className="border-b-2 pb-2">
