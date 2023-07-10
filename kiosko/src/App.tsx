@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import Rutas from "./routes/Rutas";
 import ProductoState from "./context/productoContext/productoState";
-import AuthState from "./context/authContext/authState";
+
 import AlertaState from "./context/alertaContext/alertaState";
 import PedidoState from "./context/pedidoContext/pedidoState.jsx";
 import tokenAuth from "./config/tokenAuth";
@@ -10,6 +10,7 @@ import UsuarioState from "./context/usuarioContext/usuarioState";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/layout/Navbar";
 import { Toaster } from "react-hot-toast";
+import AuthContextProvider from "./context/authContext/authContextProvider";
 
 const token = localStorage.getItem("token");
 if (token) {
@@ -21,7 +22,7 @@ function App() {
     <UsuarioState>
       <PedidoState>
         <ProductoState>
-          <AuthState>
+          <AuthContextProvider>
             <AlertaState>
               <Router>
                 <Navbar>
@@ -30,7 +31,7 @@ function App() {
                 </Navbar>
               </Router>
             </AlertaState>
-          </AuthState>
+          </AuthContextProvider>
         </ProductoState>
       </PedidoState>
     </UsuarioState>

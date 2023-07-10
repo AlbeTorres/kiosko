@@ -1,5 +1,5 @@
 export interface Base {
-  _id: number;
-  created: string;
-  updated: string;
+  _id: string;
+  created?: string;
+  updated?: string;
 }

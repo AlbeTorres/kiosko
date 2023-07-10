@@ -20,6 +20,7 @@ const Navbar = ({ children }) => {
 
   let location = useLocation();
 
+  console.log(usuario)
   useEffect(() => {
     usuarioAutenticado();
     obtenerPedidos();

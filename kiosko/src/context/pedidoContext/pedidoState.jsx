@@ -54,7 +54,6 @@ const PedidoState = (props) => {
         (pedido) => pedido._id === id
         );
         
-        console.log(pedido)
       dispatch({
         type: OBTENER_PEDIDO_BY_ID,
         payload: pedido[0],
