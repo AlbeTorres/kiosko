@@ -59,8 +59,6 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
       if (token) {
         const respuesta = await clienteAxios.get("api/auth");
 
-        console.log(respuesta)
-
         dispatch({
           type: OBTENER_USUARIO,
           userpayload: respuesta.data.usuario,

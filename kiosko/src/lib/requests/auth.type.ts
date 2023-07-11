@@ -20,3 +20,24 @@ export type FetchValidateUserInput = {
 };
 
 export type FetchValidateUserOutput = User;
+
+export type LoginAuth = Function<LoginAuthInput, LoginAuthOutput>;
+
+export type LoginAuthInput = { email: string; password: string };
+
+export type LoginAuthOutput = { token: string };
+
+export type Singup = Function<SingupInput, SingupOutput>;
+
+export type SingupInput = {
+  nombre: string;
+  email: string;
+  password: string;
+  isAdmin: string;
+  advertencia: number;
+  kycimg: string;
+  kyc: boolean;
+  carnet: string;
+};
+
+export type SingupOutput = { token: string };
