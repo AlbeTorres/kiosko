@@ -2,7 +2,7 @@ import { useContext } from "react";
 import authContext from "../../context/authContext/authContext";
 import PedidoItem from "./PedidoItem";
 import { usePedidos } from "../../hooks/api/pedido.hook";
-import Spinner from "../../components-libs/Spinner";
+import { Spinner } from "../../components-libs/Spinner";
 
 const PedidoView = () => {
   const { usuario } = useContext(authContext);
@@ -12,33 +12,32 @@ const PedidoView = () => {
   return (
     <div className="modal-box">
       <h2 className="my-2 text-xl">Pedidos:</h2>
-      {
-        isSuccess ?
-      <div className=" overflow-y-scroll h-72 xs:p-2">
-        
-        { data.pedidos.map((pedido) => {
-          if (
-            pedido.usuario === usuario?._id &&
-            pedido.estado !== "terminado" &&
-            pedido.estado !== "cancelado"
-          ) {
-            return (
-              <PedidoItem
-                key={pedido._id}
-                id={pedido._id}
-                productos={pedido.productos}
-                pago={pedido.pago}
-                valor={pedido.valor}
-                estado={pedido.estado}
-              />
-            );
-          }
-        })}
-      </div> :
-      <div>
-        <Spinner/>
-      </div>
-      }
+      {isSuccess ? (
+        <div className=" overflow-y-scroll h-72 xs:p-2">
+          {data.pedidos.map((pedido) => {
+            if (
+              pedido.usuario === usuario?._id &&
+              pedido.estado !== "terminado" &&
+              pedido.estado !== "cancelado"
+            ) {
+              return (
+                <PedidoItem
+                  key={pedido._id}
+                  id={pedido._id}
+                  productos={pedido.productos}
+                  pago={pedido.pago}
+                  valor={pedido.valor}
+                  estado={pedido.estado}
+                />
+              );
+            }
+          })}
+        </div>
+      ) : (
+        <div>
+          <Spinner />
+        </div>
+      )}
 
       {/* <div className='my-2'>
           <div className='flex items-center'>

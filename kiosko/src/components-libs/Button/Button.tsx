@@ -1,6 +1,7 @@
 import cn from "../../util/cn";
-import Spinner from "../Spinner";
+
 import { FC, JSX } from "react";
+import { Spinner } from "../Spinner";
 
 export type ButtonProps = JSX.IntrinsicElements["button"] & {
   loading?: boolean;
@@ -19,7 +20,7 @@ export const Button: FC<ButtonProps> = ({
     <button
       type={props.type ?? "button"}
       disabled={disabled}
-      className={cn("btn", className, disabled && 'grayscale')}
+      className={cn("btn", className, disabled && "grayscale")}
       {...props}
     >
       {loading && (
