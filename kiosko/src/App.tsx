@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/layout/Navbar";
 import { Toaster } from "react-hot-toast";
 import AuthContextProvider from "./context/authContext/authContextProvider";
+import BaseLayout from "./layouts/BaseLayout/BaseLayout";
 
 const token = localStorage.getItem("token");
 if (token) {
@@ -25,10 +26,10 @@ function App() {
           <AuthContextProvider>
             <AlertaState>
               <Router>
-                <Navbar>
+                <BaseLayout>
                   <Rutas />
-                  <Toaster position="top-right" />
-                </Navbar>
+                </BaseLayout>
+                <Toaster position="top-right" />
               </Router>
             </AlertaState>
           </AuthContextProvider>

@@ -1,10 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import {
-  deleteUser,
-  fetchAllUsers,
-  fetchUser,
-  updateUser,
-} from "../lib/requests/user.request";
+import { deleteUser, fetchAllUsers, fetchUser, updateUser } from "../../lib/requests/user.request";
+
 
 /**
  * The useUpdateUser function is a custom hook that uses the useMutation hook to update a user.

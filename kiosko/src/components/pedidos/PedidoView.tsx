@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import authContext from "../../context/authContext/authContext";
 import PedidoItem from "./PedidoItem";
-import { usePedidos } from "../../hooks/pedido.hook";
+import { usePedidos } from "../../hooks/api/pedido.hook";
 import Spinner from "../../components-libs/Spinner";
 
 const PedidoView = () => {

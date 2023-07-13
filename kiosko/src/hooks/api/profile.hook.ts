@@ -2,12 +2,13 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   fetchAuthenticateUser,
   fetchValidateUser,
-} from "../lib/requests/auth.request";
+  login,
+  singup,
+} from "../../lib/requests/auth.request";
 import {
   changePassword,
   sendRecoveryPasswordCode,
-} from "../lib/requests/password.request";
-import { login, singup } from "../lib/requests/auth.request";
+} from "../../lib/requests/password.request";
 
 /**
  * The useProfile function is a custom hook that uses the useQuery hook to fetch and authenticate user

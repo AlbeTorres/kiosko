@@ -5,7 +5,7 @@ import {
   fetchAllPedidos,
   fetchPedido,
   updatePedido,
-} from "../lib/requests/pedido.request";
+} from "../../lib/requests/pedido.request";
 
 /**
  * The usePedidos function is a custom hook that uses the useQuery hook to fetch all pedidos.

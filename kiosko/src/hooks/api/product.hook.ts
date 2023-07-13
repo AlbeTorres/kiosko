@@ -1,11 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import {
-  addProduct,
-  deleteProduct,
-  fetchAllProducts,
-  fetchProduct,
-  updateProduct,
-} from "../lib/requests/products.request";
+import { addProduct, deleteProduct, fetchAllProducts, fetchProduct, updateProduct } from "../../lib/requests/products.request";
+
 
 /**
  * The useAllProducts function is a custom hook that uses the useQuery hook to fetch all products.

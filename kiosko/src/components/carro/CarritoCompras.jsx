@@ -5,7 +5,7 @@ import productoContext from "../../context/productoContext/productoContext";
 import authContext from "../../context/authContext/authContext";
 import pedidoContext from "../../context/pedidoContext/pedidoContext";
 import alertaContext from "../../context/alertaContext/alertaContext";
-import { useAllProducts } from "../../hooks/product.hook";
+import { useAllProducts } from "../../hooks/api/product.hook";
 
 const CarritoCompras = () => {
   const history = useNavigate();

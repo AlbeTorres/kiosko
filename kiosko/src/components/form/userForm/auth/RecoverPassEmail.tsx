@@ -3,9 +3,10 @@ import { regexps } from "../../../../util/validations";
 import TextField from "../../../../components-libs/TextField";
 import { useContext } from "react";
 import productoContext from "../../../../context/productoContext/productoContext.js";
-import { useSendPasswordRecovery } from "../../../../hooks/profile.hook";
+
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useSendPasswordRecovery } from "../../../../hooks/api/profile.hook";
 
 type RecoverPassEmailForm = {
   email: string;

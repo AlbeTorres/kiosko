@@ -1,7 +1,8 @@
 import Spinner from "../../components-libs/Spinner";
 import { Navigate, useParams, useNavigate } from "react-router-dom";
-import { useProfile, useValidateUser } from "../../hooks/profile.hook";
+
 import { useEffect } from "react";
+import { useProfile, useValidateUser } from "../../hooks/api/profile.hook";
 
 const AuthenticateAccount = () => {
   const { emailToken } = useParams();

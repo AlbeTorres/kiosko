@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import authContext from "../context/authContext/authContext";
-import { useProfile } from "../hooks/profile.hook";
+import { useProfile } from "../hooks/api/profile.hook";
 
 const AuthGuard = () => {
   const AuxAuthContext = useContext(authContext);
@@ -9,7 +9,7 @@ const AuthGuard = () => {
 
   const { data: profile, isSuccess } = useProfile();
 
-  console.log(profile)
+  console.log(profile);
 
   useEffect(() => {
     usuarioAutenticado();
