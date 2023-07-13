@@ -1,8 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import TextField from "../../components-libs/TextField";
+
 import { regexps } from "../../util/validations";
-import PasswordTextField from "../../components-libs/PasswordTextField";
+import PasswordTextField from "../../components-libs/TextField/PasswordTextField";
+import TextField from "../../components-libs/TextField/TextField";
+import { Button } from "../../components-libs/Button";
 
 type LoginFrom = {
   email: string;
@@ -22,7 +24,10 @@ export const Login = () => {
 
   return (
     <section className="w-full py-10 mt-20 h-fit ">
-      <form onSubmit={handleSubmit(handleLogin)} className="w-72  md:w-80 h-full  flex flex-col gap-y-5    m-auto">
+      <form
+        onSubmit={handleSubmit(handleLogin)}
+        className="w-72  md:w-80 h-full  flex flex-col gap-y-5    m-auto"
+      >
         <TextField
           className="w-full"
           type="text"
@@ -54,9 +59,9 @@ export const Login = () => {
             },
           })}
         />
-        <button type="submit" className="btn btn-primary w-full">
+        <Button type="submit" className="btn-primary w-full">
           Confirmar
-        </button>
+        </Button>
       </form>
     </section>
   );

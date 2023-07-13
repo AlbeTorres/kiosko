@@ -1,11 +1,12 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import PasswordTextField from "../../../../components-libs/PasswordTextField";
+
 import PinField from "react-pin-field";
 import { regexps } from "../../../../util/validations";
 
 import { toast } from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { useChangePassword } from "../../../../hooks/api/profile.hook";
+import PasswordTextField from "../../../../components-libs/TextField/PasswordTextField";
 
 type RecoverPassForm = {
   code: string;
