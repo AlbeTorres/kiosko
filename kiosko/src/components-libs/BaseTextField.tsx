@@ -20,13 +20,13 @@ const classes = {
     span: "label-text",
   },
   inputWrapper: {
-    base: "flex items-center w-full relative",
+    base: "flex items-center w-full relative border-2 rounded-lg ",
   },
   input: {
-    base: "input input-bordered w-full",
+    base: "input w-full pr-8 !outline-none  autofill:!bg-black",
   },
   icon: {
-    base: "ml-2 flex-none ",
+    base: " absolute right-3  text-primary ",
     standard: "mr-2 absolute z-10 right-0",
   },
 };

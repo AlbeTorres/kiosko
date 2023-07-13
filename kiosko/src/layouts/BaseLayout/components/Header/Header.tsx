@@ -1,12 +1,9 @@
 import Container from "../../../utils/Container";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useScrolled } from "../../../../hooks/utils/useScrolled";
+import NavMenuOut from "./components/NavMenuOut";
 
 export const Header = () => {
-
-  const scrolled= useScrolled()
-
   return (
     <header className="bg-base-100 !fixed top-0  z-50   w-full md:py-4 min-h-6  ">
       <Container>
@@ -18,7 +15,8 @@ export const Header = () => {
               Kiosquito
             </Link>
           </div>
-          
+
+          <NavMenuOut />
         </div>
       </Container>
     </header>

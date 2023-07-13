@@ -8,26 +8,27 @@ import Paymen from "../pages/paymen/Paymen";
 import Perfil from "../pages/perfil/Perfil";
 import AuthGuard from "./AuthGuard";
 import AuthenticateAccount from "../pages/auth/AuthenticateAccount";
+import { Login } from "../pages/auth/Login.page";
 
 const Rutas = () => {
   return (
     <Routes>
-      <Route exact path="/:verificado" element={<Home />} />
-      <Route exact path="/" element={<Home />} />
+      <Route path="/:verificado" element={<Home />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
       <Route
-        exact
         path="/verify-email:emailToken"
         element={<AuthenticateAccount />}
       />
 
-      <Route exact path="*" element={<> Not Found</>} />
+      <Route path="*" element={<> Not Found</>} />
 
       <Route element={<AuthGuard />}>
-        <Route exact path="/paymen" element={<Paymen />} />
-        <Route exact path="/perfil" element={<Perfil />} />
-        <Route exact path="/adminuser" element={<AdminUser />} />
-        <Route exact path="/adminpedido" element={<AdminPedidos />} />
-        <Route exact path="/pedido:id" element={<PedidoDetails />} />
+        <Route path="/paymen" element={<Paymen />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/adminuser" element={<AdminUser />} />
+        <Route path="/adminpedido" element={<AdminPedidos />} />
+        <Route path="/pedido:id" element={<PedidoDetails />} />
       </Route>
     </Routes>
   );

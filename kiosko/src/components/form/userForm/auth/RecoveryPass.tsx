@@ -18,8 +18,6 @@ const RecoveryPass = () => {
 
   const email = useParams();
 
-  console.log(email);
-
   const {
     getValues,
     control,
