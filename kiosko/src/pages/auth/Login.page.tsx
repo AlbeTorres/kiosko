@@ -5,6 +5,7 @@ import { regexps } from "../../util/validations";
 import PasswordTextField from "../../components-libs/TextField/PasswordTextField";
 import TextField from "../../components-libs/TextField/TextField";
 import { Button } from "../../components-libs/Button";
+import { FaEnvelope } from "react-icons/fa";
 
 type LoginFrom = {
   email: string;
@@ -32,6 +33,7 @@ export const Login = () => {
           className="w-full"
           type="text"
           label={"Email"}
+          icon={FaEnvelope}
           error={errors.email?.message}
           {...register("email", {
             required: {
