@@ -19,7 +19,7 @@ export const Dialog: FC<DialogProps> = ({ children, open, onClose }): JSX.Elemen
       />
       <div className='modal '>
         <div className='modal-box w-fit'>
-          <div className=''>
+          <div className='w-full'>
             <button className='absolute right-8 top-5 ' onClick={onClose}>
               {<FaTimes className='h-6 w-6 ' />}
             </button>

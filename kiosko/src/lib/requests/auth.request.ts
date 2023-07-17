@@ -1,5 +1,4 @@
 import clienteAxios from '../../config/axios.js'
-import { setToken } from '../../config/setToken.js'
 import { FetchAuthenticateUser, FetchValidateUser, LoginAuth, Singup } from './auth.type.js'
 
 /**
@@ -9,12 +8,8 @@ import { FetchAuthenticateUser, FetchValidateUser, LoginAuth, Singup } from './a
  * @returns The function `fetchAuthenticateUser` returns a promise that resolves to the data returned
  * by the `clienteAxios.get("api/auth")` request.
  */
-export const fetchAuthenticateUser: FetchAuthenticateUser = async () => {
-  if (setToken()) {
-    return clienteAxios.get('api/auth').then(r => r.data)
-  } else {
-  }
-}
+export const fetchAuthenticateUser: FetchAuthenticateUser = () =>
+  clienteAxios.get('api/auth').then(r => r.data)
 
 /**
  * The function fetchValidateUser is an asynchronous function that takes an emailToken as a parameter
@@ -26,13 +21,8 @@ export const fetchAuthenticateUser: FetchAuthenticateUser = async () => {
  * @returns The function `fetchValidateUser` returns a promise that resolves to the data returned from
  * the API call.
  */
-export const fetchValidateUser: FetchValidateUser = async emailToken => {
-  if (setToken()) {
-    return clienteAxios.post('api/usuarios/verify-email', { emailToken }).then(r => r.data)
-  } else {
-    localStorage.removeItem('token')
-  }
-}
+export const fetchValidateUser: FetchValidateUser = emailToken =>
+  clienteAxios.post('api/usuarios/verify-email', { emailToken }).then(r => r.data)
 
 /**
  * The above function is a TypeScript function that sends a POST request to a login endpoint with the

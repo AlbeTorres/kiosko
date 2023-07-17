@@ -1,19 +1,18 @@
-import clienteAxios from "../../config/axios.js";
-import { setToken } from "../../config/setToken.js";
+import clienteAxios from '../../config/axios.js'
 import {
   AddProduct,
   DeleteProduct,
   FetchProduct,
   FetchProducts,
   UpdateProduct,
-} from "./products.type.js";
+} from './products.type.js'
 
 /**
  * The fetchAllProducts function uses Axios to make a GET request to the "api/productos/" endpoint and
  * returns the response data.
  */
 export const fetchAllProducts: FetchProducts = () =>
-  clienteAxios.get("api/productos/").then((r) => r.data);
+  clienteAxios.get('api/productos/').then(r => r.data)
 
 /**
  * The fetchProduct function retrieves a product from an API based on its ID.
@@ -21,7 +20,7 @@ export const fetchAllProducts: FetchProducts = () =>
  * parameter. The object has a property called `id`.
  */
 export const fetchProduct: FetchProduct = ({ id }) =>
-  clienteAxios.get(`api/productos/${id}`).then((r) => r.data);
+  clienteAxios.get(`api/productos/${id}`).then(r => r.data)
 
 /**
  * The function `addProduct` is an asynchronous function that adds a product by making a POST request
@@ -32,13 +31,8 @@ export const fetchProduct: FetchProduct = ({ id }) =>
  * @returns The function `addProduct` returns a promise that resolves to the data returned by the
  * `clienteAxios.post` request.
  */
-export const addProduct: AddProduct = async (input) => {
-  if (setToken()) {
-    return clienteAxios.post("api/productos/", input).then((r) => r.data);
-  } else {
-    localStorage.removeItem("token");
-  }
-};
+export const addProduct: AddProduct = async input =>
+  clienteAxios.post('api/productos/', input).then(r => r.data)
 
 /**
  * The function `updateProduct` updates a product by making a PATCH request to an API endpoint with the
@@ -47,13 +41,8 @@ export const addProduct: AddProduct = async (input) => {
  * @returns The function `updateProduct` returns a Promise that resolves to the data returned by the
  * `clienteAxios.patch` request.
  */
-export const updateProduct: UpdateProduct = async ({ id, datos }) => {
-  if (setToken()) {
-    return clienteAxios.patch(`api/productos/${id}`, datos).then((r) => r.data);
-  } else {
-    localStorage.removeItem("token");
-  }
-};
+export const updateProduct: UpdateProduct = async ({ id, datos }) =>
+  clienteAxios.patch(`api/productos/${id}`, datos).then(r => r.data)
 
 /**
  * The function `deleteProduct` is a TypeScript function that deletes a product by its ID using an API
@@ -63,10 +52,5 @@ export const updateProduct: UpdateProduct = async ({ id, datos }) => {
  * @returns The function `deleteProduct` returns a Promise that resolves to the data returned by the
  * `clienteAxios.delete` request.
  */
-export const deleteProduct: DeleteProduct = async ({ id }) => {
-  if (setToken()) {
-    return clienteAxios.delete(`api/productos/${id}`).then((r) => r.data);
-  } else {
-    localStorage.removeItem("token");
-  }
-};
+export const deleteProduct: DeleteProduct = async ({ id }) =>
+  clienteAxios.delete(`api/productos/${id}`).then(r => r.data)

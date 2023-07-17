@@ -1,4 +1,3 @@
-import React from 'react'
 import { useProfile } from '../../../../../hooks/api'
 import { Link, useLocation } from 'react-router-dom'
 import noimg from '../../../../../assets/noimg1.jpg'

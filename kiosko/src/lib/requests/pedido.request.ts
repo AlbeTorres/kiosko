@@ -1,18 +1,10 @@
-import clienteAxios from "../../config/axios";
-import { setToken } from "../../config/setToken";
-import {
-  AddPedido,
-  DeletePedido,
-  FetchPedido,
-  FetchPedidos,
-  UpdatePedido,
-} from "./pedido.type";
+import clienteAxios from '../../config/axios'
+import { AddPedido, DeletePedido, FetchPedido, FetchPedidos, UpdatePedido } from './pedido.type'
 
 /**
  * The function fetchAllPedidos fetches all pedidos from the API.
  */
-export const fetchAllPedidos: FetchPedidos = () =>
-  clienteAxios.get("api/pedidos").then((r) => r.data);
+export const fetchAllPedidos: FetchPedidos = () => clienteAxios.get('api/pedidos').then(r => r.data)
 
 /**
  * The function fetchPedido retrieves a pedido (order) from an API using the provided id.
@@ -21,9 +13,7 @@ export const fetchAllPedidos: FetchPedidos = () =>
  * instance to make a GET request to the `api/pedidos/` endpoint and returns a promise
  */
 export const fetchPedido: FetchPedido = ({ id }) =>
-  clienteAxios.get(`api/pedidos/${id}`).then((r) => r.data);
-
-
+  clienteAxios.get(`api/pedidos/${id}`).then(r => r.data)
 
 /**
  * The function `addPedido` is an asynchronous function that adds a new pedido (order) by making a POST
@@ -34,13 +24,8 @@ export const fetchPedido: FetchPedido = ({ id }) =>
  * @returns The function `addPedido` returns a promise that resolves to the data returned by the
  * `clienteAxios.post` request.
  */
-export const addPedido: AddPedido = async (input) => {
-  if (setToken()) {
-    return clienteAxios.post("api/pedidos", input).then((r) => r.data);
-  } else {
-    localStorage.removeItem("token");
-  }
-};
+export const addPedido: AddPedido = async input =>
+  clienteAxios.post('api/pedidos', input).then(r => r.data)
 
 /**
  * The function `updatePedido` updates a pedido (order) by making a PATCH request to the API with the
@@ -49,13 +34,8 @@ export const addPedido: AddPedido = async (input) => {
  * @returns The function `updatePedido` returns a promise that resolves to the data returned by the
  * `clienteAxios.patch` request.
  */
-export const updatePedido: UpdatePedido = async ({ id, datos }) => {
-  if (setToken()) {
-    return clienteAxios.patch(`api/pedidos/${id}`, datos).then((r) => r.data);
-  } else {
-    localStorage.removeItem("token");
-  }
-};
+export const updatePedido: UpdatePedido = async ({ id, datos }) =>
+  clienteAxios.patch(`api/pedidos/${id}`, datos).then(r => r.data)
 
 /**
  * The function `deletePedido` deletes a pedido (order) by its ID, using an API endpoint and a token
@@ -65,10 +45,5 @@ export const updatePedido: UpdatePedido = async ({ id, datos }) => {
  * @returns The function `deletePedido` returns a Promise that resolves to the data returned by the
  * `clienteAxios.delete` request.
  */
-export const deletePedido: DeletePedido = async ({ id }) => {
-  if (setToken()) {
-    return clienteAxios.delete(`api/pedidos/${id}`).then((r) => r.data);
-  } else {
-    localStorage.removeItem("token");
-  }
-};
+export const deletePedido: DeletePedido = async ({ id }) =>
+  clienteAxios.delete(`api/pedidos/${id}`).then(r => r.data)

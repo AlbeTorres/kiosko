@@ -1,178 +1,162 @@
-import React,{useReducer} from "react";
-import usuarioReducer from './usuarioReducer';
-import usuarioContext from './usuarioContext';
-import { MODIFICAR_USUARIO, OBTENER_USUARIOS, OBTENER_BUSQUEDA,OBTENER_USUARIO_BY_ID, SET_USER_FILTER, CAMBIO } from "../../types";
-import clienteAxios from "../../config/axios";
-import tokenAuth from "../../config/tokenAuth";
+// import React,{useReducer} from "react";
+// import usuarioReducer from './usuarioReducer';
+// import usuarioContext from './usuarioContext';
+// import { MODIFICAR_USUARIO, OBTENER_USUARIOS, OBTENER_BUSQUEDA,OBTENER_USUARIO_BY_ID, SET_USER_FILTER, CAMBIO } from "../../types";
+// import clienteAxios from "../../config/axios";
+// import tokenAuth from "../../config/tokenAuth";
 
-const UsuarioState=props=>{
+// const UsuarioState=props=>{
 
-    const initialState={
-        usuarios:[{_id:'', nombre:'', movil:''}],
-        usuariom:null,
-        busqueda:'',
-        userfilter:'',
-        cambio:false
-       
+//     const initialState={
+//         usuarios:[{_id:'', nombre:'', movil:''}],
+//         usuariom:null,
+//         busqueda:'',
+//         userfilter:'',
+//         cambio:false
 
-    }
+//     }
 
-    const [state, dispatch]= useReducer(usuarioReducer,initialState);
+//     const [state, dispatch]= useReducer(usuarioReducer,initialState);
 
+//     //Operaciones crud
+//     const modificarUsuario=async(id,datos)=>{
 
-    //Operaciones crud
-    const modificarUsuario=async(id,datos)=>{
+//         const token = localStorage.getItem("token");
 
-        const token = localStorage.getItem("token");
+//         if (token) {
+//           tokenAuth(token);
+//         }
 
-        if (token) {
-          tokenAuth(token);
-        }
+//         try {
+//             if (token) {
+//                 const respuesta = await clienteAxios.patch(`api/usuarios/${id}`, datos);
 
-        
-    
-        try {
-            if (token) {
-                const respuesta = await clienteAxios.patch(`api/usuarios/${id}`, datos);
-                
-                
+//                 dispatch({
+//                   type: MODIFICAR_USUARIO,
+//                   payload: respuesta.data.usuario,
+//                 });
+//               }
 
-                dispatch({
-                  type: MODIFICAR_USUARIO,
-                  payload: respuesta.data.usuario,
-                });
-              }
+//         } catch (error) {
+//             console.log(error)
 
-            
-        } catch (error) {
-            console.log(error)
-            
-        }
-    }
+//         }
+//     }
 
-    //Eliminar un usuario
-    const eliminarUsuario=(id)=>{
-        const token = localStorage.getItem("token");
+//     //Eliminar un usuario
+//     const eliminarUsuario=(id)=>{
+//         const token = localStorage.getItem("token");
 
-        if (token) {
-          tokenAuth(token);
-        }
+//         if (token) {
+//           tokenAuth(token);
+//         }
 
-        try {
+//         try {
 
-            const response = clienteAxios.delete(`api/usuarios/${id}`)
-            
-            
-        } catch (error) {
-            console.log(error)
-            
-        }
-    }
+//             const response = clienteAxios.delete(`api/usuarios/${id}`)
 
-    //Obtener usuarios
-    const obtenerUsuarios= async()=>{
-        const token = localStorage.getItem("token");
+//         } catch (error) {
+//             console.log(error)
 
-        if (token) {
-          tokenAuth(token);
-        }
+//         }
+//     }
 
-        try {
+//     //Obtener usuarios
+//     const obtenerUsuarios= async()=>{
+//         const token = localStorage.getItem("token");
 
-            const response = await clienteAxios.get(`api/usuarios`);
-           
+//         if (token) {
+//           tokenAuth(token);
+//         }
 
-            dispatch({
-                type: OBTENER_USUARIOS,
-                payload: response.data.usuarios
-            })
-            
-            
-        } catch (error) {
-            console.log(error)
-            
-        }
-    }
+//         try {
 
-    //obtener usuario por id
+//             const response = await clienteAxios.get(`api/usuarios`);
 
-    const obtenerUsuario= async(id)=>{
+//             dispatch({
+//                 type: OBTENER_USUARIOS,
+//                 payload: response.data.usuarios
+//             })
 
-        const token = localStorage.getItem("token");
+//         } catch (error) {
+//             console.log(error)
 
-        if (token) {
-          tokenAuth(token);
-        }
+//         }
+//     }
 
-        try {
+//     //obtener usuario por id
 
-            const response = await clienteAxios.get(`api/usuarios`);
-            const usuario = response.data.usuarios.filter(usuario=>usuario._id===id);
+//     const obtenerUsuario= async(id)=>{
 
+//         const token = localStorage.getItem("token");
 
+//         if (token) {
+//           tokenAuth(token);
+//         }
 
-            dispatch({
-                type: OBTENER_USUARIO_BY_ID,
-                payload: usuario[0]
-            })
-            
-            
-        } catch (error) {
-            console.log(error)
-            
-        }
+//         try {
 
-    }
+//             const response = await clienteAxios.get(`api/usuarios`);
+//             const usuario = response.data.usuarios.filter(usuario=>usuario._id===id);
 
-    const establecerBusqueda=(search)=>{
+//             dispatch({
+//                 type: OBTENER_USUARIO_BY_ID,
+//                 payload: usuario[0]
+//             })
 
-        dispatch({
-            type:OBTENER_BUSQUEDA,
-            payload:search
-        })
+//         } catch (error) {
+//             console.log(error)
 
-    }
+//         }
 
-    const setUserFilter=(id)=>{
+//     }
 
-        dispatch({
-            type: SET_USER_FILTER,
-            payload:id
-        })
-    }
+//     const establecerBusqueda=(search)=>{
 
-    const actualizarCambio=()=>{
-        dispatch({
-            type:CAMBIO,
+//         dispatch({
+//             type:OBTENER_BUSQUEDA,
+//             payload:search
+//         })
 
-        })
-    }
-   
+//     }
 
-    return(
-        <usuarioContext.Provider
-        value={
-            {
-                usuarios:state.usuarios,
-                busqueda: state.busqueda,
-                usuariom:state.usuariom,
-                userfilter:state.userfilter,
-                cambio:state.cambio,
-                modificarUsuario,
-                eliminarUsuario,
-                obtenerUsuarios,
-                obtenerUsuario,
-                establecerBusqueda,
-                setUserFilter,
-                actualizarCambio,
+//     const setUserFilter=(id)=>{
 
-                
+//         dispatch({
+//             type: SET_USER_FILTER,
+//             payload:id
+//         })
+//     }
 
-            }
-        }>
-            {props.children}
-        </usuarioContext.Provider>
-    )
-}
+//     const actualizarCambio=()=>{
+//         dispatch({
+//             type:CAMBIO,
 
-export default UsuarioState;
+//         })
+//     }
+
+//     return(
+//         <usuarioContext.Provider
+//         value={
+//             {
+//                 usuarios:state.usuarios,
+//                 busqueda: state.busqueda,
+//                 usuariom:state.usuariom,
+//                 userfilter:state.userfilter,
+//                 cambio:state.cambio,
+//                 modificarUsuario,
+//                 eliminarUsuario,
+//                 obtenerUsuarios,
+//                 obtenerUsuario,
+//                 establecerBusqueda,
+//                 setUserFilter,
+//                 actualizarCambio,
+
+//             }
+//         }>
+//             {props.children}
+//         </usuarioContext.Provider>
+//     )
+// }
+
+// export default UsuarioState;
