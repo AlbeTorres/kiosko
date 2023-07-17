@@ -1,43 +1,43 @@
-import { User } from "../Models/User.model";
-import { Function } from "./types";
+import { User } from '../Models/User.model'
+import { Function } from './types'
 
 export type FetchAuthenticateUser = Function<
   FetchAuthenticateUserInput,
   FetchAuthenticateUserOutput
->;
+>
 
-export type FetchAuthenticateUserInput = void;
+export type FetchAuthenticateUserInput = void
 
-export type FetchAuthenticateUserOutput = { usuario: User };
+export type FetchAuthenticateUserOutput = { usuario: User }
 
-export type FetchValidateUser = Function<
-  FetchValidateUserInput,
-  FetchValidateUserOutput
->;
+export type FetchValidateUser = Function<FetchValidateUserInput, FetchValidateUserOutput>
 
 export type FetchValidateUserInput = {
-  emailToken: String;
-};
+  emailToken: String
+}
 
-export type FetchValidateUserOutput = User;
+export type FetchValidateUserOutput = User
 
-export type LoginAuth = Function<LoginAuthInput, LoginAuthOutput>;
+export type LoginAuth = Function<LoginAuthInput, LoginAuthOutput>
 
-export type LoginAuthInput = { email: string; password: string };
+export type LoginAuthInput = { email: string; password: string }
 
-export type LoginAuthOutput = { token: string };
+export type LoginAuthOutput = {
+  user: User
+  token: string
+}
 
-export type Singup = Function<SingupInput, SingupOutput>;
+export type Singup = Function<SingupInput, SingupOutput>
 
 export type SingupInput = {
-  nombre: string;
-  email: string;
-  password: string;
-  isAdmin: string;
-  advertencia: number;
-  kycimg: string;
-  kyc: boolean;
-  carnet: string;
-};
+  nombre: string
+  email: string
+  password: string
+  isAdmin: string
+  advertencia: number
+  kycimg: string
+  kyc: boolean
+  carnet: string
+}
 
-export type SingupOutput = { token: string };
+export type SingupOutput = { token: string }

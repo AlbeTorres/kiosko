@@ -1,21 +1,14 @@
-import { createContext } from "react";
-import { User } from "../../lib/Models/User.model";
-import { Alerta } from "../../lib/Models/Alerta.model";
+import { createContext } from 'react'
+import { User } from '../../lib/Models/User.model'
+import { LoginAuthOutput } from '../../lib/requests/auth.type'
 
 interface Auth {
-    token: string | null;
-    usuario: User;
-    mensaje: Alerta | null;
-    autenticado: boolean;
-    cargando: boolean;
-    aux: number;
-    usuarioAutenticado(): void;
-    registrarUsuario: (datos) => void;
-    iniciarSesion: (datos) => void;
-    cerrarSesion(): void;
-  }
-  
+  usuario: User
+  saveData(data: User): void
+  login(data: LoginAuthOutput): void
+  logout(redirectToLogin?: boolean): void
+}
 
-export const authContext = createContext<Auth>(null);
+export const authContext = createContext<Auth>(null)
 
-export default authContext;
+export default authContext

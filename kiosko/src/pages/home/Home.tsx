@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import { useAllProducts } from "../../hooks/api/product.hook";
 
 const Home = () => {
-  const  busqueda  = '';
+  const busqueda = "";
   const { usuario } = useContext(authContext);
   const { verificado } = useParams();
 
@@ -37,18 +37,13 @@ const Home = () => {
 
   return (
     <>
-      <HomeContainer>
-        {isSuccess && (
-          <Tablero
-            productos={products.productos}
-            usuario={usuario}
-            busqueda={busqueda}
-          />
-        )}
-        {/* <Ubicacion /> */}
-      </HomeContainer>
-      {/* <Footer /> */}
-      <Modal />
+      {isSuccess && (
+        <Tablero
+          productos={products.productos}
+          usuario={usuario}
+          busqueda={busqueda}
+        />
+      )}
     </>
   );
 };

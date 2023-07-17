@@ -8,7 +8,7 @@ import Paymen from "../pages/paymen/Paymen";
 import Perfil from "../pages/perfil/Perfil";
 import AuthGuard from "./AuthGuard";
 import AuthenticateAccount from "../pages/auth/AuthenticateAccount";
-import { Login } from "../pages/auth/Login.page";
+import { Login } from "../pages/auth/login/Login.page";
 
 const Rutas = () => {
   return (
