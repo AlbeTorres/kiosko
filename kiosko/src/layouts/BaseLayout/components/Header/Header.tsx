@@ -6,7 +6,11 @@ import { useEffect, useState } from 'react'
 import NavMenuIn from './components/NavMenuIn'
 import { useAuth } from '../../../../hooks/api'
 
-export const Header = () => {
+type HeaderProps = {
+  handleOpen(): void
+}
+
+export const Header = ({ handleOpen }: HeaderProps) => {
   const [logged, setLogged] = useState(false)
   const auth = useAuth()
 
@@ -28,7 +32,7 @@ export const Header = () => {
             </Link>
           </div>
 
-          {logged ? <NavMenuIn /> : <NavMenuOut />}
+          {logged ? <NavMenuIn handleOpen={handleOpen} /> : <NavMenuOut />}
         </div>
       </Container>
     </header>

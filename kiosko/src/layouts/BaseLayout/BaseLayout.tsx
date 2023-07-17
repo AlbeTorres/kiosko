@@ -1,16 +1,20 @@
-import { PropsWithChildren } from "react";
-import { Header } from "./components/Header";
-import Footer from "./components/Footer";
-import Container from "../utils/Container";
+import { PropsWithChildren, useState } from 'react'
+import { Header } from './components/Header'
+import Footer from './components/Footer'
+import Container from '../utils/Container'
+import { LogOutDialog } from './components/LogOutDialog'
 
 const BaseLayout = ({ children }: PropsWithChildren) => {
+  const [open, setOpen] = useState(false)
+
   return (
     <>
-      <Header />
+      <Header handleOpen={() => setOpen(true)} />
       <Container>{children}</Container>
       <Footer />
+      <LogOutDialog open={open} onClose={() => setOpen(false)} />
     </>
-  );
-};
+  )
+}
 
-export default BaseLayout;
+export default BaseLayout
