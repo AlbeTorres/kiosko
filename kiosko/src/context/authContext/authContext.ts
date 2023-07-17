@@ -3,7 +3,7 @@ import { User } from '../../lib/Models/User.model'
 import { LoginAuthOutput } from '../../lib/requests/auth.type'
 
 interface Auth {
-  usuario: User
+  data: User
   saveData(data: User): void
   login(data: LoginAuthOutput): void
   logout(redirectToLogin?: boolean): void

@@ -1,21 +1,17 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from '@tanstack/react-query'
 import {
   fetchAuthenticateUser,
   fetchValidateUser,
   login,
   singup,
-} from "../../lib/requests/auth.request";
-import {
-  changePassword,
-  sendRecoveryPasswordCode,
-} from "../../lib/requests/password.request";
+} from '../../lib/requests/auth.request'
+import { changePassword, sendRecoveryPasswordCode } from '../../lib/requests/password.request'
 
 /**
  * The useProfile function is a custom hook that uses the useQuery hook to fetch and authenticate user
  * profile data.
  */
-export const useProfile = () =>
-  useQuery(["profile"], () => fetchAuthenticateUser());
+export const useProfile = () => useQuery(['profile'], () => fetchAuthenticateUser())
 
 /**
  * The `useValidateUser` function is a TypeScript function that uses the `useQuery` hook to fetch and
@@ -27,28 +23,27 @@ export const useProfile = () =>
  * executed. If `enabled` is set to `false`, the query will be disabled and not executed. By default,
  */
 export const useValidateUser = (input, enabled = false) =>
-  useQuery(["validateuser", input], () => fetchValidateUser(input), {
+  useQuery(['validateuser', input], () => fetchValidateUser(input), {
     enabled,
-  });
+  })
 
 /**
  * The function `useSendPasswordRecovery` is a custom hook that uses the `useMutation` hook to send a
  * recovery password code.
  */
-export const useSendPasswordRecovery = () =>
-  useMutation(sendRecoveryPasswordCode);
+export const useSendPasswordRecovery = () => useMutation(sendRecoveryPasswordCode)
 
 /**
  * The useChangePassword function is a custom hook that uses the useMutation hook to handle the
  * changePassword mutation.
  */
-export const useChangePassword = () => useMutation(changePassword);
+export const useChangePassword = () => useMutation(changePassword)
 
 /**
  * The useLogin function is a custom hook that uses the useMutation hook to handle login functionality.
  */
-export const useLogin = () => useMutation(login);
+export const useLogin = () => useMutation(login)
 /**
  * The useSignup function is a custom hook that uses the useMutation hook to handle the signup process.
  */
-export const useSingup = () => useMutation(singup);
+export const useSingup = () => useMutation(singup)

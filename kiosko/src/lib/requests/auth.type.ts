@@ -23,7 +23,7 @@ export type LoginAuth = Function<LoginAuthInput, LoginAuthOutput>
 export type LoginAuthInput = { email: string; password: string }
 
 export type LoginAuthOutput = {
-  user: User
+  usuario: User
   token: string
 }
 

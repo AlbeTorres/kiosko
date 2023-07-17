@@ -1,12 +1,12 @@
-import tokenAuth from "./tokenAuth.js";
+import tokenAuth from './tokenAuth.js'
 
 export const setToken = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token')
 
   if (token) {
-    tokenAuth(token);
-    return true;
+    tokenAuth(token)
+    return true
   } else {
-    return false;
+    return false
   }
-};
+}
