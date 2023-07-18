@@ -9,6 +9,7 @@ import Perfil from '../pages/perfil/Perfil'
 import AuthGuard from './AuthGuard'
 import AuthenticateAccount from '../pages/auth/AuthenticateAccount'
 import { Login } from '../pages/auth/login/Login.page'
+import { Singup } from '../pages/auth/sinup/Singup.page'
 
 const Rutas = () => {
   return (
@@ -16,6 +17,7 @@ const Rutas = () => {
       <Route path='/:verificado' element={<Home />} />
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
+      <Route path='/singup' element={<Singup />} />
       <Route path='/verify-email/:emailToken' element={<AuthenticateAccount />} />
 
       <Route path='*' element={<> Not Found</>} />

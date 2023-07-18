@@ -1,10 +1,10 @@
-import LoginDialog from './components/LoginDialog'
 import Home from '../../home/Home'
 import { useAuth } from '../../../hooks/api'
 import { useNavigate, useParams } from 'react-router-dom'
-import { LoginAuthOutput } from '../../../lib/requests/auth.type'
+import { LoginAuthOutput, SingupOutput } from '../../../lib/requests/auth.type'
+import SingupDialog from './components/SingupDialog'
 
-export const Login = () => {
+export const Singup = () => {
   const params = useParams()
   const navigate = useNavigate()
 
@@ -12,16 +12,16 @@ export const Login = () => {
 
   const goback = params.returnUrl
 
-  const handleLogin = (data: LoginAuthOutput) => {
+  const handleSingup = (data: SingupOutput) => {
     auth.login(data)
     navigate(goback ? (goback as string) : '/')
   }
 
   return (
     <>
-      <LoginDialog
+      <SingupDialog
+        onSingup={handleSingup}
         open
-        onLogin={handleLogin}
         onClose={goback ? () => navigate(goback as string) : () => navigate('/')}
       />
       <Home />

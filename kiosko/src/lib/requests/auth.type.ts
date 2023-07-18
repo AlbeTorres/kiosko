@@ -34,11 +34,11 @@ export type SingupInput = {
   nombre: string
   email: string
   password: string
-  isAdmin: string
+  isAdmin: boolean
   advertencia: number
   kycimg: string
   kyc: boolean
   carnet: string
 }
 
-export type SingupOutput = { token: string }
+export type SingupOutput = { usuario: User; token: string }

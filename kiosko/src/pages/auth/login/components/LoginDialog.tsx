@@ -57,43 +57,44 @@ const LoginDialog = ({ onLogin, ...props }: LoginDialogProps) => {
           onSubmit={handleSubmit(handleLogin)}
           className='xs:w-72 w-60  md:w-80 h-full  flex flex-col gap-y-5    m-auto'
         >
-          <TextField
-            className='w-full'
-            type='text'
-            label={'Email'}
-            icon={FaEnvelope}
-            error={errors.email?.message}
-            {...register('email', {
-              required: {
-                value: true,
-                message: 'Correo requerido',
-              },
-              pattern: {
-                value: regexps.email,
-                message: 'correo inválido',
-              },
-            })}
-          />
-
           <div>
-            <PasswordTextField
+            <TextField
               className='w-full'
-              label={'Contraseña'}
-              placeholder='Contraseña'
-              error={errors.password?.message}
-              {...register('password', {
-                required: 'Contraseña requerida',
-                setValueAs: (v: string) => v.trim(),
+              placeholder='Email'
+              type='text'
+              icon={FaEnvelope}
+              error={errors.email?.message}
+              {...register('email', {
+                required: {
+                  value: true,
+                  message: 'Correo requerido',
+                },
                 pattern: {
-                  value: regexps.password,
-                  message: 'Debe contener más de 8 caracteres',
+                  value: regexps.email,
+                  message: 'correo inválido',
                 },
               })}
             />
 
-            <Link to={'/recovery_pass'}>
-              <p className='text-sm hover:text-primary mt-2'>Olvidé mi contraseña</p>
-            </Link>
+            <div>
+              <PasswordTextField
+                className='w-full'
+                placeholder='Contraseña'
+                error={errors.password?.message}
+                {...register('password', {
+                  required: 'Contraseña requerida',
+                  setValueAs: (v: string) => v.trim(),
+                  pattern: {
+                    value: regexps.password,
+                    message: 'Debe contener más de 8 caracteres',
+                  },
+                })}
+              />
+
+              <Link to={'/recovery_pass'}>
+                <p className='text-sm hover:text-primary mt-2'>Olvidé mi contraseña</p>
+              </Link>
+            </div>
           </div>
           <Button
             type='submit'
