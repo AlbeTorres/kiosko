@@ -11,14 +11,14 @@ const AuthenticateAccount = () => {
   const { data: profile } = useProfile()
 
   useEffect(() => {
-    if (profile?.usuario?.isVerified) {
+    if (profile?.isVerified) {
       navigate(`/${true}`)
     }
   }, [profile])
 
   const { data: validateUser, isSuccess: isValidateSuccess } = useValidateUser(
     emailToken,
-    profile?.usuario?.isVerified === false,
+    profile?.isVerified === false,
   )
 
   return (

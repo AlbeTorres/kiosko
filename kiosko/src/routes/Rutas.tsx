@@ -8,16 +8,18 @@ import Paymen from '../pages/paymen/Paymen'
 import Perfil from '../pages/perfil/Perfil'
 import AuthGuard from './AuthGuard'
 import AuthenticateAccount from '../pages/auth/AuthenticateAccount'
-import { Login } from '../pages/auth/login/Login.page'
-import { Singup } from '../pages/auth/sinup/Singup.page'
+import { Login } from '../pages/auth'
+import { Singup } from '../pages/auth'
 
 const Rutas = () => {
   return (
     <Routes>
-      <Route path='/:verificado' element={<Home />} />
       <Route path='/' element={<Home />} />
+      <Route path='/:verificado' element={<Home />} />
       <Route path='/login' element={<Login />} />
+      <Route path='/login/:goback' element={<Login />} />
       <Route path='/singup' element={<Singup />} />
+      <Route path='/singup/:goback' element={<Singup />} />
       <Route path='/verify-email/:emailToken' element={<AuthenticateAccount />} />
 
       <Route path='*' element={<> Not Found</>} />
@@ -27,7 +29,7 @@ const Rutas = () => {
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/adminuser" element={<AdminUser />} />
         <Route path="/adminpedido" element={<AdminPedidos />} />
-        <Route path="/pedido:id" element={<PedidoDetails />} />
+        <Route path="/pedido/:id" element={<PedidoDetails />} />
       </Route> */}
     </Routes>
   )

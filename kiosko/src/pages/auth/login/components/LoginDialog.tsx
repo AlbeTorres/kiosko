@@ -51,7 +51,7 @@ const LoginDialog = ({ onLogin, ...props }: LoginDialogProps) => {
 
   return (
     <Dialog {...props}>
-      <section className='w-full py-10 h-fit '>
+      <section className='w-full py-2 h-fit '>
         <h1 className=' text-center text-xl font-bold'>Acceder</h1>
         <form
           onSubmit={handleSubmit(handleLogin)}
