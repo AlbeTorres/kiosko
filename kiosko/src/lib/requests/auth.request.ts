@@ -1,4 +1,5 @@
 import clienteAxios from '../../config/axios.js'
+import { adaptUserResponse } from '../adapters'
 import { FetchAuthenticateUser, FetchValidateUser, LoginAuth, Singup } from './auth.type.js'
 
 /**
@@ -9,7 +10,7 @@ import { FetchAuthenticateUser, FetchValidateUser, LoginAuth, Singup } from './a
  * by the `clienteAxios.get("api/auth")` request.
  */
 export const fetchAuthenticateUser: FetchAuthenticateUser = () =>
-  clienteAxios.get('api/auth').then(r => r.data)
+  clienteAxios.get('api/auth').then(r => adaptUserResponse(r.data))
 
 /**
  * The function fetchValidateUser is an asynchronous function that takes an emailToken as a parameter

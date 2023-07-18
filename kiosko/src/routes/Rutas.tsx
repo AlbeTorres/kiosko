@@ -16,7 +16,7 @@ const Rutas = () => {
       <Route path='/:verificado' element={<Home />} />
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/verify-email:emailToken' element={<AuthenticateAccount />} />
+      <Route path='/verify-email/:emailToken' element={<AuthenticateAccount />} />
 
       <Route path='*' element={<> Not Found</>} />
 

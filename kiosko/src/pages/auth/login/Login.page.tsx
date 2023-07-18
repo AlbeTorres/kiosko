@@ -15,6 +15,7 @@ export const Login = () => {
 
   const handleLogin = (data: LoginAuthOutput) => {
     auth.login(data)
+    navigate('/')
   }
 
   return (

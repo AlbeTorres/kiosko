@@ -11,7 +11,7 @@ const NavMenuIn = ({ handleOpen }) => {
       <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
         <figure className='w-10 h-10 rounded-full'>
           <img
-            src={usuario?.usuario?.perfilimg ? usuario?.usuario.perfilimg : noimg}
+            src={usuario?.perfilimg ? usuario?.perfilimg : noimg}
             className='h-full w-full object-cover rounded-full'
           />
         </figure>
@@ -29,7 +29,7 @@ const NavMenuIn = ({ handleOpen }) => {
               </Link>
             </li>
           )}
-          {usuario?.usuario?.isAdmin && location.pathname === '/' ? (
+          {usuario?.isAdmin && location.pathname === '/' ? (
             <div>
               <li className='my-3 md:my-1 ml-2'>
                 <label className=' block ' htmlFor='my-modal-6'>

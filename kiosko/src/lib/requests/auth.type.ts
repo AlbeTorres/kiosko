@@ -8,7 +8,8 @@ export type FetchAuthenticateUser = Function<
 
 export type FetchAuthenticateUserInput = void
 
-export type FetchAuthenticateUserOutput = { usuario: User }
+export type FetchAuthenticateUserOutput = User
+export type FetchAuthenticateUserData = { usuario: User }
 
 export type FetchValidateUser = Function<FetchValidateUserInput, FetchValidateUserOutput>
 
