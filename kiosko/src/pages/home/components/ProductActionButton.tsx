@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { FaCartPlus, FaMinus, FaPlus } from 'react-icons/fa'
+import cartContext from '../../../context/productoContext/cartContext'
 
-export const ProductActionButton = ({ id }) => {
+export const ProductActionButton = ({ _id }) => {
+  const { addCart } = useContext(cartContext)
   const [cantidad, setCantidad] = useState(1)
 
   const subtractAmount = () => {
@@ -14,10 +16,6 @@ export const ProductActionButton = ({ id }) => {
     if (cantidad < 100) {
       setCantidad(cantidad + 1)
     }
-  }
-
-  function añadirCarro(id: any, cantidad: number): void {
-    throw new Error('Function not implemented.')
   }
 
   return (
@@ -34,7 +32,7 @@ export const ProductActionButton = ({ id }) => {
 
       <button
         className='btn  w-full text-sm  flex items-center justify-center h-10 '
-        onClick={() => añadirCarro(id, cantidad)}
+        onClick={() => addCart({ _id, cantidad })}
       >
         <span>Añadir</span>
         <FaCartPlus className='ml-1' />

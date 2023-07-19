@@ -5,7 +5,7 @@ import Modal from '../../components/layout/Modal'
 import { socket } from '../../config/socket'
 import authContext from '../../context/authContext/authContext'
 
-import productoContext from '../../context/productoContext/productoContext'
+import productoContext from '../../context/productoContext/cartContext'
 
 import { useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'

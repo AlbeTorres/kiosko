@@ -24,6 +24,6 @@ export const ProductCard = ({ _id, nombre, img, medida, estado, precio }) => (
         </div>
       </div>
     </div>
-    <ProductActionButton id={_id} />
+    <ProductActionButton _id={_id} />
   </div>
 )
