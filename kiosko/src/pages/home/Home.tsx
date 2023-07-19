@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { useAllProducts } from '../../hooks/api/product.hook'
 import { Spinner } from '../../components-libs/Spinner'
+import { ProductList } from './components/ProductList'
 
 const Home = () => {
   const busqueda = ''
@@ -19,24 +20,28 @@ const Home = () => {
 
   const token = localStorage.getItem('token')
 
-  const { data: products, isSuccess, refetch } = useAllProducts()
+  // const { data: products, isSuccess, refetch } = useAllProducts()
 
   useEffect(() => {
     if (verificado) {
       toast.success('Usuario verificado')
     }
-    socket.on('hello', msg => {})
+    // socket.on('hello', msg => {})
 
-    socket.on('newpedido', msg => {
-      refetch()
-    })
+    // socket.on('newpedido', msg => {
+    //   refetch()
+    // })
 
-    socket.on('cambioestado', () => {
-      refetch()
-    })
+    // socket.on('cambioestado', () => {
+    //   refetch()
+    // })
   }, [token])
 
-  return <>{isSuccess && <h1>Hola</h1>}</>
+  return (
+    <>
+      <ProductList />
+    </>
+  )
 }
 
 export default Home

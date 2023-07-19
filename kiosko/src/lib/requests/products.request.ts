@@ -1,4 +1,5 @@
 import clienteAxios from '../../config/axios.js'
+import { productsAdapter } from '../adapters/product.adapter.js'
 import {
   AddProduct,
   DeleteProduct,
@@ -12,7 +13,7 @@ import {
  * returns the response data.
  */
 export const fetchAllProducts: FetchProducts = () =>
-  clienteAxios.get('api/productos/').then(r => r.data)
+  clienteAxios.get('api/productos/').then(r => productsAdapter(r.data))
 
 /**
  * The fetchProduct function retrieves a product from an API based on its ID.

@@ -9,10 +9,10 @@ const BaseLayout = ({ children }: PropsWithChildren) => {
 
   return (
     <>
+      <LogOutDialog open={open} onClose={() => setOpen(false)} />
       <Header handleOpen={() => setOpen(true)} />
       <Container>{children}</Container>
       <Footer />
-      <LogOutDialog open={open} onClose={() => setOpen(false)} />
     </>
   )
 }
