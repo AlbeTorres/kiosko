@@ -5,6 +5,7 @@ import NavMenuOut from './components/NavMenuOut'
 import { useEffect, useState } from 'react'
 import NavMenuIn from './components/NavMenuIn'
 import { useAuth } from '../../../../hooks/api'
+import { NavShopCart } from './components/NavShopCart'
 
 type HeaderProps = {
   handleOpen(): void
@@ -32,7 +33,11 @@ export const Header = ({ handleOpen }: HeaderProps) => {
             </Link>
           </div>
 
-          {logged ? <NavMenuIn handleOpen={handleOpen} /> : <NavMenuOut />}
+          <div className='flex items-center gap-x-5'>
+            <NavShopCart />
+
+            {logged ? <NavMenuIn handleOpen={handleOpen} /> : <NavMenuOut />}
+          </div>
         </div>
       </Container>
     </header>
