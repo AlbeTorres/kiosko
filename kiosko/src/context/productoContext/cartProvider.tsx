@@ -41,7 +41,7 @@ const CartProvider = ({ children }) => {
 
     dispatch({
       type: AÑADIR_CARRO,
-      payload: { _id, cantidad },
+      payloadcart: cart,
     })
   }
 

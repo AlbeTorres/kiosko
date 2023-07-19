@@ -30,7 +30,7 @@ export default (state: { cart: CartPayload[] }, action: CartAction) => {
     case AÑADIR_CARRO:
       return {
         ...state,
-        cart: [...state.cart, action.payload],
+        cart: action.payloadcart,
       }
     case MODIFICAR_PRODUCTO_CARRO:
       return {
