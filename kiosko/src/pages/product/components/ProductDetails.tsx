@@ -8,7 +8,7 @@ export const ProductDetails = ({ _id }) => {
   const [cantidad, setCantidad] = useState(1)
   const { addCart } = useContext(cartContext)
   return (
-    <div className='pt-8 relative flex flex-col gap-y-10 h-full'>
+    <div className='pt-8 relative flex flex-col gap-y-10 h-[28rem] lg:h-full'>
       <div>
         <p>{'Categoría'}</p>
         <h3 className='text-2xl ml-5 font-semibold  '>{'Alimentos'}</h3>
