@@ -13,10 +13,13 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
   const [cantidad, setCantidad] = useState(1)
   const context = useContext(cartContext)
   return (
-    <div className='pt-8 relative flex flex-col gap-y-10 h-[28rem] lg:h-full'>
+    <div className='pt-4 relative flex flex-col gap-y-10 h-[28rem] lg:h-full'>
+      <h2 className='text-4xl font-semibold capitalize '>{product.nombre}</h2>
       <div>
         <p>{'Categoría'}</p>
-        <h3 className='text-2xl ml-5 font-semibold  '>{product.categoria}</h3>
+        <h3 className='text-2xl ml-5 font-semibold capitalize  '>
+          {!!product.categoria || 'Electrónica'}
+        </h3>
       </div>
       <div>
         <p>Precio</p>
@@ -25,7 +28,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
             {product.precio}
             <span className='ml-1'>{'cup'}</span>
           </h2>
-          <h4 className='text-red-500 text-2xl  line-through mt-2'>
+          <h4 className='text-red-500 text-xl  line-through mt-3'>
             {product.precio + 100}
             <span className='ml-1'>{'cup'}</span>
           </h4>

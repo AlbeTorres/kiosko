@@ -20,8 +20,7 @@ export const ProductImg = ({ product }: ProductImgProps) => {
 
   return (
     <section className='w-full h-full'>
-      <h2 className='text-4xl font-semibold my-5 capitalize '>{product.nombre}</h2>
-      <div className=' hidden lg:grid grid-cols-[20%_80%] gap-x-1 '>
+      <div className=' hidden md:grid grid-cols-[16%_84%] gap-x-1 '>
         <div className='grid grid-rows-4 gap-y-1 auto-rows-min'>
           {[{ _id: 1, img: product.img }].map(i => (
             <figure
@@ -35,14 +34,14 @@ export const ProductImg = ({ product }: ProductImgProps) => {
             </figure>
           ))}
         </div>
-        <figure className='w-full h-full min-h-[35rem] rounded-lg '>
+        <figure className='w-full h-[29rem] rounded-lg '>
           <img src={selectedimg.img} alt='' className='w-full h-full object-cover rounded-lg' />
         </figure>
       </div>
-      <div className='lg:hidden'>
+      <div className='md:hidden'>
         <Carrousel
           items={[{ img: product.img }]}
-          className='w-full h-[20rem] xs:h-[30rem]'
+          className='w-full h-full'
           interval={25000}
           buttons='square'
         />
