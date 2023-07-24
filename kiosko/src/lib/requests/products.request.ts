@@ -1,5 +1,5 @@
 import clienteAxios from '../../config/axios.js'
-import { productsAdapter } from '../adapters/product.adapter.js'
+import { productAdapter, productsAdapter } from '../adapters/product.adapter.js'
 import {
   AddProduct,
   DeleteProduct,
@@ -21,7 +21,7 @@ export const fetchAllProducts: FetchProducts = () =>
  * parameter. The object has a property called `id`.
  */
 export const fetchProduct: FetchProduct = ({ id }) =>
-  clienteAxios.get(`api/productos/${id}`).then(r => r.data)
+  clienteAxios.get(`api/productos/${id}`).then(r => productAdapter(r.data))
 
 /**
  * The function `addProduct` is an asynchronous function that adds a product by making a POST request

@@ -67,14 +67,16 @@ export const Carrousel = ({ items, className, buttons, interval }: CarrouselProp
               </div>
             ),
         )}
-        <div className='absolute left-0 right-0 top-1/2 flex -translate-y-1/2 transform justify-between'>
-          <button onClick={anteriorBanners} className={btnStyle.button[buttons]}>
-            ❮
-          </button>
-          <button onClick={siguienteBanners} className={btnStyle.button[buttons]}>
-            ❯
-          </button>
-        </div>
+        {items.length > 1 && (
+          <div className='absolute left-0 right-0 top-1/2 flex -translate-y-1/2 transform justify-between'>
+            <button onClick={anteriorBanners} className={btnStyle.button[buttons]}>
+              ❮
+            </button>
+            <button onClick={siguienteBanners} className={btnStyle.button[buttons]}>
+              ❯
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )

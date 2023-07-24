@@ -12,7 +12,7 @@ export const ProductActionButton = ({ _id }) => {
     <div className='flex flex-col justify-center items-center w-full'>
       <MaxMinButton cantidad={cantidad} setCantidad={setCantidad} button={'ghost'} />
       <Button
-        className='btn  w-full text-sm  flex items-center justify-center h-10 '
+        className='btn btn-primary  w-full text-sm  flex items-center justify-center h-10 '
         onClick={() => addCart({ _id, cantidad })}
       >
         <span>Añadir</span>

@@ -10,8 +10,8 @@ type MaxMinButtonProps = {
 
 const className = {
   button: {
-    ghost: 'btn btn-ghost btn-md ',
-    square: 'btn btn-square btn-md ',
+    ghost: 'btn btn-ghost btn-sm ',
+    square: 'btn btn-primary btn-square btn-sm ',
   },
 }
 

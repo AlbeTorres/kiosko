@@ -1,16 +1,16 @@
-import { Base } from "./Base.model";
+import { Base } from './Base.model'
 
 export interface Product extends Base {
-  nombre: String;
-  categoria: String;
-  estado: String;
-  img: String;
-  cloud_id: String;
-  provincia: String;
-  municipio: String;
-  promodate: String;
-  medida: String;
-  precio: number;
-  creador: String;
-  registro: Date;
+  nombre: string
+  categoria: string
+  estado: string
+  img: string
+  cloud_id: string
+  provincia: string
+  municipio: string
+  promodate: string
+  medida: string
+  precio: number
+  creador: string
+  registro: Date
 }
