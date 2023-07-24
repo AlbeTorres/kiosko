@@ -11,7 +11,7 @@ type ProductDetailsProps = {
 
 export const ProductDetails = ({ product }: ProductDetailsProps) => {
   const [cantidad, setCantidad] = useState(1)
-  const { addCart } = useContext(cartContext)
+  const context = useContext(cartContext)
   return (
     <div className='pt-8 relative flex flex-col gap-y-10 h-[28rem] lg:h-full'>
       <div>
@@ -39,7 +39,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
         </div>
         <Button
           className='btn btn-primary  w-full text-sm  flex items-center justify-center h-10 '
-          onClick={() => addCart({ _id: product._id, cantidad })}
+          onClick={() => context?.addCart({ _id: product._id, cantidad })}
         >
           <span>Añadir</span>
           <FaCartPlus className='ml-1' />

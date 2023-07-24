@@ -23,7 +23,7 @@ export const fetchAuthenticateUser: FetchAuthenticateUser = () =>
  * the API call.
  */
 export const fetchValidateUser: FetchValidateUser = emailToken =>
-  clienteAxios.post('api/usuarios/verify-email', { emailToken }).then(r => r.data)
+  clienteAxios.post('api/usuarios/verify-email', emailToken).then(r => r.data)
 
 /**
  * The above function is a TypeScript function that sends a POST request to a login endpoint with the

@@ -6,9 +6,7 @@ import { useProduct } from '../../hooks/api'
 const Product = () => {
   const { id } = useParams()
 
-  const { data: product, isSuccess } = useProduct({ id })
-
-  console.log(product)
+  const { data: product, isSuccess } = useProduct(id ? { id } : { id: '' })
 
   return (
     <>

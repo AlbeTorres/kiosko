@@ -17,7 +17,7 @@ const AuthenticateAccount = () => {
   }, [profile])
 
   const { data: validateUser, isSuccess: isValidateSuccess } = useValidateUser(
-    emailToken,
+    emailToken ? { emailToken } : { emailToken: '' },
     profile?.isVerified === false,
   )
 

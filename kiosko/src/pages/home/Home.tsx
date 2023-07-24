@@ -1,16 +1,6 @@
-import React, { useContext, useEffect } from 'react'
-import HomeContainer from '../../components/layout/HomeContainer'
-import Tablero from '../../components/layout/Tablero'
-import Modal from '../../components/layout/Modal'
-import { socket } from '../../config/socket'
-import authContext from '../../context/authContext/authContext'
-
-import productoContext from '../../context/productoContext/cartContext'
-
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { useAllProducts } from '../../hooks/api/product.hook'
-import { Spinner } from '../../components-libs/Spinner'
 import { ProductList } from './components/ProductList'
 
 const Home = () => {

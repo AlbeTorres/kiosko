@@ -10,15 +10,11 @@ import { useLogin } from '../../../../hooks/api/profile.hook'
 import toast from 'react-hot-toast'
 import { AxiosError } from 'axios'
 import { DialogProps } from '../../../../components-libs/Dialog/Dialog'
-import { LoginAuthOutput } from '../../../../lib/requests/auth.type'
+import { LoginAuthInput, LoginAuthOutput } from '../../../../lib/requests/auth.type'
 
 type LoginFrom = {
   email: string
   password: string
-}
-
-type AxiosErrorResponse = {
-  msg: string
 }
 
 type LoginDialogProps = DialogProps & {
@@ -43,8 +39,11 @@ const LoginDialog = ({ onLogin, ...props }: LoginDialogProps) => {
       {
         onSuccess: onLogin,
 
-        onError: async (e: AxiosError<AxiosErrorResponse, any>) => {
-          toast.error(e.response.data.msg)
+        onError: async (e: unknown) => {
+          if (e instanceof AxiosError) {
+            // error is AxiosError here
+            toast.error(e.response && e.response.data.msg)
+          }
         },
       },
     )

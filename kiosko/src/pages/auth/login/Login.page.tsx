@@ -13,7 +13,7 @@ export const Login = () => {
   const goback = params.returnUrl
 
   const handleLogin = (data: LoginAuthOutput) => {
-    auth.login(data)
+    auth?.login(data)
     navigate(goback ? (goback as string) : '/')
   }
 

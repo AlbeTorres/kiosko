@@ -23,10 +23,6 @@ type SingupFrom = {
   carnet: string
 }
 
-type AxiosErrorResponse = {
-  msg: string
-}
-
 type SingupDialogProps = DialogProps & {
   onSingup(data: SingupOutput): void
 }
@@ -56,8 +52,11 @@ const SingupDialog = ({ onSingup, ...props }: SingupDialogProps) => {
       {
         onSuccess: onSingup,
 
-        onError: async (e: AxiosError<AxiosErrorResponse, any>) => {
-          toast.error(e.response.data.msg)
+        onError: async (e: unknown) => {
+          if (e instanceof AxiosError) {
+            // error is AxiosError here
+            toast.error(e.response && e.response.data.msg)
+          }
         },
       },
     )

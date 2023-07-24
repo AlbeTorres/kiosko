@@ -15,10 +15,13 @@ export const compressImage = (imageFile: File, compressionFactor: number): Promi
         canvas.width = width
         canvas.height = height
         const ctx = canvas.getContext('2d')
-        ctx.drawImage(img, 0, 0, width, height)
+        ctx?.drawImage(img, 0, 0, width, height)
 
         canvas.toBlob(
           blob => {
+            if (!blob) {
+              return
+            }
             const compressedFile = new File([blob], imageFile.name, {
               type: imageFile.type,
               lastModified: Date.now(),
@@ -26,7 +29,7 @@ export const compressImage = (imageFile: File, compressionFactor: number): Promi
             resolve(compressedFile)
           },
           imageFile.type,
-          compressionFactor
+          compressionFactor,
         )
       }
 
