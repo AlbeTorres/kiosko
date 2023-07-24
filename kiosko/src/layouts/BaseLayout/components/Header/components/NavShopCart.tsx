@@ -3,11 +3,11 @@ import { useContext } from 'react'
 import { useAllCartProductPrice } from '../../../../../hooks/api/shopcart.hook'
 
 export const NavShopCart = () => {
-  const { cart } = useContext(cartContext)
-  let cantidad = cart.reduce((cantidad, p) => cantidad + p.cantidad, 0)
+  const context = useContext(cartContext)
+  let cantidad = context?.cart.reduce((cantidad: number, p) => cantidad + p.cantidad, 0)
 
   const { data: monto } = useAllCartProductPrice({
-    options: { cartproducts: JSON.stringify(cart) },
+    options: { cartproducts: JSON.stringify(context?.cart) },
   })
 
   return (
@@ -36,7 +36,7 @@ export const NavShopCart = () => {
       <div tabIndex={1} className='mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow'>
         <div className='card-body'>
           <span className='font-bold text-lg'>
-            {cantidad} {cantidad > 1 ? 'productos' : 'producto'}{' '}
+            {cantidad} {cantidad && cantidad > 1 ? 'productos' : 'producto'}{' '}
           </span>
           <span className='text-info'>Subtotal: ${monto?.totalCartPrice} </span>
           <div className='card-actions'>

@@ -13,6 +13,6 @@ interface cartContext {
   updateProductCart(id: string, cantidad: number): void
 }
 
-const cartContext = createContext<cartContext>(null)
+const cartContext = createContext<cartContext | null>(null)
 
 export default cartContext

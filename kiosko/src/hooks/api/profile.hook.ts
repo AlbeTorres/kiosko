@@ -6,6 +6,7 @@ import {
   singup,
 } from '../../lib/requests/auth.request'
 import { changePassword, sendRecoveryPasswordCode } from '../../lib/requests/password.request'
+import { FetchValidateUserInput } from '../../lib/requests/auth.type'
 
 /**
  * The useProfile function is a custom hook that uses the useQuery hook to fetch and authenticate user
@@ -22,7 +23,7 @@ export const useProfile = () => useQuery(['profile'], () => fetchAuthenticateUse
  * query should be enabled or disabled. If `enabled` is set to `true`, the query will be enabled and
  * executed. If `enabled` is set to `false`, the query will be disabled and not executed. By default,
  */
-export const useValidateUser = (input, enabled = false) =>
+export const useValidateUser = (input: FetchValidateUserInput, enabled = false) =>
   useQuery(['validateuser', input], () => fetchValidateUser(input), {
     enabled,
   })

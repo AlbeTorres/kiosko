@@ -2,7 +2,11 @@ import { useProfile } from '../../../../../hooks/api'
 import { Link, useLocation } from 'react-router-dom'
 import noimg from '../../../../../assets/noimg1.jpg'
 
-const NavMenuIn = ({ handleOpen }) => {
+type NavMenuInProps = {
+  handleOpen(): void
+}
+
+const NavMenuIn = ({ handleOpen }: NavMenuInProps) => {
   const { data: usuario } = useProfile()
   let location = useLocation()
 

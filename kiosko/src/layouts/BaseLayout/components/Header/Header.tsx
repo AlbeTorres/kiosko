@@ -16,10 +16,10 @@ export const Header = ({ handleOpen }: HeaderProps) => {
   const auth = useAuth()
 
   useEffect(() => {
-    if (auth.data) {
+    if (auth?.data) {
       setLogged(true)
     } else setLogged(false)
-  }, [auth.data])
+  }, [auth?.data])
 
   return (
     <header className='bg-base-100 !fixed top-0  z-50   w-full md:py-4 min-h-6  '>

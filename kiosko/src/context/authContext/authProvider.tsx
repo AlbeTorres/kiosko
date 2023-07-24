@@ -9,8 +9,8 @@ export type AuthContextProps = PropsWithChildren<{}>
 
 export const AuthContextProvider = ({ children }: AuthContextProps) => {
   const client = useQueryClient()
-  const [auth, setAuth] = useLocalStorage<User>('auth', null)
-  const [token, setToken] = useLocalStorage('token', null)
+  const [auth, setAuth] = useLocalStorage<User | null>('auth', null)
+  const [token, setToken] = useLocalStorage<string | null>('token', null)
 
   const handleLogin = async (data: LoginAuthOutput) => {
     setAuth(data.usuario)

@@ -10,9 +10,10 @@ export const AxiosInterceptor = () => {
         return request
       }
 
-      if (request.method === 'get' && request.url.includes('auth')) {
-        return Promise.reject(new Error('Token not found'))
-      }
+      if (request.url)
+        if (request.method === 'get' && request.url.includes('auth')) {
+          return Promise.reject(new Error('Token not found'))
+        }
 
       return request
     },

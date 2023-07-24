@@ -3,11 +3,16 @@ import { Dialog } from '../../../components-libs/Dialog'
 import { Button } from '../../../components-libs/Button'
 import { useAuth } from '../../../hooks/api'
 
-export const LogOutDialog = ({ open, onClose }) => {
+type LogOutDialogProps = {
+  open: boolean
+  onClose(): void
+}
+
+export const LogOutDialog = ({ open, onClose }: LogOutDialogProps) => {
   const auth = useAuth()
 
   const handleLogOut = () => {
-    auth.logout()
+    auth?.logout()
     onClose()
   }
 

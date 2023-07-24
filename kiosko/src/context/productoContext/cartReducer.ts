@@ -1,46 +1,38 @@
-import { Product } from '../../lib/Models/Product.model'
 import {
   AÑADIR_CARRO,
   ELIMINAR_CARRO,
   ELIMINAR_CARRO_ALL,
   MODIFICAR_PRODUCTO_CARRO,
-  OBTENER_CARRO,
 } from '../../types'
-
 import { CarProduct } from './cartContext'
 
-export type CartActionType =
-  | AÑADIR_CARRO
-  | ELIMINAR_CARRO
-  | ELIMINAR_CARRO_ALL
-  | OBTENER_CARRO
-  | MODIFICAR_PRODUCTO_CARRO
+type CartActionAdd = { type: AÑADIR_CARRO; payload: CarProduct[] }
+type CartActionDel = { type: ELIMINAR_CARRO; payload: CarProduct[] }
+type CartActionDelAll = { type: ELIMINAR_CARRO_ALL; payload: null }
+type CartActionUpdate = { type: MODIFICAR_PRODUCTO_CARRO; payload: CarProduct[] }
 
-export type CartPayload = CarProduct
-export type CartPayloadAll = CarProduct[]
-
-export interface CartAction {
-  type: CartActionType
-  payload?: CartPayload
-  payloadcart?: CartPayloadAll
+type initialState = {
+  cart: CarProduct[]
 }
 
-export default (state: { cart: CartPayload[] }, action: CartAction) => {
+type CartAction = CartActionAdd | CartActionDel | CartActionDelAll | CartActionUpdate
+
+export default (state: initialState, action: CartAction) => {
   switch (action.type) {
     case AÑADIR_CARRO:
       return {
         ...state,
-        cart: action.payloadcart,
+        cart: action.payload,
       }
     case MODIFICAR_PRODUCTO_CARRO:
       return {
         ...state,
-        cart: action.payloadcart,
+        cart: action.payload,
       }
     case ELIMINAR_CARRO:
       return {
         ...state,
-        cart: action.payloadcart,
+        cart: action.payload,
       }
     case ELIMINAR_CARRO_ALL:
       return {

@@ -1,6 +1,6 @@
 export type Function<I, O> = I extends void ? () => Promise<O> : (input: I) => Promise<O>
 
-const isNotNullish = (v: unknown) => ![null, undefined].includes(v)
+const isNotNullish = (v: any) => ![null, undefined].includes(v)
 
 const buildFormItem = (obj: any) =>
   typeof obj !== 'object' || obj instanceof Blob ? obj : JSON.stringify(obj)

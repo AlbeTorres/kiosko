@@ -1,35 +1,35 @@
-import { forwardRef, ForwardedRef, ComponentType, ComponentProps } from "react";
-import cn from "../../util/cn";
+import { forwardRef, ForwardedRef, ComponentType, ComponentProps } from 'react'
+import cn from '../../util/cn'
+import { IconType } from 'react-icons'
 
-export type BaseTextFieldProps = JSX.IntrinsicElements["input"] & {
-  label?: string;
-  labelHelp?: string;
-  variant?: "standard" | "outlined" | "rounded";
-  password?: boolean;
-  error?: string;
-  icon?: ComponentType<BaseTextFieldProps["iconProps"]>;
-  iconProps?: ComponentProps<"svg">;
-  inputClassName?: string;
-  inputWrapperClassName?: string;
-};
+export type BaseTextFieldProps = JSX.IntrinsicElements['input'] & {
+  label?: string
+  labelHelp?: string
+  password?: boolean
+  error?: string
+  icon?: ComponentType<BaseTextFieldProps['iconProps']> | IconType
+  iconProps?: ComponentProps<'svg'>
+  inputClassName?: string
+  inputWrapperClassName?: string
+}
 
 const classes = {
-  root: "flex flex-col w-full ",
+  root: 'flex flex-col w-full ',
   label: {
-    standard: "label",
-    span: "label-text",
+    standard: 'label',
+    span: 'label-text',
   },
   inputWrapper: {
-    base: "flex items-center w-full relative border-2 rounded-lg ",
+    base: 'flex items-center w-full relative border-2 rounded-lg ',
   },
   input: {
-    base: "input w-full pr-8 !outline-none  autofill:!bg-black",
+    base: 'input w-full pr-8 !outline-none  autofill:!bg-black',
   },
   icon: {
-    base: " absolute right-3  text-primary ",
-    standard: "mr-2 absolute z-10 right-0",
+    base: ' absolute right-3  text-primary ',
+    standard: 'mr-2 absolute z-10 right-0',
   },
-};
+}
 
 const BaseTextField = (
   {
@@ -37,7 +37,6 @@ const BaseTextField = (
     label,
     labelHelp,
     name,
-    variant = "standard",
     placeholder,
     password,
     error,
@@ -48,7 +47,7 @@ const BaseTextField = (
     iconProps,
     ...props
   }: BaseTextFieldProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>,
 ) => (
   <div className={classes.root}>
     <label className={classes.label.standard}>
@@ -56,13 +55,12 @@ const BaseTextField = (
     </label>
     <div
       className={cn(
-        classes.inputWrapper["base"],
-        classes.inputWrapper[variant],
-        inputWrapperClassName
+        classes.inputWrapper['base'],
+        inputWrapperClassName ? inputWrapperClassName : '',
       )}
     >
       <input
-        type={password ? "password" : "text"}
+        type={password ? 'password' : 'text'}
         placeholder={placeholder}
         name={name}
         value={value}
@@ -75,12 +73,12 @@ const BaseTextField = (
           width={18}
           height={18}
           {...iconProps}
-          className={cn(classes.icon["base"], iconProps?.className)}
+          className={cn(classes.icon['base'], iconProps?.className ? iconProps?.className : '')}
         />
       )}
     </div>
-    {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+    {error && <p className='mt-1 text-sm text-red-600'>{error}</p>}
   </div>
-);
+)
 
-export default forwardRef(BaseTextField);
+export default forwardRef(BaseTextField)

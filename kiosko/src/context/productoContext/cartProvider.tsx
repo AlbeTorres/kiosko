@@ -1,7 +1,5 @@
-import { useReducer } from 'react'
 import {
   AÑADIR_CARRO,
-  OBTENER_CARRO,
   MODIFICAR_PRODUCTO_CARRO,
   ELIMINAR_CARRO,
   ELIMINAR_CARRO_ALL,
@@ -9,13 +7,15 @@ import {
 import { useLocalStorage } from 'usehooks-ts'
 import cartContext, { CarProduct } from './cartContext'
 import cartReducer from './cartReducer'
+import { PropsWithChildren, useReducer } from 'react'
 
 const init = (): CarProduct[] => {
-  let cart: CarProduct[] = JSON.parse(localStorage.getItem('cart')) || []
+  let aux = localStorage.getItem('cart')
+  let cart: CarProduct[] = aux !== null ? JSON.parse(aux) : []
   return cart
 }
 
-const CartProvider = ({ children }) => {
+const CartProvider = ({ children }: PropsWithChildren) => {
   const cartInit = init()
   const initialState = {
     cart: cartInit,
@@ -41,7 +41,7 @@ const CartProvider = ({ children }) => {
 
     dispatch({
       type: AÑADIR_CARRO,
-      payloadcart: cart,
+      payload: cart,
     })
   }
 
@@ -54,7 +54,7 @@ const CartProvider = ({ children }) => {
 
       dispatch({
         type: ELIMINAR_CARRO,
-        payloadcart: auxcart,
+        payload: auxcart,
       })
     }
   }
@@ -64,6 +64,7 @@ const CartProvider = ({ children }) => {
 
     dispatch({
       type: ELIMINAR_CARRO_ALL,
+      payload: null,
     })
   }
 
@@ -82,7 +83,7 @@ const CartProvider = ({ children }) => {
 
     dispatch({
       type: MODIFICAR_PRODUCTO_CARRO,
-      payloadcart: cart,
+      payload: cart,
     })
   }
 
