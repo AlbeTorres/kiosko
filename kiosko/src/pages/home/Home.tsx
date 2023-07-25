@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { ProductList } from './components/ProductList'
+import { ProductList } from '../product/components/ProductList'
 
 const Home = () => {
   const busqueda = ''
