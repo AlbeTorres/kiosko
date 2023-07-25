@@ -1,5 +1,6 @@
-import { Product } from '../Models/Product.model'
-import { FetchProductData, FetchProductsData } from '../requests/products.type'
+import { Product } from "../Models/Product.model";
+import { FetchProductData, FetchProductsData } from "../requests/products.type";
+import { FetchShopCartProductsData } from "../requests/shopcart.type";
 
 export const productAdapter = (data: FetchProductData): Product => ({
   _id: data.producto._id,
@@ -15,12 +16,22 @@ export const productAdapter = (data: FetchProductData): Product => ({
   precio: data.producto.precio,
   creador: data.producto.creador,
   registro: data.producto.registro,
-})
+});
 
-export const productsAdapter = (data: FetchProductsData): Product[] => {
-  const products: Product[] = []
+export const productsAdapter = (
+  data: FetchProductsData | FetchShopCartProductsData,
+): Product[] => {
+  const products: Product[] = [];
 
-  data.productos.map(p => products.push(productAdapter({ producto: p })))
+  if ((data as FetchProductsData).productos) {
+    (data as FetchProductsData).productos.map((p) =>
+      products.push(productAdapter({ producto: p })),
+    );
+  } else {
+    (data as FetchShopCartProductsData).cartproducts.map((p) =>
+      products.push(productAdapter({ producto: p })),
+    );
+  }
 
-  return products
-}
+  return products;
+};

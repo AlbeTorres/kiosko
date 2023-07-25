@@ -4,6 +4,7 @@ import AuthenticateAccount from '../pages/auth/AuthenticateAccount'
 import { Login } from '../pages/auth'
 import { Singup } from '../pages/auth'
 import Product from '../pages/product/Product.page'
+import { ShopCart } from '../pages/shopping'
 
 const Rutas = () => {
   return (
@@ -16,6 +17,7 @@ const Rutas = () => {
       <Route path='/singup/:goback' element={<Singup />} />
       <Route path='/verify-email/:emailToken' element={<AuthenticateAccount />} />
       <Route path='/product/:id' element={<Product />} />
+      <Route path='/shopcart' element={<ShopCart />} />
 
       <Route path='*' element={<> Not Found</>} />
 

@@ -6,16 +6,17 @@ type MaxMinButtonProps = {
   cantidad: number
   setCantidad(cantidad: number): void
   button: 'ghost' | 'square'
+  className?: string
 }
 
-const className = {
+const style = {
   button: {
     ghost: 'btn btn-ghost btn-sm ',
     square: 'btn btn-primary btn-square btn-sm ',
   },
 }
 
-export const MaxMinButton = ({ cantidad, setCantidad, button }: MaxMinButtonProps) => {
+export const MaxMinButton = ({ cantidad, setCantidad, button, className }: MaxMinButtonProps) => {
   const subtractAmount = () => {
     if (cantidad > 1) {
       setCantidad(cantidad - 1)
@@ -28,12 +29,12 @@ export const MaxMinButton = ({ cantidad, setCantidad, button }: MaxMinButtonProp
     }
   }
   return (
-    <div className='my-3'>
-      <button className={cn(className.button[button], 'sm:mr-1 ')} onClick={addAmount}>
+    <div className={className ? className : ''}>
+      <button className={cn(style.button[button], 'sm:mr-1 ')} onClick={addAmount}>
         <FaPlus className='text-xs  sm:text-sm ' />
       </button>
       <input className='w-6  text-center' type='text' readOnly value={cantidad} />
-      <button className={cn(className.button[button], 'sm:ml-1 ')} onClick={subtractAmount}>
+      <button className={cn(style.button[button], 'sm:ml-1 ')} onClick={subtractAmount}>
         <FaMinus className='text-xs  sm:text-sm ' />
       </button>
     </div>

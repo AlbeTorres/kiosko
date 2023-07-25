@@ -1,6 +1,7 @@
 import cartContext from '../../../../../context/productoContext/cartContext'
 import { useContext } from 'react'
 import { useAllCartProductPrice } from '../../../../../hooks/api/shopcart.hook'
+import { Link } from 'react-router-dom'
 
 export const NavShopCart = () => {
   const context = useContext(cartContext)
@@ -40,9 +41,9 @@ export const NavShopCart = () => {
           </span>
           <span className='text-info'>Subtotal: ${monto?.totalCartPrice} </span>
           <div className='card-actions'>
-            <label htmlFor='my-modal-6' className='btn btn-primary btn-block'>
-              Ver carro
-            </label>
+            <Link to={'/shopcart'} className='w-full'>
+              <div className='btn btn-primary btn-block'>Ver carro</div>
+            </Link>
           </div>
         </div>
       </div>

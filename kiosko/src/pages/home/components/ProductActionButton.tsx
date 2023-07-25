@@ -14,7 +14,12 @@ export const ProductActionButton = ({ _id }: ProductActionButtonProps) => {
 
   return (
     <div className='flex flex-col justify-center items-center w-full'>
-      <MaxMinButton cantidad={cantidad} setCantidad={setCantidad} button={'ghost'} />
+      <MaxMinButton
+        className='my-3'
+        cantidad={cantidad}
+        setCantidad={setCantidad}
+        button={'ghost'}
+      />
       <Button
         className='btn btn-primary  w-full text-sm  flex items-center justify-center h-10 '
         onClick={() => context?.addCart({ _id, cantidad })}
