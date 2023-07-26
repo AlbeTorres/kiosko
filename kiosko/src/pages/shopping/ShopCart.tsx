@@ -12,7 +12,7 @@ export const ShopCart = () => {
         <h1 className='text-4xl font-semibold my-2 '>Carro de compras</h1>
         <div className='h-2 w-32 bg-primary rounded-lg border-none' />
       </div>
-      <section className='mt-10 min-h-[500px]'>
+      <section className='mt-10 h-[500px]'>
         <CartProductList />
       </section>
     </section>

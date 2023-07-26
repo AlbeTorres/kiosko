@@ -8,5 +8,6 @@ import {
 export const useAllCartProductPrice = (input: FetchShopCartTotalPriceInput) =>
   useQuery(['cartproductprice', input], () => fetchShopCartTotalPrice(input))
 
-export const useAllCartProduct = (input: FetchShopCartProductsInput) =>
-  useQuery(['cartproduct'], () => fetchShopCartProduct(input))
+export const useAllCartProduct = (
+  input: FetchShopCartProductsInput & { queryreset: string | null },
+) => useQuery(['cartproduct', input.queryreset], () => fetchShopCartProduct(input))
