@@ -12,12 +12,20 @@ type CartItemProps = {
   quantity: number
   img: string
   bg: boolean
+  handleCantidad(id: string, cantidad: number): void
+  handleDelete(_id: string): void
 }
 
-export const CartItem = ({ _id, nombre, price, quantity, img, bg }: CartItemProps) => {
-  const [cantidad, setCantidad] = useState(quantity)
-  const context = useContext(cartContext)
-
+export const CartItem = ({
+  _id,
+  nombre,
+  price,
+  quantity,
+  img,
+  bg,
+  handleCantidad,
+  handleDelete,
+}: CartItemProps) => {
   return (
     <ItemCart bg={bg}>
       <div className='justify-self-start gap-x-2 flex items-center'>
@@ -36,12 +44,19 @@ export const CartItem = ({ _id, nombre, price, quantity, img, bg }: CartItemProp
         {price}
         <span className='ml-1'>{'cup'}</span>
       </p>
-      <MaxMinButton cantidad={cantidad} setCantidad={setCantidad} button={'square'} />
+      <MaxMinButton
+        cantidad={quantity}
+        handleCantidad={handleCantidad}
+        button={'square'}
+        id={_id}
+      />
       <p>
-        {price * cantidad}
+        {price * quantity}
         <span className='ml-1'>{'cup'}</span>
       </p>
-      <Button className='btn-sm w-20 btn-outline '>Remove</Button>
+      <Button onClick={() => handleDelete(_id)} className='btn-sm w-20 btn-outline '>
+        Remove
+      </Button>
     </ItemCart>
   )
 }

@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
 import { FaMinus, FaPlus } from 'react-icons/fa'
 import cn from '../../util/cn'
 
 type MaxMinButtonProps = {
   cantidad: number
-  setCantidad(cantidad: number): void
+  id?: string
+  setCantidad?(cantidad: number): void
+  handleCantidad?(id: string, cantidad: number): void
   button: 'ghost' | 'square'
   className?: string
 }
@@ -16,16 +17,31 @@ const style = {
   },
 }
 
-export const MaxMinButton = ({ cantidad, setCantidad, button, className }: MaxMinButtonProps) => {
+export const MaxMinButton = ({
+  cantidad,
+  setCantidad,
+  handleCantidad,
+  button,
+  className,
+  id,
+}: MaxMinButtonProps) => {
   const subtractAmount = () => {
     if (cantidad > 1) {
-      setCantidad(cantidad - 1)
+      if (handleCantidad && id) {
+        handleCantidad(id, cantidad - 1)
+      } else if (setCantidad) {
+        setCantidad(cantidad - 1)
+      }
     }
   }
 
   const addAmount = () => {
     if (cantidad < 100) {
-      setCantidad(cantidad + 1)
+      if (handleCantidad && id) {
+        handleCantidad(id, cantidad + 1)
+      } else if (setCantidad) {
+        setCantidad(cantidad + 1)
+      }
     }
   }
   return (

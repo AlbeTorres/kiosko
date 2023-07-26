@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast'
 import BaseLayout from './layouts/BaseLayout/BaseLayout'
 import AuthContextProvider from './context/authContext/authProvider'
 import CartProvider from './context/productoContext/cartProvider'
-import SearchProvider from './context/searchContext/SearchProvider'
+import SearchProvider from './context/searchContext/searchProvider'
 
 function App() {
   return (
