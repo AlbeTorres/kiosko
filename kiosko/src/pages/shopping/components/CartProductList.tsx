@@ -60,7 +60,7 @@ export const CartProductList = () => {
             ))
           ) : (
             <div className='mt-20 flex flex-col items-center justify-center gap-y-5'>
-              <h1 className='text-4xl'>No hay productos en el carro </h1>
+              <h1 className='text-2xl md:text-4xl text-center'>No hay productos en el carro </h1>
               <Link to={'/'}>
                 <Button className='btn-primary w-fit '> Seguir comprando</Button>
               </Link>
