@@ -26,7 +26,7 @@ export const ProductList = () => {
   }
 
   return (
-    <div className='mb-10 w-full mt-16   md:mt-0  '>
+    <div className='mb-10 w-full mt-16 md:mt-0  '>
       <div className='w-full'>
         <h2 className='text-2xl py-4 '>Productos</h2>
 

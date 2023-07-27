@@ -26,29 +26,34 @@ export const CartItem = ({
 }: CartItemProps) => {
   return (
     <ItemCart bg={bg}>
-      <div className='justify-self-start gap-x-2 flex items-center'>
+      <div className='md:justify-self-start w-full gap-x-2 flex items-center'>
         <figure className='w-16 h-20'>
           <img src={img} alt='' className='w-full h-full object-cover' />
         </figure>
-        <div>
+        <div className='w-full'>
           <Link to={`/product/${_id}`}>
-            <p className='text-lg'>{nombre}</p>
+            <p className='text-lg underline text-primary'>{nombre}</p>
           </Link>
 
           <p className='text-gray-400 '>Electronica</p>
         </div>
       </div>
       <p>
+        <span className='md:hidden mr-1 font-bold'>Precio:</span>
         {price}
         <span className='ml-1'>{'cup'}</span>
       </p>
-      <MaxMinButton
-        cantidad={quantity}
-        handleCantidad={handleCantidad}
-        button={'square'}
-        id={_id}
-      />
+      <div className='flex items-center'>
+        <p className='md:hidden mr-1 font-bold'>Cantidad:</p>
+        <MaxMinButton
+          cantidad={quantity}
+          handleCantidad={handleCantidad}
+          button={'square'}
+          id={_id}
+        />
+      </div>
       <p>
+        <span className='md:hidden mr-1 font-bold'>Total:</span>
         {price * quantity}
         <span className='ml-1'>{'cup'}</span>
       </p>
