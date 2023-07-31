@@ -1,12 +1,14 @@
+import { FieldErrors } from 'react-hook-form'
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 
 type PhonetextFieldProps = {
   value: any
   onChange(event: any): void
+  errors?: string
 }
 
-export const PhoneTextField = ({ value, onChange }: PhonetextFieldProps) => {
+export const PhoneTextField = ({ value, onChange, errors }: PhonetextFieldProps) => {
   return (
     <div className='flex w-full flex-col items-start'>
       <label className='label label-text' htmlFor='phone'>
@@ -23,6 +25,7 @@ export const PhoneTextField = ({ value, onChange }: PhonetextFieldProps) => {
         value={value}
         onChange={onChange}
       />
+      {errors && <p className='mt-1 text-red-10'>{errors}</p>}
     </div>
   )
 }

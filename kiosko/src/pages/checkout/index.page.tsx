@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { CheckoutSteps } from './components/CheckoutSteps'
-import { ContactInfo } from './components/ContactInfo'
+import { CheckoutStepsForm } from './components/CheckoutStepForm'
 
 const Checkout = () => {
   const [step, setStep] = useState<number>(1)
@@ -14,7 +14,7 @@ const Checkout = () => {
       <div className='w-full flex justify-center'>
         <CheckoutSteps onChange={handleStep} step={step} />
       </div>
-      <section>{step === 1 ? <ContactInfo /> : step === 2 ? <></> : step === 3 && <></>}</section>
+      <CheckoutStepsForm step={step} setStep={handleStep} />
     </div>
   )
 }
