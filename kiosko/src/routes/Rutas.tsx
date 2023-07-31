@@ -5,6 +5,8 @@ import { Login } from '../pages/auth'
 import { Singup } from '../pages/auth'
 import Product from '../pages/product/Product.page'
 import { ShopCart } from '../pages/shopping'
+import AuthGuard from './AuthGuard'
+import Checkout from '../pages/checkout/index.page'
 
 const Rutas = () => {
   return (
@@ -21,13 +23,14 @@ const Rutas = () => {
 
       <Route path='*' element={<> Not Found</>} />
 
-      {/* <Route element={<AuthGuard />}>
-        <Route path="/paymen" element={<Paymen />} />
+      <Route element={<AuthGuard />}>
+        <Route path='/checkout' element={<Checkout />} />
+        {/* <Route path="/paymen" element={<Paymen />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/adminuser" element={<AdminUser />} />
         <Route path="/adminpedido" element={<AdminPedidos />} />
-        <Route path="/pedido/:id" element={<PedidoDetails />} />
-      </Route> */}
+        <Route path="/pedido/:id" element={<PedidoDetails />} /> */}
+      </Route>
     </Routes>
   )
 }
