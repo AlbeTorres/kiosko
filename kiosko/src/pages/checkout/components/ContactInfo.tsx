@@ -30,8 +30,9 @@ export const ContactStepInfo = ({ defaultValues, onSubmit }: ContactStepInfoProp
   return (
     <div>
       <h1 className='text-center text-xl font-semibold mt-16'>Información de contácto</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className='w-80 mx-auto space-y-5 mt-5 mb-10'>
+      <form onSubmit={handleSubmit(onSubmit)} className='md:w-80 mx-auto space-y-5 mt-5 mb-10'>
         <TextField
+          placeholder='Nombre del destinatario'
           label='Nombre del destinatario'
           error={errors.name?.message}
           {...register('name', {
@@ -60,6 +61,8 @@ export const ContactStepInfo = ({ defaultValues, onSubmit }: ContactStepInfoProp
 
         <TextField
           label='Carnet del destinatario'
+          placeholder='Carnet del destinatario'
+          error={errors.carnet?.message}
           {...register('carnet', {
             required: {
               value: true,
@@ -72,7 +75,9 @@ export const ContactStepInfo = ({ defaultValues, onSubmit }: ContactStepInfoProp
           })}
         />
         <div className='w-full flex justify-end '>
-          <Button className='btn-primary '>Continuar</Button>
+          <Button type='submit' className='btn-primary text-white'>
+            Continuar
+          </Button>
         </div>
       </form>
     </div>

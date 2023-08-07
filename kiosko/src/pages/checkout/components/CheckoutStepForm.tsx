@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ContactStepForm, ContactStepInfo } from './ContactInfo'
+import { DeliveryMethod } from './DeliveryMethod'
 
 type CheckoutStepFormProps = {
   step: number
@@ -18,9 +19,15 @@ export const CheckoutStepsForm = ({ step, setStep }: CheckoutStepFormProps) => {
   return (
     <section>
       {step === 1 ? (
-        <ContactStepInfo defaultValues={checkoutData.contact} onSubmit={() => {}} />
+        <ContactStepInfo
+          defaultValues={checkoutData.contact}
+          onSubmit={data => {
+            console.log(data)
+            setStep(2)
+          }}
+        />
       ) : step === 2 ? (
-        <></>
+        <DeliveryMethod />
       ) : (
         step === 3 && <></>
       )}

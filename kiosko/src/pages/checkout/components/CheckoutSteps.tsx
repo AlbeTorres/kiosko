@@ -14,11 +14,10 @@ const STEPS = [
 export const CheckoutSteps = ({ step, onChange }: CheckoutStepsProps) => (
   <div className='flex items-center space-x-5 md:space-x-0 h-fit'>
     {STEPS.map(s => (
-      <div className='flex items-center'>
+      <div key={s.step} className='flex items-center'>
         <div className='flex flex-col gap-y-2 items-center'>
           <div
             onClick={() => onChange(s.step)}
-            key={s.step}
             className={cn(
               'h-10 w-10 rounded-full border border-primary flex items-center justify-center shadow-md cursor-pointer hover:bg-primary-focus hover:text-white font-semibold  ',
               s.step <= step ? 'bg-primary text-white' : 'bg-white text-primary',

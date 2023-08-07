@@ -30,7 +30,9 @@ export const NavShopCart = () => {
             />
           </svg>
           {cantidad !== 0 && (
-            <span className='badge badge-primary badge-sm indicator-item'>{cantidad} </span>
+            <span className='badge badge-primary badge-sm text-white indicator-item'>
+              {cantidad}{' '}
+            </span>
           )}
         </div>
       </label>
