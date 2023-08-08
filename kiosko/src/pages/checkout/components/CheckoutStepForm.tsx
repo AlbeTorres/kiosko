@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ContactStepForm, ContactStepInfo } from './ContactInfo'
-import { DeliveryMethod } from './DeliveryMethod'
+import { DeliveryFormData, DeliveryMethod } from './DeliveryMethod'
 
 type CheckoutStepFormProps = {
   step: number
@@ -9,11 +9,13 @@ type CheckoutStepFormProps = {
 
 export type CheckoutForm = {
   contact: ContactStepForm | undefined
+  delivery: DeliveryFormData | undefined
 }
 
 export const CheckoutStepsForm = ({ step, setStep }: CheckoutStepFormProps) => {
   const [checkoutData, setCheckoutData] = useState<CheckoutForm>({
     contact: undefined,
+    delivery: undefined,
   })
 
   return (
@@ -27,7 +29,13 @@ export const CheckoutStepsForm = ({ step, setStep }: CheckoutStepFormProps) => {
           }}
         />
       ) : step === 2 ? (
-        <DeliveryMethod />
+        <DeliveryMethod
+          defaultValues={checkoutData.delivery}
+          onSubmit={data => {
+            console.log(data)
+            setStep(3)
+          }}
+        />
       ) : (
         step === 3 && <></>
       )}

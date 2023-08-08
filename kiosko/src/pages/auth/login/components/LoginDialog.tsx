@@ -10,7 +10,7 @@ import { useLogin } from '../../../../hooks/api/profile.hook'
 import toast from 'react-hot-toast'
 import { AxiosError } from 'axios'
 import { DialogProps } from '../../../../components-libs/Dialog/Dialog'
-import { LoginAuthInput, LoginAuthOutput } from '../../../../lib/requests/auth.type'
+import { LoginAuthOutput } from '../../../../lib/requests/auth.type'
 
 type LoginFrom = {
   email: string
