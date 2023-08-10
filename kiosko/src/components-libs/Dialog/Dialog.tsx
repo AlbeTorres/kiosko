@@ -27,7 +27,6 @@ export const Dialog: FC<DialogProps> = ({ children, open, onClose }): JSX.Elemen
           </div>
         </div>
       </div>
-      ;
     </>
   )
 }

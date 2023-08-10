@@ -2,8 +2,6 @@ import { FieldErrors, UseFormHandleSubmit, UseFormRegister } from 'react-hook-fo
 import { Select } from '../../../components-libs/Select'
 import { TextField } from '../../../components-libs/TextField'
 import { DeliveryFormData } from './DeliveryMethod'
-import { Button } from '../../../components-libs/Button'
-
 type DeliveryFormProps = {
   errors: FieldErrors<DeliveryFormData>
   register: UseFormRegister<DeliveryFormData>

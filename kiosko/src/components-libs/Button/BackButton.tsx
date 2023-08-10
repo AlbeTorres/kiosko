@@ -10,11 +10,15 @@ type BackButtonProps = {
 
 export const BackButton = ({ route, className }: BackButtonProps) => {
   return (
-    <Link to={route}>
-      <div className={cn(className ? className : '', 'flex items-center mb-5 mt-2 md:text-lg')}>
-        <FaArrowCircleLeft className='text-primary' />
-        <p className='ml-1'>Atrás</p>
-      </div>
-    </Link>
+    <div className='w-fit'>
+      <Link to={route}>
+        <div
+          className={cn(className ? className : '', 'flex items-center mb-5 mt-2 md:text-lg w-fit')}
+        >
+          <FaArrowCircleLeft className='text-primary' />
+          <p className='ml-1'>Atrás</p>
+        </div>
+      </Link>
+    </div>
   )
 }

@@ -25,7 +25,7 @@ export const Header = ({ handleOpen }: HeaderProps) => {
   }, [auth?.data])
 
   return (
-    <header className='bg-base-100/80 backdrop-blur-lg !fixed top-0  z-50 pt-2  w-full min-h-6 '>
+    <header className='bg-base-100/80 backdrop-blur-lg !sticky top-0 mb-5 z-50  w-full h-fit '>
       <Container>
         <div className='flex justify-between items-center mb-1'>
           <div className='flex items-center'>

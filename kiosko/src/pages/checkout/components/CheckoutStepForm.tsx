@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ContactStepForm, ContactStepInfo } from './ContactInfo'
 import { DeliveryFormData, DeliveryMethod } from './DeliveryMethod'
+import { PayMethod } from './PayMethod'
 
 type CheckoutStepFormProps = {
   step: number
@@ -37,7 +38,7 @@ export const CheckoutStepsForm = ({ step, setStep }: CheckoutStepFormProps) => {
           }}
         />
       ) : (
-        step === 3 && <></>
+        step === 3 && <PayMethod />
       )}
     </section>
   )

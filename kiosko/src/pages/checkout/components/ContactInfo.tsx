@@ -28,52 +28,56 @@ export const ContactStepInfo = ({ defaultValues, onSubmit }: ContactStepInfoProp
   })
 
   return (
-    <div>
-      <h1 className='text-center text-xl font-semibold mt-16'>Información de contácto</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className='md:w-80 mx-auto space-y-5 mt-5 mb-10'>
-        <TextField
-          placeholder='Nombre del destinatario'
-          label='Nombre del destinatario'
-          error={errors.name?.message}
-          {...register('name', {
-            required: {
-              value: true,
-              message: 'Nombre requerido',
-            },
-            pattern: {
-              value: regexps.name,
-              message: 'Debe introducir un nombre real',
-            },
-          })}
-        />
+    <div className='lg:w-3/4 mx-auto '>
+      <h1 className=' text-xl text-center md:text-left font-semibold mt-16'>
+        Información de contácto
+      </h1>
+      <form onSubmit={handleSubmit(onSubmit)} className=' mt-5 mb-10 space-y-5'>
+        <div className='md:w-80 space-y-5'>
+          <TextField
+            placeholder='Nombre del destinatario'
+            label='Nombre del destinatario'
+            error={errors.name?.message}
+            {...register('name', {
+              required: {
+                value: true,
+                message: 'Nombre requerido',
+              },
+              pattern: {
+                value: regexps.name,
+                message: 'Debe introducir un nombre real',
+              },
+            })}
+          />
 
-        <Controller
-          name='phone'
-          rules={{
-            required: 'Debe introducir un número de teléfono',
-            validate: v => isValidPhoneNumber(v) || 'Número de teléfono incorrecto',
-          }}
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <PhoneTextField value={value} onChange={onChange} errors={errors.phone?.message} />
-          )}
-        />
+          <Controller
+            name='phone'
+            rules={{
+              required: 'Debe introducir un número de teléfono',
+              validate: v => isValidPhoneNumber(v) || 'Número de teléfono incorrecto',
+            }}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <PhoneTextField value={value} onChange={onChange} errors={errors.phone?.message} />
+            )}
+          />
 
-        <TextField
-          label='Carnet del destinatario'
-          placeholder='Carnet del destinatario'
-          error={errors.carnet?.message}
-          {...register('carnet', {
-            required: {
-              value: true,
-              message: 'El número de carnet requerido',
-            },
-            pattern: {
-              value: regexps.cantidad,
-              message: 'Debe introducir un número de carnet real',
-            },
-          })}
-        />
+          <TextField
+            label='Carnet del destinatario'
+            placeholder='Carnet del destinatario'
+            error={errors.carnet?.message}
+            {...register('carnet', {
+              required: {
+                value: true,
+                message: 'El número de carnet requerido',
+              },
+              pattern: {
+                value: regexps.cantidad,
+                message: 'Debe introducir un número de carnet real',
+              },
+            })}
+          />
+        </div>
         <div className='w-full flex justify-end '>
           <Button type='submit' className='btn-primary text-white'>
             Continuar

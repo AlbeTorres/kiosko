@@ -11,7 +11,6 @@ const BaseLayout = ({ children }: PropsWithChildren) => {
     <>
       <LogOutDialog open={open} onClose={() => setOpen(false)} />
       <Header handleOpen={() => setOpen(true)} />
-      <div className='h-12'></div>
       <Container>{children}</Container>
       <Footer />
     </>
