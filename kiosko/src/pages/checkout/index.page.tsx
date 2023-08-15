@@ -5,18 +5,21 @@ import { useAddPedido, useProfile } from '../../hooks/api'
 import cartContext from '../../context/productoContext/cartContext'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import useNavLock from '../../hooks/utils/useNavigationLock'
 
 const Checkout = () => {
   const navigate = useNavigate()
   const context = useContext(cartContext)
   const profile = useProfile()
 
+  const [isNavigationLocked, setIsNavigationLocked] = useState(true)
   const [step, setStep] = useState<number>(1)
 
   const handleStep = (current: number) => {
     setStep(current)
   }
 
+  useNavLock(isNavigationLocked, 'Aún no has completado el pedido. ¿Deseas salir de todas formas?')
   const createPedido = useAddPedido()
 
   const onSubmit = (data: CheckoutForm) =>
@@ -41,6 +44,7 @@ const Checkout = () => {
       {
         onSuccess: async () => {
           context?.deleteCartALL()
+          setIsNavigationLocked(false)
           toast.success('Pedido creado')
           navigate('/')
         },
@@ -50,7 +54,7 @@ const Checkout = () => {
   return (
     <div>
       <div className='w-full flex justify-center'>
-        <CheckoutSteps step={step} />
+        <CheckoutSteps step={step} onChange={setStep} />
       </div>
       <CheckoutStepsForm step={step} setStep={handleStep} onSubmit={onSubmit} />
     </div>

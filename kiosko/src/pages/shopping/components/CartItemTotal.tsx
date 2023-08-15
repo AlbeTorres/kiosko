@@ -10,8 +10,15 @@ export const CartItemTotal = ({ cantidad, total }: CartItemTotalProps) => {
   return (
     <div className=' md:mt-5'>
       <ItemCart bg={false}>
-        <div></div>
         <p className='font-bold '>Orden total:</p>
+        <div className='font-bold flex md:flex-col md:items-center '>
+          <p className='mr-1'>Costo envío:</p>
+          <p>
+            {cantidad}
+            <span className='mr-1'>Cup</span>
+          </p>
+        </div>
+
         <p className='font-bold '>
           <span className='md:hidden mr-1'>Cantidad:</span>
           {cantidad}
