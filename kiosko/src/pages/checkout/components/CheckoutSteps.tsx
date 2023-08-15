@@ -2,7 +2,7 @@ import cn from '../../../util/cn'
 
 type CheckoutStepsProps = {
   step: number
-  onChange(current: number): void
+  onChange?(current: number): void
 }
 
 const STEPS = [
@@ -11,13 +11,12 @@ const STEPS = [
   { step: 3, section: 'Método de pago' },
 ]
 
-export const CheckoutSteps = ({ step, onChange }: CheckoutStepsProps) => (
+export const CheckoutSteps = ({ step }: CheckoutStepsProps) => (
   <div className='flex items-center space-x-5 md:space-x-0 h-fit'>
     {STEPS.map(s => (
       <div key={s.step} className='flex items-center'>
         <div className='flex flex-col gap-y-2 items-center'>
           <div
-            onClick={() => onChange(s.step)}
             className={cn(
               'h-10 w-10 rounded-full border border-primary flex items-center justify-center shadow-md cursor-pointer hover:bg-primary-focus hover:text-white font-semibold  ',
               s.step <= step ? 'bg-primary text-white' : 'bg-white text-primary',

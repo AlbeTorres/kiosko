@@ -5,7 +5,7 @@ import cartContext from '../../../context/productoContext/cartContext'
 import { useAllCartProduct } from '../../../hooks/api/shopcart.hook'
 import { Spinner } from '../../../components-libs/Spinner'
 import { Button } from '../../../components-libs/Button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ItemCart } from '../layout'
 import { CartItemTittle } from './CartItemTittle'
 import { CartItemTotal } from './CartItemTotal'
@@ -16,6 +16,7 @@ export type ProductCart = Product & {
 }
 
 export const CartProductList = () => {
+  const navigate = useNavigate()
   const context = useContext(cartContext)
   let total: number = 0
   let cantidad: number = 0
@@ -71,7 +72,10 @@ export const CartProductList = () => {
               ))}
               <CartItemTotal total={total} cantidad={cantidad} />
               <div className='mt-10 w-full flex justify-end '>
-                <Button className='flex items-center gap-x-2 btn-primary'>
+                <Button
+                  onClick={() => navigate('/checkout')}
+                  className='flex items-center gap-x-2 btn-primary'
+                >
                   <p>Comprar</p>
                   <FaShoppingCart />
                 </Button>

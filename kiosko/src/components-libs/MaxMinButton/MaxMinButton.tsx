@@ -12,8 +12,8 @@ type MaxMinButtonProps = {
 
 const style = {
   button: {
-    ghost: 'btn btn-ghost btn-sm ',
-    square: 'btn btn-primary btn-square btn-sm ',
+    ghost: 'btn btn-ghost btn-sm  ',
+    square: 'btn btn-primary btn-square btn-sm  text-white ',
   },
 }
 

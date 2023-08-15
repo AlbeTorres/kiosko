@@ -6,19 +6,20 @@ import { PayMethod, PayMethodStepForm } from './PayMethod'
 type CheckoutStepFormProps = {
   step: number
   setStep(current: number): void
+  onSubmit: (data: CheckoutForm) => void
 }
 
 export type CheckoutForm = {
-  contact: ContactStepForm | undefined
-  delivery: DeliveryFormData | undefined
-  paymethod: PayMethodStepForm | undefined
+  contact: ContactStepForm
+  delivery: DeliveryFormData
+  paymethod: PayMethodStepForm
 }
 
-export const CheckoutStepsForm = ({ step, setStep }: CheckoutStepFormProps) => {
+export const CheckoutStepsForm = ({ step, setStep, onSubmit }: CheckoutStepFormProps) => {
   const [checkoutData, setCheckoutData] = useState<CheckoutForm>({
-    contact: undefined,
-    delivery: undefined,
-    paymethod: undefined,
+    contact: { name: '', phone: '', carnet: 0 },
+    delivery: { deliveryoption: 'envio', provincia: '', municipio: '', direccion: '', zipcode: 0 },
+    paymethod: { paymethod: '' },
   })
 
   return (
@@ -45,6 +46,7 @@ export const CheckoutStepsForm = ({ step, setStep }: CheckoutStepFormProps) => {
             defaultValues={checkoutData.paymethod}
             onSubmit={data => {
               setCheckoutData({ ...checkoutData, paymethod: data })
+              onSubmit({ ...checkoutData, paymethod: data })
             }}
           />
         )

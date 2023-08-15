@@ -20,7 +20,7 @@ export const Button: FC<ButtonProps> = ({
     <button
       type={props.type ?? 'button'}
       disabled={disabled}
-      className={cn('btn', className ? className : '', disabled ? 'grayscale' : '')}
+      className={cn('btn text-white', className ? className : '', disabled ? 'grayscale' : '')}
       {...props}
     >
       {loading && <Spinner className='-ml-1 mr-2 h-5 w-5 shrink-0 text-inherit ' />}

@@ -44,7 +44,7 @@ export const NavShopCart = () => {
           <span className='text-info'>Subtotal: ${monto?.totalCartPrice} </span>
           <div className='card-actions'>
             <Link to={'/shopcart'} className='w-full'>
-              <div className='btn btn-primary btn-block'>Ver carro</div>
+              <div className='btn btn-primary text-white btn-block'>Ver carro</div>
             </Link>
           </div>
         </div>
