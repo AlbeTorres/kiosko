@@ -20,7 +20,7 @@ export const CheckoutSteps = ({ step, onChange }: CheckoutStepsProps) => (
           <div className='flex flex-col gap-y-2 items-center'>
             <div
               className={cn(
-                'h-10 w-10 rounded-full border border-primary flex items-center justify-center shadow-md cursor-pointer hover:bg-primary-focus hover:text-white font-semibold  ',
+                'h-7 w-7 rounded-full border border-primary flex items-center justify-center shadow-md cursor-pointer hover:bg-primary-focus hover:text-white font-semibold  ',
                 s.step <= step ? 'bg-primary text-white' : 'bg-white text-primary',
               )}
             >
@@ -28,9 +28,7 @@ export const CheckoutSteps = ({ step, onChange }: CheckoutStepsProps) => (
             </div>
             <p className='w-44 text-center hidden md:block'>{s.section}</p>
           </div>
-          {s.step < 3 && (
-            <div className='h-[1px] bg-gray-400 md:w-24 lg:w-40 hidden md:block'></div>
-          )}
+          {s.step < 3 && <div className='h-[1px] bg-gray-400 md:w-14 hidden md:block'></div>}
         </div>
       ))}
     </div>

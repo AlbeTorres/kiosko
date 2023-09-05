@@ -17,7 +17,7 @@ export const PhoneTextField = ({ value, onChange, errors }: PhonetextFieldProps)
       <PhoneInput
         numberInputProps={{
           className:
-            '!w-full !input !border-2 !border-gray-200 focus:!outline-none  bg-transparent font-regular focus:!ring-0',
+            '!w-full !input !h-10 !border-2 !border-gray-200 focus:!outline-none  bg-transparent font-regular focus:!ring-0',
           id: 'phone',
         }}
         className='w-full'

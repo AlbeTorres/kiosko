@@ -18,7 +18,7 @@ export const BackStepButton = ({ step, onChange }: BackStepButtonProps) => {
   return (
     <div
       onClick={step > 1 ? handleBack : () => navigate('/')}
-      className='cursor-pointer w-fit absolute -left-16 xs:-left-24 top-16 lg:-left-36 md:left-0 md:top-20 lg:top-16'
+      className='cursor-pointer w-fit absolute top-0 -left-16 -bottom-10 xs:-left-24  lg:-left-40 md:left-0 md:top-20 lg:top-16'
     >
       <div className={'flex items-center mb-5 mt-2 md:text-lg w-fit'}>
         <FaArrowCircleLeft className='text-primary' />

@@ -14,7 +14,8 @@ export default function AppHeader({ title, onMenu }: Props) {
       <header
         className={clsx(
           'fixed left-0 right-1 top-0 z-10 flex h-header w-full justify-center',
-          'bg-white px-5 ring-1 ring-black/5 lg:z-50',
+          'px-5 ring-1 ring-black/5 lg:z-50',
+          'bg-base-100/80 backdrop-blur-lg',
         )}
       >
         <div className='flex w-full max-w-screen-lg pl-0 lg:pl-sidebar'>

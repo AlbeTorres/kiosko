@@ -29,10 +29,10 @@ export const ContactStepInfo = ({ defaultValues, onSubmit }: ContactStepInfoProp
 
   return (
     <div className='lg:w-3/4 mx-auto '>
-      <h1 className=' text-xl text-center md:text-left font-semibold mt-16'>
+      <h1 className=' text-xl text-center md:text-left font-semibold mt-8'>
         Información de contácto
       </h1>
-      <form onSubmit={handleSubmit(onSubmit)} className=' mt-5 mb-10 space-y-5'>
+      <form onSubmit={handleSubmit(onSubmit)} className='mt-5 mb-10 space-y-5'>
         <div className='md:w-80 space-y-5'>
           <TextField
             placeholder='Nombre del destinatario'

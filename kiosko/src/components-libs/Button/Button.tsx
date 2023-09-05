@@ -21,7 +21,7 @@ export const Button: FC<ButtonProps> = ({
       type={props.type ?? 'button'}
       disabled={disabled}
       className={cn(
-        'btn text-white !h-10',
+        'btn text-white btn-sm !h-10',
         className ? className : '',
         disabled ? 'grayscale' : '',
       )}

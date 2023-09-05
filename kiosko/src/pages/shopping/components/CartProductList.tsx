@@ -74,7 +74,7 @@ export const CartProductList = () => {
               <div className='mt-10 w-full flex justify-end '>
                 <Button
                   onClick={() => navigate('/checkout')}
-                  className='flex items-center gap-x-2 btn-primary'
+                  className='flex btn-sm !h-10 items-center gap-x-2 btn-primary'
                 >
                   <p>Comprar</p>
                   <FaShoppingCart />
