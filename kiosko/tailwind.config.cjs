@@ -11,7 +11,16 @@ module.exports = {
       xs: '360px',
       ...defaultTheme.screens,
     },
-    extend: {},
+   
+
+    extend: { 
+      spacing: {
+      header: "4.5rem",
+      sidebar: "15rem",
+      input: "2.5rem",
+    },
+  
+  },
   },
   corePlugins: {
     aspectRatio: false,
