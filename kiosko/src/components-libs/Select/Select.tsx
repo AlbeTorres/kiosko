@@ -27,7 +27,7 @@ export const Select = ({
       </label>
       <select
         {...register(name)}
-        className='select select-bordered w-full max-w-xs'
+        className='select !h-10 select-bordered w-full max-w-xs'
         disabled={disabled}
         {...props}
       >

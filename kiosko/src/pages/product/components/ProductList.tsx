@@ -28,7 +28,7 @@ export const ProductList = () => {
   return (
     <div className='mb-10 w-full mt-16 md:mt-0  '>
       <div className='w-full'>
-        <h2 className='text-2xl py-4 '>Productos</h2>
+        <h2 className='text-xl pb-3 '>Productos</h2>
 
         {isSuccess ? (
           <div className='grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 '>

@@ -14,7 +14,7 @@ type ProductCardProps = {
 export const ProductCard = ({ _id, nombre, img, medida, precio }: ProductCardProps) => (
   <div className='relative'>
     <Link to={`product/${_id}`} className=''>
-      <div className='aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8'>
+      <div className='aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-5 xl:aspect-h-5'>
         <label className='group'>
           <img
             src={img}
@@ -29,9 +29,9 @@ export const ProductCard = ({ _id, nombre, img, medida, precio }: ProductCardPro
         <h3 className=' text-sm text-gray-700'>{nombre}</h3>
         <div className=' flex items-center'>
           <FaDollarSign />
-          <p className=' text-lg font-medium text-gray-900'>{precio}</p>
-          <p className=' text-lg font-medium text-gray-900'>{'/'}</p>
-          <p className=' text-lg font-medium text-gray-900'>{medida}</p>
+          <p className=' text-md font-medium text-gray-900'>{precio}</p>
+          <p className=' text-md font-medium text-gray-900'>{'/'}</p>
+          <p className=' text-md font-medium text-gray-900'>{medida}</p>
         </div>
       </div>
     </div>

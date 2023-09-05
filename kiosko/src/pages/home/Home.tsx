@@ -4,34 +4,17 @@ import toast from 'react-hot-toast'
 import { ProductList } from '../product/components/ProductList'
 
 const Home = () => {
-  const busqueda = ''
-  // const { usuario } = useContext(authContext);
   const { verificado } = useParams()
 
   const token = localStorage.getItem('token')
-
-  // const { data: products, isSuccess, refetch } = useAllProducts()
 
   useEffect(() => {
     if (verificado) {
       toast.success('Usuario verificado')
     }
-    // socket.on('hello', msg => {})
-
-    // socket.on('newpedido', msg => {
-    //   refetch()
-    // })
-
-    // socket.on('cambioestado', () => {
-    //   refetch()
-    // })
   }, [token])
 
-  return (
-    <>
-      <ProductList />
-    </>
-  )
+  return <ProductList />
 }
 
 export default Home

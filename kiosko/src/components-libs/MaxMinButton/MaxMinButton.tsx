@@ -47,11 +47,11 @@ export const MaxMinButton = ({
   return (
     <div className={className ? className : ''}>
       <button className={cn(style.button[button], 'sm:mr-1 ')} onClick={addAmount}>
-        <FaPlus className='text-xs  sm:text-sm ' />
+        <FaPlus className='text-xs  ' />
       </button>
       <input className='w-6  text-center' type='text' readOnly value={cantidad} />
       <button className={cn(style.button[button], 'sm:ml-1 ')} onClick={subtractAmount}>
-        <FaMinus className='text-xs  sm:text-sm ' />
+        <FaMinus className='text-xs  ' />
       </button>
     </div>
   )

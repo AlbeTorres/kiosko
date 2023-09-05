@@ -23,7 +23,7 @@ const classes = {
     base: 'flex items-center w-full relative border-2 rounded-lg ',
   },
   input: {
-    base: 'input w-full pr-8 !outline-none  autofill:!bg-black',
+    base: 'input !h-10 w-full pr-8 !outline-none  autofill:!bg-black',
   },
   icon: {
     base: ' absolute right-3  text-primary ',
