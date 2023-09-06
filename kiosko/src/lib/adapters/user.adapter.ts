@@ -4,6 +4,8 @@ import { FetchAuthenticateUserData } from '../requests/auth.type'
 export const adaptUserResponse = (data: FetchAuthenticateUserData): User => ({
   _id: data.usuario._id,
   nombre: data.usuario.nombre,
+  apellido: data.usuario.apellido,
+  address: data.usuario.address,
   email: data.usuario.email,
   movil: data.usuario.movil,
   advertencia: data.usuario.advertencia,

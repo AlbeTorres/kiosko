@@ -1,6 +1,6 @@
 import { useProfile } from '../../../../../hooks/api'
 import { Link, useLocation } from 'react-router-dom'
-import noimg from '../../../../../assets/noimg1.jpg'
+import noimg from '../../../../../assets/noimage.png'
 
 type NavMenuInProps = {
   handleOpen(): void

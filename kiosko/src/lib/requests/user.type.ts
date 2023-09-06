@@ -1,40 +1,42 @@
-import { User } from "../Models/User.model";
-import { Function } from "./types";
+import { User } from '../Models/User.model'
+import { Function } from './types'
 
-export type UpdateUser = Function<UpdateUserInput, UpdateUserOutput>;
+export type UpdateUser = Function<UpdateUserInput, UpdateUserOutput>
 
 export type UpdateUserInput = {
-  id: string;
+  id: string
   datos: {
-    perfilimg?: string;
-    perfil_cloud_id?: string;
-    nombre?: string;
-    email?: string;
-    movil?: string;
-    carnet?: string;
-  };
-};
+    perfilimg?: string
+    perfil_cloud_id?: string
+    nombre?: string
+    apellido?: string
+    email?: string
+    movil?: string
+    carnet?: string
+    address?: string
+  }
+}
 
-export type UpdateUserOutput = { usuario: User };
+export type UpdateUserOutput = { usuario: User }
 
-export type DeleteUser = Function<DeleteUserInput, DeleteUserOutput>;
+export type DeleteUser = Function<DeleteUserInput, DeleteUserOutput>
 
 export type DeleteUserInput = {
-  id: string;
-};
+  id: string
+}
 
-export type DeleteUserOutput = { msg: string };
+export type DeleteUserOutput = { msg: string }
 
-export type FetchUsers = Function<FetchUsersInput, FetchUsersOutput>;
+export type FetchUsers = Function<FetchUsersInput, FetchUsersOutput>
 
-export type FetchUsersInput = void;
+export type FetchUsersInput = void
 
-export type FetchUsersOutput = { usuarios: User[] };
+export type FetchUsersOutput = { usuarios: User[] }
 
-export type FetchUser = Function<FetchUserInput, FetchUserOutput>;
+export type FetchUser = Function<FetchUserInput, FetchUserOutput>
 
 export type FetchUserInput = {
-  id: string;
-};
+  id: string
+}
 
-export type FetchUserOutput = { usuario: User };
+export type FetchUserOutput = { usuario: User }

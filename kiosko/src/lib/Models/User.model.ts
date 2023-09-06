@@ -2,6 +2,7 @@ import { Base } from './Base.model'
 
 export interface User extends Base {
   nombre: string
+  apellido: string
   email?: string
   password?: string
   movil?: number
@@ -19,4 +20,5 @@ export interface User extends Base {
   isVerified?: boolean
   emailToken?: string
   recoveryCode?: string
+  address?: string
 }

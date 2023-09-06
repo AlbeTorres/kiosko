@@ -57,7 +57,7 @@ export const CartItem = ({
         {price * quantity}
         <span className='ml-1'>{'cup'}</span>
       </p>
-      <Button onClick={() => handleDelete(_id)} className='btn-sm w-20 btn-outline '>
+      <Button onClick={() => handleDelete(_id)} className='btn-sm w-20 !btn-outline '>
         Remove
       </Button>
     </ItemCart>

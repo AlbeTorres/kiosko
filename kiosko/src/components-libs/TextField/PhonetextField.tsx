@@ -6,13 +6,22 @@ type PhonetextFieldProps = {
   value: any
   onChange(event: any): void
   errors?: string
+  required?: boolean
+  label: string
 }
 
-export const PhoneTextField = ({ value, onChange, errors }: PhonetextFieldProps) => {
+export const PhoneTextField = ({
+  value,
+  onChange,
+  errors,
+  required,
+  label,
+}: PhonetextFieldProps) => {
   return (
     <div className='flex w-full flex-col items-start'>
       <label className='label label-text' htmlFor='phone'>
-        {'Teléfono del contácto'}
+        {label}
+        {required && <span className='text-red-500 ml-1 '>*</span>}
       </label>
       <PhoneInput
         numberInputProps={{

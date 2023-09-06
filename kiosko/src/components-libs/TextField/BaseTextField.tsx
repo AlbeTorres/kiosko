@@ -3,6 +3,7 @@ import cn from '../../util/cn'
 import { IconType } from 'react-icons'
 
 export type BaseTextFieldProps = JSX.IntrinsicElements['input'] & {
+  required?: boolean
   label?: string
   labelHelp?: string
   password?: boolean
@@ -33,6 +34,7 @@ const classes = {
 
 const BaseTextField = (
   {
+    required,
     value,
     label,
     labelHelp,
@@ -51,7 +53,9 @@ const BaseTextField = (
 ) => (
   <div className={classes.root}>
     <label className={classes.label.standard}>
-      <span className={classes.label.span}>{label}</span>
+      <span className={classes.label.span}>
+        {label} {required && <span className='text-red-500 '>*</span>}
+      </span>
     </label>
     <div
       className={cn(
