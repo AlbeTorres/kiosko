@@ -12,7 +12,10 @@ import { FetchValidateUserInput } from '../../lib/requests/auth.type'
  * The useProfile function is a custom hook that uses the useQuery hook to fetch and authenticate user
  * profile data.
  */
-export const useProfile = () => useQuery(['profile'], () => fetchAuthenticateUser())
+export const useProfile = () =>
+  useQuery(['profile'], () => fetchAuthenticateUser(), {
+    refetchOnWindowFocus: false,
+  })
 
 /**
  * The `useValidateUser` function is a TypeScript function that uses the `useQuery` hook to fetch and

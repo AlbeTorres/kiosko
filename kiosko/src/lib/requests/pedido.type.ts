@@ -6,7 +6,7 @@ export type FetchPedidos = Function<FetchPedidosInput, FetchPedidosOutput>
 
 export type FetchPedidosInput = void
 
-export type FetchPedidosOutput = { pedidos: Pedido[] }
+export type FetchPedidosOutput = Pedido[]
 
 export type FetchPedido = Function<FetchPedidoInput, FetchPedidoOutput>
 

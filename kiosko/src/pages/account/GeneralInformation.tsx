@@ -31,7 +31,6 @@ const GeneralInformation = () => {
 
   useEffect(() => {
     if (profile) {
-      console.log(profile)
       reset({
         firstName: profile.nombre,
         lastName: profile.apellido,
@@ -64,7 +63,7 @@ const GeneralInformation = () => {
   return (
     <AccountLayout title={'Información general'} current='general'>
       {isSuccess ? (
-        <form onSubmit={handleSubmit(onSubmit)} className='md:w-3/5 flex flex-col gap-y-2 mx-auto'>
+        <form onSubmit={handleSubmit(onSubmit)} className='md:w-3/5 flex flex-col gap-y-2 '>
           <div>
             <TextField
               label='Nombre'

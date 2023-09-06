@@ -8,6 +8,7 @@ import { ShopCart } from '../pages/shopping'
 import AuthGuard from './AuthGuard'
 import Checkout from '../pages/checkout/index.page'
 import GeneralInformation from '../pages/account/GeneralInformation'
+import { DeliveryList } from '../pages/account/Deliveries/DeliveryList'
 
 const Rutas = () => {
   return (
@@ -27,6 +28,7 @@ const Rutas = () => {
       <Route element={<AuthGuard />}>
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/account' element={<GeneralInformation />} />
+        <Route path='/account/deliverys' element={<DeliveryList />} />
         {/* <Route path="/paymen" element={<Paymen />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/adminuser" element={<AdminUser />} />
