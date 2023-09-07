@@ -29,14 +29,13 @@ const CartProvider = ({ children }: PropsWithChildren) => {
 
     if (cart) {
       index = cart.findIndex(p => p._id === _id)
+      if (index !== -1 && index !== null) {
+        cart[index].cantidad = cart[index].cantidad + cantidad
+      } else {
+        cart.push({ _id, cantidad })
+      }
     }
-
-    if (index !== -1 && index !== null) {
-      cart[index].cantidad = cart[index].cantidad + cantidad
-    } else {
-      cart.push({ _id, cantidad })
-    }
-
+    console.log(cart)
     setCart(cart)
 
     dispatch({
@@ -51,9 +50,6 @@ const CartProvider = ({ children }: PropsWithChildren) => {
     if (cart) {
       auxcart = cart.filter(producto => producto._id !== id)
       setCart(auxcart)
-
-      console.log(auxcart)
-
       dispatch({
         type: ELIMINAR_CARRO,
         payload: auxcart,
@@ -75,10 +71,9 @@ const CartProvider = ({ children }: PropsWithChildren) => {
 
     if (cart) {
       index = cart.findIndex(p => p._id === _id)
-    }
-
-    if (index !== -1 && index !== null) {
-      cart[index].cantidad = cantidad
+      if (index !== -1 && index !== null) {
+        cart[index].cantidad = cantidad
+      }
     }
 
     setCart(cart)

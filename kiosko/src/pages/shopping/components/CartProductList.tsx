@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Product } from '../../../lib/Models/Product.model'
 import { CartItem } from './CartItem'
 import cartContext from '../../../context/productoContext/cartContext'
@@ -6,7 +6,6 @@ import { useAllCartProduct } from '../../../hooks/api/shopcart.hook'
 import { Spinner } from '../../../components-libs/Spinner'
 import { Button } from '../../../components-libs/Button'
 import { Link, useNavigate } from 'react-router-dom'
-import { ItemCart } from '../layout'
 import { CartItemTittle } from './CartItemTittle'
 import { CartItemTotal } from './CartItemTotal'
 import { FaShoppingCart } from 'react-icons/fa'
@@ -21,11 +20,8 @@ export const CartProductList = () => {
   let total: number = 0
   let cantidad: number = 0
 
-  const [queryreset, setQueryReset] = useState<string | null>(null)
-
   const { data: productcart, isLoading } = useAllCartProduct({
     options: { cartproducts: JSON.stringify(context?.cart) },
-    queryreset,
   })
 
   const handleCantidad = (id: string, cantidad: number) => {
@@ -34,26 +30,24 @@ export const CartProductList = () => {
 
   const handleDelete = (_id: string) => {
     context?.deleteCartProduct(_id)
-    setQueryReset('reset')
   }
 
   let products: ProductCart[] = []
 
-  productcart?.map(p => {
-    let aux = context?.cart.find(c => (c._id = p._id))
+  context?.cart.map(p => {
+    let aux = productcart?.find(c => c._id === p._id)
 
     if (aux) {
-      cantidad = cantidad + aux.cantidad
-      total = total + p.precio * aux.cantidad
+      cantidad = cantidad + p.cantidad
+      total = total + aux.precio * p.cantidad
+      products.push({ ...aux, cantidad: p?.cantidad })
     }
-
-    products.push({ ...p, cantidad: aux?.cantidad })
   })
 
   return (
     <section className='w-full h-full'>
       {!isLoading ? (
-        <div className='flex flex-col w-full   lg:w-2/3  mx-auto h-full'>
+        <div className='flex flex-col w-full   lg:w-2/3  mx-auto h-[500px] overflow-y-auto'>
           {products.length > 0 ? (
             <>
               <CartItemTittle />

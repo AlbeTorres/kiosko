@@ -7,7 +7,7 @@ export type CarProduct = {
 
 interface cartContext {
   cart: CarProduct[]
-  addCart(prodct: CarProduct): void
+  addCart(product: CarProduct): void
   deleteCartProduct(id: string): void
   deleteCartALL(): void
   updateProductCart(id: string, cantidad: number): void
