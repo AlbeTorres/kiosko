@@ -28,8 +28,9 @@ export const PayMethod = ({ defaultValues, onSubmit }: PayMethodStepInfoProps) =
           paymethods.length > 1 ? 'grid-cols-2 md:grid-cols-3' : '',
         )}
       >
-        {paymethods.map(m => (
+        {paymethods.map((m, index) => (
           <PayCard
+            key={index}
             paymethod={m}
             onSelect={setSelectedPayMethod}
             selectedPayMethod={selectedPayMethod}

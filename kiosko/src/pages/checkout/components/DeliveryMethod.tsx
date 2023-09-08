@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DeliveryForm } from './DeliveryForm'
 import { Button } from '../../../components-libs/Button'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useDeliveryCost } from '../../../hooks/api/shopcart.hook'
 
 type DeliveryMethodProps = {
-  defaultValues: DeliveryFormData | undefined
+  defaultValues: DeliveryFormData
   onSubmit: SubmitHandler<DeliveryFormData>
 }
 
@@ -14,6 +15,7 @@ export type DeliveryFormData = {
   municipio: string
   direccion: string
   zipcode: number
+  deliverycost: number
 }
 
 export const DeliveryMethod = ({ defaultValues, onSubmit }: DeliveryMethodProps) => {
@@ -23,13 +25,26 @@ export const DeliveryMethod = ({ defaultValues, onSubmit }: DeliveryMethodProps)
     formState: { errors },
     register,
     handleSubmit,
+    getValues,
     setValue,
   } = useForm<DeliveryFormData>({ defaultValues })
 
   const onSubmitDelivery = (data: DeliveryFormData) => {
-    console.log(data)
     onSubmit({ ...data, deliveryoption: deliveryoption })
   }
+
+  const { data: costo, isSuccess } = useDeliveryCost({
+    options: {
+      municipio: getValues('municipio'),
+      provincia: getValues('municipio'),
+    },
+  })
+
+  useEffect(() => {
+    if (costo) {
+      setValue('deliverycost', costo)
+    }
+  }, [costo])
 
   return (
     <div className='min-h-[500px] md:w-3/4 mx-auto  rounded-md'>
@@ -44,7 +59,14 @@ export const DeliveryMethod = ({ defaultValues, onSubmit }: DeliveryMethodProps)
         />
         <div className='collapse-title text-xl font-medium'>Envío</div>
         <div className='collapse-content'>
-          <DeliveryForm errors={errors} register={register} handleSubmit={handleSubmit} />
+          {isSuccess && (
+            <DeliveryForm
+              errors={errors}
+              register={register}
+              handleSubmit={handleSubmit}
+              costo={costo || 0}
+            />
+          )}
         </div>
       </div>
 

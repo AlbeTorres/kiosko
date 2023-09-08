@@ -8,6 +8,7 @@ type PhonetextFieldProps = {
   errors?: string
   required?: boolean
   label: string
+  placeholder: string
 }
 
 export const PhoneTextField = ({
@@ -16,6 +17,7 @@ export const PhoneTextField = ({
   errors,
   required,
   label,
+  placeholder,
 }: PhonetextFieldProps) => {
   return (
     <div className='flex w-full flex-col items-start'>
@@ -24,6 +26,7 @@ export const PhoneTextField = ({
         {required && <span className='text-red-500 ml-1 '>*</span>}
       </label>
       <PhoneInput
+        placeholder={placeholder}
         numberInputProps={{
           className:
             '!w-full !input !h-10 !border-2 !border-gray-200 focus:!outline-none  bg-transparent font-regular focus:!ring-0',

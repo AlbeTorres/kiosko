@@ -106,6 +106,7 @@ const GeneralInformation = () => {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <PhoneTextField
+                  placeholder='55668899'
                   required
                   label='Teléfono'
                   value={value}

@@ -14,13 +14,17 @@ export type FetchPedidoInput = {
   id: string
 }
 
-export type FetchPedidoOutput = { pedido: Pedido }
+export type FetchPedidoOutput = Pedido
+
+export type FetchPedidoData = {
+  pedido: Pedido
+}
 
 export type AddPedido = Function<AddPedidoInput, AddPedidoOutput>
 
 export type AddPedidoInput = {
   productos: string
-  carnet: number
+  carnet: string
   zipcode: number
   direccion: string
   metodo_pago: string
@@ -33,32 +37,35 @@ export type AddPedidoInput = {
   valor_descuentos: number
   valor_envio: number
   usuario?: string
-  estado: 'verificar' | 'cancelado' | 'enviado' | 'terminado'
+  estado: 'pending' | 'cancel' | 'complete'
 }
 
-export type AddPedidoOutput = {
-  pedido: Pedido
-}
+export type AddPedidoOutput = Pedido
 
 export type UpdatePedido = Function<UpdatePedidoInput, UpdatePedidoOutput>
 
 export type UpdatePedidoInput = {
   id: string
   datos: {
-    productos?: Product[]
-    direccion?: string
-    pago?: string
-    receptor?: string
-    movil?: string
-    valor?: number
+    productos?: string
+    carnet?: string
+    zipcode: number
+    direccion: string
+    metodo_pago: string
+    receptor: string
+    provincia: string
+    municipio: string
+    movil: string
+    valor_total: number
+    valor_subtotal: number
+    valor_descuentos: number
+    valor_envio: number
     usuario?: string
-    estado?: 'verificar' | 'cancelado' | 'enviado' | 'terminado'
+    estado: 'pending' | 'cancel' | 'complete'
   }
 }
 
-export type UpdatePedidoOutput = {
-  pedido: Pedido
-}
+export type UpdatePedidoOutput = Pedido
 
 export type DeletePedido = Function<DeletePedidoInput, DeletePedidoOutput>
 

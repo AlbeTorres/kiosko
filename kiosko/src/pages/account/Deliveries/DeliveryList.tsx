@@ -10,8 +10,8 @@ export const DeliveryList = () => {
   const [vista, setVista] = useState('pendientes')
   const { data: deliveries, isSuccess } = usePedidos()
 
-  const pendientes = useMemo(() => deliveries?.filter(d => d.estado === 'pendiente'), [deliveries])
-  const completados = useMemo(() => deliveries?.filter(d => d.estado === 'cancelado'), [deliveries])
+  const pendientes = useMemo(() => deliveries?.filter(d => d.estado === 'pending'), [deliveries])
+  const completados = useMemo(() => deliveries?.filter(d => d.estado === 'cancel'), [deliveries])
 
   return (
     <AccountLayout title={'Mis envíos'} current='deliverys'>

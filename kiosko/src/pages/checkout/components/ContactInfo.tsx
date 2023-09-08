@@ -9,7 +9,7 @@ import { isValidPhoneNumber } from 'react-phone-number-input'
 export type ContactStepForm = {
   name: string
   phone: string
-  carnet: number
+  carnet: string
 }
 
 type ContactStepInfoProps = {
@@ -32,10 +32,11 @@ export const ContactStepInfo = ({ defaultValues, onSubmit }: ContactStepInfoProp
       <h1 className=' text-xl text-center md:text-left font-semibold mt-8'>
         Información de contácto
       </h1>
-      <form onSubmit={handleSubmit(onSubmit)} className='mt-5 mb-10 space-y-5'>
-        <div className='md:w-80 space-y-5'>
+      <form onSubmit={handleSubmit(onSubmit)} className='mt-5 mb-10 space-y-4'>
+        <div className='md:w-80 space-y-1'>
           <TextField
-            placeholder='Nombre del destinatario'
+            required
+            placeholder='John Doe'
             label='Nombre del destinatario'
             error={errors.name?.message}
             {...register('name', {
@@ -58,13 +59,21 @@ export const ContactStepInfo = ({ defaultValues, onSubmit }: ContactStepInfoProp
             }}
             control={control}
             render={({ field: { onChange, value } }) => (
-              <PhoneTextField value={value} onChange={onChange} errors={errors.phone?.message} />
+              <PhoneTextField
+                placeholder='55668899'
+                required
+                label='Teléfono'
+                value={value}
+                onChange={onChange}
+                errors={errors.phone?.message}
+              />
             )}
           />
 
           <TextField
+            required
             label='Carnet del destinatario'
-            placeholder='Carnet del destinatario'
+            placeholder='95052730975'
             error={errors.carnet?.message}
             {...register('carnet', {
               required: {

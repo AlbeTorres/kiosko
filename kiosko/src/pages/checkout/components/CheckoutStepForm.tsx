@@ -17,8 +17,15 @@ export type CheckoutForm = {
 
 export const CheckoutStepsForm = ({ step, setStep, onSubmit }: CheckoutStepFormProps) => {
   const [checkoutData, setCheckoutData] = useState<CheckoutForm>({
-    contact: { name: '', phone: '', carnet: 0 },
-    delivery: { deliveryoption: 'envio', provincia: '', municipio: '', direccion: '', zipcode: 0 },
+    contact: { name: '', phone: '', carnet: '' },
+    delivery: {
+      deliveryoption: 'envio',
+      provincia: 'Artemisa',
+      municipio: 'Artemisa',
+      direccion: '',
+      zipcode: 0,
+      deliverycost: 0,
+    },
     paymethod: { paymethod: '' },
   })
 

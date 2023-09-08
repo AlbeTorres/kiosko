@@ -6,11 +6,15 @@ import cartContext from '../../context/productoContext/cartContext'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import useNavLock from '../../hooks/utils/useNavigationLock'
+import { useAllCartProductPrice } from '../../hooks/api/shopcart.hook'
 
 const Checkout = () => {
   const navigate = useNavigate()
   const context = useContext(cartContext)
   const profile = useProfile()
+  const { data: monto } = useAllCartProductPrice({
+    options: { cartproducts: JSON.stringify(context?.cart) },
+  })
 
   const [isNavigationLocked, setIsNavigationLocked] = useState(true)
   const [step, setStep] = useState<number>(1)
@@ -30,16 +34,16 @@ const Checkout = () => {
         zipcode: data.delivery.zipcode,
         provincia: data.delivery.provincia,
         municipio: data.delivery.municipio,
+        valor_envio: data.delivery.deliverycost,
         receptor: data.contact.name,
         movil: data.contact.phone,
         metodo_pago: data.paymethod.paymethod,
         valor_descuentos: 0,
-        valor_envio: 0,
-        valor_total: 0,
-        valor_subtotal: 0,
+        valor_total: monto!.totalCartPrice + data.delivery.deliverycost,
+        valor_subtotal: monto?.totalCartPrice || 0,
         carnet: data.contact.carnet,
         usuario: profile.data?._id,
-        estado: 'verificar',
+        estado: 'pending',
       },
       {
         onSuccess: async () => {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import NavItem from './NavItem'
 import { HOME_PATH } from '../../constants'
 import { ButtonIcon } from '../Button'
-import { FaCross, FaUmbraco } from 'react-icons/fa'
+import { FaUmbraco } from 'react-icons/fa'
 import { Logo } from '../../layouts/Logo/Logo'
 
 export type DashboardSidenavCurrent =
@@ -69,14 +69,14 @@ export default function AppSidenav<K = any>({
       >
         <div className='flex h-header w-full items-center justify-between'>
           <Link to={HOME_PATH}>
-            <a className='relative flex flex-col items-start gap-2'>
+            <div className='relative flex flex-col items-start gap-2'>
               <Logo />
               {appName && (
                 <span className='line-clamp-1 text-sm font-semibold uppercase leading-none text-black/60'>
                   {appName}
                 </span>
               )}
-            </a>
+            </div>
           </Link>
 
           <div className='flex items-center lg:hidden'>
@@ -124,11 +124,11 @@ function SidenavItem({ icon, activeIcon, label, href, active = false }: SidenavI
   if (href) {
     return (
       <Link to={href}>
-        <a>
+        <div>
           <NavItem icon={icon} iconActive={activeIcon} active={active}>
             {label}
           </NavItem>
-        </a>
+        </div>
       </Link>
     )
   }
