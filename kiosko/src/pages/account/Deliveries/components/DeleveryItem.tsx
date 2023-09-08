@@ -8,6 +8,7 @@ type DeleveryItemProps = {
 }
 
 export const DeliveryItem = ({ id, onOpen, deliveryopen, delivery }: DeleveryItemProps) => {
+  console.log(delivery)
   return (
     <div className='collapse collapse-arrow bg-base-200 my-5'>
       <input
@@ -18,9 +19,11 @@ export const DeliveryItem = ({ id, onOpen, deliveryopen, delivery }: DeleveryIte
         }}
         checked={deliveryopen === id}
       />
-      <div className='collapse-title text-xl font-medium'>{delivery.fechaini}</div>
+      <div className='collapse-title text-xl font-medium'>{delivery.fechaini.split('T')[0]}</div>
       <div className='collapse-content'>
-        <h1>{delivery.estado}</h1>
+        <p>{delivery.metodo_pago}</p>
+        <p>{delivery.receptor}</p>
+        <p>{delivery.valor_total}</p>
       </div>
     </div>
   )

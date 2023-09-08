@@ -43,10 +43,22 @@ export const DeliveryList = () => {
             <div>
               {vista === 'pendientes'
                 ? pendientes?.map(d => (
-                    <DeliveryItem id={d._id} deliveryopen={open} onOpen={setOpen} delivery={d} />
+                    <DeliveryItem
+                      key={d._id}
+                      id={d._id}
+                      deliveryopen={open}
+                      onOpen={setOpen}
+                      delivery={d}
+                    />
                   ))
                 : completados?.map(d => (
-                    <DeliveryItem id={d._id} deliveryopen={open} onOpen={setOpen} delivery={d} />
+                    <DeliveryItem
+                      key={d._id}
+                      id={d._id}
+                      deliveryopen={open}
+                      onOpen={setOpen}
+                      delivery={d}
+                    />
                   ))}
             </div>
           ) : (

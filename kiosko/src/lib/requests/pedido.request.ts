@@ -1,10 +1,12 @@
 import clienteAxios from '../../config/axios'
+import { pedidoAdapter, pedidosAdapter } from '../adapters/pedido.adapter'
 import { AddPedido, DeletePedido, FetchPedido, FetchPedidos, UpdatePedido } from './pedido.type'
 
 /**
  * The function fetchAllPedidos fetches all pedidos from the API.
  */
-export const fetchAllPedidos: FetchPedidos = () => clienteAxios.get('api/pedidos').then(r => r.data)
+export const fetchAllPedidos: FetchPedidos = () =>
+  clienteAxios.get('api/pedidos').then(r => pedidosAdapter(r.data))
 
 /**
  * The function fetchPedido retrieves a pedido (order) from an API using the provided id.
@@ -13,7 +15,7 @@ export const fetchAllPedidos: FetchPedidos = () => clienteAxios.get('api/pedidos
  * instance to make a GET request to the `api/pedidos/` endpoint and returns a promise
  */
 export const fetchPedido: FetchPedido = ({ id }) =>
-  clienteAxios.get(`api/pedidos/${id}`).then(r => r.data)
+  clienteAxios.get(`api/pedidos/${id}`).then(r => pedidoAdapter(r.data))
 
 /**
  * The function `addPedido` is an asynchronous function that adds a new pedido (order) by making a POST

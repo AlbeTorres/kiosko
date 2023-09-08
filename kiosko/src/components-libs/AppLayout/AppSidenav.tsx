@@ -68,16 +68,14 @@ export default function AppSidenav<K = any>({
         )}
       >
         <div className='flex h-header w-full items-center justify-between'>
-          <Link to={HOME_PATH}>
-            <div className='relative flex flex-col items-start gap-2'>
-              <Logo />
-              {appName && (
-                <span className='line-clamp-1 text-sm font-semibold uppercase leading-none text-black/60'>
-                  {appName}
-                </span>
-              )}
-            </div>
-          </Link>
+          <div className='relative flex flex-col items-start gap-2'>
+            <Logo />
+            {appName && (
+              <span className='line-clamp-1 text-sm font-semibold uppercase leading-none text-black/60'>
+                {appName}
+              </span>
+            )}
+          </div>
 
           <div className='flex items-center lg:hidden'>
             <ButtonIcon onClick={() => onClose?.()} title={'cerrar'}>
