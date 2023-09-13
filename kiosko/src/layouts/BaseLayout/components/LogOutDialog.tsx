@@ -2,6 +2,7 @@ import React from 'react'
 import { Dialog } from '../../../components-libs/Dialog'
 import { Button } from '../../../components-libs/Button'
 import { useAuth } from '../../../hooks/api'
+import { useNavigate } from 'react-router-dom'
 
 type LogOutDialogProps = {
   open: boolean
@@ -10,6 +11,7 @@ type LogOutDialogProps = {
 
 export const LogOutDialog = ({ open, onClose }: LogOutDialogProps) => {
   const auth = useAuth()
+  const navigate = useNavigate()
 
   const handleLogOut = () => {
     auth?.logout()
