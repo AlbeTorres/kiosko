@@ -90,7 +90,7 @@ const LoginDialog = ({ onLogin, ...props }: LoginDialogProps) => {
                 })}
               />
 
-              <Link to={'/recovery_pass'}>
+              <Link to={'/recoverypassemail'}>
                 <p className='text-sm hover:text-primary mt-2'>Olvidé mi contraseña</p>
               </Link>
             </div>

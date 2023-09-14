@@ -9,11 +9,15 @@ import AuthGuard from './AuthGuard'
 import Checkout from '../pages/checkout/index.page'
 import GeneralInformation from '../pages/account/GeneralInformation'
 import { DeliveryList } from '../pages/account/Deliveries/DeliveryList'
+import RecoverPassEmail from '../pages/auth/RecoverPassEmail'
+import RecoveryPass from '../pages/auth/RecoveryPass'
 
 const Rutas = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
+      <Route path='/recoverypassemail' element={<RecoverPassEmail />} />
+      <Route path='/recoverypass/:email' element={<RecoveryPass />} />
       <Route path='/:verificado' element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route path='/login/:goback' element={<Login />} />
