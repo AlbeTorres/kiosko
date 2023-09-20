@@ -40,7 +40,7 @@ const RecoverPassEmail = () => {
 
   return (
     <>
-      <Dialog open={true} onClose={() => {}}>
+      <Dialog open={true} onClose={() => navigate('/')}>
         <section className=' w-full py-2 h-fit'>
           <h1 className='font-semibold text-center '>Introduzca su correo</h1>
           <form
@@ -67,9 +67,9 @@ const RecoverPassEmail = () => {
               <button type='submit' className='btn btn-primary w-full'>
                 Recuperar contraseña
               </button>
-              <label htmlFor='my-modal-6' className='btn w-full'>
+              <button onClick={() => navigate('/')} className='btn w-full'>
                 Cancelar
-              </label>
+              </button>
             </div>
           </form>
         </section>

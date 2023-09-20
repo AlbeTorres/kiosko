@@ -49,7 +49,7 @@ const RecoveryPass = () => {
     )
   return (
     <>
-      <Dialog open={true} onClose={() => {}}>
+      <Dialog open={true} onClose={() => () => navigate('/')}>
         <section className=' w-full py-2 h-fit'>
           <h1 className='font-semibold text-center '>Nueva contraseña</h1>
           <h3 className='text-sm text-center'>
@@ -112,9 +112,9 @@ const RecoveryPass = () => {
               <button type='submit' className='btn btn-primary w-full'>
                 Confirmar
               </button>
-              <label htmlFor='my-modal-6' className='btn w-full'>
+              <button onClick={() => navigate('/')} className='btn w-full'>
                 Cancelar
-              </label>
+              </button>
             </div>
           </form>
         </section>
