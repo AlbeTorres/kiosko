@@ -11,6 +11,7 @@ import GeneralInformation from '../pages/account/GeneralInformation'
 import { DeliveryList } from '../pages/account/Deliveries/DeliveryList'
 import RecoverPassEmail from '../pages/auth/RecoverPassEmail'
 import RecoveryPass from '../pages/auth/RecoveryPass'
+import DeliveryDetails from '../pages/account/Deliveries/DeliveryDetails'
 
 const Rutas = () => {
   return (
@@ -33,6 +34,7 @@ const Rutas = () => {
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/account' element={<GeneralInformation />} />
         <Route path='/account/deliverys' element={<DeliveryList />} />
+        <Route path='/account/deliverys/:id' element={<DeliveryDetails />} />
         {/* <Route path="/paymen" element={<Paymen />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/adminuser" element={<AdminUser />} />

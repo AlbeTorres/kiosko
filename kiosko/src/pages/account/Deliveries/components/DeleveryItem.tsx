@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+import { Button } from '../../../../components-libs/Button'
 import { Pedido } from '../../../../lib/Models/Pedido.model'
 
 type DeleveryItemProps = {
@@ -8,7 +10,7 @@ type DeleveryItemProps = {
 }
 
 export const DeliveryItem = ({ id, onOpen, deliveryopen, delivery }: DeleveryItemProps) => {
-  console.log(delivery)
+  const navigate = useNavigate()
   return (
     <div className='collapse collapse-arrow bg-base-200 my-5'>
       <input
@@ -25,6 +27,7 @@ export const DeliveryItem = ({ id, onOpen, deliveryopen, delivery }: DeleveryIte
         <p>{delivery.receptor}</p>
         <p>{delivery.valor_total}</p>
       </div>
+      <Button onClick={() => navigate(`/account/deliverys/${id}`)}>ver mas</Button>
     </div>
   )
 }
