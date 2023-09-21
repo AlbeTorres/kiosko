@@ -6,8 +6,6 @@ const DeliveryDetails = () => {
   const delivery_id = useParams()
   const { data } = usePedido({ id: delivery_id.id || '' })
 
-  console.log(data)
-
   return (
     <div className='py-5'>
       <BackButton route='/' />
