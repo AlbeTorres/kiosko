@@ -1,7 +1,7 @@
 import Home from '../../home/Home'
 import { useAuth } from '../../../hooks/api'
 import { useNavigate, useParams } from 'react-router-dom'
-import { LoginAuthOutput, SingupOutput } from '../../../lib/requests/auth.type'
+import { SingupOutput } from '../../../lib/requests/auth.type'
 import SingupDialog from './components/SingupDialog'
 
 export const Singup = () => {

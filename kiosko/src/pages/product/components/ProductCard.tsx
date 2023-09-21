@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaDollarSign } from 'react-icons/fa'
 import { ProductActionButton } from './ProductActionButton'
 import { Link } from 'react-router-dom'

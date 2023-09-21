@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import { ReactNode, useState } from 'react'
 import { ButtonIcon } from '../Button'
 import { FaHamburger } from 'react-icons/fa'
-import NavMenuIn from '../../layouts/BaseLayout/components/Header/components/NavMenuIn'
-import { LogOutDialog } from '../../layouts/BaseLayout/components/LogOutDialog'
+import NavMenuIn from '../../layouts/NavMenuIn'
+import { LogOutDialog } from '../../layouts/LogOutDialog'
 
 type Props = { title?: ReactNode; onMenu?: () => void }
 export default function AppHeader({ title, onMenu }: Props) {

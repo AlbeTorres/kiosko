@@ -34,6 +34,7 @@ export const PhoneTextField = ({
         }}
         className='w-full'
         defaultCountry='CU'
+        countries={['CU']}
         value={value}
         onChange={onChange}
       />

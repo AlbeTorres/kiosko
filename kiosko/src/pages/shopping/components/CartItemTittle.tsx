@@ -1,5 +1,4 @@
-import React from 'react'
-import { ItemCart } from '../layout'
+import { ItemCart } from './ItemCart.layout'
 
 export const CartItemTittle = () => (
   <div className='hidden md:block '>

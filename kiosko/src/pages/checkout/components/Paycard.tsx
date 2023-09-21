@@ -1,5 +1,4 @@
-import React from 'react'
-import { FaCheck, FaCheckCircle } from 'react-icons/fa'
+import { FaCheckCircle } from 'react-icons/fa'
 
 type PayCardProps = {
   paymethod: string

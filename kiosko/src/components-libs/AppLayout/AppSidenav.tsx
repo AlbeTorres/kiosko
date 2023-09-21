@@ -5,7 +5,7 @@ import NavItem from './NavItem'
 import { HOME_PATH } from '../../constants'
 import { ButtonIcon } from '../Button'
 import { FaUmbraco } from 'react-icons/fa'
-import { Logo } from '../../layouts/Logo/Logo'
+import { Logo } from '../../layouts/Logo'
 
 export type DashboardSidenavCurrent =
   | 'dashboard'

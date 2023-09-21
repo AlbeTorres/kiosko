@@ -1,8 +1,7 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { ProductImg } from './components/ProductImg'
 import { ProductDetails } from './components/ProductDetails'
 import { useProduct } from '../../hooks/api'
-import { FaArrowCircleLeft } from 'react-icons/fa'
 import { BackButton } from '../../components-libs/Button/BackButton'
 
 const Product = () => {

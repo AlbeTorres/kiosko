@@ -1,5 +1,3 @@
-import React from 'react'
-import cn from '../../../util/cn'
 import { FaArrowCircleLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 

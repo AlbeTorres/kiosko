@@ -1,7 +1,7 @@
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import AccountLayout from '../components/AccountLayout'
 import { usePedidos } from '../../../hooks/api'
-import { DeliveryItem } from './components/DeleveryItem'
+import { DeliveryItem } from '../components/DeleveryItem'
 import { Spinner } from '../../../components-libs/Spinner'
 import cn from '../../../util/cn'
 

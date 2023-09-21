@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { FaCartPlus, FaMinus, FaPlus } from 'react-icons/fa'
-import cartContext from '../../../context/productoContext/cartContext'
+import cartContext from '../../../context/cartContext/cartContext'
 import { MaxMinButton } from '../../../components-libs/MaxMinButton/MaxMinButton'
 import { Button } from '../../../components-libs/Button'
 

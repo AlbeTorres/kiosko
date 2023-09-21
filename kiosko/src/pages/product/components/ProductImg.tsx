@@ -1,7 +1,4 @@
 import { useState } from 'react'
-import img1 from '../../../assets/1.jpg'
-import img2 from '../../../assets/cup.jpg'
-import img3 from '../../../assets/qr-code.webp'
 import cn from '../../../util/cn'
 import { Carrousel } from '../../../components-libs/Carrousel/Carrousel'
 import { Product } from '../../../lib/Models/Product.model'

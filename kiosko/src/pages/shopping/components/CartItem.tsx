@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import { ItemCart } from '../layout'
+
 import { MaxMinButton } from '../../../components-libs/MaxMinButton/MaxMinButton'
 import { Button } from '../../../components-libs/Button'
+import { ItemCart } from './ItemCart.layout'
 
 type CartItemProps = {
   _id: string

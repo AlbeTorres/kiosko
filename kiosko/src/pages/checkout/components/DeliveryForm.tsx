@@ -1,4 +1,4 @@
-import { FieldErrors, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
+import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import { Select } from '../../../components-libs/Select'
 import { TextField } from '../../../components-libs/TextField'
 import { DeliveryFormData } from './DeliveryMethod'

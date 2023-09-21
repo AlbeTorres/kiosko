@@ -35,11 +35,6 @@ const Rutas = () => {
         <Route path='/account' element={<GeneralInformation />} />
         <Route path='/account/deliverys' element={<DeliveryList />} />
         <Route path='/account/deliverys/:id' element={<DeliveryDetails />} />
-        {/* <Route path="/paymen" element={<Paymen />} />
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/adminuser" element={<AdminUser />} />
-        <Route path="/adminpedido" element={<AdminPedidos />} />
-        <Route path="/pedido/:id" element={<PedidoDetails />} /> */}
       </Route>
     </Routes>
   )
