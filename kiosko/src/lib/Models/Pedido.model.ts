@@ -1,5 +1,6 @@
 import { Base } from './Base.model'
 import { Product } from './Product.model'
+import { User } from './User.model'
 
 export interface Pedido extends Base {
   usuario: string
@@ -19,4 +20,5 @@ export interface Pedido extends Base {
   provincia: string
   fechaini: string
   fechafin: string
+  cliente: User
 }

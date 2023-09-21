@@ -1,7 +1,10 @@
 import { Pedido } from '../Models/Pedido.model'
+import { Product } from '../Models/Product.model'
 import { Function } from './types'
 
-type PedidoFetch = Omit<Pedido, 'productos'> & { productos: string }
+type PedidoProduct = Product & { cantidad: number }
+
+export type PedidoFetch = Omit<Pedido, 'productos'> & { productos: PedidoProduct[] }
 
 export type FetchPedidos = Function<FetchPedidosInput, FetchPedidosOutput>
 
@@ -17,11 +20,9 @@ export type FetchPedidoInput = {
   id: string
 }
 
-export type FetchPedidoOutput = Pedido
+export type FetchPedidoOutput = PedidoFetch
 
-export type FetchPedidoData = {
-  pedido: PedidoFetch
-}
+export type FetchPedidoData = PedidoFetch
 
 export type AddPedido = Function<AddPedidoInput, AddPedidoOutput>
 

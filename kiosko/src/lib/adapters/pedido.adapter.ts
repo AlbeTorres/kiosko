@@ -1,35 +1,34 @@
 import { Pedido } from '../Models/Pedido.model'
-import { Product } from '../Models/Product.model'
-import { FetchPedidoData, FetchPedidosData } from '../requests/pedido.type'
+import { FetchPedidoData, FetchPedidosData, PedidoFetch } from '../requests/pedido.type'
 
-export const pedidoAdapter = (data: FetchPedidoData): Pedido => {
-  const productos: Product[] = JSON.parse(data.pedido.productos)
+export const pedidoAdapter = (data: FetchPedidoData): PedidoFetch => {
   return {
-    _id: data.pedido._id,
-    usuario: data.pedido.usuario,
-    productos: productos,
-    estado: data.pedido.estado,
-    direccion: data.pedido.direccion,
-    receptor: data.pedido.receptor,
-    movil: data.pedido.movil,
-    pago: data.pedido.pago,
-    valor_total: data.pedido.valor_total,
-    valor_subtotal: data.pedido.valor_subtotal,
-    valor_descuento: data.pedido.valor_descuento,
-    valor_envio: data.pedido.valor_envio,
-    carnet: data.pedido.carnet,
-    metodo_pago: data.pedido.metodo_pago,
-    municipio: data.pedido.municipio,
-    provincia: data.pedido.provincia,
-    fechaini: data.pedido.fechaini,
-    fechafin: data.pedido.fechafin,
+    _id: data._id,
+    usuario: data.usuario,
+    productos: data.productos,
+    estado: data.estado,
+    direccion: data.direccion,
+    receptor: data.receptor,
+    movil: data.movil,
+    pago: data.pago,
+    valor_total: data.valor_total,
+    valor_subtotal: data.valor_subtotal,
+    valor_descuento: data.valor_descuento,
+    valor_envio: data.valor_envio,
+    carnet: data.carnet,
+    metodo_pago: data.metodo_pago,
+    municipio: data.municipio,
+    provincia: data.provincia,
+    fechaini: data.fechaini,
+    fechafin: data.fechafin,
+    cliente: data.cliente,
   }
 }
 
-export const pedidosAdapter = (data: FetchPedidosData): Pedido[] => {
-  const pedidos: Pedido[] = []
+export const pedidosAdapter = (data: FetchPedidosData): PedidoFetch[] => {
+  const pedidos: PedidoFetch[] = []
 
-  data.map(p => pedidos.push(pedidoAdapter({ pedido: p })))
+  data.map(p => pedidos.push(pedidoAdapter(p)))
 
   return pedidos
 }

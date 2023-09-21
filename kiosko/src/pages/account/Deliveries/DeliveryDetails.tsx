@@ -6,6 +6,8 @@ const DeliveryDetails = () => {
   const delivery_id = useParams()
   const { data } = usePedido({ id: delivery_id.id || '' })
 
+  console.log(data)
+
   return (
     <div className='py-5'>
       <BackButton route='/' />
@@ -39,9 +41,9 @@ const DeliveryDetails = () => {
               <div>
                 <div>
                   <label className='text-sm font-bold uppercase tracking-wide'>{'Cliente'}</label>
-                  <p className='text-xl font-semibold text-black'>{data?.receptor}</p>
+                  <p className='text-xl font-semibold text-black'>{data?.cliente.nombre}</p>
                 </div>
-                <p>{data?.usuario}</p>
+                <p>{data?.receptor}</p>
                 <p>{data?.movil}</p>
                 <div>
                   <p className='max-w-sm whitespace-pre-line break-words'>{data?.direccion}</p>
@@ -84,15 +86,15 @@ const DeliveryDetails = () => {
                     </p>
                   </td>
                   <td className='whitespace-nowrap p-3 text-right font-medium text-gray-900'>
-                    {20}
+                    {item.cantidad}
                   </td>
                   <td className='whitespace-nowrap p-3 text-right font-medium text-gray-900'>
-                    <span className='mr-2'>{'usd'}</span>
-                    {30}
+                    {item.precio}
+                    <span className='ml-2'>{'usd'}</span>
                   </td>
                   <td className='whitespace-nowrap p-3 text-right font-medium text-gray-900'>
-                    <span className='mr-2'>{'usd'}</span>
-                    {30}
+                    {item.cantidad * item.precio}
+                    <span className='ml-2'>{'usd'}</span>
                   </td>
                 </tr>
               ))}
@@ -116,22 +118,22 @@ const DeliveryDetails = () => {
                 <td />
                 <td />
                 <td className='whitespace-nowrap p-2.5 text-right text-lg font-bold text-gray-900'>
-                  {'text 2'}
+                  {'Costo de envío'}
                 </td>
                 <td className='whitespace-nowrap p-2.5 text-right font-bold text-gray-900'>
-                  <span className='mr-2 font-semibold'>{'usd'}</span>
-                  {30}
+                  {data?.valor_envio}
+                  <span className='ml-2 font-semibold'>{'usd'}</span>
                 </td>
               </tr>
               <tr className='divide-y-0'>
                 <td />
                 <td />
                 <td className='whitespace-nowrap p-2.5 text-right text-lg font-bold text-gray-900'>
-                  {'texto 1'}
+                  {'Total'}
                 </td>
                 <td className='whitespace-nowrap p-2.5 text-right font-bold text-gray-900'>
-                  <span className='mr-2 font-semibold'>{'usd'}</span>
-                  {30}
+                  {data?.valor_total}
+                  <span className='ml-2 font-semibold'>{'usd'}</span>
                 </td>
               </tr>
             </tbody>

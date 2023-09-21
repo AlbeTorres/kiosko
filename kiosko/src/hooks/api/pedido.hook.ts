@@ -20,7 +20,9 @@ export const usePedidos = () => useQuery(['pedidos'], () => fetchAllPedidos())
  * used as an argument when calling the `fetchPedido` function.
  */
 export const usePedido = (input: FetchPedidoInput) =>
-  useQuery(['pedido', input], () => fetchPedido(input))
+  useQuery(['pedido'], () => fetchPedido(input), {
+    refetchOnWindowFocus: false,
+  })
 
 /**
  * The useAddPedido function is a custom hook that uses the useMutation hook to handle adding a new
