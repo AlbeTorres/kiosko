@@ -2,6 +2,8 @@
 
 Kiosko is a modern and feature-rich online e-commerce platform designed to simplify the process of setting up and managing an online store. Whether you're a small business owner or an entrepreneur, Kiosko provides the tools you need to showcase and sell your products effectively.
 
+https://kiosko-pi.vercel.app/
+
 ## Features
 
 - **User-friendly Interface**: Kiosko offers an intuitive and easy-to-navigate interface for both store administrators and customers.
