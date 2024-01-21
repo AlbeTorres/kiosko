@@ -1,6 +1,4 @@
-# Kiosko - Online E-commerce Platform
-
-!<img src="" wigth="" heigth="">
+# <img src="https://raw.githubusercontent.com/AlbeTorres/kiosko/main/kiosko/src/assets/logo.webp" width="40px" heigth="40px" style="background:white"> Kiosko - Online E-commerce Platform
 
 Kiosko is a modern and feature-rich online e-commerce platform designed to simplify the process of setting up and managing an online store. Whether you're a small business owner or an entrepreneur, Kiosko provides the tools you need to showcase and sell your products effectively.
 
@@ -14,9 +12,11 @@ Kiosko is a modern and feature-rich online e-commerce platform designed to simpl
 
 - **Responsive Design**: Kiosko is built with a responsive design, ensuring a seamless experience for users across different devices.
 
-- **Customization Options**: Tailor the look and feel of your online store with customizable themes, colors, and layouts.
-
 - **Search Functionality**: Help customers find what they're looking for quickly with a powerful search feature.
+
+## TO-DO
+
+- **Customization Options**: Tailor the look and feel of your online store with customizable themes, colors, and layouts.
 
 - **Security**: Implement secure payment gateways to ensure the safety of customer transactions.
 
@@ -27,11 +27,6 @@ Kiosko is a modern and feature-rich online e-commerce platform designed to simpl
   - React (v18.2.0)
   - Vite (v3.1.0)
   - Tailwind CSS (v3.1.8)
-
-- **Backend**:
-
-  - Node.js with Express (not specified in package.json, assuming it's part of your backend)
-  - Backend URL: [http://localhost:4000](http://localhost:4000)
 
 - **Database**:
 
@@ -59,16 +54,13 @@ Kiosko is a modern and feature-rich online e-commerce platform designed to simpl
 
   - React Router DOM (v6.4.2)
 
-- **Authentication**:
-
-  - (Authentication details not provided, assuming it's part of your backend)
-
 - **Socket.IO**:
 
   - Socket.IO Client (v4.5.3)
   - Socket URL: [http://localhost:8900](http://localhost:8900)
 
 - **Additional Utilities**:
+
   - Axios (v1.4.0)
   - React Phone Number Input (v3.1.42)
   - React Pin Field (v3.1.3)
@@ -166,4 +158,4 @@ This project is licensed under the MIT License.
 Special thanks to contributors and open source libraries used in this project.
 Feel free to reach out if you have any questions or need assistance with Kiosko.
 
-Happy selling!
+Happy selling!👌
