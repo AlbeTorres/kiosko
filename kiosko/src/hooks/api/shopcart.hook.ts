@@ -14,7 +14,7 @@ export const useAllCartProductPrice = (input: FetchShopCartTotalPriceInput) =>
   useQuery(['cartproductprice', input], () => fetchShopCartTotalPrice(input))
 
 export const useAllCartProduct = (input: FetchShopCartProductsInput) =>
-  useQuery(['cartproduct'], () => fetchShopCartProduct(input))
+  useQuery(['cartproduct', input], () => fetchShopCartProduct(input))
 
 export const useDeliveryCost = (input: FetchDeliveryCostInput) =>
   useQuery(['deliverycost'], () => fetchDeliveryCost(input))
